@@ -4,10 +4,10 @@
 ### PARTIE I
 
 **CODE -** *A peu près fini*
-Rentrer le modele facilement -> ok
-simuler le modele -> ok
-phase plan and dynimacis -> 05/02 -> ok
-interactive plot phase plan with click, eventually 3d -> 07/02 -> 2/3 ok manque 3d
+1. Rentrer le modele facilement -> ok 
+2. simuler le modele -> ok
+3. phase plan and dynimacis -> 05/02 -> ok
+4. interactive plot phase plan with click, eventually 3d -> 07/02 -> 2/3 ok manque 3d
 
 **WRITTING -** *En cours*
 Intro et motivations, C.Elegans, philo 10/02
