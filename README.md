@@ -10,7 +10,7 @@
 4. interactive plot phase plan with click, eventually 3d -> 07/02 -> 2/3 ok manque 3d
 
 **WRITTING -** *En cours*
-1. Intro et motivations, C.Elegans, philosophie de l'esprit 10/02 -> 1/2 ok, y'a les idées faut prendre le temps de les écrires maintenant
+1. Intro et motivations, C.Elegans, philosophie de l'esprit 10/02 -> 1/2 ok, y'a les idées faut prendre le temps de les écrire maintenant
 1. Quand faut-il privilegier la rapidite d'execution au relaisme biologique ? 11/02 (eventuellement dans l'intro, on verra)
 1. Modele de Hodkin Huxley 14/02
 1. Interets de réduire Hodgkin-Huxley, réduction aux modèles de Fitzugh-Nagumo, modèle de Izhiekievich 17/02
