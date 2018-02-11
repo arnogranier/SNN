@@ -44,6 +44,3 @@ plt.show()
 ![alt Text](https://user-images.githubusercontent.com/27825602/36076474-e60e1bcc-0f5c-11e8-9dba-75ee33e47904.gif)
 
 
-
-
-
