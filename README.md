@@ -12,7 +12,7 @@
 **WRITTING -** *En cours*
 1. Intro et motivations, C.Elegans, philosophie de l'esprit 10/02 -> 1/2 ok, y'a les idées faut prendre le temps de les écrire maintenant
 
-⋅⋅⋅Culuture humaine -> Sciences -> Maths-info-sciences de l’homme_neuro -> on pioche dans les trois -> s’inscrit dans le courant des sci co. Intérêt de la pluridisciplinarité (internet)
+	Culuture humaine -> Sciences -> Maths-info-sciences de l’homme_neuro -> on pioche dans les trois -> s’inscrit dans le courant des sci co. Intérêt de la pluridisciplinarité (internet)
 Une des activités de l’humanité en société est le développement de cette culture. Les motivations peuvent être différentes, à l’échelle de la société, si on considère la société comme un agent avec un but, le développement de la culture est souvent nécessaire à l’accomplissement (ou au rapprochage) de ce but, si il n’est pas le but lui-même. 
 De la difficulté d’une science de l’homme, car nous sommes des hommes, objectivité et subjectivité, compréhension totale de l’Homme, est-ce un problème de complexité ou une chimère ? (http://journals.openedition.org/communication/2141)
 Un abord « exact » de l’homme, fonctionnalisme et physicalisme + alternatives. Implication du fonctionnalisme, définir modélisation, modélisation de l’humain. Dans l’étude de l’individu humain, le système nerveux est considéré comme le siège du traitement de l’information et de la prise de décisions, et c’est aussi, d’après nos connaissances actuelles, la partie du corps humain la plus complexe. L’enjeu majeur de la modélisation de l’humain peut alors être située dans la modélisation du système nerveux, et principalement du système nerveux central.
