@@ -13,10 +13,15 @@
 1. Intro et motivations, C.Elegans, philosophie de l'esprit 10/02 -> 1/2 ok, y'a les idées faut prendre le temps de les écrire maintenant
 
 Culuture humaine -> Sciences -> Maths-info-sciences de l’homme_neuro -> on pioche dans les trois -> s’inscrit dans le courant des sci co. Intérêt de la pluridisciplinarité (internet)
+
 Une des activités de l’humanité en société est le développement de cette culture. Les motivations peuvent être différentes, à l’échelle de la société, si on considère la société comme un agent avec un but, le développement de la culture est souvent nécessaire à l’accomplissement (ou au rapprochage) de ce but, si il n’est pas le but lui-même. 
+
 De la difficulté d’une science de l’homme, car nous sommes des hommes, objectivité et subjectivité, compréhension totale de l’Homme, est-ce un problème de complexité ou une chimère ? (http://journals.openedition.org/communication/2141)
+
 Un abord « exact » de l’homme, fonctionnalisme et physicalisme + alternatives. Implication du fonctionnalisme, définir modélisation, modélisation de l’humain. Dans l’étude de l’individu humain, le système nerveux est considéré comme le siège du traitement de l’information et de la prise de décisions, et c’est aussi, d’après nos connaissances actuelles, la partie du corps humain la plus complexe. L’enjeu majeur de la modélisation de l’humain peut alors être située dans la modélisation du système nerveux, et principalement du système nerveux central.
+
 Définir neurone ; depuis Ramon y Cajal il est considéré que le neurone est l’unité de base du système nerveux. Il est également globalement admis que l’activité du cerveau (qu’on considère une activité physiologique, symbolique ou sémantique) est permise et émerge de l’activité de neurones interconnectés. 
+
 Il est donc naturel, dans une optique de modélisation de l’humain, de s’intéresser à la modélisation des neurones et des réseaux de neurones. J’aimerai dégager deux buts principaux de cette modélisation : reproduire les comportements physiologiques, dits de bas niveau (pattern d’activité électrique, notamment) et observer et étudier l’émergence de comportement dit de haut niveau (symbolique, sémantique, voire émotionnels, conscients, intelligents). Pour l’instant, nous en sommes principalement au premier but. On peut faire un parallèle avec l’IA et les réseaux de neurones formels, qui sont bien différents de l’humain mais desquels émergent des comportements de haut-niveau, parfois de manière un peu magique, mais si on étudie on comprend les mécanismes à l’œuvre dans l’émergence de ces comportements de haut-niveau (parler de Deep Dream de Google, par ex)
 
 ..
