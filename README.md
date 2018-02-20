@@ -36,9 +36,9 @@ Le neurone est une cellule capable de recevoir et transmettre de l'information s
 	Le concept fondamental de neurobiologie en lien avec cette partie est celui de la création du potentiel d'action. On rappellera ici succintement les mecanismes neurobiologiques à l'oeuvre. On peut décomposer la génération d'un potentiel d'action en 5 phases :
 	1. Dépolarisation faible : ouverture de certain canaux sodiques, entrée des ions Na2+ dans le milieu intracellulaire ;
 	2. Dépolarisation forte suite au dépassement de seuil : Lorsqu'un certain seuil de potentiel electrique est atteint (le potentiel de seuil), la membrane va subir une dépolarisation forte, allant jusqu'à un inversement de polarité où le potentiel de la membrane est d'environ 40 mV. Cette dépolarisation est due à l'ouverture massive de canaux sodiques. Une fois le changement de polarité effectué, l'inversion du gradient electrochimique va ralentir l'entrée des ions Na2+ dans la cellule ;
-	3.
-	4.
-	5.
+	3. Repolarisation : L'ouverture des canaux potassiques et l'inactivation des canaux sodiques entraine la sortie massive d'ions K+ et un arret de l'entrée des ions Na2+;
+	4. Hyperpolarisation : En continuité de la repolarisation, on observe que le potentiel membranaire ne revient pas directement au potentiel de repos, mais passe sous le potentiel de repos pendant un certain temps que l'on appelle la période refractaire. Cela est du au fait que les canaux potassiques restent ouverts plus longtemps que les canaux sodiques, on a donc une sortie d'ions K+ plus importante que necessaire pour revenir au potentiel de repos;
+	5. Retour au potentiel de repos : Le retour au potentiel de repos est assuré par la pompe Na2+/K+ ATPase.
 	On pourra visualiser ces 5 phases sur la FIG1 et la FIG2, les mecanismes moléculaires qu'on observe dans la FIG2 étant à mettre en relation avec la valeur du potentiel electrique sur la FIG1.
 	
 	FIG2 : animation bien si y'a, sinon image(s)
