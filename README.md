@@ -18,6 +18,7 @@ De la difficulté d’une science de l’homme, car nous sommes des hommes, obje
 Un abord « exact » de l’homme, fonctionnalisme et physicalisme + alternatives. Implication du fonctionnalisme, définir modélisation, modélisation de l’humain. Dans l’étude de l’individu humain, le système nerveux est considéré comme le siège du traitement de l’information et de la prise de décisions, et c’est aussi, d’après nos connaissances actuelles, la partie du corps humain la plus complexe. L’enjeu majeur de la modélisation de l’humain peut alors être située dans la modélisation du système nerveux, et principalement du système nerveux central.   
 Définir neurone ; depuis Ramon y Cajal il est considéré que le neurone est l’unité de base du système nerveux. Il est également globalement admis que l’activité du cerveau (qu’on considère une activité physiologique, symbolique ou sémantique) est permise et émerge de l’activité de neurones interconnectés.  
 Il est donc naturel, dans une optique de modélisation de l’humain, de s’intéresser à la modélisation des neurones et des réseaux de neurones. J’aimerai dégager deux buts principaux de cette modélisation : reproduire les comportements physiologiques, dits de bas niveau (pattern d’activité électrique, notamment) et observer et étudier l’émergence de comportement dit de haut niveau (symbolique, sémantique, voire émotionnels, conscients, intelligents). Pour l’instant, nous en sommes principalement au premier but. On peut faire un parallèle avec l’IA et les réseaux de neurones formels, qui sont bien différents de l’humain mais desquels émergent des comportements de haut-niveau, parfois de manière un peu magique, mais si on étudie on comprend les mécanismes à l’œuvre dans l’émergence de ces comportements de haut-niveau (parler de Deep Dream de Google, par ex)  
+Création d'un outil de mes propres outils de simulation, interet (parler de la poursuite d'étude, bonne facon d'apprendre les différentes méthodes en simulation, manque d'environnements de création de réseaux de spiking neurons en python (brian mais bon,et tensorflow > all)).
 
 1. Quelques rappels de neurobiologie
 	Cette partie sera concise et aura pour but de rappeller quelques notions de neurobiologie necessaire à la compréhension de la suite, sans en faire trop. On suppose que le lecteur est déjà familié avec les notions fondamentales de la neurobiologie, si ce n'est pas le cas, on renvoie à Principles of Neural Science de Eric Kandel.
@@ -41,7 +42,7 @@ Le neurone est une cellule capable de recevoir et transmettre de l'information s
 	5. Retour au potentiel de repos : Le retour au potentiel de repos est assuré par la pompe Na2+/K+ ATPase.
 	
 	![alt Text](https://user-images.githubusercontent.com/27825602/36450932-b77c1b44-168f-11e8-975d-c6203f21f177.jpg)
-	
+	FIG1 - Potentiel de la membrane en fonction du temps lors de la production d'un potentiel d'action
 
 1. Modele de Hodgkin Huxley 14/02
 	On sait, de la neurobiologie, que les canaux ioniques peuvent prendreMode de fonctionnement des canaux ioniques (actif/inactif, ouvert/fermé), équations associées aux canaux ioniques, flux potassique et sodique. Modélisation par cricuit RC et explication de l'équation complète avec la loi de Kirchhoff. Estimation des paramètres. Explication des dynamiques à partir de m,n,h (voir Washington). Simulation avec SNN.single 
