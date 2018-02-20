@@ -20,7 +20,7 @@ Définir neurone ; depuis Ramon y Cajal il est considéré que le neurone est l�
 Il est donc naturel, dans une optique de modélisation de l’humain, de s’intéresser à la modélisation des neurones et des réseaux de neurones. J’aimerai dégager deux buts principaux de cette modélisation : reproduire les comportements physiologiques, dits de bas niveau (pattern d’activité électrique, notamment) et observer et étudier l’émergence de comportement dit de haut niveau (symbolique, sémantique, voire émotionnels, conscients, intelligents). Pour l’instant, nous en sommes principalement au premier but. On peut faire un parallèle avec l’IA et les réseaux de neurones formels, qui sont bien différents de l’humain mais desquels émergent des comportements de haut-niveau, parfois de manière un peu magique, mais si on étudie on comprend les mécanismes à l’œuvre dans l’émergence de ces comportements de haut-niveau (parler de Deep Dream de Google, par ex)  
 
 1. Quelques rappels de neurobiologie
-	Cette partie sera concise puisqu'on suppose que le lecteur est déjà familié avec les notions fondamentales de la neurobiologie. Si ce n'est pas le cas, on renvoie à Principles of Neural Science de Eric Kandel.  
+	Cette partie sera concise et aura pour but de rappeller quelques notions de neurobiologie necessaire à la compréhension de la suite, sans en faire trop. On suppose que le lecteur est déjà familié avec les notions fondamentales de la neurobiologie, si ce n'est pas le cas, on renvoie à Principles of Neural Science de Eric Kandel.
 Le neurone est une cellule capable de recevoir et transmettre de l'information sous forme electro-chimique. On peut décomposer schématiquement les différentes étapes de la reception et transmition de l'information in vivo dans un neurone par :
 	1. Reception de neurotransmetteurs et ouverture des canaux chimio-dépendants
 	2. Excitation electrique locale du neurone dû à l'ouverture des canaux chimio-dépedants
@@ -39,8 +39,9 @@ Le neurone est une cellule capable de recevoir et transmettre de l'information s
 	3. Repolarisation : L'ouverture des canaux potassiques et l'inactivation des canaux sodiques entraine la sortie massive d'ions K+ et un arret de l'entrée des ions Na2+;
 	4. Hyperpolarisation : En continuité de la repolarisation, on observe que le potentiel membranaire ne revient pas directement au potentiel de repos, mais passe sous le potentiel de repos pendant un certain temps que l'on appelle la période refractaire. Cela est du au fait que les canaux potassiques restent ouverts plus longtemps que les canaux sodiques, on a donc une sortie d'ions K+ plus importante que necessaire pour revenir au potentiel de repos;
 	5. Retour au potentiel de repos : Le retour au potentiel de repos est assuré par la pompe Na2+/K+ ATPase.
-	On pourra visualiser ces 5 phases sur la FIG1 et la FIG2, les mecanismes moléculaires qu'on observe dans la FIG2 étant à mettre en relation avec la valeur du potentiel electrique sur la FIG1.
 	
+	On pourra visualiser ces 5 phases sur la FIG1 et la FIG2, les mecanismes moléculaires qu'on observe dans la FIG2 étant à mettre en relation avec la valeur du potentiel electrique sur la FIG1.
+
 	FIG2 : animation bien si y'a, sinon image(s)
 	FIG1 : +image PA courbe
 
