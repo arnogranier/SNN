@@ -21,7 +21,7 @@ Il est donc naturel, dans une optique de modélisation de l’humain, de s’int
 Création d'un outil de mes propres outils de simulation, interet (parler de la poursuite d'étude, bonne facon d'apprendre les différentes méthodes en simulation, manque d'environnements de création de réseaux de spiking neurons en python (brian mais bon,et tensorflow > all)).
 
 1. Quelques rappels de neurobiologie
-	Cette partie sera concise et aura pour but de rappeller quelques notions de neurobiologie necessaire à la compréhension de la suite, sans en faire trop. On suppose que le lecteur est déjà familié avec les notions fondamentales de la neurobiologie, si ce n'est pas le cas, on renvoie à Principles of Neural Science de Eric Kandel.
+	Cette partie sera concise et aura pour but de rappeller quelques notions de neurobiologie necessaire à la compréhension de la suite, sans en faire trop. On suppose que le lecteur est déjà familié avec les notions fondamentales de la neurobiologie, si ce n'est pas le cas, on renvoie à Principles of Neural Science de Eric Kandel.  
 Le neurone est une cellule capable de recevoir et transmettre de l'information sous forme electro-chimique. On peut décomposer schématiquement les différentes étapes de la reception et transmition de l'information in vivo dans un neurone par :
 	1. Reception de neurotransmetteurs et ouverture des canaux chimio-dépendants
 	2. Excitation electrique locale du neurone dû à l'ouverture des canaux chimio-dépedants
@@ -41,12 +41,17 @@ Le neurone est une cellule capable de recevoir et transmettre de l'information s
 	4. Hyperpolarisation : En continuité de la repolarisation, on observe que le potentiel membranaire ne revient pas directement au potentiel de repos, mais passe sous le potentiel de repos pendant un certain temps que l'on appelle la période refractaire. Cela est du au fait que les canaux potassiques restent ouverts plus longtemps que les canaux sodiques, on a donc une sortie d'ions K+ plus importante que necessaire pour revenir au potentiel de repos;
 	5. Retour au potentiel de repos : Le retour au potentiel de repos est assuré par la pompe Na2+/K+ ATPase.
 	
-	![alt Text](https://user-images.githubusercontent.com/27825602/36450932-b77c1b44-168f-11e8-975d-c6203f21f177.jpg)
+	![alt Text](https://user-images.githubusercontent.com/27825602/36450932-b77c1b44-168f-11e8-975d-c6203f21f177.jpg)  
 	FIG1 - Potentiel de la membrane en fonction du temps lors de la production d'un potentiel d'action
 
 1. Modele de Hodgkin Huxley 14/02
-	On sait, de la neurobiologie, que les canaux ioniques peuvent prendreMode de fonctionnement des canaux ioniques (actif/inactif, ouvert/fermé), équations associées aux canaux ioniques, flux potassique et sodique. Modélisation par cricuit RC et explication de l'équation complète avec la loi de Kirchhoff. Estimation des paramètres. Explication des dynamiques à partir de m,n,h (voir Washington). Simulation avec SNN.single 
-
+	L'approche de Hodgkin et Huxley sur la question de la modélisation de neurones est une approche qui possède une grande "clarté physiologique", dans le sens où chaque composante du modèle représente une réalité biologique ou electrique descriptible dans les termes de la neurobiologie. On peut ainsi attribuer au modèle de Hodgkin-Huxley une certaine cohérence et validité par rapport aux sciences naturelles (notamment neurobiologie encore une fois). Mais voyons ça plus en détails ..
+	1. Les equations des canaux ioniques
+	on suppose que y'en a que deux, 4 compartiment, des formules
+	2. L'équation du potentiel membrane
+	Représentation par circuit RC, Interprétation et appliquation de la loi de Kirchhoff pour trouver l'équation
+	3. Simulation avec SNN.single et explication des dynamiques à partir de m,n,h (voir Wash)
+	
 
 1. Interets de réduire Hodgkin-Huxley (Quand faut-il privilegier la rapidite d'execution au relaisme biologique ?), réduction aux modèles de Fitzugh-Nagumo, modèle de Izhiekievich 17/02
 	Expliquer le compromis entre réalisme biologique et rapidité d'execution, modèle phéno et modèle physio. Le but principal de ce TER est d'étudier et de produire un outil poural simulation de RESEAUX de neurones de grande taille, ainsi dans cette partie qui porte sur la modélisation d'un seul neurone, on a tout interet à se concentrer sur les modèles qui sont des simplifications de HH.
