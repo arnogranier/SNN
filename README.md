@@ -40,10 +40,8 @@ Le neurone est une cellule capable de recevoir et transmettre de l'information s
 	4. Hyperpolarisation : En continuité de la repolarisation, on observe que le potentiel membranaire ne revient pas directement au potentiel de repos, mais passe sous le potentiel de repos pendant un certain temps que l'on appelle la période refractaire. Cela est du au fait que les canaux potassiques restent ouverts plus longtemps que les canaux sodiques, on a donc une sortie d'ions K+ plus importante que necessaire pour revenir au potentiel de repos;
 	5. Retour au potentiel de repos : Le retour au potentiel de repos est assuré par la pompe Na2+/K+ ATPase.
 	
-	On pourra visualiser ces 5 phases sur la FIG1 et la FIG2, les mecanismes moléculaires qu'on observe dans la FIG2 étant à mettre en relation avec la valeur du potentiel electrique sur la FIG1.
-
-	FIG2 : animation bien si y'a, sinon image(s)
-	FIG1 : +image PA courbe
+	![alt Text](https://user-images.githubusercontent.com/27825602/36450932-b77c1b44-168f-11e8-975d-c6203f21f177.jpg)
+	
 
 1. Modele de Hodgkin Huxley 14/02
 	On sait, de la neurobiologie, que les canaux ioniques peuvent prendreMode de fonctionnement des canaux ioniques (actif/inactif, ouvert/fermé), équations associées aux canaux ioniques, flux potassique et sodique. Modélisation par cricuit RC et explication de l'équation complète avec la loi de Kirchhoff. Estimation des paramètres. Explication des dynamiques à partir de m,n,h (voir Washington). Simulation avec SNN.single 
