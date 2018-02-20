@@ -20,9 +20,22 @@ Définir neurone ; depuis Ramon y Cajal il est considéré que le neurone est l�
 Il est donc naturel, dans une optique de modélisation de l’humain, de s’intéresser à la modélisation des neurones et des réseaux de neurones. J’aimerai dégager deux buts principaux de cette modélisation : reproduire les comportements physiologiques, dits de bas niveau (pattern d’activité électrique, notamment) et observer et étudier l’émergence de comportement dit de haut niveau (symbolique, sémantique, voire émotionnels, conscients, intelligents). Pour l’instant, nous en sommes principalement au premier but. On peut faire un parallèle avec l’IA et les réseaux de neurones formels, qui sont bien différents de l’humain mais desquels émergent des comportements de haut-niveau, parfois de manière un peu magique, mais si on étudie on comprend les mécanismes à l’œuvre dans l’émergence de ces comportements de haut-niveau (parler de Deep Dream de Google, par ex)  
 
 1. Modele de Hodgkin Huxley 14/02
+Mode de fonctionnement des canaux ioniques (actif/inactif, ouvert/fermé), équations associées aux canaux ioniques, flux potassique et sodique. Modélisation par cricuit RC et explication de l'équation complète avec la loi de Kirchhoff. Estimation des paramètres. Simulation avec SNN.single 
+
+
 1. Interets de réduire Hodgkin-Huxley (Quand faut-il privilegier la rapidite d'execution au relaisme biologique ?), réduction aux modèles de Fitzugh-Nagumo, modèle de Izhiekievich 17/02
+Expliquer le compromis entre réalisme biologique et rapidité d'execution. Le but principal de ce TER est d'étudier et de produire un outil poural simulation de RESEAUX de neurones de grande taille, ainsi dans cette partie qui porte sur la modélisation d'un seul neurone, on a tout interet à se concentrer sur les modèles qui sont des simplifications de HH.
+Explication de la réduction au modèles de FHN, simulations avec SNN.single, puis explications de FHN -> Izhi, encore une fois simulation.
+
+
 1. Modèle leaky-integrate and fire 19/02
+Encore plus simple : le modèle leaky-integrate and fire, présentation du modèle, explications, simulations.
+
+
 1. Quelques mots sur les modeles compartimentaux et augmentation de Hodkin-Huxley 20/02
+Principe (approximation des différentes composantes par des cylindres) et équation du cable. Interets ( biologiquement + réaliste). Techniques de réduction du nombre de compartiments avec same beahvior. 
+
+
 
 Commencer le site -> 1/03
 Si fini avant 1/03, s'interesser a d'autres methodes de simulations numeriques
