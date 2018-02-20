@@ -19,21 +19,39 @@ Un abord « exact » de l’homme, fonctionnalisme et physicalisme + alternative
 Définir neurone ; depuis Ramon y Cajal il est considéré que le neurone est l’unité de base du système nerveux. Il est également globalement admis que l’activité du cerveau (qu’on considère une activité physiologique, symbolique ou sémantique) est permise et émerge de l’activité de neurones interconnectés.  
 Il est donc naturel, dans une optique de modélisation de l’humain, de s’intéresser à la modélisation des neurones et des réseaux de neurones. J’aimerai dégager deux buts principaux de cette modélisation : reproduire les comportements physiologiques, dits de bas niveau (pattern d’activité électrique, notamment) et observer et étudier l’émergence de comportement dit de haut niveau (symbolique, sémantique, voire émotionnels, conscients, intelligents). Pour l’instant, nous en sommes principalement au premier but. On peut faire un parallèle avec l’IA et les réseaux de neurones formels, qui sont bien différents de l’humain mais desquels émergent des comportements de haut-niveau, parfois de manière un peu magique, mais si on étudie on comprend les mécanismes à l’œuvre dans l’émergence de ces comportements de haut-niveau (parler de Deep Dream de Google, par ex)  
 
+1. Quelques rappels de neurobiologie
+	Cette partie sera concise puisqu'on suppose que le lecteur est déjà familié avec les notions fondamentales de la neurobiologie. Si ce n'est pas le cas, on renvoie à Principles of Neural Science de Eric Kandel.  
+Le neurone est une cellule capable de recevoir et transmettre de l'information sous forme electro-chimique. On peut décomposer schématiquement les différentes étapes de la reception et transmition de l'information in vivo dans un neurone par :
+	1. Reception de neurotransmetteurs et ouverture des canaux chimio-dépendants
+	2. Excitation electrique locale du neurone dû à l'ouverture des canaux chimio-dépedants
+	3. Lorsque l'excitation locale depasse un certain seuil, création d'un potentiel d'action
+	4. Transmition du potentiel d'action à travers l'axone
+	5. Libération de neurotransmetteur dans la fente synaptique dû à l'arrivée du potentiel d'action dans le bouton synaptique 
+	6. Repeter 1. pour le neurone post-synaptique
+
+	Lorsqu'on souhaite étudier les propriétés d'excitation d'un neurone en laboratoire, on va généralement provoquer l'excitation du neurone en injectant directement un courant electrique dans le neurone, et on va s'interesser à la production de potentiels d'action en fonction des propriétés du courant injecté, notamment de son intensité (technique de patch-clamp). 
+
+	Dans cette idée d'étude de la production de potentiel d'action en fonction des propriétés d'un courant injecté directement dans le neurone, on ne décrira pas ici les mécanismes à l'oeuvre dans la synapse.
+
+	Le concept principal de neurobiologie à comprendre ici est la création du potentiel d'action, dont la base est une série d'échange d'ions entre le milieu extracellulaire et le milieu intracellulaire. Cet echange est permis par les canaux ioniques placés le long de la membrane plasmique, qui la rende permeable à certains ions dans certaines conditions. Ces canaux ioniques peuvent être dans différents états : actifs ou actifs, ouverts ou fermés. Les canaux ioniques dont on parle ici sont des canaux voltage-dépendant, c'est-à-dire que leur état dépend de la tension electrique locale. Ces canaux ioniques sont également ion-specifique, dans le sens où ils ne rendent la membrane permeable qu'à un certain type d'ion ; ainsi on a des canaux ioniques pour les ions K+, des canaux ioniques pour les ions Na2+, etc... Les ions ne peuvent circuler à travers la membrane que lorsque le canal est actif et ouvert.  
+	Dès lors que la tension electrique locale dépasse un certain seuil (soit, comme dit précedemment, grâce à l'ouverture des canaux chimio-dépendants, soit par une injection direct de courant dans le neurone), on va observer une série d'ouvertures et de fermetures de certains canaux ioniques qui vont être à l'origine du potentiel d'action, qui peuvent être résumées par :
+	1.
+
 1. Modele de Hodgkin Huxley 14/02
-Mode de fonctionnement des canaux ioniques (actif/inactif, ouvert/fermé), équations associées aux canaux ioniques, flux potassique et sodique. Modélisation par cricuit RC et explication de l'équation complète avec la loi de Kirchhoff. Estimation des paramètres. Explication des dynamiques à partir de m,n,h (voir Washington). Simulation avec SNN.single 
+	On sait, de la neurobiologie, que les canaux ioniques peuvent prendreMode de fonctionnement des canaux ioniques (actif/inactif, ouvert/fermé), équations associées aux canaux ioniques, flux potassique et sodique. Modélisation par cricuit RC et explication de l'équation complète avec la loi de Kirchhoff. Estimation des paramètres. Explication des dynamiques à partir de m,n,h (voir Washington). Simulation avec SNN.single 
 
 
 1. Interets de réduire Hodgkin-Huxley (Quand faut-il privilegier la rapidite d'execution au relaisme biologique ?), réduction aux modèles de Fitzugh-Nagumo, modèle de Izhiekievich 17/02
-Expliquer le compromis entre réalisme biologique et rapidité d'execution. Le but principal de ce TER est d'étudier et de produire un outil poural simulation de RESEAUX de neurones de grande taille, ainsi dans cette partie qui porte sur la modélisation d'un seul neurone, on a tout interet à se concentrer sur les modèles qui sont des simplifications de HH.
+	Expliquer le compromis entre réalisme biologique et rapidité d'execution. Le but principal de ce TER est d'étudier et de produire un outil poural simulation de RESEAUX de neurones de grande taille, ainsi dans cette partie qui porte sur la modélisation d'un seul neurone, on a tout interet à se concentrer sur les modèles qui sont des simplifications de HH.
 Explication de la réduction au modèles de FHN, simulations avec SNN.single, puis explications de FHN -> Izhi, encore une fois simulation.
 
 
 1. Modèle leaky-integrate and fire 19/02
-Encore plus simple : le modèle leaky-integrate and fire, présentation du modèle, explications, simulations.
+	Encore plus simple : le modèle leaky-integrate and fire, présentation du modèle, explications, simulations.
 
 
 1. Quelques mots sur les modeles compartimentaux et augmentation de Hodkin-Huxley 20/02
-Principe (approximation des différentes composantes par des cylindres) et équation du cable. Interets ( biologiquement + réaliste). Techniques de réduction du nombre de compartiments avec same beahvior. 
+	Principe (approximation des différentes composantes par des cylindres) et équation du cable. Interets ( biologiquement + réaliste). Techniques de réduction du nombre de compartiments avec same beahvior. 
 
 
 
