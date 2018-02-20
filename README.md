@@ -34,13 +34,15 @@ Le neurone est une cellule capable de recevoir et transmettre de l'information s
 	Dans cette idée d'étude de la production de potentiel d'action en fonction des propriétés d'un courant injecté directement dans le neurone, on ne décrira pas ici les mécanismes à l'oeuvre dans la synapse.
 
 	Le concept fondamental de neurobiologie en lien avec cette partie est celui de la création du potentiel d'action. On rappellera ici succintement les mecanismes neurobiologiques à l'oeuvre. On peut décomposer la génération d'un potentiel d'action en 5 phases :
-	1.
-	2.
+	1. Dépolarisation faible : ouverture de certain canaux sodiques, entrée des ions Na2+ dans le milieu intracellulaire ;
+	2. Dépolarisation forte suite au dépassement de seuil : Lorsqu'un certain seuil de potentiel electrique est atteint (le potentiel de seuil), la membrane va subir une dépolarisation forte, allant jusqu'à un inversement de polarité où le potentiel de la membrane est d'environ 40 mV. Cette dépolarisation est due à l'ouverture massive de canaux sodiques. Une fois le changement de polarité effectué, l'inversion du gradient electrochimique va ralentir l'entrée des ions Na2+ dans la cellule ;
 	3.
 	4.
 	5.
+	On pourra visualiser ces 5 phases sur la FIG1 et la FIG2, les mecanismes moléculaires qu'on observe dans la FIG2 étant à mettre en relation avec la valeur du potentiel electrique sur la FIG1.
 	
-animation bien si y'a, sinon image
+	FIG2 : animation bien si y'a, sinon image(s)
+	FIG1 : +image PA courbe
 
 1. Modele de Hodgkin Huxley 14/02
 	On sait, de la neurobiologie, que les canaux ioniques peuvent prendreMode de fonctionnement des canaux ioniques (actif/inactif, ouvert/fermé), équations associées aux canaux ioniques, flux potassique et sodique. Modélisation par cricuit RC et explication de l'équation complète avec la loi de Kirchhoff. Estimation des paramètres. Explication des dynamiques à partir de m,n,h (voir Washington). Simulation avec SNN.single 
