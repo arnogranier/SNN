@@ -86,7 +86,7 @@ Le neurone est une cellule capable de recevoir et transmettre de l'information s
 	1. Les equations des canaux ioniques
 	on suppose que y'en a que deux, 4 compartiment, des formules
 	2. L'équation du potentiel membrane
-	Représentation par circuit RC, Interprétation et appliquation de la loi de Kirchhoff pour trouver l'équation
+	Représentation par circuit RC, Interprétation (voir whash) et appliquation de la loi de Kirchhoff pour trouver l'équation 
 	3. Simulation avec SNN.single et explication des dynamiques à partir de m,n,h (voir Wash)
 	
 
