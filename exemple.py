@@ -1,11 +1,91 @@
-from brnn.single import *
+from brnn.single.usual_models import HH_model as hh
+from brnn.single.usual_models import izhi_model as iz
+import matplotlib.pyplot as plt
+from brnn.single.tools import Function as F
 
-v = Variable(name='v', ddt='0.04*v**2+5*v+140-u+I', init_value=-65, 
-			 reset_value='c', unit='mV')
-u = Variable(name='u', ddt='a*(b*v-u)', init_value=-15, reset_value='u+d')
-izhi_model = Model(v, u, spike_when='v>=30', max_spike_value=30, 
-        a=0.02, b=0.2, c=-65, d=8, I=lambda t : 0 if t<200 or t>800 else 5)
-fig1 = model.plot(1000, 1, keep=['I', 'u', 'v'])
-fig2 = model.plan_phase(('v', -80, -30, 5), ('u', -30, 20, 5),
-                       interactive=True, rescale=True)
+# fig1 = iz.plot(1000, 1, keep=['I', 'u', 'v'])
+# fig2 = iz.plot(1000, 1, keep=['I', 'u', 'v'], subplotform='22')
+# fig3 = iz.plan_phase(('v', -80, -30, 5), ('u', -30, 20, 5),
+#                        rescale=True)
+# fig4 = iz.plan_phase(('v', -80, -30, 5), ('u', -30, 20, 5),
+#                           interactive=True, no_dynamics=True)
+# plt.show()
+
+import random as rd 
+import math
+
+hh['Iapp'] = F('t', lambda t : 5*math.cos(t/10))
+hh.method = 'rk4'
+# fig1 = hh.plot(1000, 0.1, subplotform='32', keep=['alpha_n', 'beta_n', 'alpha_m', 'beta_m', 'alpha_h', 'beta_h'])
+# fig2 = hh.plot(1000, 0.1, keep=['V', 'Iapp'])
+# fig3 = hh.plot(1000, 0.1, keep=['m', 'n', 'h'])
+history, _ = hh.simulation(1000, 0.01)
+plt.plot(history['V'], history['n'])
 plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
