@@ -22,6 +22,9 @@
 \usepackage{color}
 \usepackage{url}
 
+\makeatletter\@addtoreset{section}{part}\makeatother
+\renewcommand{\thesection}{\arabic{section}}
+
 \newcommand{\dd}{\mathrm{d}}
 \DeclareMathOperator{\e}{e}
 
@@ -62,7 +65,7 @@ tabsize=2
 \pagebreak
 
 
-\section{Introduction}
+\part{Introduction}
 	
 	\footnotetext{nldr : dans ce travail on va souvent assimiler, par facilité de rédaction, l'homme à son système nerveux, ou à son système cognitif. On essaiera d'employer le terme "système nerveux" plutot que "cerveau" ou "encephale", pour rester général et conserver l'importance du système nerveux périphérique. On assimilera également souvent la cognition et l'esprit.}
 	
@@ -128,6 +131,7 @@ Un modèle informatique du système nerveux permettrait de répondre à ce genre
 
 \pagebreak
 
+\part{Modélisation d'un neurone}
 \section{Quelques rappels de neurobiologie}
 	Cette partie sera concise et aura pour but de rappeler quelques notions de neurobiologie necessaire à la compréhension de la suite, sans en faire trop. On suppose que le lecteur est déjà familier avec les notions fondamentales de la neurobiologie, si ce n'est pas le cas, on renvoie à Principles of Neural Science de Eric Kandel.  
 Le neurone est une cellule capable de recevoir et transmettre de l'information sous forme electro-chimique. On peut décomposer schématiquement les différentes étapes de la reception et transmition de l'information in vivo dans un neurone par :

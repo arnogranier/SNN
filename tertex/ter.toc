@@ -1,12 +1,13 @@
 \select@language {french}
-\contentsline {section}{\numberline {1}Code}{3}{section.1}
-\contentsline {section}{\numberline {2}Introduction}{4}{section.2}
-\contentsline {section}{\numberline {3}Quelques rappels de neurobiologie}{10}{section.3}
-\contentsline {section}{\numberline {4}Modele de Hodgkin Huxley}{11}{section.4}
-\contentsline {subsection}{\numberline {4.1}La mod\IeC {\'e}lisation des canaux ioniques}{12}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}L'\IeC {\'e}quation du potentiel de membrane}{14}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Simulation avec SNN.single et explication des dynamiques}{14}{subsection.4.3}
-\contentsline {section}{\numberline {5}Interets de r\IeC {\'e}duire Hodgkin-Huxley (Quand faut-il privilegier la rapidite d'execution au r\IeC {\'e}alisme biologique ?), r\IeC {\'e}duction aux mod\IeC {\`e}les de Fitzugh-Nagumo, mod\IeC {\`e}le de Izhiekievich}{21}{section.5}
-\contentsline {section}{\numberline {6}Mod\IeC {\`e}le leaky-integrate and fire}{22}{section.6}
-\contentsline {section}{\numberline {7}Quelques mots sur les modeles compartimentaux et augmentation de Hodkin-Huxley}{22}{section.7}
+\contentsline {part}{\numberline {I}Introduction}{3}{part.1}
+\contentsline {part}{\numberline {II}Mod\IeC {\'e}lisation d'un neurone}{10}{part.2}
+\contentsline {section}{\numberline {1}Quelques rappels de neurobiologie}{10}{section.2.1}
+\contentsline {section}{\numberline {2}Modele de Hodgkin Huxley}{11}{section.2.2}
+\contentsline {subsection}{\numberline {2.1}La mod\IeC {\'e}lisation des canaux ioniques}{12}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2}L'\IeC {\'e}quation du potentiel de membrane}{14}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.3}Simulation avec SNN.single et explication des dynamiques}{14}{subsection.2.2.3}
+\contentsline {section}{\numberline {3}Interets de r\IeC {\'e}duire Hodgkin-Huxley (Quand faut-il privilegier la rapidite d'execution au r\IeC {\'e}alisme biologique ?), r\IeC {\'e}duction aux mod\IeC {\`e}les de Fitzugh-Nagumo, mod\IeC {\`e}le de Izhiekievich}{21}{section.2.3}
+\contentsline {section}{\numberline {4}Mod\IeC {\`e}le leaky-integrate and fire}{22}{section.2.4}
+\contentsline {section}{\numberline {5}Quelques mots sur les modeles compartimentaux et augmentation de Hodkin-Huxley}{22}{section.2.5}
+\contentsline {section}{\numberline {6}Code}{23}{section.2.6}
 \contentsline {section}{R\'ef\'erences}{23}{section*.13}
