@@ -11,8 +11,9 @@ Dans une idée de rapprochement entre la modélisation du système nerveux et l'
 3. phase plan and dynamics -> 05/02 -> ok
 4. interactive plot phase plan with click, eventually 3d -> 07/02 -> 2/3 ok manque 3d
 
-**WRITTING -** *En cours*
+**WRITTING -** *En cours*  
 voir tertext/ter.pdf
+
 **Pitit exemple** :
 ```
 from snn.single.usual_models import izhi_model as iz
