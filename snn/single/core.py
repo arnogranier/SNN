@@ -3,11 +3,11 @@ import string
 import math
 import matplotlib.pyplot as plt
 from .tools import create_equation, linspace, meshgrid, array_abs, Function
-
+import numpy as np
 
 class Variable:
     def __init__(self, name=None, ddt='0', init_value=-65,
-                 reset_value=None, unit=None):
+                 reset_value=None, unit=None, forbidden_values=None):
         if isinstance(name, str):
             self.__name__ = name
         else:
@@ -17,6 +17,13 @@ class Variable:
             self.unit = unit
         else:
             self.unit = None
+        if forbidden_values is not None:
+        	if callable(forbidden_values):
+        		self.forbidden_values = forbidden_values
+        	else:
+        		self.forbidden_values = [forbidden_values, ]
+        else:
+        	self.forbidden_values = []
         self.ddt = lambda *args: 0
         self.temp_ddt = ddt
         self.temp_reset_value = reset_value
@@ -27,12 +34,11 @@ class Variable:
     def __repr__(self): return str(self)
 
     @property
-    def value(self): return self._value
+    def value(self): return self._value if self._value not in self.forbidden_values else self._value + 0.01
 
     @value.setter
     def value(self, val):
-        self._value = val
-
+        self._value = val 
     @property
     def unit(self): return self._unit
 
@@ -86,27 +92,29 @@ class Model:
         for var in self.variables:
             if var.__name__ in start:
                 var.value = start[var.__name__]
+
+        start_var_and_params = {var.__name__: var.value
+                                for var in self.variables}
+        for (name, value) in self.parameters.items():
+            if callable(value):
+                args = [0, ] if 't' in value.arguments else list() 
+                for var in self.variables:
+                    if var.__name__ in value.arguments: args.append(var.value)
+                start_var_and_params[name] = value(*args)
+            else:
+                start_var_and_params[name] = value
         if keep == 'all':
-            history = {var.__name__: [var.value, ] for var in self.variables}
-            keep_parameters_name = dict()
+            keep_parameters_name = [name for name in self.parameters]
         else:
             try:
                 iter(keep)
             except:
                 keep = [keep]
-            start_var_and_params = {var.__name__: var.value
-                                    for var in self.variables}
-            for (name, value) in self.parameters.items():
-                if callable(value):
-                    start_var_and_params[name] = value(0)
-                else:
-                    start_var_and_params[name] = value
             keep_parameters_name = [name for name in keep
                                     if name in self.parameters]
-            history = {name: [value, ]
-                       for (name, value) in start_var_and_params.items()
-                       if name in keep}
-
+        history = {name: [value, ]
+                    for (name, value) in start_var_and_params.items()
+                    if name in keep or keep == 'all'}
         M = int(T / dt)
         count_spike = 0
         for p in range(M):
@@ -141,7 +149,7 @@ class Model:
                     history[name].append(val(*args))
                 else:
                     history[name].append(val)
-        return history, count_spike
+        return {name:np.array(vals) for name, vals in history.items()}, count_spike
 
     def get_unit_from_name(self, name):
         for var in self.variables:
@@ -158,6 +166,8 @@ class Model:
         x = linspace(0, T, T / dt + 1)
         if history is None:
             history, _ = self.simulation(T, dt, keep=keep)
+        else:
+            history = {var:vals for var, vals in history.items() if var in keep}
         fig = plt.figure()
         for idx, (name, y) in enumerate(history.items()):
             if subplotform is not None:
@@ -183,11 +193,9 @@ class Model:
                    dt=1, quiver_args=dict(), contour_args=dict()):
         x_nb_point = (1 + xdata[2] - xdata[1]) / (xdata[3])
         y_nb_point = (1 + ydata[2] - ydata[1]) / (ydata[3])
-        print(x_nb_point, y_nb_point)
         xvarddt = self.get_ddt_from_name(xdata[0])
         yvarddt = self.get_ddt_from_name(ydata[0])
         X, Y = meshgrid(xdata[1:], ydata[1:])
-        print(len(X), len(Y), len(X[0]), len(Y[0]))
         dx = [[0 for _ in range(int(x_nb_point))]
               for _ in range(int(y_nb_point))]
         dy = [[0 for _ in range(int(x_nb_point))]

@@ -1,0 +1,11 @@
+\BOOKMARK [1][-]{section.1}{Code}{}% 1
+\BOOKMARK [1][-]{section.2}{Introduction}{}% 2
+\BOOKMARK [1][-]{section.3}{Quelques rappels de neurobiologie}{}% 3
+\BOOKMARK [1][-]{section.4}{Modele de Hodgkin Huxley}{}% 4
+\BOOKMARK [2][-]{subsection.4.1}{La mod\351lisation des canaux ioniques}{section.4}% 5
+\BOOKMARK [2][-]{subsection.4.2}{L'\351quation du potentiel de membrane}{section.4}% 6
+\BOOKMARK [2][-]{subsection.4.3}{Simulation avec SNN.single et explication des dynamiques}{section.4}% 7
+\BOOKMARK [1][-]{section.5}{Interets de r\351duire Hodgkin-Huxley \(Quand faut-il privilegier la rapidite d'execution au r\351alisme biologique ?\), r\351duction aux mod\350les de Fitzugh-Nagumo, mod\350le de Izhiekievich}{}% 8
+\BOOKMARK [1][-]{section.6}{Mod\350le leaky-integrate and fire}{}% 9
+\BOOKMARK [1][-]{section.7}{Quelques mots sur les modeles compartimentaux et augmentation de Hodkin-Huxley}{}% 10
+\BOOKMARK [1][-]{section*.13}{R\351f\351rences}{}% 11
