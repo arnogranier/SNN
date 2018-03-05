@@ -184,19 +184,37 @@ Pour finir, Hodgkin et Huxley ont également introduit dans leur modèle un "cou
 	\subsection{L'équation du potentiel de membrane}
 Il est possible de représenter un neurone dans le modèle de Hosgkin-Huxley comme un circuit electrique (voir \ref{HHFIG}). Dans cette représentation, on peut assimiler le condensateur à la bicouche lipidique isolante de la membrane, la résistance aux passages des ions à travers la membrane, et la pile aux gradient de concentration. Grace à cette représentation, il est plus facile d'expliquer l'équation représentant les variations du potentiel de membrane du neurone. On va ici en faire une explication intuitive en se basant sur des grands principes issus des sciences physiques :
 \begin{itemize}
-\item Loi d'Ohm 
-\item loi de Kirchoff
-\item definition d'un capaciteur 
-\item dérivée de la charge par rapport au temps = intensité, 
+\item La loi d'Ohm énonce que l'on peut relier la valeur d'une resistance en ohms (notée R), la tension aux bornes de la resistance (notée V) et le courant qui traverse la resistance (noté I) par la relation : \begin{center}$ V = RI $\end{center}
+\item La loi des noeuds de Kirchhoff stipule que "la somme algébrique des intensités des courants qui entrent par un noeud est égale à la somme algébrique des intensités des courants qui en sortent"
+\item Un condensateur est constitué de deux armatures séparées par un isolant. La loi du condensateur est : \begin{center} $Q = CV$ \end{center} avec Q la charge du condensateur, C la capacité du condensateur et V la tension aux bornes du condensateur.\\De plus, la dérivée de la charge par rapport au temps est l'intensité du courant, c'est-à-dire \begin{center}$\displaystyle \frac{\dd Q}{\dd t} = I $ \end{center}
+\item On définit la conductance g associée à une résistance comme l'inverse de la valeur de la résistance \begin{center} $g = \displaystyle \frac{1}{R}$ \end{center}
 \end{itemize}
-applications pour trouver l'eq, système d'eq en entier.
 
 \begin{figure}[!h]
 \centering
 \includegraphics[scale=0.5]{imgs/3.png}
-\caption{Représentation du modèle de Hodgkin-Huxley sous forme d'un circuit electrique}
+\caption{Représentation du modèle de Hodgkin-Huxley sous forme d'un circuit electrique (\scriptsize{https://thephysicsdomain.wordpress.com/2013/03/28/047-hodgkin-huxley-hysteria/})}
 \label{HHFIG}
 \end{figure}
+
+\clearpage 
+~~\\
+	Dans ce paragraphe on se reportera à la figure \ref{HHFIG}. On va noter $I_{app}$ le courant appliquée sur la cellulle de l'extérieur. De la loi de Kirchhoff, on peut déduire que \begin{equation} I_C+I_{Na}+I_K+I_L-I_{app} = 0  \label{Toteq}\end{equation} 
+
+De la définition d'un condensateur, on a \begin{equation} I_C = \frac{\dd Q}{\dd t} = C\frac{\dd V}{\dd t} \label{Ceq}\end{equation} 
+
+De plus, par la loi d'Ohm, on peut noter \begin{center}$I_{Na} = \frac{V^*}{R^*} = g^*V^*$ \end{center} avec $V^*$ la tension aux bornes de la resistance et $g^*$ la conductance associée aux courant sodique.\\La tension aux bornes de la résistance $V^*$ est attenué par la présence de la pile, et on a ainsi $V^*  = V - V_{Na}$. Quant à la conductance associée aux courants sodiques, elle dépend de la conductance maximale $\overline{g}_{Na}$ et de la proportion de canaux sodiques laissant passer les ions (c'est-à-dire ainsi approximativement de la probabilité qu'un canal sodique laisse passer les ions, puisqu'on considère que le nombre de canaux est très grand), et on a $g^* = \overline{g}_{Na}m^3h$. Et donc, \begin{equation}I_{Na} = \overline{g}_{Na}m^3h(V-V_{Na})  \label{Naeq}\end{equation}
+Et, par le même raisonnement, 
+\begin{equation}I_{K} = \overline{g}_{K}n^4(V-V_{K}) \label{Keq}\end{equation}
+Et
+\begin{equation}I_{L} = \overline{g}_{L}(V-V_{L}) \label{Leq}\end{equation}
+
+En introduisant \ref{Ceq}, \ref{Naeq}, \ref{Keq} et \ref{Leq} dans \ref{Toteq}, on trouve une equation décrivant l'évolution du potentiel membranaire : \begin{center}$\displaystyle  C\frac{\dd V}{\dd t} = -\overline{g}_Kn^4(V-V_K)- \overline{g}_{Na}m^3h(V-V_{Na})-\overline{g}_L(V-V_L)+I_{app}$ \end{center}
+	A partir de cette dernière equation et des equations décrivant les comportements des canaux ioniques, on peut donner le système d'équations de Hodgkin-Huxley dans son entierté : \\ 
+\begin{empheq}[left=\empheqlbrace]{gather} \displaystyle  C\frac{\dd V}{\dd t} = -\overline{g}_Kn^4(V-V_K)- \overline{g}_{Na}m^3h(V-V_{Na})-\overline{g}_L(V-V_L)+I_{app}\nonumber\\ \displaystyle \frac{\dd n}{\dd t} = \alpha_n(V)(1-n) - \beta_n(V) n \nonumber\\ \displaystyle \frac{\dd m}{\dd t} = \alpha_m(V)(1-m) - \beta_m(V) m\nonumber \\ \displaystyle \frac{\dd h}{\dd t} = \alpha_h(V)(1-h) - \beta_h(V) h \nonumber\end{empheq}
+
+
+
 
 	\subsection{Simulation avec SNN.single et explication des dynamiques}
 
