@@ -1,13 +1,18 @@
 \select@language {french}
 \contentsline {part}{\numberline {I}Introduction}{3}{part.1}
-\contentsline {part}{\numberline {II}Mod\IeC {\'e}lisation d'un neurone}{10}{part.2}
-\contentsline {section}{\numberline {1}Quelques rappels de neurobiologie}{10}{section.2.1}
-\contentsline {section}{\numberline {2}Modele de Hodgkin Huxley}{11}{section.2.2}
-\contentsline {subsection}{\numberline {2.1}La mod\IeC {\'e}lisation des canaux ioniques}{12}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2}L'\IeC {\'e}quation du potentiel de membrane}{14}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.3}Simulation avec SNN.single et explication des dynamiques}{14}{subsection.2.2.3}
-\contentsline {section}{\numberline {3}Interets de r\IeC {\'e}duire Hodgkin-Huxley (Quand faut-il privilegier la rapidite d'execution au r\IeC {\'e}alisme biologique ?), r\IeC {\'e}duction aux mod\IeC {\`e}les de Fitzugh-Nagumo, mod\IeC {\`e}le de Izhiekievich}{21}{section.2.3}
-\contentsline {section}{\numberline {4}Mod\IeC {\`e}le leaky-integrate and fire}{22}{section.2.4}
-\contentsline {section}{\numberline {5}Quelques mots sur les modeles compartimentaux et augmentation de Hodkin-Huxley}{22}{section.2.5}
-\contentsline {section}{\numberline {6}Code}{23}{section.2.6}
-\contentsline {section}{R\'ef\'erences}{23}{section*.13}
+\contentsline {part}{\numberline {II}Mod\IeC {\'e}lisation d'un neurone}{9}{part.2}
+\contentsline {section}{\numberline {1}Quelques rappels de neurobiologie}{9}{section.2.1}
+\contentsline {section}{\numberline {2}Modele de Hodgkin Huxley}{10}{section.2.2}
+\contentsline {subsection}{\numberline {2.1}La mod\IeC {\'e}lisation des canaux ioniques}{11}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2}L'\IeC {\'e}quation du potentiel de membrane}{13}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.3}Simulation avec SNN.single et explication des dynamiques}{13}{subsection.2.2.3}
+\contentsline {section}{\numberline {3}Raffiner Hodgkin-Huxley}{22}{section.2.3}
+\contentsline {subsection}{\numberline {3.1}Les deux approches possibles face \IeC {\`a} Hodgkin-Huxley}{22}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {3.2}De Hodgkin-Huxley \IeC {\`a} Fitzhugh-Nagumo, et explication de Fitzhugh-Nagumo}{23}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {3.3}De Fitzhugh-Nagumo \IeC {\`a} Izhikievich, explication et d\IeC {\'e}monstration de la puissance du mod\IeC {\`e}le de Izhikievich}{23}{subsection.2.3.3}
+\contentsline {section}{\numberline {4}Mod\IeC {\`e}le leaky-integrate and fire}{23}{section.2.4}
+\contentsline {section}{\numberline {5}Quelques mots sur les modeles compartimentaux et augmentation de Hodkin-Huxley}{23}{section.2.5}
+\contentsline {part}{\numberline {III}R\IeC {\'e}seau de neurones}{24}{part.3}
+\contentsline {part}{\numberline {IV}Etude de (H\IeC {\'e}ric\IeC {\'e} et al., 2016)}{24}{part.4}
+\contentsline {part}{\numberline {V}Code}{24}{part.5}
+\contentsline {section}{R\'ef\'erences}{24}{section*.15}

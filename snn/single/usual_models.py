@@ -12,7 +12,7 @@ izhi_model = Model(v, u, spike_when='v>=30', max_spike_value=30,
 
 #HH
 from numpy import exp
-V = Variable(name='V', init_value=-60, forbidden_values=-65,
+V = Variable(name='V', init_value=-60,
 			 ddt='(1/Cm)*(-gk*n**4*(V-Vk)-gna*m**3*h*(V-Vna)-gl*(V-Vl)+Iapp)')
 n = Variable(name='n', ddt='alpha_n*(1-n)-beta_n*n', init_value=1/3)
 m = Variable(name='m', ddt='alpha_m*(1-m)-beta_m*m', init_value=0.01)

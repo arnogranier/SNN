@@ -7,7 +7,7 @@ import numpy as np
 
 class Variable:
     def __init__(self, name=None, ddt='0', init_value=-65,
-                 reset_value=None, unit=None, forbidden_values=None):
+                 reset_value=None, unit=None):
         if isinstance(name, str):
             self.__name__ = name
         else:
@@ -17,13 +17,6 @@ class Variable:
             self.unit = unit
         else:
             self.unit = None
-        if forbidden_values is not None:
-        	if callable(forbidden_values):
-        		self.forbidden_values = forbidden_values
-        	else:
-        		self.forbidden_values = [forbidden_values, ]
-        else:
-        	self.forbidden_values = []
         self.ddt = lambda *args: 0
         self.temp_ddt = ddt
         self.temp_reset_value = reset_value
@@ -34,11 +27,12 @@ class Variable:
     def __repr__(self): return str(self)
 
     @property
-    def value(self): return self._value if self._value not in self.forbidden_values else self._value + 0.01
+    def value(self): return self._value 
 
     @value.setter
     def value(self, val):
         self._value = val 
+        
     @property
     def unit(self): return self._unit
 
@@ -216,8 +210,9 @@ class Model:
         fig = plt.figure()
         if not no_dynamics:
             plt.quiver(X, Y, dx, dy, **quiver_args)
-        plt.contour(X, Y, dx, levels=[0], **contour_args)
-        plt.contour(X, Y, dy, levels=[0], **contour_args)
+        plt.contour(X, Y, dx, levels=[0], **contour_args, label='%s-isocline'%xdata[0])
+        plt.contour(X, Y, dy, levels=[0], **contour_args, label='%s-isocline'%ydata[0])
+        plt.legend()
         if interactive:
             fig.canvas.mpl_connect('button_press_event',
                                    lambda evt: self.cascade(evt, line, point,

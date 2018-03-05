@@ -52,7 +52,7 @@ tabsize=2
 }
 \usepackage{empheq}
 
-\title{Modélisation mathématique et informatique de neurones : création d'une bibliothèque Python/Tensorflow pour la simulation de réseaux de spiking-neurons et applications}
+\title{Modélisation mathématique et informatique de neurones : création d'une bibliothèque Python/Tensorflow pour la simulation de réseaux de spiking-neurons et applications }
 \subtitle{Dans une idée de rapprochement entre la modélisation du système nerveux et l'intelligence artificielle}
 \author{Granier Arno \\ encadré par C.Shlick et B.Ainseba}
 
@@ -86,12 +86,8 @@ Au sein des sciences, on observe une subdvision en ensemble des disciplines part
 	\item Faire emerger des propriétés cognitives à partir de modèles du système nerveux et observer, analyser et comprendre cette emergence. \end{enumerate}
 
 	Un certain avancement dans le premier axe étant bien evidemment necessaire à l'accomplissement du second.
-
-	De la première proposition (1.) on peut dégager deux approches :  
-		\begin{enumerate} \item \textbf{Reproduire le plus fidélement possible un neurone ou un réseau de neurone sans se soucier de la complexité du modèle}, ce qui donne un modèle plus précis, plus proche de la réalité, mais difficilement manipulable et compréhensible, et dont la simulation est couteuse (en temps). On retrouve dans cette catégorie la plupart des modèles dit "physiologiques", c'est-à-dire les modèles qui s'inspirent du fonctionnement biologique du système nerveux et tentent de le formaliser.  
-		\item \textbf{Faire un compromis entre le réalisme du modèle et sa complexité}, ce qui donne des modèles moins précis et moins proche de la réalité, mais plus facilement manipulable, compréhensible et dont la simulation est rapide. On retrouve dans cette catégorie la plupart des modèles dit "phénoménologiques", c'est-à-dire les modèles qui, sans la contrainte de s'inspirer du biologique, tentent de reproduire le fonctionnement du système nerveux en terme de données quantitatives "de plus haut niveau", comme par exemple le potentiel de membrane d'un neurone. \end{enumerate}
 	
-	Et de la deuxième proposition (2.) on peut dégager deux buts :  
+	De la deuxième proposition (2.) on peut dégager deux buts :  
 		\begin{enumerate} \item \textbf{Créer des machines douées de propriétés cognitives}: On a donc ici une intentionalité qui appartent au domaine de l'intelligence artificielle ou de la cognition artificielle et une méthodologie de réalisation qui appartient au domaine de la modélisation du système nerveux. Il est logique de se rapprocher voire de se confondre avec ces champs recherche dès lors où notre intention, dans notre tache de modélisation, est celle de tenter de faire emerger des propriétés cognitives d'une machine. On peut ici préciser l'approche de l'IA-modèle-du-cerveau en la comparant à une approche plus classique en intelligence artificelle : celle des réseaux de neurones formels, souvent appelées également réseaux de neurones artificiels.  \begin{tabular}{|p{4cm}|p{5cm}|p{5cm}|} \hline&IA-modèle-du-cerveau & Réseau de neurones formels \\\hline Le neurone & Modèle de neurone biologique & neurone formel \\\hline La connexion entre les neurones & modèle de synapses biologiques & connexions simple avec poids \\\hline  La méthode d'apprentissage & Methode d'apprentissage s'inspirant de ce qu'on sait de l'apprentissage dans le système nerveux & surtout apprentissage supervisé \\\hline   Architecture & Inspirée de celle du cerveau & cherchant à maximiser l'efficacité du système, généralement choisie par un humain \\\hline \end{tabular}  Il aurait été très interessant de débattre sur les questions : Est-ce que reproduire le fonctionnement du système nerveux humain est la seule voie pour atteindre une machine avec une intelligence proche de l'humain (et sur quels critères juger de la réussite d'une telle entreprise ?) ? Est-ce la plus simple ? On renvoie aux réferences en rapport (TO EDIT).
 		 \item \textbf{Mieux comprendre le fonctionnement du système nerveux, et par extension de la cognition humaine} : en effet posséder un modèle simulé par ordinateur du système nerveux ou d'une partie du système nerveux permettrait d'étudier l'impact de lésions dans un emplacement parfaitement controlées, d'avoir des données parfaitement "propres" et précises sur lesquelles travailler, de mettre en place beaucoup plus facilement des procèdures d'analyse en se servant des outils mathématiques et informatiques, etc ...
 Par exemple, supposons que l'on dispose d'un modèle du système nerveux, que l'on subdivise ce modèle en plusieurs sous-parties, et que l'on souhaite savoir quel est l'ensemble minimal de sous-parties du modèle necessaire pour que le modèle possède une certaine capacité C. Supposons de plus (et c'est une supposition assez lourde) que l'on possède une mesure M capable de déterminer si un système possède la capacité C (M(C) vrai si le système possède C, faux sinon). Alos on peut envisager de mettre en place un algorithme du type :  
@@ -162,7 +158,7 @@ Le neurone est une cellule capable de recevoir et transmettre de l'information s
 \caption{Potentiel de la membrane en fonction du temps lors de la production d'un potentiel d'action}
 \end{figure}
 
-\section{Modele de Hodgkin Huxley}
+\section{Modele de Hodgkin Huxley}\label{hh}
 	L'approche de Hodgkin et Huxley sur la question de la modélisation de neurones est une approche qui possède une grande "clarté physiologique", dans le sens où chaque composante du modèle représente une réalité biologique ou electrique descriptible dans les termes de la neurobiologie. On peut ainsi attribuer au modèle de Hodgkin-Huxley une certaine cohérence et validité par rapport aux sciences naturelles (notamment neurobiologie encore une fois). Mais voyons ça plus en détails ..
 	
 	\subsection{La modélisation des canaux ioniques}
@@ -190,7 +186,14 @@ Pour finir, Hodgkin et Huxley ont également introduit dans leur modèle un "cou
 
 \pagebreak
 	\subsection{L'équation du potentiel de membrane}
-Il est possible de représenter un neurone dans le modèle de Hosgkin-Huxley comme un circuit electrique (voir \ref{HHFIG}). Dans cette repr, on peut assimiler ca à ca. Grace à cette représentation, il est plus facile d'expliquer l'équation représentant les variations du potentiel de membrane du neurone. On va ici en faire une explication intuitive en se basant su rdes grands principes issus des sciences physiques : Loi d'Ohm, loi de Kirchoff, definition d'un capaciteur, dérivée de la charge par rapport au temps = intensité, applications pour trouver l'eq, système d'eq en entier.
+Il est possible de représenter un neurone dans le modèle de Hosgkin-Huxley comme un circuit electrique (voir \ref{HHFIG}). Dans cette représentation, on peut assimiler le condensateur à la bicouche lipidique isolante de la membrane, la résistance aux passages des ions à travers la membrane, et la pile aux gradient de concentration. Grace à cette représentation, il est plus facile d'expliquer l'équation représentant les variations du potentiel de membrane du neurone. On va ici en faire une explication intuitive en se basant sur des grands principes issus des sciences physiques :
+\begin{itemize}
+\item Loi d'Ohm 
+\item loi de Kirchoff
+\item definition d'un capaciteur 
+\item dérivée de la charge par rapport au temps = intensité, 
+\end{itemize}
+applications pour trouver l'eq, système d'eq en entier.
 
 \begin{figure}[!h]
 \centering
@@ -211,6 +214,9 @@ $ C_M = 1,~ \overline{g}_K = 36,~ \overline{g}_{Na} = 120,~ \overline{g}_L = 0.3
 \alpha_n(V) =0.07e^{\frac{-V-65}{20}},~ \beta_n=\frac{1}{1+e^{\frac{-V-35}{10}}}$
 
 \begin{lstlisting}[caption = {Défintion du modèle}]
+from .core import Variable, Model
+from .tools import Function as F
+
 V = Variable(name='V', init_value=-65,
 		ddt='(1/Cm)*(-gk*n**4*(V-Vk)-gna*m**3*h*(V-Vna)-gl*(V-Vl)+Iapp)')
 n = Variable(name='n', ddt='alpha_n*(1-n)-beta_n*n', init_value=1/3)
@@ -368,33 +374,90 @@ fig2 = hh.plot(T, dt, keep=['m', 'n', 'h'], #subplotform='31',
 
 \clearpage
 
+\begin{lstlisting}[caption = {Simulation du modèle 4}]
+hh['Iapp'] = 10
+T, dt = 12, 0.01
+
+#Plotting time constant
+plt.figure()
+plt.plot(history['V'], 1/(history['alpha_n']+history['beta_n']),
+	label='\u03C4_n')
+plt.plot(history['V'], 1/(history['alpha_m']+history['beta_m']),
+	label='\u03C4_m')
+plt.plot(history['V'], 1/(history['alpha_h']+history['beta_h']),
+	label='\u03C4_h')
+plt.legend()
+
+#Plotting equilibrium state
+plt.figure()
+plt.plot(history['V'],
+	history['alpha_n']/(history['alpha_n']+history['beta_n']),
+	label='n_\u221E')
+plt.plot(history['V'],
+	history['alpha_m']/(history['alpha_m']+history['beta_m']),
+	label='m_\u221E')
+plt.plot(history['V'],
+	history['alpha_h']/(history['alpha_h']+history['beta_h']),
+	label='h_\u221E')
+plt.legend()
+
+plt.show()
+\end{lstlisting}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.5]{imgs/hhinfty.png}
+\caption{Evolution des paramètres $n_\infty$, $m_\infty$ et $h_\infty$ lors de la génération d'un potentiel d'action}
+\label{hhinfty}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.5]{imgs/hhtime.png}
+\caption{Evolution des paramètres $\tau_n$, $\tau_m$, $\tau_h$ lors de la génération d'un potentiel d'action}
+\label{hhtime}
+\end{figure}
+
+\clearpage
 \textbf{Explication des dynamiques à partir des constantes de temps et des valeurs à l'équilibre}\\
 De \ref{hhinfty}, on peut tirer le fait que n et m sont croissants par rapport au potentiel, tandis que h est décroissant par rapport au potentiel. Ainsi, les canaux poassiques vont avoir une probabilité de laisser passer les ions de plus en plus grande plus le potentiel augmente, tandis que pour les canaux sodiques, leur probabilité de laisser passer les ions va d'abord augmenter quand le potentiel augmente (du au fait que m est croissante par rapport au potentiel), puis, à partir d'un certain seuil, diminuer quand le potentiel augmente (du  au fait que h est décroissante par rapport au potentiel).\\
 Les constantes de temps, qui gouvernent la temps que met le système à atteindre les valeurs à l'équilibre, sont également intéressantes à étudier pour comprendre les dynamiques à l'oeuvre. On peut voir dans \ref{hhtime}, que m, qui gouverne l'ouverture des canaux sodique, atteint très rapidement sont état d'équilibre, tandis que n (ouverture des canaux potassiques) et h(activation des canaux sodiques) l'atteignent plus lentement.\\
 Ainsi, lorsque la membrane est dépolarisée, la variable m va augmenter (vers son etat d'équilibre) rapidement (les canaux sodiques vont s'ouvrir rapidement), ce qui va en retour augmenter la dépolarisation de la cellule (le potentiel de membrane va tendre vers $V_{Na}$), et m va de nouveau augmenter, etc .. Avec un délai du aux dynamiques (c'est-à-dire ici au temps d'atteinte de la valeur d'équilibre) plus lentes de h et n, on va observer que h va diminuer (tendre vers sa valeur d'équilibre)(les canaux sodiques vont être désactivés), et de plus, n va augmenter (tendre vers sa valeur d'équilibre)(les canaux potassiques vont s'ouvrir), ce qui aura pour effet de repolarisée la cellule (le potentiel de membrane va tendre vers $V_{K}$). La période refractaire, c'est-à-dire l'hyperpolarisation de la membrane peut s'expliquer par le délai dans le retour à un état d'équilibre de la variable n (les canaux potassiques se referment avec un délai).
 
 
-\section{Interets de réduire Hodgkin-Huxley (Quand faut-il privilegier la rapidite d'execution au réalisme biologique ?), réduction aux modèles de Fitzugh-Nagumo, modèle de Izhiekievich}
-	Expliquer le compromis entre réalisme biologique et rapidité d'execution, modèle phéno et modèle physio. Le but principal de ce TER est d'étudier et de produire un outil poural simulation de RESEAUX de neurones de grande taille, ainsi dans cette partie qui porte sur la modélisation d'un seul neurone, on a tout interet à se concentrer sur les modèles qui sont des simplifications de HH.
-Explication de la réduction au modèles de FHN, simulations avec SNN.single, puis explications de FHN -> Izhi, encore une fois simulation.
+\section{Raffiner Hodgkin-Huxley}
+\subsection{Les deux approches possibles face à Hodgkin-Huxley}
+	Les travaux de Hodgkin et Huxley abordé en \ref{hh} ont véritablement révolutionné le domaine de la modélisation de neurones, et depuis, une grande partie des travaux en modélisation de neurones s'appuien sur ceux de Hodgkin et Huxley. Les scientifiques s'interessant  à la modélisation de neurones ont pu avoir deux grandes approches (ces deux grandes approches pouvant s'étendre à tous les travaux en modélisation de neurones, et pas seulement à ceux se basant sur le modèle de Hodgkin et Huxley) : 
+		\begin{enumerate} \item \textbf{Complexifier Hodgkin-Huxley : Reproduire le plus fidélement possible un neurone ou un réseau de neurone sans se soucier de la complexité du modèle}, ce qui donne un modèle plus précis, plus proche de la réalité, mais difficilement manipulable et compréhensible, et dont la simulation est couteuse (en temps). On retrouve dans cette catégorie la plupart des modèles dit "physiologiques", c'est-à-dire les modèles qui s'inspirent du fonctionnement biologique du système nerveux et tentent de le formaliser.  
+		\item \textbf{Simplifier Hodgkin-Huxley : Faire un compromis entre le réalisme du modèle et sa complexité}, ce qui donne des modèles moins précis et moins proche de la réalité, mais plus facilement manipulable, compréhensible et dont la simulation est rapide. On retrouve dans cette catégorie la plupart des modèles dit "phénoménologiques", c'est-à-dire les modèles qui, sans la contrainte de s'inspirer du biologique, tentent de reproduire le fonctionnement du système nerveux en terme de données quantitatives "de plus haut niveau", comme par exemple le potentiel de membrane d'un neurone. \end{enumerate}
+Un modèle de neurone théorique parfait devrai posséder les qualités des deux approches sans posséder leur défauts ... mais cela semble pour l'instant impossible. Le réalisme passe par la complexité du modèle, et la complexité du modèle entraine que la simulation informatique et que l'explication mathématique seront couteuses. Ainsi, lorsque l'on doit choisir un modèle de neurone, on doit le faire dans objectif précis, et il est important de bien comprendre quelles sont les caractéristiques du modèle importantes pour réaliser notre objectif. Dans le cas de ce travail, nous allons par la suite vouloir réaliser des simulations de réseaux de grandes tailles de manière rapide, répétable. C'est ainsi, et c'est un choix de notre part, que nous allons ici plutot nous interesser aux modèles simples, venant de l'approche 2., pour leur simplicité et rapidité de simulation. 
 
+\subsection{De Hodgkin-Huxley à Fitzhugh-Nagumo, et explication de Fitzhugh-Nagumo}
+
+\subsection{De Fitzhugh-Nagumo à Izhikievich, explication et démonstration de la puissance du modèle de Izhikievich}
+	A partir d'une analyse du plan de phase du modèle de Fitzhugh-Nagumo, on peut remarquer que, dans la région du plan de phase responsable de la génération des potentiels d'actions, la V-isocline peut se résumer
 
 \section{Modèle leaky-integrate and fire}
 	Encore plus simple : le modèle leaky-integrate and fire, présentation du modèle, explications, simulations.
 
 
-\section{Quelques mots sur les modeles compartimentaux et augmentation de Hodkin-Huxley}
+\section{Quelques mots sur les modeles compartimentaux et augmentation de Hodkin-Huxley}\label{hhcomplex}
 	Principe (approximation des différentes composantes par des cylindres) et équation du cable. Interets ( biologiquement + réaliste). Techniques de réduction du nombre de compartiments avec same beahvior. 
 
 \nocite{*}
 
 \pagebreak
 
-\section{Code}
+\part{Réseau de neurones}
+
+\part{Etude de (Héricé et al., 2016) }
+
+\part{Code}
 \url{https://github.com/ArnoGranier/SNN}
 
 Quelques justifications informatiques :
 \begin{itemize} \item Cette partie informatique de création d'outils de simulation ayant une grande par didactique pour moi, j'ai souhaité dans la partie de modélisation d'un seul neurone, ne pas utiliser certains outils "déjà tout pret" et plutot coder moi-même un maximum de chose. C'est la raison pour laquel je n'utilise numpy que pour retourner des types array et que je n'utilise pas les méthodes linspace ou meshgrid (par exemple) de cette bibliothèque. J'ai également souhaté ne pas utiliser d'ODE-solver djà implémenté comme on peut trouver dans scipy.integrate par exemple. \end{itemize}
+
 
 \bibliographystyle{apacite}
 \bibliography{ref}

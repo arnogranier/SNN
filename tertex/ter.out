@@ -5,8 +5,13 @@
 \BOOKMARK [2][-]{subsection.2.2.1}{La mod\351lisation des canaux ioniques}{section.2.2}% 5
 \BOOKMARK [2][-]{subsection.2.2.2}{L'\351quation du potentiel de membrane}{section.2.2}% 6
 \BOOKMARK [2][-]{subsection.2.2.3}{Simulation avec SNN.single et explication des dynamiques}{section.2.2}% 7
-\BOOKMARK [1][-]{section.2.3}{Interets de r\351duire Hodgkin-Huxley \(Quand faut-il privilegier la rapidite d'execution au r\351alisme biologique ?\), r\351duction aux mod\350les de Fitzugh-Nagumo, mod\350le de Izhiekievich}{part.2}% 8
-\BOOKMARK [1][-]{section.2.4}{Mod\350le leaky-integrate and fire}{part.2}% 9
-\BOOKMARK [1][-]{section.2.5}{Quelques mots sur les modeles compartimentaux et augmentation de Hodkin-Huxley}{part.2}% 10
-\BOOKMARK [1][-]{section.2.6}{Code}{part.2}% 11
-\BOOKMARK [1][-]{section*.13}{R\351f\351rences}{part.2}% 12
+\BOOKMARK [1][-]{section.2.3}{Raffiner Hodgkin-Huxley}{part.2}% 8
+\BOOKMARK [2][-]{subsection.2.3.1}{Les deux approches possibles face \340 Hodgkin-Huxley}{section.2.3}% 9
+\BOOKMARK [2][-]{subsection.2.3.2}{De Hodgkin-Huxley \340 Fitzhugh-Nagumo, et explication de Fitzhugh-Nagumo}{section.2.3}% 10
+\BOOKMARK [2][-]{subsection.2.3.3}{De Fitzhugh-Nagumo \340 Izhikievich, explication et d\351monstration de la puissance du mod\350le de Izhikievich}{section.2.3}% 11
+\BOOKMARK [1][-]{section.2.4}{Mod\350le leaky-integrate and fire}{part.2}% 12
+\BOOKMARK [1][-]{section.2.5}{Quelques mots sur les modeles compartimentaux et augmentation de Hodkin-Huxley}{part.2}% 13
+\BOOKMARK [0][-]{part.3}{R\351seau de neurones}{}% 14
+\BOOKMARK [0][-]{part.4}{Etude de \(H\351ric\351 et al., 2016\)}{}% 15
+\BOOKMARK [0][-]{part.5}{Code}{}% 16
+\BOOKMARK [1][-]{section*.15}{R\351f\351rences}{part.5}% 17
