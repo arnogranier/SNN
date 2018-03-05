@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.3.27)  4 MAR 2018 23:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.3.27)  5 MAR 2018 08:22
 entering extended mode
 **"C:/Users/Utilisateur/Desktop/TER - Copie/tertex/ter.tex"
 ("C:/Users/Utilisateur/Desktop/TER - Copie/tertex/ter.tex"
@@ -960,42 +960,42 @@ Overfull \hbox (4.17085pt too wide) in paragraph at lines 14--14
 
 Package hyperref Warning: Ignoring empty anchor on input line 70.
 
-[3] [4]
-Underfull \hbox (badness 10000) in paragraph at lines 91--91
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 87--87
 []|\T1/lmr/m/n/12 connexions simple avec
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 91--91
+Underfull \hbox (badness 10000) in paragraph at lines 87--87
 []|\T1/lmr/m/n/12 Methode d'ap-pren-tis-sage
  []
 
 
-Underfull \hbox (badness 3713) in paragraph at lines 91--91
+Underfull \hbox (badness 3713) in paragraph at lines 87--87
 []|\T1/lmr/m/n/12 surtout ap-pren-tis-sage su-
  []
 
 
-Overfull \hbox (17.17967pt too wide) in paragraph at lines 91--92
+Overfull \hbox (17.17967pt too wide) in paragraph at lines 87--88
 []
  []
 
-[5]
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 94.
+[4]
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 90.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\t1lmtt.fd"
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [6]
+) [5] [6]
 <imgs/1.JPG, id=127, 1044.15094pt x 494.59781pt>
 File: imgs/1.JPG Graphic file (type jpg)
  <use imgs/1.JPG>
-Package pdftex.def Info: imgs/1.JPG used on input line 118.
+Package pdftex.def Info: imgs/1.JPG used on input line 114.
 (pdftex.def)             Requested size: 313.2477pt x 148.38048pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [7] [8 <./imgs/1.JPG>]
-Overfull \hbox (8.77618pt too wide) in paragraph at lines 136--137
+Overfull \hbox (8.77618pt too wide) in paragraph at lines 132--133
 []\T1/lmr/m/n/12 Excitation elec-trique lo-cale du neu-rone dû à l'ou-ver-ture 
 des ca-naux chimio-dépedants 
  []
@@ -1003,10 +1003,10 @@ des ca-naux chimio-dépedants
 [9] <imgs/2.JPG, id=151, 500.62032pt x 298.11375pt>
 File: imgs/2.JPG Graphic file (type jpg)
  <use imgs/2.JPG>
-Package pdftex.def Info: imgs/2.JPG used on input line 157.
+Package pdftex.def Info: imgs/2.JPG used on input line 153.
 (pdftex.def)             Requested size: 500.6191pt x 298.11302pt.
 
-Overfull \hbox (52.48814pt too wide) in paragraph at lines 157--158
+Overfull \hbox (52.48814pt too wide) in paragraph at lines 153--154
  [][] 
  []
 
@@ -1014,260 +1014,263 @@ Overfull \hbox (52.48814pt too wide) in paragraph at lines 157--158
 File: imgs/3.png Graphic file (type png)
 
 <use imgs/3.png>
-Package pdftex.def Info: imgs/3.png used on input line 193.
+Package pdftex.def Info: imgs/3.png used on input line 196.
 (pdftex.def)             Requested size: 361.3491pt x 271.01183pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 202--208
+Underfull \hbox (badness 10000) in paragraph at lines 205--211
 
  []
 
 [13 <./imgs/3.png>]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 209.
+nput line 212.
 
-Overfull \hbox (63.16562pt too wide) in paragraph at lines 214--215
+Overfull \hbox (63.16562pt too wide) in paragraph at lines 217--218
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
 [][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (55.75552pt too wide) in paragraph at lines 215--216
+Overfull \hbox (55.75552pt too wide) in paragraph at lines 218--219
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (40.93533pt too wide) in paragraph at lines 216--217
+Overfull \hbox (40.93533pt too wide) in paragraph at lines 219--220
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (55.75552pt too wide) in paragraph at lines 217--218
+Overfull \hbox (55.75552pt too wide) in paragraph at lines 220--221
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (63.16562pt too wide) in paragraph at lines 220--221
+Overfull \hbox (63.16562pt too wide) in paragraph at lines 223--224
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (63.16562pt too wide) in paragraph at lines 222--223
+Overfull \hbox (63.16562pt too wide) in paragraph at lines 225--226
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-
-Overfull \hbox (55.75552pt too wide) in paragraph at lines 241--242
+[14]
+Overfull \hbox (55.75552pt too wide) in paragraph at lines 244--245
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
 [][] 
  []
 
 
-Overfull \hbox (48.34543pt too wide) in paragraph at lines 242--243
+Overfull \hbox (48.34543pt too wide) in paragraph at lines 245--246
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
 [][][][][][][][] 
  []
 
-[14]
-Overfull \hbox (3.88486pt too wide) in paragraph at lines 250--251
+
+Overfull \hbox (3.88486pt too wide) in paragraph at lines 253--254
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-<imgs/hh11.png, id=224, 462.528pt x 346.896pt>
+<imgs/hh11.png, id=218, 462.528pt x 346.896pt>
 File: imgs/hh11.png Graphic file (type png)
  <use imgs/hh11.png>
-Package pdftex.def Info: imgs/hh11.png used on input line 265.
+Package pdftex.def Info: imgs/hh11.png used on input line 268.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<imgs/hh12.png, id=226, 462.528pt x 346.896pt>
+<imgs/hh12.png, id=220, 462.528pt x 346.896pt>
 File: imgs/hh12.png Graphic file (type png)
  <use imgs/hh12.png>
-Package pdftex.def Info: imgs/hh12.png used on input line 273.
+Package pdftex.def Info: imgs/hh12.png used on input line 276.
 (pdftex.def)             Requested size: 161.88722pt x 121.4154pt.
 
-Overfull \hbox (27.44658pt too wide) in paragraph at lines 273--274
+Overfull \hbox (27.44658pt too wide) in paragraph at lines 276--277
  [][] 
  []
 
-<imgs/hh13.png, id=227, 462.528pt x 346.896pt>
+<imgs/hh13.png, id=221, 462.528pt x 346.896pt>
 File: imgs/hh13.png Graphic file (type png)
  <use imgs/hh13.png>
-Package pdftex.def Info: imgs/hh13.png used on input line 277.
+Package pdftex.def Info: imgs/hh13.png used on input line 280.
 (pdftex.def)             Requested size: 161.88722pt x 121.4154pt.
 
-Overfull \hbox (27.44658pt too wide) in paragraph at lines 277--278
+Overfull \hbox (27.44658pt too wide) in paragraph at lines 280--281
  [][] 
  []
 
-<imgs/hh14.png, id=228, 462.528pt x 346.896pt>
+<imgs/hh14.png, id=222, 462.528pt x 346.896pt>
 File: imgs/hh14.png Graphic file (type png)
  <use imgs/hh14.png>
-Package pdftex.def Info: imgs/hh14.png used on input line 281.
+Package pdftex.def Info: imgs/hh14.png used on input line 284.
 (pdftex.def)             Requested size: 161.88722pt x 121.4154pt.
 
-Overfull \hbox (27.44658pt too wide) in paragraph at lines 281--282
+Overfull \hbox (27.44658pt too wide) in paragraph at lines 284--285
  [][] 
  []
 
-[15 <./imgs/hh11.png> <./imgs/hh12.png> <./imgs/hh13.png> <./imgs/hh14.png>]
-<imgs/hh21.png, id=254, 462.528pt x 346.896pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[15 <./imgs/hh11.png>] [16 <./imgs/hh12.png> <./imgs/hh13.png> <./imgs/hh14.png
+>] <imgs/hh21.png, id=258, 462.528pt x 346.896pt>
 File: imgs/hh21.png Graphic file (type png)
  <use imgs/hh21.png>
-Package pdftex.def Info: imgs/hh21.png used on input line 296.
+Package pdftex.def Info: imgs/hh21.png used on input line 299.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
 
-<imgs/hh22.png, id=255, 462.528pt x 346.896pt>
+<imgs/hh22.png, id=259, 462.528pt x 346.896pt>
 File: imgs/hh22.png Graphic file (type png)
  <use imgs/hh22.png>
-Package pdftex.def Info: imgs/hh22.png used on input line 304.
+Package pdftex.def Info: imgs/hh22.png used on input line 307.
 (pdftex.def)             Requested size: 161.88722pt x 121.4154pt.
 
-Overfull \hbox (27.44658pt too wide) in paragraph at lines 304--305
+Overfull \hbox (27.44658pt too wide) in paragraph at lines 307--308
  [][] 
  []
 
-<imgs/hh23.png, id=256, 462.528pt x 346.896pt>
+<imgs/hh23.png, id=260, 462.528pt x 346.896pt>
 File: imgs/hh23.png Graphic file (type png)
  <use imgs/hh23.png>
-Package pdftex.def Info: imgs/hh23.png used on input line 308.
+Package pdftex.def Info: imgs/hh23.png used on input line 311.
 (pdftex.def)             Requested size: 161.88722pt x 121.4154pt.
 
-Overfull \hbox (27.44658pt too wide) in paragraph at lines 308--309
+Overfull \hbox (27.44658pt too wide) in paragraph at lines 311--312
  [][] 
  []
 
-<imgs/hh24.png, id=257, 462.528pt x 346.896pt>
+<imgs/hh24.png, id=261, 462.528pt x 346.896pt>
 File: imgs/hh24.png Graphic file (type png)
  <use imgs/hh24.png>
-Package pdftex.def Info: imgs/hh24.png used on input line 312.
+Package pdftex.def Info: imgs/hh24.png used on input line 315.
 (pdftex.def)             Requested size: 161.88722pt x 121.4154pt.
 
-Overfull \hbox (27.44658pt too wide) in paragraph at lines 312--313
+Overfull \hbox (27.44658pt too wide) in paragraph at lines 315--316
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 318--319
+Underfull \hbox (badness 10000) in paragraph at lines 321--322
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 318--319
+Underfull \hbox (badness 10000) in paragraph at lines 321--322
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 318--319
+Underfull \hbox (badness 10000) in paragraph at lines 321--322
 
  []
 
-[16
+[17
 
  <./imgs/hh21.png> <./imgs/hh22.png> <./imgs/hh23.png> <./imgs/hh24.png>]
-Overfull \hbox (70.57571pt too wide) in paragraph at lines 322--323
+Overfull \hbox (70.57571pt too wide) in paragraph at lines 325--326
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][] 
  []
 
-<imgs/hh31.png, id=275, 462.528pt x 346.896pt>
+<imgs/hh31.png, id=279, 462.528pt x 346.896pt>
 File: imgs/hh31.png Graphic file (type png)
  <use imgs/hh31.png>
-Package pdftex.def Info: imgs/hh31.png used on input line 328.
+Package pdftex.def Info: imgs/hh31.png used on input line 331.
 (pdftex.def)             Requested size: 370.02289pt x 277.51717pt.
- [17 <./imgs/hh31.png>]
-Overfull \hbox (70.57571pt too wide) in paragraph at lines 335--336
+ [18 <./imgs/hh31.png>]
+Overfull \hbox (70.57571pt too wide) in paragraph at lines 338--339
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][] 
  []
 
-<imgs/hh41.png, id=286, 462.528pt x 346.896pt>
+<imgs/hh41.png, id=290, 462.528pt x 346.896pt>
 File: imgs/hh41.png Graphic file (type png)
  <use imgs/hh41.png>
-Package pdftex.def Info: imgs/hh41.png used on input line 341.
+Package pdftex.def Info: imgs/hh41.png used on input line 344.
 (pdftex.def)             Requested size: 370.02289pt x 277.51717pt.
- [18
+ [19
 
  <./imgs/hh41.png>]
-Overfull \hbox (11.29495pt too wide) in paragraph at lines 350--351
+Overfull \hbox (11.29495pt too wide) in paragraph at lines 353--354
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-<imgs/hh51.png, id=296, 462.528pt x 346.896pt>
+<imgs/hh51.png, id=301, 462.528pt x 346.896pt>
 File: imgs/hh51.png Graphic file (type png)
  <use imgs/hh51.png>
-Package pdftex.def Info: imgs/hh51.png used on input line 356.
+Package pdftex.def Info: imgs/hh51.png used on input line 359.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<imgs/hh52.png, id=297, 462.528pt x 346.896pt>
+<imgs/hh52.png, id=302, 462.528pt x 346.896pt>
 File: imgs/hh52.png Graphic file (type png)
  <use imgs/hh52.png>
-Package pdftex.def Info: imgs/hh52.png used on input line 363.
+Package pdftex.def Info: imgs/hh52.png used on input line 366.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
- [19
+ [20
 
  <./imgs/hh51.png> <./imgs/hh52.png>]
-Overfull \hbox (26.11514pt too wide) in paragraph at lines 376--377
+Overfull \hbox (26.11514pt too wide) in paragraph at lines 379--380
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][] 
  []
 
 
-Overfull \hbox (26.11514pt too wide) in paragraph at lines 378--379
+Overfull \hbox (26.11514pt too wide) in paragraph at lines 381--382
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][] 
  []
 
 
-Overfull \hbox (26.11514pt too wide) in paragraph at lines 380--381
+Overfull \hbox (26.11514pt too wide) in paragraph at lines 383--384
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][] 
  []
 
-<imgs/hhinfty.png, id=312, 462.528pt x 346.896pt>
+<imgs/hhinfty.png, id=316, 462.528pt x 346.896pt>
 File: imgs/hhinfty.png Graphic file (type png)
  <use imgs/hhinfty.png>
-Package pdftex.def Info: imgs/hhinfty.png used on input line 402.
+Package pdftex.def Info: imgs/hhinfty.png used on input line 405.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/hhtime.png, id=313, 462.528pt x 346.896pt>
+<imgs/hhtime.png, id=317, 462.528pt x 346.896pt>
 File: imgs/hhtime.png Graphic file (type png)
  <use imgs/hhtime.png>
-Package pdftex.def Info: imgs/hhtime.png used on input line 409.
+Package pdftex.def Info: imgs/hhtime.png used on input line 412.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[20
+[21
 
-] [21 <./imgs/hhinfty.png> <./imgs/hhtime.png>] [22
+] [22 <./imgs/hhinfty.png> <./imgs/hhtime.png>] [23
 
-] [23] (ter.bbl [24])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 461.
+] [24] (ter.bbl [25])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 464.
 
-[25]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 461.
+[26]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 464.
  (ter.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 461.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 461.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 464.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 464.
 Package rerunfilecheck Info: File `ter.out' has not changed.
 (rerunfilecheck)             Checksum: D9AEA316875CFE56F0AE9C1D53DB7E62;1442.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 461.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 464.
  ) 
 Here is how much of TeX's memory you used:
- 14747 strings out of 493698
- 217660 string characters out of 3144394
- 517609 words of memory out of 3000000
+ 14748 strings out of 493698
+ 217667 string characters out of 3144394
+ 513609 words of memory out of 3000000
  17624 multiletter control sequences out of 15000+200000
  77717 words of font info for 76 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
@@ -1289,9 +1292,9 @@ ts/type1/public/lm/lmssbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
 /Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Program Files/MiK
 TeX 2.9/fonts/type1/public/lm/lmtt12.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
 e1/public/txfonts/t1xbtt.pfb>
-Output written on ter.pdf (25 pages, 866255 bytes).
+Output written on ter.pdf (26 pages, 866605 bytes).
 PDF statistics:
- 495 PDF objects out of 1000 (max. 8388607)
- 181 named destinations out of 1000 (max. 500000)
+ 499 PDF objects out of 1000 (max. 8388607)
+ 182 named destinations out of 1000 (max. 500000)
  222 words of extra memory for PDF output out of 10000 (max. 10000000)
 
