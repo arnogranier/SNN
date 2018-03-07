@@ -190,6 +190,7 @@ Il est possible de représenter un neurone dans le modèle de Hosgkin-Huxley com
 \item On définit la conductance g associée à une résistance comme l'inverse de la valeur de la résistance \begin{center} $g = \displaystyle \frac{1}{R}$ \end{center}
 \end{itemize}
 
+\clearpage
 \begin{figure}[!h]
 \centering
 \includegraphics[scale=0.5]{imgs/3.png}
@@ -197,8 +198,6 @@ Il est possible de représenter un neurone dans le modèle de Hosgkin-Huxley com
 \label{HHFIG}
 \end{figure}
 
-\clearpage 
-~~\\
 	Dans ce paragraphe on se reportera à la figure \ref{HHFIG}. On va noter $I_{app}$ le courant appliquée sur la cellulle de l'extérieur. De la loi de Kirchhoff, on peut déduire que \begin{equation} I_C+I_{Na}+I_K+I_L-I_{app} = 0  \label{Toteq}\end{equation} 
 
 De la définition d'un condensateur, on a \begin{equation} I_C = \frac{\dd Q}{\dd t} = C\frac{\dd V}{\dd t} \label{Ceq}\end{equation} 
@@ -336,7 +335,7 @@ T, dt = 100, 0.01
 \label{hh2234}
 \end{figure}
 
-Dans \ref{hh11}, on peut voir que le modèle est bien capable de produire un potentiel d'action, en tout cas le comportement de la variable V représentant le potentiel de membrane a un comportement similaire aux potentiel de membrane \textit{in vivo}. Le courant appliqué, qui est constant égal à 5, est suffisant pour provoquer un potentiel d'action mais insuffisant pour en provoquer un deuxième. Au contraire, dans \ref{hh21}, le courant constant égal à 10 est suffisant pour provoquer un train de potentiel d'action, à partir du deuxième potentiel d'action, on a un comportement périodique du système, qui va continuer de générer des potentiels d'action si le courant appliqué reste constant. Cela peut également se voir sur les représentations de m, n et h en fonction de V. Lorsqu'il n'y a qu'un seul potentiel d'action puis une convergence vers un état stable , on peut voir dans \ref{hh1234} la présence d'un équilibre attracteur pour m, n et h, ce qui signifie que l'état du système va se stabiliser. Au contraire, lorsqu'on a une génération périodique de potentil d'action comme dans \ref{hh2234}, on voit bien que le comportement de m, n et h est cyclique et qu'il n'y a pas d'équilibre attracteur.\\\\\\
+Dans \ref{hh11}, on peut voir que le modèle est bien capable de produire un potentiel d'action, en tout cas le comportement de la variable V représentant le potentiel de membrane a un comportement similaire aux potentiel de membrane \textit{in vivo}. Le courant appliqué, qui est constant égal à 5, est suffisant pour provoquer un potentiel d'action mais insuffisant pour en provoquer un deuxième. Au contraire, dans \ref{hh21}, le courant constant égal à 10 est suffisant pour provoquer un train de potentiel d'action, à partir du deuxième potentiel d'action, on a un comportement périodique du système, qui va continuer de générer des potentiels d'action si le courant appliqué reste constant. Cela peut également se voir sur les représentations de m, n et h en fonction de V. Lorsqu'il n'y a qu'un seul potentiel d'action puis une convergence vers un état stable , on peut voir dans \ref{hh1234} la présence d'un équilibre attracteur pour m, n et h, ce qui signifie que l'état du système va se stabiliser. Au contraire, lorsqu'on a une génération périodique de potentil d'action comme dans \ref{hh2234}, on voit bien que le comportement de m, n et h est cyclique et qu'il n'y a pas d'équilibre attracteur.
 
 \begin{lstlisting}[caption = {Simulation du modèle 3}]
 hh['Iapp'] = F('t', 
@@ -420,21 +419,21 @@ plt.show()
 
 \begin{figure}[!h]
 \centering
-\includegraphics[scale=0.5]{imgs/hhinfty.png}
+\includegraphics[scale=0.65]{imgs/hhinfty.png}
 \caption{Evolution des paramètres $n_\infty$, $m_\infty$ et $h_\infty$ lors de la génération d'un potentiel d'action}
 \label{hhinfty}
 \end{figure}
 
 \begin{figure}[!h]
 \centering
-\includegraphics[scale=0.5]{imgs/hhtime.png}
+\includegraphics[scale=0.65]{imgs/hhtime.png}
 \caption{Evolution des paramètres $\tau_n$, $\tau_m$, $\tau_h$ lors de la génération d'un potentiel d'action}
 \label{hhtime}
 \end{figure}
 
 \clearpage
 \textbf{Explication des dynamiques à partir des constantes de temps et des valeurs à l'équilibre}\\
-De \ref{hhinfty}, on peut tirer le fait que n et m sont croissants par rapport au potentiel, tandis que h est décroissant par rapport au potentiel. Ainsi, les canaux poassiques vont avoir une probabilité de laisser passer les ions de plus en plus grande plus le potentiel augmente, tandis que pour les canaux sodiques, leur probabilité de laisser passer les ions va d'abord augmenter quand le potentiel augmente (du au fait que m est croissante par rapport au potentiel), puis, à partir d'un certain seuil, diminuer quand le potentiel augmente (du  au fait que h est décroissante par rapport au potentiel).\\
+De \ref{hhinfty}, on peut tirer le fait que n et m sont croissants par rapport au potentiel, tandis que h est décroissant par rapport au potentiel. Ainsi, les canaux potassiques vont avoir une probabilité de laisser passer les ions (qui est, rappellons-le, exprimée par $n^4$) de plus en plus grande plus le potentiel augmente, tandis que pour les canaux sodiques, leur probabilité de laisser passer les ions (qui est $m^3h$) va d'abord augmenter quand le potentiel augmente (du au fait que m est croissante par rapport au potentiel), puis, à partir d'un certain seuil, diminuer quand le potentiel augmente (du  au fait que h est décroissante par rapport au potentiel).\\
 Les constantes de temps, qui gouvernent la temps que met le système à atteindre les valeurs à l'équilibre, sont également intéressantes à étudier pour comprendre les dynamiques à l'oeuvre. On peut voir dans \ref{hhtime}, que m, qui gouverne l'ouverture des canaux sodique, atteint très rapidement sont état d'équilibre, tandis que n (ouverture des canaux potassiques) et h(activation des canaux sodiques) l'atteignent plus lentement.\\
 Ainsi, lorsque la membrane est dépolarisée, la variable m va augmenter (vers son etat d'équilibre) rapidement (les canaux sodiques vont s'ouvrir rapidement), ce qui va en retour augmenter la dépolarisation de la cellule (le potentiel de membrane va tendre vers $V_{Na}$), et m va de nouveau augmenter, etc .. Avec un délai du aux dynamiques (c'est-à-dire ici au temps d'atteinte de la valeur d'équilibre) plus lentes de h et n, on va observer que h va diminuer (tendre vers sa valeur d'équilibre)(les canaux sodiques vont être désactivés), et de plus, n va augmenter (tendre vers sa valeur d'équilibre)(les canaux potassiques vont s'ouvrir), ce qui aura pour effet de repolarisée la cellule (le potentiel de membrane va tendre vers $V_{K}$). La période refractaire, c'est-à-dire l'hyperpolarisation de la membrane peut s'expliquer par le délai dans le retour à un état d'équilibre de la variable n (les canaux potassiques se referment avec un délai).
 
@@ -446,19 +445,163 @@ Ainsi, lorsque la membrane est dépolarisée, la variable m va augmenter (vers s
 		\item \textbf{Simplifier Hodgkin-Huxley : Faire un compromis entre le réalisme du modèle et sa complexité}, ce qui donne des modèles moins précis et moins proche de la réalité, mais plus facilement manipulable, compréhensible et dont la simulation est rapide. On retrouve dans cette catégorie la plupart des modèles dit "phénoménologiques", c'est-à-dire les modèles qui, sans la contrainte de s'inspirer du biologique, tentent de reproduire le fonctionnement du système nerveux en terme de données quantitatives "de plus haut niveau", comme par exemple le potentiel de membrane d'un neurone. \end{enumerate}
 Un modèle de neurone théorique parfait devrai posséder les qualités des deux approches sans posséder leur défauts ... mais cela semble pour l'instant impossible. Le réalisme passe par la complexité du modèle, et la complexité du modèle entraine que la simulation informatique et que l'explication mathématique seront couteuses. Ainsi, lorsque l'on doit choisir un modèle de neurone, on doit le faire dans objectif précis, et il est important de bien comprendre quelles sont les caractéristiques du modèle importantes pour réaliser notre objectif. Dans le cas de ce travail, nous allons par la suite vouloir réaliser des simulations de réseaux de grandes tailles de manière rapide, répétable. C'est ainsi, et c'est un choix de notre part, que nous allons ici plutot nous interesser aux modèles simples, venant de l'approche 2., pour leur simplicité et rapidité de simulation. 
 
-\subsection{De Hodgkin-Huxley à Fitzhugh-Nagumo, et explication de Fitzhugh-Nagumo}
+\subsection{De Hodgkin-Huxley à Fitzhugh-Nagumo}
 
-\subsection{De Fitzhugh-Nagumo à Izhikievich, explication et démonstration de la puissance du modèle de Izhikievich}
-	A partir d'une analyse du plan de phase du modèle de Fitzhugh-Nagumo, on peut remarquer que, dans la région du plan de phase responsable de la génération des potentiels d'actions, la V-isocline peut se résumer
+\subsection{De Fitzhugh-Nagumo à Izhikievich, et démonstration de la puissance du modèle de Izhikievich}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.5]{imgs/fhntoiz.png}
+\caption{Plan de phase du modèle de Fitzhugh-Nagumo}
+\label{fhntoiz}
+\end{figure}
+
+	A partir d'une analyse du plan de phase du modèle de Fitzhugh-Nagumo, on peut remarquer que, dans la région du plan de phase responsable de la génération des potentiels d'actions, la V-isocline peut s'approximer par une parabolle, c'est-à-dire la courbe d'une fonction polynomiale de degré 2 (partie entourée sur \ref{fhntoiz}). On peut donc construire un nouveau modèle à partir de celui de Fitzhugh-Nagumo et de cette remarque, en remplaçant la V-isocline dans le modèle de Fitzhugh-Nagumopar une fonction polynomiale de degré 2 :
+\setcounter{equation}{0}
+\begin{empheq}[left=\empheqlbrace]{gather}
+     \frac{\mathrm{d}v}{\mathrm{d}t} = \alpha v^2 + \beta v + \gamma -u + I \nonumber  \\
+     \frac{\mathrm{d}u}{\mathrm{d}t} = a(bv-u)  \nonumber
+   \end{empheq}
+
+En esayant de faire coïncider les comportements du modèle avec ceux des neurones biologiques, on trouve les valeurs de $\alpha = 0.04, ~\beta = 5,~ \gamma = 140$. On peut donc réecrire le modèle : \begin{empheq}[left=\empheqlbrace]{gather}
+     \frac{\mathrm{d}v}{\mathrm{d}t} = 0.04v^2 + 5v + 140 -u + I  \\
+     \frac{\mathrm{d}u}{\mathrm{d}t} = a(bv-u) 
+   \end{empheq}
+
+Avec ce modèle, il devient necessaire d'introduire une règle spéciale pour les neurones qui viennent de produire un potentiel d'action. 
+\begin{center} Si $ v \ge 30 mV$, alors : \end{center}
+   \begin{empheq}[left=\empheqlbrace]{equation}
+	\begin{split}
+v \leftarrow c  \\
+     u \leftarrow u + d
+\end{split}
+   \end{empheq}
+
+Comme dans le modèle de Fitzhugh-Nagumo, la variable $v$ symbolise le potentiel de membrane, et $u$ est une variable symbolisant le retablissement de la membrane.\\
+Les paramètres du modèle sont :
+\begin{itemize}
+\item $a$, qui controle le temps de rétablissement de la membrane
+\item $b$, qui controle la sensibilité de la variable $u$ par rapport à la variable $v$
+\item $c$, la valeur de réinitialisation de $v$ après un potentiel d'action
+\item $d$, la valeur d'incrémenation de $u$ après un potentiel d'action
+\end{itemize}
+~~\\
+Le but de la création de ce modèle est bien evidemment de réduire la complexité de simulation par rapport au modèle de Fitzhugh-Nagumo en passant d'un calcul à chaque étape d'une fonction polynomiale de degré 3 à un fonction polynomiale de degré 2. \\
+Mais malgré cette apparente simplicité, ce modèle est capable de simuler un grand nombre de comportements parmi ceux que peuvent avoir les neurones biologiques, comme on peut le voir sur la série des figures \ref{izRS}, \ref{izIB}, \ref{izC}, \ref{izFS}, \ref{izLTS}, \ref{izRES}, \ref{izTC1} et \ref{izTC2}.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.8]{imgs/izPDP.png}
+\caption{Plan de phase du modèle de Izhikievich}
+\label{izPDP}
+\end{figure}
+\clearpage
+\begin{lstlisting}[caption = {Définition du modèle de Izhikievich}]
+from .core import Variable, Model
+from .tools import Function as F
+
+v = Variable(name='v', ddt='0.04*v**2+5*v+140-u+I', init_value=-65, 
+			 reset_value='c', unit='mV')
+u = Variable(name='u', ddt='a*(b*v-u)', init_value=-15,
+			 reset_value='u+d')
+izhi_model = Model(v, u, spike_when='v>=30', max_spike_value=30, 
+			 a=0.02, b=0.2, c=-65, d=8, I=0) 
+\end{lstlisting}
+
+\begin{lstlisting}[caption = {Plan de phase du modèle de Izhikievich pour  b=0.2,  I=0}]
+from snn.single.usual_models import izhi_model as iz
+import matplotlib.pyplot as plt
+
+fig3 = iz.plan_phase(('v', -80, -30, 5), ('u', -30, 20, 5), 
+                       rescale=True) #interactive=True
+plt.show()
+\end{lstlisting}
+
+\begin{lstlisting}[caption = {Représentation de l'évolution du potentiel de membrane en fonction du temps pour plusieurs ensembles de paramètres}]
+from snn.single.usual_models import izhi_model as iz
+import matplotlib.pyplot as plt
+
+A = [0.02, 0.02, 0.02, 0.1, 0.02, 0.02, 0.02, 0.1,     0.1]
+B = [0.2,  0.2,  0.2,  0.2, 0.25, 0.25, 0.25, 0.26,    0.26]
+C = [-65,  -55,  -50,  -65, -65,  -65,  -65,  -65,     -65]
+D = [8,    4,    2,    2,   2,    0.05, 0.05, 8,       8]
+I = [15,   10,   10,   10,  15,   1,    1,    -0.0488, -0.04]
+V = [-65,  -65,  -65,  -65, -65,  -65,  -90,  -65,     -65]
+
+for a, b, c, d, i, vstart in zip(A, B, C, D, I, V):
+	iz['a'] = a ; iz['b'] = b ; iz['c'] = c ; iz['d'] = d ; iz['I'] = i
+	iz['v'] = vstart ; iz['u'] = b * vstart
+	iz.plot(100, 0.01, keep='v')
+	plt.gca().set_ylim(-80, 40)
+plt.show()
+\end{lstlisting}
+
+\begin{figure}[!h]
+\begin{minipage}[l]{.48\linewidth}
+\centering
+\includegraphics[scale=0.5]{imgs/izRS.png}
+\caption{Regular Spiking (a=0.02, b=0.2, c=-65, d=8, I=15, $v_{start}$ = -65)}
+\label{izRS}
+    \end{minipage}\hfill
+\begin{minipage}[l]{.48\linewidth}
+\centering
+\includegraphics[scale=0.5]{imgs/izIB.png}
+\caption{Intrinsically Bursting (a=0.02, b=0.2, c=-55, d=4, I=10, $v_{start}$ = -65)}
+\label{izIB}
+    \end{minipage}\hfill
+\end{figure}
+
+\begin{figure}[!h]
+\begin{minipage}[l]{.48\linewidth}
+\centering
+\includegraphics[scale=0.5]{imgs/izC.png}
+\caption{Chattering (a=0.02, b=0.2, c=-50, d=2, I=10, $v_{start}$ = -65)}
+\label{izC}
+    \end{minipage}\hfill
+\begin{minipage}[l]{.48\linewidth}
+\centering
+\includegraphics[scale=0.5]{imgs/izFS.png}
+\caption{Fast Spiking (a=0.1, b=0.2, c=-65, d=2, I=10, $v_{start}$ = -65)}
+\label{izFS}
+    \end{minipage}\hfill
+\end{figure}
+
+\begin{figure}[!h]
+\begin{minipage}[l]{.48\linewidth}
+\centering
+\includegraphics[scale=0.5]{imgs/izLTS.png}
+\caption{Low-Threshold Spiking (a=0.02, b=0.25, c=-65, d=2, I=15, $v_{start}$ = -65)}
+\label{izLTS}
+    \end{minipage}\hfill
+\begin{minipage}[l]{.48\linewidth}
+\centering
+\includegraphics[scale=0.5]{imgs/izRES1.png}
+\caption{Resonnator (a=0.1, b=0.26, c=-65, d=8, I=-0.0488, $v_{start}$ = -65)}
+\label{izRES}
+    \end{minipage}\hfill
+\end{figure}
+
+\begin{figure}[!h]
+\begin{minipage}[l]{.48\linewidth}
+\centering
+\includegraphics[scale=0.5]{imgs/izTC1.png}
+\caption{Thalamo-Cortical 1 (a=0.02, b=0.25, c=-65, d=0.05, I=1, $v_{start}$ = -65)}
+\label{izTC1}
+    \end{minipage}\hfill
+\begin{minipage}[l]{.48\linewidth}
+\centering
+\includegraphics[scale=0.5]{imgs/izTC2.png}
+\caption{Thalamo-Cortical 2 (a=0.02, b=0.25, c=-65, d=0.05, I=1, $v_{start}$ = -90)}
+\label{izTC2}
+    \end{minipage}\hfill
+\end{figure}
+
+\clearpage
 
 \section{Modèle leaky-integrate and fire}
 	Encore plus simple : le modèle leaky-integrate and fire, présentation du modèle, explications, simulations.
 
 
-\section{Quelques mots sur les modeles compartimentaux et augmentation de Hodkin-Huxley}\label{hhcomplex}
-	Principe (approximation des différentes composantes par des cylindres) et équation du cable. Interets ( biologiquement + réaliste). Techniques de réduction du nombre de compartiments avec same beahvior. 
-
-\nocite{*}
 
 \pagebreak
 
@@ -472,6 +615,7 @@ Un modèle de neurone théorique parfait devrai posséder les qualités des deux
 Quelques justifications informatiques :
 \begin{itemize} \item Cette partie informatique de création d'outils de simulation ayant une grande par didactique pour moi, j'ai souhaité dans la partie de modélisation d'un seul neurone, ne pas utiliser certains outils "déjà tout pret" et plutot coder moi-même un maximum de chose. C'est la raison pour laquel je n'utilise numpy que pour retourner des types array et que je n'utilise pas les méthodes linspace ou meshgrid (par exemple) de cette bibliothèque. J'ai également souhaté ne pas utiliser d'ODE-solver djà implémenté comme on peut trouver dans scipy.integrate par exemple. \end{itemize}
 
+\nocite{*}
 
 \bibliographystyle{apacite}
 \bibliography{ref}
