@@ -1,7 +1,7 @@
 # SNN
-[TER-MIASHS][Python 3.6-Tensorflow] Spiking Neural Network Lib
+## [TER-MIASHS][Python 3.6-Tensorflow] Spiking Neural Network Lib
 
-## Dans une idée de rapprochement entre la modélisation du système nerveux et l'intelligence artificielle
+#### _Dans une idée de rapprochement entre la modélisation du système nerveux et l'intelligence artificielle_
 
 <object data="https://github.com/ArnoGranier/SNN/files/1796804/ter.pdf" type="application/pdf" width="700px" height="700px">
     <embed src="https://github.com/ArnoGranier/SNN/files/1796804/ter.pdf">
