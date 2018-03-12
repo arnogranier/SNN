@@ -1,6 +1,5 @@
 from .core import Variable, Model
 from .tools import Function as F
-#izhi
 
 v = Variable(name='v', ddt='0.04*v**2+5*v+140-u+I', init_value=-65, 
 			 reset_value='c', unit='mV')
@@ -28,6 +27,12 @@ HH_model = Model(V, n, m, h, Cm=1, gk=36, gna=120,
 				 Iapp=0)
 
 #FHN
-v = Variable(name='v', ddt='v-(1/3)*v**3-w+I', init_value=0)
-w = Variable(name='w', ddt='(1/tau)*(v+alpha-beta*w)', init_value=0)
-FHN_model = Model(v, w, alpha=0.7, beta=0.8, tau=13, I=0.5)
+v = Variable(name='v', ddt='v-(1/3)*v**3-w+I', init_value=-1.25)
+w = Variable(name='w', ddt='(1/tau)*(v+a-b*w)', init_value=-1)
+FHN_model = Model(v, w, a=0.7, b=1.2, tau=12.5, I=0.5)
+
+#Leaky integrate and fire
+u = Variable(name='u', init_value=0,
+	ddt = '(1/tau_m)*(-u+R*I)', reset_value='ur', unit='mV')
+LEAKY_INTEGRATE_AND_FIRE_model = Model(u, spike_when='u>=1',
+	max_spike_value=1, tau_m=10, R=1, ur=0, I=1.5)

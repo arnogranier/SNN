@@ -77,7 +77,11 @@ class Model:
         self.method = simul_method
 
     def __setitem__(self, name, val): 
-        self.parameters[name] = val
+        if name in self.parameters :
+        	self.parameters[name] = val
+        else:
+        	for var in self.variables:
+        		if var.__name__ == name : var.value = val
         self.__init__(*self.variables, max_spike_value=self.max_spike_value, 
                       spike_when=self.init_spike_when, simul_method=self.method,
                       **self.parameters)
@@ -109,6 +113,7 @@ class Model:
         history = {name: [value, ]
                     for (name, value) in start_var_and_params.items()
                     if name in keep or keep == 'all'}
+        if keep == 'all' or 't' in keep : history['t'] = [0, ]
         M = int(T / dt)
         count_spike = 0
         for p in range(M):
@@ -143,6 +148,7 @@ class Model:
                     history[name].append(val(*args))
                 else:
                     history[name].append(val)
+            if keep=='all' or 't' in keep : history['t'].append(t)
         return {name:np.array(vals) for name, vals in history.items()}, count_spike
 
     def get_unit_from_name(self, name):
@@ -164,15 +170,16 @@ class Model:
             history = {var:vals for var, vals in history.items() if var in keep}
         fig = plt.figure()
         for idx, (name, y) in enumerate(history.items()):
-            if subplotform is not None:
-                plt.subplot(subplotform + str(idx + 1))
-                unit = self.get_unit_from_name(name)
-                if unit is not None:
-                    plt.ylabel('%s (%s)' % (name, unit))
-                else:
-                    plt.ylabel('%s' % name)
-            plt.plot(x, y, label=name, **kwargs)
-            plt.xlabel('time')
+        	if name != 't':
+	            if subplotform is not None:
+	                plt.subplot(subplotform + str(idx + 1))
+	                unit = self.get_unit_from_name(name)
+	                if unit is not None:
+	                    plt.ylabel('%s (%s)' % (name, unit))
+	                else:
+	                    plt.ylabel('%s' % name)
+	            plt.plot(x, y, label=name, **kwargs)
+	            plt.xlabel('time')
         if subplotform is None:
             if len(history) != 1:
                 plt.legend()
@@ -210,9 +217,15 @@ class Model:
         fig = plt.figure()
         if not no_dynamics:
             plt.quiver(X, Y, dx, dy, **quiver_args)
-        plt.contour(X, Y, dx, levels=[0], **contour_args, label='%s-isocline'%xdata[0])
-        plt.contour(X, Y, dy, levels=[0], **contour_args, label='%s-isocline'%ydata[0])
-        plt.legend()
+        cx = plt.contour(X, Y, dx, levels=[0], **contour_args)
+        cy = plt.contour(X, Y, dy, levels=[0], **contour_args)
+        plt.clabel(cx, fontsize=10, inline=1, inline_spacing=1, 
+        	fmt={0:'%s-nullcline'%xdata[0]},
+        	ticker=plt.LinearLocator())
+        plt.clabel(cy, fontsize=10, inline=1, inline_spacing=1, 
+        	fmt={0:'%s-nullcline'%ydata[0]},
+        	ticker=plt.LinearLocator())
+        plt.xlabel(xdata[0]) ; plt.ylabel(ydata[0])
         if interactive:
             fig.canvas.mpl_connect('button_press_event',
                                    lambda evt: self.cascade(evt, line, point,

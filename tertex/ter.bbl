@@ -264,6 +264,33 @@ Izhikevich, E\BPBI M.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Kandel%
+\ \protect \BOthers {.}}{%
+Kandel%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2000}}%
+}]{%
+kandel2000principles}
+\APACinsertmetastar {%
+kandel2000principles}%
+\begin{APACrefauthors}%
+Kandel, E\BPBI R.%
+, Schwartz, J\BPBI H.%
+, Jessell, T\BPBI M.%
+, Siegelbaum, S\BPBI A.%
+, Hudspeth, A\BPBI J.%
+\BCBL {}\ \BOthersPeriod {.}\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2000}.
+\newblock
+\APACrefbtitle {Principles of neural science} {Principles of neural science}\
+  (\BVOL~4).
+\newblock
+\APACaddressPublisher{}{McGraw-hill New York}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 MacLeod%
 \ \BBA {} Nersessian%
 }{%

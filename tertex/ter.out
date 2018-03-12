@@ -1,7 +1,7 @@
 \BOOKMARK [0][-]{part.1}{Introduction}{}% 1
 \BOOKMARK [0][-]{part.2}{Mod\351lisation d'un neurone}{}% 2
 \BOOKMARK [1][-]{section.2.1}{Quelques rappels de neurobiologie}{part.2}% 3
-\BOOKMARK [1][-]{section.2.2}{Modele de Hodgkin Huxley}{part.2}% 4
+\BOOKMARK [1][-]{section.2.2}{Mod\350le de Hodgkin Huxley}{part.2}% 4
 \BOOKMARK [2][-]{subsection.2.2.1}{La mod\351lisation des canaux ioniques}{section.2.2}% 5
 \BOOKMARK [2][-]{subsection.2.2.2}{L'\351quation du potentiel de membrane}{section.2.2}% 6
 \BOOKMARK [2][-]{subsection.2.2.3}{Simulation avec SNN.single et explication des dynamiques}{section.2.2}% 7
@@ -13,4 +13,4 @@
 \BOOKMARK [0][-]{part.3}{R\351seau de neurones}{}% 13
 \BOOKMARK [0][-]{part.4}{Etude de \(H\351ric\351 et al., 2016\)}{}% 14
 \BOOKMARK [0][-]{part.5}{Code}{}% 15
-\BOOKMARK [1][-]{section*.23}{R\351f\351rences}{part.5}% 16
+\BOOKMARK [1][-]{section*.33}{R\351f\351rences}{part.5}% 16

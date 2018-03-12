@@ -50,6 +50,17 @@ frame=tb, % Any extra options here
 showstringspaces=false, % 
 tabsize=2
 }
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\renewcommand{\lstlistingname}{Programme}% Listing -> Algorithm
+\renewcommand{\lstlistlistingname}{List of \lstlistingname s}% List of Listings -> List of Algorithms
+
 \usepackage{empheq}
 
 \title{Modélisation mathématique et informatique de neurones : création d'une bibliothèque Python/Tensorflow pour la simulation de réseaux de spiking-neurons et applications }
@@ -66,108 +77,110 @@ tabsize=2
 
 
 \part{Introduction}
-	
-	\footnotetext{nldr : dans ce travail on va souvent assimiler, par facilité de rédaction, l'homme à son système nerveux, ou à son système cognitif. On essaiera d'employer le terme "système nerveux" plutot que "cerveau" ou "encephale", pour rester général et conserver l'importance du système nerveux périphérique. On assimilera également souvent la cognition et l'esprit.}
+\blfootnote{nldr : dans ce travail on va souvent assimiler, par facilité de rédaction, l'homme à son système nerveux, ou à son système cognitif. On essaiera d'employer le terme "système nerveux" plutôt que "cerveau" ou "encéphale", pour rester général et conserver l'importance du système nerveux périphérique. On utilisera souvent également les mots cognition et esprit avec le même sens.}
 
-	 Les sciences cognitives sont un hybride de plusieurs disciplines inter-resonnantes, chacune comportant ses propres préoccupations et engagements. Dans le travail qui va suivre, bien que le discours va presque toujours appartenir aux sciences formelles et naturelles, l'intention est bien celle qui fait les sciences cognitives, c'est-à-dire d'étudier, d'expliquer la cognition, l'espit humain. Plus précisement, l'intention ici est de s'interesser à une idée d'explication de l'Homme et de son esprit en des termes des sciences formelles et naturelles. Nous allons voir dans cette introduction comment cela est envisageable, mais d'abord, j'aimerai dire que je ne pense pas qu'il soit souhaitable (sans parler de la faisabilité) d'essayer de réduire l'homme à son étude du point de vue des sciences formelles et naturelles, et je pense qu'au contraire une étude de multiples points de vue est ce qui nous rapprochera le plus d'une compréhension de l'homme, de son esprit et de sa culture.
+Les sciences cognitives sont un hybride de plusieurs disciplines inter-résonnantes, chacune comportant ses propres préoccupations et engagements. Dans le travail qui va suivre, bien que le discours va presque toujours appartenir aux sciences formelles et naturelles, l'intention est bien celle qui fait les sciences cognitives, c'est-à-dire d'étudier, d'expliquer la cognition, l'esprit humain. Plus précisément, l'intention ici est de s'intéresser à une idée d'explication de l'Homme et de son esprit en des termes des sciences formelles et naturelles. Nous allons voir dans cette introduction comment cela est envisageable, mais d'abord, j'aimerais dire que je ne pense pas qu'il soit souhaitable (sans parler de la faisabilité) d'essayer de réduire l'homme à son étude du point de vue des sciences formelles et naturelles, et je pense qu'au contraire une étude de multiples points de vue est ce qui nous rapprochera le plus d'une compréhension de l'homme, de son esprit et de sa culture.\\
 
-	Le developpement de disciplines comme la psychophysiologie ou plus généralement les neurosciences nous permet d'envisager une naturalisation de la cognition humaine, de l'esprit humain (ou du moins d'une partie cet cognition, de cet esprit). Dire qu'on peut naturaliser la cognition, c'est dire que la cognition humaine serait explicable en des termes des sciences naturelles, notamment à travers la biologie et la physique du système nerveux humain. On s'inscrit alors dans un courant naturaliste, voire physicaliste. Cela permettrait alors d'étudier l'esprit, la cognition de la même manière que n'importe quel autre objet des sciences naturelles (ou physiques), et on aurait de plus une explication possible des états mentaux humains par certaines propriétés de la matière. De plus, et en accord avec une théorie fonctionnaliste, on va plutot définir les états mentaux par leur fonction, au sein du mental ou au sein de l'organisme, plutot que par leur substrat physique, la matière n'étant que la base permettant la réalisation de cette fonction. Avec cette approche physicaliste-fonctionnaliste, il est donc théoriquement envisageable de reproduire le système cognitif, l'esprit humain dans une machine, pourvu que l'on reproduise toute les propriétés physiques du système nerveux humain. Le physicalisme nous permettant d'attribuer entierement l'esprit humain aux propriétés physiques du système nerveux humain, et le fonctionalisme nous permettant de nous affranchir d'une incarnation forcément dans le système nerveux pour nous étendre à une incarnation possible dans tout système \textit{fonctionnant comme} le système nerveux. 
-	
-	Mais qu'est-ce que ça veut dire \textit{fonctionner comme} le système nerveux ? Pour répondre à cette question, il nous faut nous tourner vers les sciences naturelles : neurosciences, biologie, physique, etc ... qui étudient les propriétés biologiques, chimiques et physiques du cerveau. Ces sciences nous apprennent que le système nerveux humain est un système extremement complexe, et nos connaissances sur les propriétés biologiques, chimiques et physiques de ce système sont loins d'être complètes. Si l'on veut tenter de résumer le fonctionnement du système nerveux en quelques mots, on aurait tendance à dire qu'il s'agit d'un réseaux organisé et adaptatif d'unités de base connectées entre elles, dont le but et de recevoir, analyser et transmettre de l'information. Cette réduction est très schématique mais semble pourtant contenir l'essence du fonctionnement du système nerveux humain. L'unité de base de ce système est le neurone, qui est une cellule capable de recevoir et de propager de l'information sous forme electro-chimique (l'influx nerveux). Les connexions entre les neurones sont appellés synapses, ce sont des zones où l'information est transmises d'un neurone à l'autre de manière chimique, et il est également globalement admit que c'est au sein des synapses que prennent place les propriétés d'adaptation du réseau.
-	
-	Si l'on reste dans l'approche physicaliste-fonctionnaliste, il semble donc naturel de vouloir tente de "reproduire" le fonctionnement du système nerveux humain dans \textit{autre chose que l'humain}, et le meilleur candidat pour cet \text{autre chose} semble être l'ordinateur. Cependant, il est ici important d'être lucide sur le sens du mot "reproduire" dans cette phrase : d'une part, comme nous l'avons dit, nous sommes loin d'avoir une connaissance exhaustive des propriétés des neurones et des synapses, et de plus le système nerveux ne se résume pas en réalité qu'aux neurones et synapses (il faudrait prendre en compte les cellules gliales, l'impact des hormones, reproduire le fonctionnement de toutes les afférences aux systèmes nerveux, comme les recepteurs cutanés, etc ..) ; et d'autre part, en supposant une connaissance exhaustive du système nerveux, la reproduction exacte de son fonctionnement \textit{in silico} ne serait peut-être pas si aisée, notamment car le substrat biologique permet peut-être des fonctions difficilement reproductible dans un substrat electronique. C'est pour cela que plutot que de parler de "reproduction" du fonctionnement du système nerveux, on parlera plutot de modélisation du système nerveux, de modélisation de neurones et de synapses, dans le sens où on selectionne les propriétés du système nerveux qui nous semblent les plus importantes dans son fonctionnement et où on essaye de les rendre intelligiebles, pour la machine grâce à une formalisation mathématique et à des programmes permettant de simuler le comportement des modèles de neurone et de réseaux de neurones ; et pour l'homme à l'aide de graphiques, de données bien choisies et d'analyse mathématique des modèles (lorsque cela est possible).
-	
-	J'aimerai dégager deux grands axes dans l'activité de la modélisation mathématique et informatique du système nerveux :
-	\begin{enumerate} \item Reproduire les propriétés physique et biologiques du système nerveux (ie ici des neurones et réseaux de neurones) 
-	\item Faire emerger des propriétés cognitives à partir de modèles du système nerveux et observer, analyser et comprendre cette emergence. \end{enumerate}
+Le développement de disciplines comme la psychophysiologie ou plus généralement les neurosciences nous permet d'envisager une naturalisation de la cognition humaine, de l'esprit humain (ou du moins d'une partie cet cognition, de cet esprit). Dire qu'on peut naturaliser la cognition, c'est dire que la cognition humaine serait explicable en des termes des sciences naturelles, notamment à travers la biologie et la physique du système nerveux humain. On s'inscrit alors dans un courant naturaliste, voire physicaliste. Cela permettrait alors d'étudier l'esprit, la cognition de la même manière que n'importe quel autre objet des sciences naturelles (ou physiques), et on aurait de plus une explication possible des états mentaux humains par certaines propriétés de la matière. Mais, et en accord avec une théorie fonctionnaliste, on ne va pas définir les états mentaux par ces propriétés de la matière, mais plutôt par leur fonction au sein du mental ou au sein de l'organisme, la matière n'étant que la base permettant la réalisation de cette fonction. Avec cette approche physicaliste-fonctionnaliste, il est donc théoriquement envisageable de reproduire le système cognitif, l'esprit humain dans une machine, pourvu que l'on reproduise toutes les propriétés physiques du système nerveux humain, le physicalisme nous permettant d'attribuer entièrement l'esprit humain aux propriétés physiques du système nerveux humain, et le fonctionnalisme nous permettant de nous affranchir d'une incarnation forcément dans le système nerveux pour nous étendre à une incarnation possible dans tout système \textit{fonctionnant comme} le système nerveux. \\
 
-	Un certain avancement dans le premier axe étant bien evidemment necessaire à l'accomplissement du second.
-	
-	De la deuxième proposition (2.) on peut dégager deux buts :  
-		\begin{enumerate} \item \textbf{Créer des machines douées de propriétés cognitives}: On a donc ici une intentionalité qui appartent au domaine de l'intelligence artificielle ou de la cognition artificielle et une méthodologie de réalisation qui appartient au domaine de la modélisation du système nerveux. Il est logique de se rapprocher voire de se confondre avec ces champs recherche dès lors où notre intention, dans notre tache de modélisation, est celle de tenter de faire emerger des propriétés cognitives d'une machine. On peut ici préciser l'approche de l'IA-modèle-du-cerveau en la comparant à une approche plus classique en intelligence artificelle : celle des réseaux de neurones formels, souvent appelées également réseaux de neurones artificiels.  \begin{tabular}{|p{4cm}|p{5cm}|p{5cm}|} \hline&IA-modèle-du-cerveau & Réseau de neurones formels \\\hline Le neurone & Modèle de neurone biologique & neurone formel \\\hline La connexion entre les neurones & modèle de synapses biologiques & connexions simple avec poids \\\hline  La méthode d'apprentissage & Methode d'apprentissage s'inspirant de ce qu'on sait de l'apprentissage dans le système nerveux & surtout apprentissage supervisé \\\hline   Architecture & Inspirée de celle du cerveau & cherchant à maximiser l'efficacité du système, généralement choisie par un humain \\\hline \end{tabular}  Il aurait été très interessant de débattre sur les questions : Est-ce que reproduire le fonctionnement du système nerveux humain est la seule voie pour atteindre une machine avec une intelligence proche de l'humain (et sur quels critères juger de la réussite d'une telle entreprise ?) ? Est-ce la plus simple ? On renvoie aux réferences en rapport (TO EDIT).
-		 \item \textbf{Mieux comprendre le fonctionnement du système nerveux, et par extension de la cognition humaine} : en effet posséder un modèle simulé par ordinateur du système nerveux ou d'une partie du système nerveux permettrait d'étudier l'impact de lésions dans un emplacement parfaitement controlées, d'avoir des données parfaitement "propres" et précises sur lesquelles travailler, de mettre en place beaucoup plus facilement des procèdures d'analyse en se servant des outils mathématiques et informatiques, etc ...
-Par exemple, supposons que l'on dispose d'un modèle du système nerveux, que l'on subdivise ce modèle en plusieurs sous-parties, et que l'on souhaite savoir quel est l'ensemble minimal de sous-parties du modèle necessaire pour que le modèle possède une certaine capacité C. Supposons de plus (et c'est une supposition assez lourde) que l'on possède une mesure M capable de déterminer si un système possède la capacité C (M(C) vrai si le système possède C, faux sinon). Alos on peut envisager de mettre en place un algorithme du type :  
+Mais qu'est-ce que ça veut dire \textit{fonctionner comme} le système nerveux ? Pour répondre à cette question, il nous faut nous tourner vers les sciences naturelles : neurosciences, biologie, physique, etc., qui étudient les propriétés biologiques, chimiques et physiques du cerveau. Ces sciences nous apprennent que le système nerveux humain est un système extrêmement complexe, et nos connaissances sur les propriétés biologiques, chimiques et physiques de ce système sont loin d'être complètes. Si l'on veut tenter de résumer le fonctionnement du système nerveux en quelques mots, on aurait tendance à dire qu'il s'agit d’un réseau organisé et adaptatif d'unités de base connectées entre elles, dont le but et de recevoir, analyser et transmettre de l'information. Cette réduction est très schématique mais semble pourtant contenir l'essence du fonctionnement du système nerveux humain. L'unité de base de ce système est le neurone, qui est une cellule capable de recevoir et de propager de l'information sous forme électrochimique (l'influx nerveux). Les connexions entre les neurones sont appelées synapses, ce sont des zones où l'information est transmise d'un neurone à l'autre de manière chimique, et il est également globalement admit que c'est au sein des synapses que prennent place les propriétés d'adaptation du réseau.\\
+
+Si l'on reste dans l'approche physicaliste-fonctionnaliste, il semble donc naturel de vouloir tenter de "reproduire" le fonctionnement du système nerveux humain dans \textit{autre chose que l'humain}, et le meilleur candidat actuellement en notre possession pour cet \text{autre chose} semble être l'ordinateur. Il est ici important d'être lucide sur le sens du mot "reproduire" dans cette phrase : d'une part, comme nous l'avons dit, nous sommes loin d'avoir une connaissance exhaustive des propriétés des neurones et des synapses, et de plus le système nerveux ne se résume pas en réalité qu'aux neurones et synapses (il faudrait prendre en compte les cellules gliales, l'impact des hormones, reproduire le fonctionnement de toutes les afférences aux systèmes nerveux, comme les récepteurs cutanés, etc.) ; et d'autre part, en supposant une connaissance exhaustive du système nerveux, la reproduction exacte de son fonctionnement \textit{in silico} ne serait peut-être pas si aisée, notamment car le substrat biologique permet peut-être des fonctions difficilement reproductible dans un substrat électronique. C'est pour cela que plutôt que de parler de "reproduction" du fonctionnement du système nerveux, on parlera plutôt de modélisation du système nerveux, de modélisation de neurones et de synapses, dans le sens où on sélectionne les propriétés du système nerveux qui nous semblent les plus importantes dans son fonctionnement et où on essaye de les rendre intelligibles, pour la machine grâce à une formalisation mathématique et à des programmes permettant de simuler le comportement des modèles de neurone et de réseaux de neurones ; et pour l'homme à l'aide de graphiques, de données bien choisies et d'analyse mathématique des modèles (lorsque cela est possible).\\
+
+Il est assez ironique de voir que c'est l'ordinateur avec une architecture de type Von Neumann, qui traite l'information de manière sérielle, qui est aujourd'hui l'outil le plus utilisé pour simuler le système nerveux, qui est un système profondément parallèle. La puissance de calcul des ordinateurs d'aujourd'hui permet de simuler ce parallèlisme, mais de manière peu optimisée. Cette prédominance des ordinateurs  comme \textit{hardware} pour simuler le système nerveux est quelque chose qui est, je pense, amené à changer dans les prochaines années. En effet, l'informatique et l'éléctronique neuromorphiques sont des disciplines qui progressent très rapidement, avec notamment le developpement de composants éléctroniques à architecture massivement parallèle. Ces nouveaux types de \textit{hardware} semblent bien plus adaptés à la simulation du système nerveux, et il me semble que cela sera un element essentiel dans le futur de ce domaine.\\
+
+J'aimerai dégager deux grands axes dans l'activité de la modélisation mathématique et informatique du système nerveux :
+\begin{enumerate} \item Reproduire les propriétés physique et biologiques du système nerveux (c’est-à-dire ici des neurones et réseaux de neurones) 
+\item Faire émerger des propriétés cognitives à partir de modèles du système nerveux et observer, analyser et comprendre cette émergence. \end{enumerate}
+Un certain avancement dans le premier axe étant bien évidemment nécessaire à l'accomplissement du second. \\
+
+De la deuxième proposition (2.) on peut dégager deux buts : 
+\begin{enumerate} \item \textbf{Créer des machines douées de propriétés cognitives}: On a donc ici une intentionalité qui appartient au domaine de l'intelligence artificielle ou de la cognition artificielle et une méthodologie de réalisation qui appartient au domaine de la modélisation du système nerveux. Il est logique de se rapprocher voire de se confondre avec ces champs recherche dès lors où notre intention, dans notre tâche de modélisation, est celle de tenter de faire émerger des propriétés cognitives d'une machine. On peut ici préciser l'approche de l'IA-modèle-du-cerveau en la comparant à une approche plus classique en intelligence artificielle : celle des réseaux de neurones formels, souvent appelées également réseaux de neurones artificiels. \\ 
+
+\begin{tabular}{|p{4cm}|p{5cm}|p{5cm}|} \hline&IA-modèle-du-cerveau & Réseau de neurones formels \\\hline Le neurone & Modèle de neurone biologique & neurone formel \\\hline La connexion entre les neurones & modèle de synapses biologiques & connexions simple avec poids \\\hline La méthode d'apprentissage & Méthode d'apprentissage s'inspirant de ce qu'on sait de l'apprentissage dans le système nerveux & surtout apprentissage supervisé \\\hline Architecture & Inspirée de celle du cerveau & cherchant à maximiser l'efficacité du système, généralement choisie par un humain \\\hline \end{tabular} \\ 
+
+Il aurait été très intéressant de débattre sur les questions : Est-ce que reproduire le fonctionnement du système nerveux humain est la meilleure voie pour atteindre une machine avec une intelligence proche de l'humain, ce qu'on appelle généralement une intelligence générale ? Est-ce la plus simple ? Et sur quels critères juger de la réussite d'une telle entreprise ? (METTRE DES REFS) 
+\item \textbf{Mieux comprendre la cognition humaine} : en effet posséder un modèle simulé par ordinateur du système nerveux ou d'une partie du système nerveux permettrait d'étudier l'impact de lésions dans un emplacement parfaitement contrôlés, d'avoir des données parfaitement "propres" et précises sur lesquelles travailler, de mettre en place beaucoup plus facilement des procédures d'analyse en se servant des outils mathématiques et informatiques, etc.
+Par exemple, supposons que l'on dispose d'un modèle du système nerveux, que l'on subdivise ce modèle en plusieurs sous-parties, et que l'on souhaite savoir quel est l'ensemble minimal de sous-parties du modèle nécessaire pour que le modèle possède une certaine capacité C. Supposons de plus (et c'est une supposition assez lourde) que l'on possède une mesure M capable de déterminer si un système possède la capacité C (M(C) vrai si le système possède C, faux sinon). Alors on peut envisager de mettre en place un algorithme du type : 
 \begin{verbatim}
-Pour toutes les sous-parties du système  
-    Tenter d'enlever la sous-partie courante 
-    Si M(C) reste vrai:  
-        On enleve definitivement la sous-partie  
-    sinon:  
-        On réintègre la sous-partie dans le système
+Pour toutes les sous-parties du système 
+        Tenter d'enlever la sous-partie courante 
+        Si M(C) reste vraie : 
+                On enlève définitivement la sous-partie 
+        Sinon : 
+                On réintègre la sous-partie dans le système
 \end{verbatim}
-		Si les sous-parties en lesquelles on a subdivisé le système sont des zones spatiales, c'est-à-dire des ensembles de neurones (voire un neurone), alors cette algorithme revient, dans une approche plus classique, à faire des lésions successives de zones du cerveau. Si les sous-parties sont des propriétés des neurones ou des synapses, cela revient dans une approche classique, à bloquer successivement, à l'aide de composantes chimiques par exemple, certaines propriétés des neurones ou des synapses.  
-Un modèle informatique du système nerveux permettrait de répondre à ce genre de question de manière certaine (à l'intérieur du modèle) et rapide. Il est également important d'insister sur la facilité d'acquistion de données aussi précises que l'on veut (dans la limite de la précision de l'ordinateur). \end{enumerate}
+Si les sous-parties en lesquelles on a subdivisé le système sont des zones spatiales, c'est-à-dire des ensembles de neurones (voire un neurone), alors cet algorithme revient, dans une approche plus classique, à faire des lésions successives de zones du cerveau. Si les sous-parties sont des propriétés des neurones ou des synapses, cela revient dans une approche classique, à bloquer successivement, à l'aide de composantes chimiques par exemple, certaines propriétés des neurones ou des synapses. 
+Un modèle informatique du système nerveux permettrait de répondre à ce genre de question de manière certaine (à l'intérieur du modèle) et rapide. Il est également important d'insister sur la facilité d'acquisition de données aussi précises que l'on veut (dans la limite de la précision de l'ordinateur). Enfin, l'activité de modélisation invite souvent à se poser "les bonnes questions" pour comprendre profondément le système que l'on cherche à modéliser. \\ \end{enumerate}
 
-	Maintenant, tout en gardant en tête toutes ces idées, il est temps pour moi de définir plus précisement l'objet de ce travail, qui va se tourner vers les sciences formelles et naturelles. Ce travail a pour but d'appréhender et de rassembler les connaissances et les outils necessaires aux prétentions énoncées dans cette introduction, et non pas de répondre à ces prétentions. 
-	Dans une première partie, je m'interesserai aux différents modèles de neurones existants et je créerai mon propre outil de définition et de simulation de ces modèles en Python 3+. Dans une deuxième partie, je me tournerai vers les modèles de synapses et je m'interesserai aux manières de créer et simuler des réseaux de neurones \textit{in silico}, tout en créant mon propre outil de définition et de simulation de réseaux de spiking neurons en Python3+/Tensorflow. Dans une troisième partie, et à l'aide de l'outil créé dans la deuxième partie, je tenterai de reproduire les résultats de Herice et all 2016, c'est-à-dire construire un modèle des ganglions de la base capable de prendre des décisions sous forme de réseaux de spiking neurons.
-	
+Maintenant, tout en gardant en tête toutes ces idées, il est temps pour moi de définir plus précisément l'objet de ce travail, qui va se tourner vers les sciences formelles et naturelles. Ce travail a pour but d'appréhender et de rassembler les connaissances et les outils nécessaires aux prétentions énoncées dans cette introduction, et non pas de répondre à ces prétentions. 
+Dans une première partie, je m'intéresserai aux différents modèles de neurones existants et je créerai mon propre outil de définition et de simulation de ces modèles en Python 3+. Dans une deuxième partie, je me tournerai vers les modèles de synapses et je m'intéresserai aux manières de créer et simuler des réseaux de neurones \textit{in silico}, tout en créant mon propre outil de définition et de simulation de réseaux de spiking neurons en Python3+/Tensorflow. Il me semble que, pour pouvoir envisager de faire emerger des propriétés cognitives de modèles du système nerveux, il est important d'avoir des outils optimisés et faciles d'utilisation qui permettent de modéliser ses propriétés physiques et biologiques. Dans une troisième partie, et à l'aide de l'outil créé dans la deuxième partie, je tenterai de reproduire les résultats de Herice et all 2016, c'est-à-dire construire un modèle des ganglions de la base capable de prendre des décisions sous forme de réseaux de spiking neurons.
 \pagebreak
 
-	\textbf{Inscription de ce travail dans le courant connexionniste} 
+\textbf{Cognitivisme et Connexionnisme} 
 
-	Parmis les grands paradigmes qui ont été explorés dans l'étude de l'esprit humain en science, on peut citer (de manière non exhaustive) le behaviorisme, le cognitivisme et le connexionnisme. Le behaviorisme a tenté d'étudier l'humain en le réduisant à son comportement observable, c'est-à-dire ses interactions observables avec l'environnement. Cette approche est aujourd'hui considérée comme désuette, aussi, on ne s'attardera pas dessus. Le cognitivisme, paradigme fondateur des sciences cognitives, considère que le système cognitif humain peut (et doit) être étudié comme un système de traitement de l'information créant et manipulant des représentations symboliques du monde, ces représentations possédant des propriétés syntaxiques et sémantiques. Dans ce système cognitiviste, la pensée est comparée à une série d'application systématique de règles (ou dit plus simplement, un calcul, l'application d'un algorithme) sur les représentations. Cette approche algorithmique de la pensée pose de sérieux problèmes, dont notamment les deux principaux sont : l'impossibilité du traitement parallèle et la localisation du traitement symbolique (c'est-à-dire que la perte d'une partie des symboles ou des règles empeche complétement le système de fonctionner correctement).  
+Parmi les grands paradigmes qui ont été explorés dans l'étude de l'esprit humain en science encore en vigeur, on trouve principalement le cognitivisme et le connexionnisme. Le cognitivisme, paradigme fondateur des sciences cognitives, considère que le système cognitif humain peut (et doit) être étudié comme un système de traitement de l'information créant et manipulant des représentations symboliques du monde, ces représentations possédant des propriétés syntaxiques et sémantiques. Dans ce système cognitiviste, la pensée est comparée à une série d'application systématique de règles (ou dit plus simplement, un calcul, l'application d'un algorithme) sur les représentations. Cette approche algorithmique de la pensée pose de sérieux problèmes, dont notamment les deux principaux sont : l'impossibilité du traitement parallèle et la localisation du traitement symbolique (c'est-à-dire que la perte d'une partie des symboles ou des règles empêche complétement le système de fonctionner correctement). 
 
-	Pour pallier à ces deux failles, le connexionnisme modélise les phénomènes mentaux comme des processus émergents de réseaux d'unités simples interconnectées. Les différences entre le cognitivisme et le connexionnisme se situent au niveau de la localisation des propriétés syntaxiques et sémantiques et dans la forme des règles de manipulation. Dans le cognitivisme, les propriétés syntaxiques et sémantiques sont attribuées aux représentations et les règles de manipulation sont algorithmiques et linéaires tandis que dans le paradigme connexioniste, les propriétés syntaxiques et les règles de calculs sont représentées par un réseau d'unités de bases interconnectées et dépendent entiéremment du fonctionnement de ces unités et de l'architecture du réseaux, et les règles de calculs peuvent être massivement parallèles ; tandis que les propriétés sémantiques sont attribuées au réseau en lui-même (en entier). On observe ici que le système nerveux semble obéir à des principes connexionnistes, et de plus le connexionnisme permet de pallier aux failles du cognitivisme énoncées plus haut, c'est ainsi assez naturellement que ce travail, si il doit s'inscrire dans un courant des sciences cognitives, s'inscrirait dans celui du connexionnisme.
+Pour pallier à ces deux failles, le connexionnisme modélise les phénomènes mentaux comme des processus émergents de réseaux d'unités simples interconnectées. Les différences entre le cognitivisme et le connexionnisme se situent au niveau de la localisation des propriétés syntaxiques et sémantiques et dans la forme des règles de manipulation. Dans le cognitivisme, les propriétés syntaxiques et sémantiques sont attribuées aux représentations et les règles de manipulation sont algorithmiques et linéaires tandis que dans le paradigme connexionniste, les propriétés syntaxiques et les règles de calculs sont représentées par un réseau d'unités de bases interconnectées et dépendent entièrement du fonctionnement de ces unités et de l'architecture du réseaux, et les règles de calculs peuvent être massivement parallèles ; tandis que les propriétés sémantiques sont attribuées au réseau en lui-même (en entier). On observe ici que le système nerveux semble obéir à des principes connexionnistes, et de plus le connexionnisme permet de pallier aux failles du cognitivisme énoncées plus haut, c'est ainsi assez naturellement que ce travail, s’il doit s'inscrire dans de ces grands courants de l'étude de la cognition, s'inscrirait dans celui du connexionnisme.
 
 \begin{figure}[!h]
 \centering
-\includegraphics[scale=0.3]{imgs/1.JPG}
+\includegraphics[scale=0.35]{imgs/1.JPG}
 \caption{Illustration schématique du système cognitif humain dans certaines approches d'étude de la cognition humaine}
 \end{figure}
 
 \pagebreak
 
-	\textbf{Apparté : Motivation personnelles}
+\textbf{Aparté : Motivations personnelles}
 
-	 C'est donc avec ces idées (celles énoncées dans l'introduction pour ceux qui lisent dans le désordre) que j'aborde ce Travail Encadré de Recherche dans le cadre de ma troisème année de licence de Mathématiques et Informatique appliquées aux sciences humaines et sociales - Parcours Sciences Cognitives à l'université de Bordeaux. Ce TER a, je dois bien l'avouer, surtout une portée d'apprentissage pour moi, puisque j'espère qu'il me permettra d'acquérir les connaissances necessaire sur la modélisation du système nerveux pour ensuite poursuivre les buts énoncés dans l'introduction dans la suite de mes études, puis en recherche. Pour justifier la création de mes propres outils de définition et de simulation des modèles, je dirais que cela me permettra une compréhension profonde de la manière dont fonctionnent ces outils, notamment des méthodes de simulation numérique. De plus, il y a un manque d'outil de création de réseaux de spiking neurons en Python, et je pense que l'utilisation de tensorflow (bibliothèque de computation parallèle et optimisée) se revelera pertinente, et j'espère ainsi, au cours de ce travail et après, créer une bibliothèque de création de modèles de réseaux de neurones biologiques facile d'utilisation et optimisée en terme de computation, du moins autant que cela est possible. Enfin l'étude et la reproduction des travaux de Héricé et all 2016 permettront, en plus de m'apporter de la connaissance et de la pratique sur la base d'une partie de la littérature récente sur le sujet, d'apporter une justification de l'utilité de mon outil de simulation de réseaux de neurones.
+C'est donc avec ces idées (celles énoncées dans l'introduction pour ceux qui lisent dans le désordre) que j'aborde ce Travail Encadré de Recherche dans le cadre de ma troisième année de licence de Mathématiques et Informatique appliquées aux sciences humaines et sociales - Parcours Sciences Cognitives à l'université de Bordeaux. Ce TER a, je dois bien l'avouer, surtout une portée d'apprentissage pour moi, puisque j'espère qu'il me permettra d'acquérir les connaissances nécessaires sur la modélisation du système nerveux pour ensuite poursuivre les buts énoncés dans l'introduction dans la suite de mes études, puis en recherche. Pour justifier la création de mes propres outils de définition et de simulation des modèles, je dirais que cela me permettra une compréhension profonde de la manière dont fonctionnent ces outils, notamment des méthodes de simulation numérique. De plus, il y a un manque d'outil de création de réseaux de spiking neurons en Python, et je pense que l'utilisation de tensorflow (bibliothèque de computation parallèle et optimisée) se révèlera pertinente, et j'espère ainsi, au cours de ce travail et après, créer une bibliothèque de création de modèles de réseaux de neurones biologiques facile d'utilisation et optimisée en termes de computation, du moins autant que cela est possible. Enfin l'étude et la reproduction des travaux de Héricé et al. 2016 permettront, en plus de m'apporter de la connaissance et de la pratique sur la base d'une partie de la littérature récente sur le sujet, d'apporter une justification de l'utilité de mon outil de simulation de réseaux de neurones.
 
 \pagebreak
 
 \part{Modélisation d'un neurone}
-\section{Quelques rappels de neurobiologie}
-	Cette partie sera concise et aura pour but de rappeler quelques notions de neurobiologie necessaire à la compréhension de la suite, sans en faire trop. On suppose que le lecteur est déjà familier avec les notions fondamentales de la neurobiologie, si ce n'est pas le cas, on renvoie à Principles of Neural Science de Eric Kandel.  
-Le neurone est une cellule capable de recevoir et transmettre de l'information sous forme electro-chimique. On peut décomposer schématiquement les différentes étapes de la reception et transmition de l'information in vivo dans un neurone par :
+\section{Quelques rappels de neurobiologie} \label{rappelneuro1}
+Cette partie sera concise et aura pour but de rappeler quelques notions de neurobiologie nécessaires à la compréhension de la suite, sans en faire trop. On suppose que le lecteur est déjà familier avec les notions fondamentales de la neurobiologie, si ce n'est pas le cas, on renvoie à \cite{kandel2000principles}. 
+Le neurone est une cellule capable de recevoir et transmettre de l'information sous forme électrochimique. On peut décomposer schématiquement les différentes étapes de la réception et transmission de l'information \textit{in vivo} dans un neurone par :
 \begin{enumerate}
-	\item Reception de neurotransmetteurs et ouverture des canaux chimio-dépendants
-	\item Excitation electrique locale du neurone dû à l'ouverture des canaux chimio-dépedants
-	\item Lorsque l'excitation locale depasse un certain seuil, création d'un potentiel d'action
-	\item Transmition du potentiel d'action à travers l'axone
-	\item Libération de neurotransmetteur dans la fente synaptique dû à l'arrivée du potentiel d'action dans le bouton synaptique 
-	\item Repeter 1. pour le neurone post-synaptique
+\item Réception de neurotransmetteurs et ouverture des canaux chimio-dépendants
+\item Excitation électrique locale du neurone due à l'ouverture des canaux chimio-dépendants
+\item Lorsque l'excitation locale dépasse un certain seuil, création d'un potentiel d'action
+\item Transmission du potentiel d'action à travers l'axone
+\item Libération de neurotransmetteurs dans la fente synaptique due à l'arrivée du potentiel d'action dans le bouton synaptique 
+\item Répéter 1. pour le neurone post-synaptique
 \end{enumerate}
 
-	Lorsqu'on souhaite étudier les propriétés d'excitation d'un neurone en laboratoire, on va généralement provoquer l'excitation du neurone en injectant directement un courant electrique dans le neurone, et on va s'interesser à la production de potentiels d'action en fonction des propriétés du courant injecté, notamment de son intensité (technique de patch-clamp). 
+Lorsqu'on souhaite étudier les propriétés d'excitation d'un neurone en laboratoire, on va généralement provoquer l'excitation du neurone en injectant directement un courant électrique dans le neurone, et on va s'intéresser à la production de potentiels d'action en fonction des propriétés du courant injecté, notamment de son intensité (technique de patch-clamp). 
 
-	Dans cette idée d'étude de la production de potentiel d'action en fonction des propriétés d'un courant injecté directement dans le neurone, on ne décrira pas ici les mécanismes à l'oeuvre dans la synapse.
+Dans cette idée d'étude de la production de potentiel d'action en fonction des propriétés d'un courant injecté directement dans le neurone, on ne décrira pas ici les mécanismes à l'œuvre dans la synapse.
 
-	Le concept fondamental de neurobiologie en lien avec cette partie est celui de la création du potentiel d'action. On rappellera ici succintement les mecanismes neurobiologiques à l'oeuvre. On peut décomposer la génération d'un potentiel d'action en 5 phases :
-	\begin{enumerate} \item Dépolarisation faible : ouverture de certain canaux sodiques, entrée des ions sodium dans le milieu intracellulaire ;
-	\item Dépolarisation forte suite au dépassement de seuil : Lorsqu'un certain seuil de potentiel electrique est atteint (le potentiel de seuil), la membrane va subir une dépolarisation forte, allant jusqu'à un inversement de polarité où le potentiel de la membrane est d'environ 40 mV. Cette dépolarisation est due à l'ouverture massive de canaux sodiques. Une fois le changement de polarité effectué, l'inversion du gradient electrochimique va ralentir l'entrée des ions sodium dans la cellule ;
-	\item Repolarisation : L'ouverture des canaux potassiques et l'inactivation des canaux sodiques entraine la sortie massive d'ions potassium et un arret de l'entrée des ions sodium;
-	\item Hyperpolarisation : En continuité de la repolarisation, on observe que le potentiel membranaire ne revient pas directement au potentiel de repos, mais passe sous le potentiel de repos pendant un certain temps que l'on appelle la période refractaire. Cela est du au fait que les canaux potassiques restent ouverts plus longtemps que les canaux sodiques, on a donc une sortie d'ions K+ plus importante que necessaire pour revenir au potentiel de repos;
-	\item Retour au potentiel de repos : Le retour au potentiel de repos est assuré par la pompesodium/potassium.
-	\end{enumerate}
+Le concept fondamental de neurobiologie en lien avec cette partie est celui de la création du potentiel d'action. On rappellera ici succinctement les mécanismes neurobiologiques à l'œuvre. On peut décomposer la génération d'un potentiel d'action en 5 phases :
+\begin{enumerate} \item Dépolarisation faible : ouverture de certain canaux sodiques, entrée des ions sodium dans le milieu intracellulaire ;
+\item Dépolarisation forte suite au dépassement de seuil : Lorsqu'un certain seuil de potentiel électrique est atteint (le potentiel de seuil), la membrane va subir une dépolarisation forte, allant jusqu'à un inversement de polarité où le potentiel de la membrane est d'environ 40 mV. Cette dépolarisation est due à l'ouverture massive de canaux sodiques. Une fois le changement de polarité effectué, l'inversion du gradient électrochimique va ralentir l'entrée des ions sodium dans la cellule ;
+\item Repolarisation : L'ouverture des canaux potassiques et l'inactivation des canaux sodiques entraine la sortie massive d'ions potassium et un arrêt de l'entrée des ions sodium ;
+\item Hyperpolarisation : En continuité de la repolarisation, on observe que le potentiel membranaire ne revient pas directement au potentiel de repos, mais passe sous le potentiel de repos pendant un certain temps que l'on appelle la période réfractaire. Cela est dû au fait que les canaux potassiques restent ouverts plus longtemps que les canaux sodiques, on a donc une sortie d'ions K+ plus importante que nécessaire pour revenir au potentiel de repos ;
+\item Retour au potentiel de repos : Le retour au potentiel de repos est assuré par la pompe sodium/potassium.
+\end{enumerate}
 
 \begin{figure}[!h]
 \centering
 \includegraphics{imgs/2.JPG}
-\caption{Potentiel de la membrane en fonction du temps lors de la production d'un potentiel d'action}
+\caption{Potentiel de la membrane en fonction du temps lors de la production d'un potentiel d'action dans un neurone biologique}
 \end{figure}
 
-\section{Modele de Hodgkin Huxley}\label{hh}
-	L'approche de Hodgkin et Huxley sur la question de la modélisation de neurones est une approche qui possède une grande "clarté physiologique", dans le sens où chaque composante du modèle représente une réalité biologique ou electrique descriptible dans les termes de la neurobiologie. On peut ainsi attribuer au modèle de Hodgkin-Huxley une certaine cohérence et validité par rapport aux sciences naturelles (notamment neurobiologie encore une fois). Mais voyons ça plus en détails ..
-	
-	\subsection{La modélisation des canaux ioniques}
-		Comme nous l'avons rapellé dans 2., la génération de potentiels d'actions est gouvernée, au niveau moléculaire, par les dynamiques d'ouverture et de fermeture des canaux ioniques. Ces canaux peuvent être dans différents états : ouverts ou fermés, bien sur, mais aussi actifs ou inactifs, et il est necessaire qu'un canal soit à la fois dans l'état ouvert et actif pour que les ions puissent passer. Hodgkin-Huxley ont fait 2 hypothèses sur ces canaux ioniques dans leur travaux, sur la base d'observation des neurones biologiques : Premièrement, la génération du potentiel d'action est gouvernée par les mouvements des ions potassium et sodium, et pas des autres ions, et deuxièmement, les canaux sodiques et potassique sont divisés en différentes composantes. Les canaux potassiques se divisent en 4 composantes équivalentes qui gouverne l'ouverture du canal : le canal est ouvert lorsque les 4 composantes sont ouvertes. Les canaux potassiques étant de plus considérés comme toujours actif, le passage des ions est permit lorsque ces 4 composantes sont ouvertes. Les canaux sodiques, quand à eux, se divisent en 3 composantes gouvernant l'ouverture du canal, et 1 composante gouvernant l'activation du canal. Il est necessaire que les 3 composantes gouvernant l'ouverture soient ouvertes et que la composante gouvernant l'activation du canal soient active pour que les ions puissent passer dans le canal.
+\section{Modèle de Hodgkin Huxley}\label{hh}
+L'approche de Hodgkin et Huxley sur la question de la modélisation de neurones est une approche qui possède une grande "clarté physiologique", dans le sens où chaque composante du modèle représente une réalité biologique ou électrique descriptible dans les termes de la neurobiologie. On peut ainsi attribuer au modèle de Hodgkin-Huxley une certaine cohérence et validité par rapport aux sciences naturelles (notamment neurobiologie encore une fois). Mais voyons ça plus en détails ..
+\subsection{La modélisation des canaux ioniques}
+Comme nous l'avons rappelé dans \ref{rappelneuro1}, la génération de potentiels d'actions est gouvernée, au niveau moléculaire, par les dynamiques d'ouverture et de fermeture des canaux ioniques. Ces canaux peuvent être dans différents états : ouverts ou fermés, bien sûr, mais aussi actifs ou inactifs, et il est nécessaire qu'un canal soit à la fois dans l'état ouvert et actif pour que les ions puissent passer. Hodgkin-Huxley ont fait 2 hypothèses sur ces canaux ioniques dans leurs travaux, sur la base d'observation des neurones biologiques : premièrement, la génération du potentiel d'action est gouvernée par les mouvements des ions potassium et sodium, et pas des autres ions, et deuxièmement, les canaux sodiques et potassiques sont divisés en différentes composantes. Les canaux potassiques se divisent en 4 composantes équivalentes qui gouvernent l'ouverture du canal : le canal est ouvert lorsque les 4 composantes sont ouvertes. Les canaux potassiques étant de plus considérés comme toujours actifs, le passage des ions est permis lorsque ces 4 composantes sont ouvertes. Les canaux sodiques, quant à eux, se divisent en 3 composantes gouvernant l'ouverture du canal, et 1 composante gouvernant l'activation du canal. Il est nécessaire que les 3 composantes gouvernant l'ouverture soient ouvertes et que la composante gouvernant l'activation du canal soit active pour que les ions puissent passer.
 
-On notera $n \in [0, 1]$ la probabilité qu'une composante d'un canal potassique soit ouverte, et donc $(1-n)$ est la probabilité que la composante soit fermée. On sait que l'ouverture et la fermeture de ces canaux ioniques dépend du potentiel de membrane, ainsi, on a $\alpha_n$ et $\beta_n$ des fonctions du potentiel qui définissent respectivement le passage de l'état fermé  à l'état ouvert, et de l'état ouvert à l'état fermé. Si on connait la probabilité initale $n(t_0)$ que la composante soit ouverte en $t_0$, on peut déduire la probabilité que la composante soit ouverte pour tout $t$. En effet, la probabilité qu'une composante soit ouverte pendant $dt$ est la probabilité qu'on soit fermeé et qu'on passe de l'état fermée à l'état ouvert moins la probabilité qu'on soit ouvert et qu'on passe de l'état ouvert à l'état fermée. Ainsi, 
+On notera $n \in [0, 1]$ la probabilité qu'une composante d'un canal potassique soit ouverte, et donc $(1-n)$ est la probabilité que la composante soit fermée. On sait que l'ouverture et la fermeture de ces canaux ioniques dépend du potentiel de membrane, ainsi, on a $\alpha_n$ et $\beta_n$ des fonctions du potentiel qui définissent respectivement le passage de l'état fermé à l'état ouvert, et de l'état ouvert à l'état fermé. Si on connait la probabilité initiale $n(t_0)$ que la composante soit ouverte en $t=t_0$, on peut déduire la probabilité que la composante soit ouverte pour tout $t>t_0$. En effet, la probabilité qu'une composante soit ouverte pendant $dt$ est la probabilité qu'on soit à l'état fermé et qu'on passe de l'état fermé à l'état ouvert et qu'on soit dans l'état ouvert et qu'on ne passe pas de l'état ouvert à l'état fermé. Ainsi, 
 \begin{center} $\displaystyle \frac{\dd n}{\dd t} = \alpha_n(V)(1-n) - \beta_n(V) n$ \end{center}
-Et on peut réécrire cette question sous la forme :
+Et on peut réécrire cette equation sous la forme :
 \begin{center} $\displaystyle \tau_n \frac{\dd n}{\dd t} = n_{\infty} - n$ \end{center}
 avec $\tau_n = \frac{1}{\alpha_n+\beta_n}$ la constante de temps et $n_\infty = \frac{\alpha_n}{\alpha_n+\beta_n}$ la valeur de n à l'équilibre. \\
-Etant donné qu'il est nécessaire que les quatre composantes du canal soient ouvertes pour que le canal soit lui-même "ouvert", c'est-à-dire qu'il laisse passer les ions, la probabilités que le canal soit ouvert est la probabilité que les quatre composantes soient ouvertes, soit $n^4$.
+Etant donné qu'il est nécessaire que les quatre composantes du canal soient ouvertes pour que le canal soit lui-même "ouvert", c'est-à-dire qu'il laisse passer les ions, la probabilité que le canal soit ouvert est la probabilité que les quatre composantes soient ouvertes, soit $n^4$.
 
-Maintenant que nous avons définit les variations de la probabilité d'ouverture des canaux potassiques, nous allons faire de même pour les canaux sodiques. La différence ici par rapport au canal potassique est qu'il faut prendre en compte, en plus de l'ouverture et de la fermetture, l'activation et l'inactivation du canal. On devra donc utiliser deux probabilité différentes : $m \in [0,1]$ la probabilité qu'une composante controlant l'ouverture soit ouverte (et donc $(1-m)$ est la probabilité que la composante soit fermée) et $h \in [0,1]$ la probabilité que le canal soit actif (et donc $(1-h)$ la probabilité qu'il soit inactif). Etant donné que l'activation et l'inactivation n'est controlée que par une seule composante, l'activation ou l'inactivation de cette composante est equivalente à l'activation ou l'inactivation du canal. On définit $\alpha_m, \beta_m, \alpha_h, \beta_h$ les fonctions du potentiel qui définissent respectivement le passage de l'état fermé à l'état ouvert d'une composante controlant l'ouverture, le passage de l'état ouvert à l'éta fermé d'une composante controlant l'ouverture, le passage de l'état inactif à l'état actif du canal, le passage de l'état actif à l'état inactif du canal. Et, de la même manière que pour les canaux potassiques, on a les équations 
+Maintenant que nous avons défini les variations de la probabilité d'ouverture des canaux potassiques, nous allons faire de même pour les canaux sodiques. La différence ici par rapport au canal potassique est qu'il faut prendre en compte, en plus de l'ouverture et de la fermeture, l'activation et l'inactivation du canal. On devra donc utiliser deux probabilité différentes : $m \in [0,1]$ la probabilité qu'une composante contrôlant l'ouverture soit ouverte (et donc $(1-m)$ est la probabilité que la composante soit fermée) et $h \in [0,1]$ la probabilité que le canal soit actif (et donc $(1-h)$ la probabilité qu'il soit inactif). Etant donné que l'activation et l'inactivation n'est contrôlée que par une seule composante, l'activation ou l'inactivation de cette composante est équivalente à l'activation ou l'inactivation du canal. On définit $\alpha_m, \beta_m, \alpha_h, \beta_h$ les fonctions du potentiel qui définissent respectivement le passage de l'état fermé à l'état ouvert d'une composante contrôlant l'ouverture, le passage de l'état ouvert à l'état fermé d'une composante contrôlant l'ouverture, le passage de l'état inactif à l'état actif du canal, le passage de l'état actif à l'état inactif du canal. Et, de la même manière que pour les canaux potassiques, on a les équations 
 \begin{center} $\displaystyle \frac{\dd m}{\dd t} = \alpha_m(V)(1-m) - \beta_m(V) m$ \end{center}
 \begin{center} $\displaystyle \frac{\dd h}{\dd t} = \alpha_h(V)(1-h) - \beta_h(V) h$ \end{center}
 Que l'on peut réécrire comme ceci :
@@ -176,17 +189,17 @@ Que l'on peut réécrire comme ceci :
 avec encore une fois $\tau_m = \frac{1}{\alpha_m+\beta_m},~\tau_h = \frac{1}{\alpha_h+\beta_h} $ les constantes de temps et \\$m_\infty = \frac{\alpha_m}{\alpha_m+\beta_m},~h_\infty = \frac{\alpha_h}{\alpha_h+\beta_h}$ les valeurs de m et h à l'équilibre. \\
 Ici, il est nécessaire que le canal soit actif et que les trois composantes controlant l'ouverture soient ouvertes pour que le canal laisse passer les ions, ainsi la probabilité que le canal laisse passer les ions est $m^3h$.
 
-En plus des ces équations qui permettent de connaitre la probabilité qu'un canal soit ouvert au temps t, on va également définir les conductances d'un canal lorsqu'il est ouvert et le potentiel d'équilibre associé à chaque ion. On notera $\overline{g}_{Na}$ et $\overline{g}_K$ les conductances associées respectivement aux ions sodium et potassium, et $V_{Na}$ et $V_K$ les potentiels d'équilibre donné par la formule de Nerst pour respectivement les ions sodium et potassium.
+En plus des ces équations qui permettent de connaitre la probabilité qu'un canal soit ouvert au temps t, on va également définir les conductances d'un canal lorsqu'il est ouvert et le potentiel d'équilibre associé à chaque ion. On notera $\overline{g_{Na}}$ et $\overline{g_K}$ les conductances associées respectivement aux ions sodium et potassium, et $V_{Na}$ et $V_K$ les potentiels d'équilibre donné par la formule de Nernst pour respectivement les ions sodium et potassium.
 
-Pour finir, Hodgkin et Huxley ont également introduit dans leur modèle un "courant de fuite", c'est-à-dire un courant qui modélise l'impact de tous les échanges d'ions qui ne sont pas gouvernés par les canaux sodium et potassium. On va donc définir en plus $\overline{g}_L$ et $V_L$ respectivement la conductance et le potentiel d'equilibre associée à ce courant de fuite.
+Pour finir, Hodgkin et Huxley ont également introduit dans leur modèle un "courant de fuite", c'est-à-dire un courant qui modélise l'impact de tous les échanges d'ions qui ne sont pas gouvernés par les canaux sodium et potassium. On va donc définir en plus $\overline{g_L}$ et $V_L$ respectivement la conductance et le potentiel d'équilibre associée à ce courant de fuite.
 
 \pagebreak
-	\subsection{L'équation du potentiel de membrane}
-Il est possible de représenter un neurone dans le modèle de Hosgkin-Huxley comme un circuit electrique (voir \ref{HHFIG}). Dans cette représentation, on peut assimiler le condensateur à la bicouche lipidique isolante de la membrane, la résistance aux passages des ions à travers la membrane, et la pile aux gradient de concentration. Grace à cette représentation, il est plus facile d'expliquer l'équation représentant les variations du potentiel de membrane du neurone. On va ici en faire une explication intuitive en se basant sur des grands principes issus des sciences physiques :
+\subsection{L'équation du potentiel de membrane} \label{HHEQPOT}
+Il est possible de représenter un neurone dans le modèle de Hodgkin-Huxley comme un circuit électrique (voir figure \ref{HHFIG}). Dans cette représentation, on peut assimiler le condensateur à la bicouche lipidique isolante de la membrane, la résistance aux passages des ions à travers la membrane, et la pile aux gradients de concentration. Grace à cette représentation, il est plus facile d'expliquer l'équation représentant les variations du potentiel de membrane du neurone. On va ici en faire une explication intuitive en se basant sur des grands principes issus des sciences physiques :\\
 \begin{itemize}
-\item La loi d'Ohm énonce que l'on peut relier la valeur d'une resistance en ohms (notée R), la tension aux bornes de la resistance (notée V) et le courant qui traverse la resistance (noté I) par la relation : \begin{center}$ V = RI $\end{center}
-\item La loi des noeuds de Kirchhoff stipule que "la somme algébrique des intensités des courants qui entrent par un noeud est égale à la somme algébrique des intensités des courants qui en sortent"
-\item Un condensateur est constitué de deux armatures séparées par un isolant. La loi du condensateur est : \begin{center} $Q = CV$ \end{center} avec Q la charge du condensateur, C la capacité du condensateur et V la tension aux bornes du condensateur.\\De plus, la dérivée de la charge par rapport au temps est l'intensité du courant, c'est-à-dire \begin{center}$\displaystyle \frac{\dd Q}{\dd t} = I $ \end{center}
+\item La loi d'Ohm énonce que l'on peut relier la valeur d'une résistance en ohms (notée R), la tension aux bornes de la résistance (notée V) et le courant qui traverse la résistance (noté I) par la relation : \begin{center}$ V = RI $\end{center}
+\item La loi des nœuds de Kirchhoff stipule que "la somme algébrique des intensités des courants qui entrent par un nœud est égale à la somme algébrique des intensités des courants qui en sortent"
+\item Un condensateur est constitué de deux armatures séparées par un isolant. La loi du condensateur est : \begin{center} $Q = CV$ \end{center} avec Q la charge du condensateur, C la capacité du condensateur et V la tension aux bornes du condensateur. \\ De plus, la dérivée de la charge par rapport au temps est l'intensité du courant, c'est-à-dire \begin{center}$\displaystyle \frac{\dd Q}{\dd t} = I $ \end{center}
 \item On définit la conductance g associée à une résistance comme l'inverse de la valeur de la résistance \begin{center} $g = \displaystyle \frac{1}{R}$ \end{center}
 \end{itemize}
 
@@ -194,62 +207,60 @@ Il est possible de représenter un neurone dans le modèle de Hosgkin-Huxley com
 \begin{figure}[!h]
 \centering
 \includegraphics[scale=0.5]{imgs/3.png}
-\caption{Représentation du modèle de Hodgkin-Huxley sous forme d'un circuit electrique (\scriptsize{https://thephysicsdomain.wordpress.com/2013/03/28/047-hodgkin-huxley-hysteria/})}
+\caption{Représentation du modèle de Hodgkin-Huxley sous forme d'un circuit électrique (\scriptsize{https://thephysicsdomain.wordpress.com/2013/03/28/047-hodgkin-huxley-hysteria/})}
 \label{HHFIG}
 \end{figure}
 
-	Dans ce paragraphe on se reportera à la figure \ref{HHFIG}. On va noter $I_{app}$ le courant appliquée sur la cellulle de l'extérieur. De la loi de Kirchhoff, on peut déduire que \begin{equation} I_C+I_{Na}+I_K+I_L-I_{app} = 0  \label{Toteq}\end{equation} 
+Dans ce paragraphe on se reportera à la figure \ref{HHFIG}. On va noter $I_{app}$ le courant appliquée sur la cellule de l'extérieur. De la loi de Kirchhoff, on peut déduire que \begin{equation} I_C+I_{Na}+I_K+I_L-I_{app} = 0 \label{Toteq}\end{equation} 
 
 De la définition d'un condensateur, on a \begin{equation} I_C = \frac{\dd Q}{\dd t} = C\frac{\dd V}{\dd t} \label{Ceq}\end{equation} 
 
-De plus, par la loi d'Ohm, on peut noter \begin{center}$I_{Na} = \frac{V^*}{R^*} = g^*V^*$ \end{center} avec $V^*$ la tension aux bornes de la resistance et $g^*$ la conductance associée aux courant sodique.\\La tension aux bornes de la résistance $V^*$ est attenué par la présence de la pile, et on a ainsi $V^*  = V - V_{Na}$. Quant à la conductance associée aux courants sodiques, elle dépend de la conductance maximale $\overline{g}_{Na}$ et de la proportion de canaux sodiques laissant passer les ions (c'est-à-dire ainsi approximativement de la probabilité qu'un canal sodique laisse passer les ions, puisqu'on considère que le nombre de canaux est très grand), et on a $g^* = \overline{g}_{Na}m^3h$. Et donc, \begin{equation}I_{Na} = \overline{g}_{Na}m^3h(V-V_{Na})  \label{Naeq}\end{equation}
+De plus, par la loi d'Ohm, on peut noter \begin{equation}I_{Na} = \frac{V^*}{R^*} = g^*V^* \nonumber\end{equation} avec $V^*$ la tension aux bornes de la résistance et $g^*$ la conductance associée aux courant sodique.\\La tension aux bornes de la résistance $V^*$ est atténuée par la présence de la pile, et on a ainsi $V^* = V - V_{Na}$. Quant à la conductance associée aux courants sodiques, elle dépend de la conductance maximale $\overline{g_{Na}}$ et de la proportion de canaux sodiques laissant passer les ions (c'est-à-dire ici approximativement de la probabilité qu'un canal sodique laisse passer les ions, puisqu'on considère que le nombre de canaux est très grand), et on a $g^* = \overline{g_{Na}}m^3h$. Et donc, \begin{equation}I_{Na} = \overline{g_{Na}}m^3h(V-V_{Na}) \label{Naeq}\end{equation}
 Et, par le même raisonnement, 
-\begin{equation}I_{K} = \overline{g}_{K}n^4(V-V_{K}) \label{Keq}\end{equation}
+\begin{equation}I_{K} = \overline{g_{K}}n^4(V-V_{K}) \label{Keq}\end{equation}
 Et
-\begin{equation}I_{L} = \overline{g}_{L}(V-V_{L}) \label{Leq}\end{equation}
+\begin{equation}I_{L} = \overline{g_{L}}(V-V_{L}) \label{Leq}\end{equation}
 
-En introduisant \ref{Ceq}, \ref{Naeq}, \ref{Keq} et \ref{Leq} dans \ref{Toteq}, on trouve une equation décrivant l'évolution du potentiel membranaire : \begin{center}$\displaystyle  C\frac{\dd V}{\dd t} = -\overline{g}_Kn^4(V-V_K)- \overline{g}_{Na}m^3h(V-V_{Na})-\overline{g}_L(V-V_L)+I_{app}$ \end{center}
-	A partir de cette dernière equation et des equations décrivant les comportements des canaux ioniques, on peut donner le système d'équations de Hodgkin-Huxley dans son entierté : \\ 
-\begin{empheq}[left=\empheqlbrace]{gather} \displaystyle  C\frac{\dd V}{\dd t} = -\overline{g}_Kn^4(V-V_K)- \overline{g}_{Na}m^3h(V-V_{Na})-\overline{g}_L(V-V_L)+I_{app}\nonumber\\ \displaystyle \frac{\dd n}{\dd t} = \alpha_n(V)(1-n) - \beta_n(V) n \nonumber\\ \displaystyle \frac{\dd m}{\dd t} = \alpha_m(V)(1-m) - \beta_m(V) m\nonumber \\ \displaystyle \frac{\dd h}{\dd t} = \alpha_h(V)(1-h) - \beta_h(V) h \nonumber\end{empheq}
-
-
+En introduisant \ref{Ceq}, \ref{Naeq}, \ref{Keq} et \ref{Leq} dans \ref{Toteq}, on trouve une équation décrivant l'évolution du potentiel membranaire : \begin{center}$\displaystyle C\frac{\dd V}{\dd t} = -\overline{g_K}n^4(V-V_K)- \overline{g_{Na}}m^3h(V-V_{Na})-\overline{g_L}(V-V_L)+I_{app}$ \end{center}
+A partir de cette dernière équation et des équations décrivant les comportements des canaux ioniques, on peut donner le système d'équations de Hodgkin-Huxley dans son entièreté : \\ 
+\setcounter{equation}{0}\begin{empheq}[left=\empheqlbrace]{gather} \displaystyle C\frac{\dd V}{\dd t} = -\overline{g_K}n^4(V-V_K)- \overline{g_{Na}}m^3h(V-V_{Na})-\overline{g_L}(V-V_L)+I_{app}\\ \displaystyle \frac{\dd n}{\dd t} = \alpha_n(V)(1-n) - \beta_n(V) n\\ \displaystyle \frac{\dd m}{\dd t} = \alpha_m(V)(1-m) - \beta_m(V) m \\ \displaystyle \frac{\dd h}{\dd t} = \alpha_h(V)(1-h) - \beta_h(V) h\end{empheq}
 
 
-	\subsection{Simulation avec SNN.single et explication des dynamiques}
 
-On va simuler le modèle de Hodgkin-Huxley à l'aide de l'outil informatique que nous avons mis en place. Certains graphiques ne seront pas expliqués et leur interprétation sera laissé au lecteur.
 
-Pour simuler numériquement le modèle, il faut avoir des valeurs pour $C_M$, les conductances $\overline{g}_X$, les potentiels d'équilibre $V_X$, et les fonctions $\alpha_X$ et $\beta_X$.
-En tentant de rapprocher les comportements du modèle de données phyiologiques recoltées à l'aide de la technique de patch-clamp (originellement dans les travaux de Hodgkin-Huxley sur un axone de calamar, ayant la particularité d'être très gros), on trouve les valeurs pour les paramètres : \\\\
-$ C_M = 1,~ \overline{g}_K = 36,~ \overline{g}_{Na} = 120,~ \overline{g}_L = 0.3,~ V_K = -77,~ V_{Na} = 50,~ V_L = -54.4,\\\\
+\subsection{Simulation avec SNN.single et explication des dynamiques}
+
+On va simuler le modèle de Hodgkin-Huxley à l'aide de l'outil informatique que nous avons mis en place.
+
+Pour simuler numériquement le modèle, il faut avoir des valeurs pour $C_M$, les conductances $\overline{g_X}$, les potentiels d'équilibre $V_X$, et les fonctions $\alpha_X$ et $\beta_X$.
+En tentant de rapprocher les comportements du modèle de données physiologiques récoltées à l'aide de la technique de patch-clamp (originellement dans les travaux de Hodgkin-Huxley sur un axone de calamar, ayant la particularité d'être très gros et donc très facile à étudier), on trouve les valeurs pour les paramètres : \\\\
+$ C_M = 1,~ \overline{g_K} = 36,~ \overline{g_{Na}} = 120,~ \overline{g_L} = 0.3,~ V_K = -77,~ V_{Na} = 50,~ V_L = -54.4,\\\\
 \alpha_n(V) =\frac{ 0.01(-V-55)}{\e^{\frac{-V-55}{10}}-1},~ \beta_n=0.125e^{\frac{-V-65}{80}}\\\\
 \alpha_n(V) =\frac{ 0.1(-V-40)}{\e^{\frac{-V-40}{10}}-1},~ \beta_n=4e^{\frac{-V-65}{18}}\\\\
 \alpha_n(V) =0.07e^{\frac{-V-65}{20}},~ \beta_n=\frac{1}{1+e^{\frac{-V-35}{10}}}$
+\clearpage
 
-\begin{lstlisting}[caption = {Défintion du modèle}]
+\begin{lstlisting}[caption = {Hodgkin-Huxley : Définition du modèle}]
 from .core import Variable, Model
 from .tools import Function as F
 
 V = Variable(name='V', init_value=-65,
-		ddt='(1/Cm)*(-gk*n**4*(V-Vk)-gna*m**3*h*(V-Vna)-gl*(V-Vl)+Iapp)')
+ddt='(1/Cm)*(-gk*n**4*(V-Vk)-gna*m**3*h*(V-Vna)-gl*(V-Vl)+Iapp)')
 n = Variable(name='n', ddt='alpha_n*(1-n)-beta_n*n', init_value=1/3)
 m = Variable(name='m', ddt='alpha_m*(1-m)-beta_m*m', init_value=0)
 h = Variable(name='h', ddt='alpha_h*(1-h)-beta_h*h', init_value=2/3)
 HH_model = Model(V, n, m, h, Cm=1, gk=36, gna=120, 
-				 gl=0.3, Vk=-77, Vna=50, Vl=-54.4, 
-				 alpha_n=F('V', lambda V: 0.01*(-V-55)/(e**((-V-55)/10) -1)), 
-				 beta_n=F('V', lambda V: 0.125*e**((-V-65)/80)),
-				 alpha_m=F('V', lambda V: 0.1*(-V-40)/(e**((-V-40)/10) -1) ),
-				 beta_m=F('V', lambda V: 4*e**((-V-65)/18)),
-				 alpha_h=F('V', lambda V: 0.07*e**((-V-65)/20)),
-				 beta_h=F('V', lambda V: 1/(1+e**((-V-35)/10))), 
-				 Iapp=0)
+	gl=0.3, Vk=-77, Vna=50, Vl=-54.4, 
+	alpha_n=F('V', lambda V: 0.01*(-V-55)/(e**((-V-55)/10) -1)), 
+	beta_n=F('V', lambda V: 0.125*e**((-V-65)/80)),
+	alpha_m=F('V', lambda V: 0.1*(-V-40)/(e**((-V-40)/10) -1) ),
+	beta_m=F('V', lambda V: 4*e**((-V-65)/18)),
+	alpha_h=F('V', lambda V: 0.07*e**((-V-65)/20)),
+	beta_h=F('V', lambda V: 1/(1+e**((-V-35)/10))), 
+	Iapp=0)
 \end{lstlisting}
 
-\begin{lstlisting}[caption = {Simulation du modèle 1}]
-import math
-import random as rd 
-from snn.single.tools import Function as F
+\begin{lstlisting}[caption = {Hodgkin-Huxley : Simulation du modèle pour $I_{app} = 5$}]
 from snn.single.usual_models import HH_model as hh
 import matplotlib.pyplot as plt
 
@@ -265,15 +276,12 @@ history, _ = hh.simulation(T, dt)
 
 # Plot the input current and the membrane 
 # potential evolution throught time
-fig1 = hh.plot(T, dt, keep=['V', 'Iapp'], history=history)
+hh.plot(T, dt, keep=['V', 'Iapp'], history=history)
 
 # Print m, n, h evolution when the membrane potentiel changes
-fig3 = plt.figure() ; plt.ylabel('n'), plt.xlabel('V')
-plt.plot(history['V'], history['n'])
-fig4 = plt.figure() ; plt.ylabel('m'), plt.xlabel('V')
-plt.plot(history['V'], history['m']) 
-fig5 = plt.figure() ; plt.ylabel('h'), plt.xlabel('V')
-plt.plot(history['V'], history['h']) 
+for var in ['n', 'm', 'h']:
+	plt.figure() ; plt.ylabel(var), plt.xlabel('V')
+	plt.plot(history['V'], history[var])
 
 plt.show()
 \end{lstlisting}
@@ -283,7 +291,7 @@ plt.show()
 \begin{figure}[!h]
 \centering
 \includegraphics[scale=0.5]{imgs/hh11.png}
-\caption{Evolution du courant appliqué et du potentiel de membrane au cours du temps}
+\caption{Hodgkin-Huxley : Evolution du potentiel de membrane au cours du temps pour $I_{app} = 5$}
 \label{hh11}
 \end{figure}
 
@@ -291,22 +299,22 @@ plt.show()
 \begin{minipage}[l]{.3\linewidth}
 \centering
 \includegraphics[scale=0.35]{imgs/hh12.png}
-    \end{minipage}\hfill
+\end{minipage}\hfill
 \begin{minipage}[l]{.3\linewidth}
 \centering
 \includegraphics[scale=0.35]{imgs/hh13.png}
-    \end{minipage}\hfill
+\end{minipage}\hfill
 \begin{minipage}[l]{.3\linewidth}
 \centering
 \includegraphics[scale=0.35]{imgs/hh14.png}
-    \end{minipage}\hfill
-\caption{n, m et h en fonction de v}
+\end{minipage}\hfill
+\caption{Hodgkin-Huxley : n, m et h en fonction de V pour $I_{app} = 5$}
 \label{hh1234}
 \end{figure}
 
 \clearpage
 
-\begin{lstlisting}[caption = {Simulation du modèle 2}]
+\begin{lstlisting}[caption = {Hodgkin-Huxley : Simulation du modèle pour $I_{app} = 10$}]
 hh['Iapp'] = 10
 T, dt = 100, 0.01
 \end{lstlisting}
@@ -314,7 +322,7 @@ T, dt = 100, 0.01
 \begin{figure}[!h]
 \centering
 \includegraphics[scale=0.4]{imgs/hh21.png}
-\caption{Evolution du courant appliqué et du potentiel de membrane au cours du temps}
+\caption{Hodgkin-Huxley : Evolution du potentiel de membrane au cours du temps pour $I_{app} = 10$}
 \label{hh21}
 \end{figure}
 
@@ -322,36 +330,40 @@ T, dt = 100, 0.01
 \begin{minipage}[l]{.3\linewidth}
 \centering
 \includegraphics[scale=0.35]{imgs/hh22.png}
-    \end{minipage}\hfill
+\end{minipage}\hfill
 \begin{minipage}[l]{.3\linewidth}
 \centering
 \includegraphics[scale=0.35]{imgs/hh23.png}
-    \end{minipage}\hfill
+\end{minipage}\hfill
 \begin{minipage}[l]{.3\linewidth}
 \centering
 \includegraphics[scale=0.35]{imgs/hh24.png}
-    \end{minipage}\hfill
-\caption{n, m et h en fonction de v}
+\end{minipage}\hfill
+\caption{Hodgkin-Huxley : n, m et h en fonction de V pour $I_{app} = 10$}
 \label{hh2234}
 \end{figure}
 
-Dans \ref{hh11}, on peut voir que le modèle est bien capable de produire un potentiel d'action, en tout cas le comportement de la variable V représentant le potentiel de membrane a un comportement similaire aux potentiel de membrane \textit{in vivo}. Le courant appliqué, qui est constant égal à 5, est suffisant pour provoquer un potentiel d'action mais insuffisant pour en provoquer un deuxième. Au contraire, dans \ref{hh21}, le courant constant égal à 10 est suffisant pour provoquer un train de potentiel d'action, à partir du deuxième potentiel d'action, on a un comportement périodique du système, qui va continuer de générer des potentiels d'action si le courant appliqué reste constant. Cela peut également se voir sur les représentations de m, n et h en fonction de V. Lorsqu'il n'y a qu'un seul potentiel d'action puis une convergence vers un état stable , on peut voir dans \ref{hh1234} la présence d'un équilibre attracteur pour m, n et h, ce qui signifie que l'état du système va se stabiliser. Au contraire, lorsqu'on a une génération périodique de potentil d'action comme dans \ref{hh2234}, on voit bien que le comportement de m, n et h est cyclique et qu'il n'y a pas d'équilibre attracteur.
+Dans \ref{hh11}, on peut voir que le modèle est bien capable de produire un potentiel d'action, en tout cas le comportement de la variable V représentant le potentiel de membrane a un comportement similaire aux potentiel de membrane \textit{in vivo}. Le courant appliqué, qui est constant égal à 5, est suffisant pour provoquer un potentiel d'action mais insuffisant pour en provoquer un deuxième. Au contraire, dans \ref{hh21}, le courant constant égal à 10 est suffisant pour provoquer un train de potentiel d'action, à partir du deuxième potentiel d'action, on a un comportement périodique du système, qui va continuer de générer des potentiels d'action si le courant appliqué reste constant. Cela peut également se voir sur les représentations de m, n et h en fonction de V. Lorsqu'il n'y a qu'un seul potentiel d'action puis une convergence vers un état stable, on peut voir dans \ref{hh1234} la présence d'un équilibre attracteur pour m, n et h, ce qui signifie que l'état du système va se stabiliser. Au contraire, lorsqu'on a une génération périodique de potentiel d'action comme dans \ref{hh2234}, on voit bien que le comportement de m, n et h est cyclique et qu'il n'y a pas d'équilibre attracteur.
 
-\begin{lstlisting}[caption = {Simulation du modèle 3}]
+\begin{lstlisting}[caption = {Hodgkin-Huxley : Simulation du modèle pour $I_{app}$ définie par morceau}]
+from snn.single.tools import Function as F
 hh['Iapp'] = F('t', 
-								lambda t : 5 if 200<t<400 else 10 if 600<t<800 else 0)
+lambda t : 5 if 200<t<400 else 10 if 600<t<800 else 0)
 T, dt = 1000, 0.01
 \end{lstlisting}
 
 \begin{figure}[!h]
 \centering
 \includegraphics[scale=0.8]{imgs/hh31.png}
-\caption{Evolution du courant appliqué et du potentiel de membrane au cours du temps}
+\caption{Hodgkin-Huxley : Evolution du potentiel de membrane au cours du temps pour $I_{app}$ définie par morceau}
 \label{hh31}
 \end{figure}
 
 \clearpage
-\begin{lstlisting}[caption = {Simulation du modèle 4}]
+\begin{lstlisting}[caption = {Hodgkin-Huxley : Simulation du modèle pour $I_{app} = 5\cos(\frac{t}{10})+\epsilon(\frac12)$}]
+import math
+import random as rd 
+from snn.single.tools import Function as F
 hh['Iapp'] = F('t', lambda t : 5*math.cos(t/10) + rd.expovariate(0.5))
 T, dt = 100, 0.01
 \end{lstlisting}
@@ -359,59 +371,59 @@ T, dt = 100, 0.01
 \begin{figure}[!h]
 \centering
 \includegraphics[scale=0.8]{imgs/hh41.png}
-\caption{Evolution du courant appliqué et du potentiel de membrane au cours du temps}
+\caption{Hodgkin-Huxley : Evolution du potentiel de membrane au cours du temps pour $I_{app} = 5\cos(\frac{t}{10})+\epsilon(\frac12)$}
 \label{hh41}
 \end{figure}
 
 \clearpage 
-\begin{lstlisting}[caption = {Simulation du modèle 5}]
+\begin{lstlisting}[caption = {Hodgkin-Huxley : Evolution de m, n et h lors d'un potentiel d'action}]
 hh['Iapp'] = 10
 T, dt = 12, 0.01
-fig2 = hh.plot(T, dt, keep=['m', 'n', 'h'], #subplotform='31', 
-			 history=history)
+hh.plot(T, dt, keep=['m', 'n', 'h'], #subplotform='31', 
+history=history)
 \end{lstlisting}
 
 \begin{figure}[!h]
 \centering
 \includegraphics[scale=0.5]{imgs/hh51.png}
-\caption{Evolution du courant appliqué et du potentiel de membrane au cours du temps}
+\caption{Hodgkin-Huxley : Evolution du potentiel de membrane lors d'un potentiel d'action}
 \label{hh51}
 \end{figure}
 
 \begin{figure}[!h]
 \centering
 \includegraphics[scale=0.5]{imgs/hh52.png}
-\caption{Evolution des paramètres m, n et h lors de la génération d'un potentiel d'action}
+\caption{Hodgkin-Huxley : Evolution des paramètres m, n et h lors de la génération d'un potentiel d'action}
 \label{hh52}
 \end{figure}
 
 \clearpage
 
-\begin{lstlisting}[caption = {Simulation du modèle 4}]
+\begin{lstlisting}[caption = {Hodgkin-Huxley : Constantes de temps et états à l'équilibre}]
 hh['Iapp'] = 10
 T, dt = 12, 0.01
 
 #Plotting time constant
 plt.figure()
 plt.plot(history['V'], 1/(history['alpha_n']+history['beta_n']),
-	label='\u03C4_n')
+label='\u03C4_n')
 plt.plot(history['V'], 1/(history['alpha_m']+history['beta_m']),
-	label='\u03C4_m')
+label='\u03C4_m')
 plt.plot(history['V'], 1/(history['alpha_h']+history['beta_h']),
-	label='\u03C4_h')
+label='\u03C4_h')
 plt.legend()
 
 #Plotting equilibrium state
 plt.figure()
 plt.plot(history['V'],
-	history['alpha_n']/(history['alpha_n']+history['beta_n']),
-	label='n_\u221E')
+history['alpha_n']/(history['alpha_n']+history['beta_n']),
+label='n_\u221E')
 plt.plot(history['V'],
-	history['alpha_m']/(history['alpha_m']+history['beta_m']),
-	label='m_\u221E')
+history['alpha_m']/(history['alpha_m']+history['beta_m']),
+label='m_\u221E')
 plt.plot(history['V'],
-	history['alpha_h']/(history['alpha_h']+history['beta_h']),
-	label='h_\u221E')
+history['alpha_h']/(history['alpha_h']+history['beta_h']),
+label='h_\u221E')
 plt.legend()
 
 plt.show()
@@ -420,119 +432,217 @@ plt.show()
 \begin{figure}[!h]
 \centering
 \includegraphics[scale=0.65]{imgs/hhinfty.png}
-\caption{Evolution des paramètres $n_\infty$, $m_\infty$ et $h_\infty$ lors de la génération d'un potentiel d'action}
+\caption{Hodgkin-Huxley : Evolution des paramètres $n_\infty$, $m_\infty$ et $h_\infty$ lors de la génération d'un potentiel d'action}
 \label{hhinfty}
 \end{figure}
 
 \begin{figure}[!h]
 \centering
 \includegraphics[scale=0.65]{imgs/hhtime.png}
-\caption{Evolution des paramètres $\tau_n$, $\tau_m$, $\tau_h$ lors de la génération d'un potentiel d'action}
+\caption{Hodgkin-Huxley : Evolution des paramètres $\tau_n$, $\tau_m$, $\tau_h$ lors de la génération d'un potentiel d'action}
 \label{hhtime}
 \end{figure}
 
 \clearpage
 \textbf{Explication des dynamiques à partir des constantes de temps et des valeurs à l'équilibre}\\
-De \ref{hhinfty}, on peut tirer le fait que n et m sont croissants par rapport au potentiel, tandis que h est décroissant par rapport au potentiel. Ainsi, les canaux potassiques vont avoir une probabilité de laisser passer les ions (qui est, rappellons-le, exprimée par $n^4$) de plus en plus grande plus le potentiel augmente, tandis que pour les canaux sodiques, leur probabilité de laisser passer les ions (qui est $m^3h$) va d'abord augmenter quand le potentiel augmente (du au fait que m est croissante par rapport au potentiel), puis, à partir d'un certain seuil, diminuer quand le potentiel augmente (du  au fait que h est décroissante par rapport au potentiel).\\
-Les constantes de temps, qui gouvernent la temps que met le système à atteindre les valeurs à l'équilibre, sont également intéressantes à étudier pour comprendre les dynamiques à l'oeuvre. On peut voir dans \ref{hhtime}, que m, qui gouverne l'ouverture des canaux sodique, atteint très rapidement sont état d'équilibre, tandis que n (ouverture des canaux potassiques) et h(activation des canaux sodiques) l'atteignent plus lentement.\\
-Ainsi, lorsque la membrane est dépolarisée, la variable m va augmenter (vers son etat d'équilibre) rapidement (les canaux sodiques vont s'ouvrir rapidement), ce qui va en retour augmenter la dépolarisation de la cellule (le potentiel de membrane va tendre vers $V_{Na}$), et m va de nouveau augmenter, etc .. Avec un délai du aux dynamiques (c'est-à-dire ici au temps d'atteinte de la valeur d'équilibre) plus lentes de h et n, on va observer que h va diminuer (tendre vers sa valeur d'équilibre)(les canaux sodiques vont être désactivés), et de plus, n va augmenter (tendre vers sa valeur d'équilibre)(les canaux potassiques vont s'ouvrir), ce qui aura pour effet de repolarisée la cellule (le potentiel de membrane va tendre vers $V_{K}$). La période refractaire, c'est-à-dire l'hyperpolarisation de la membrane peut s'expliquer par le délai dans le retour à un état d'équilibre de la variable n (les canaux potassiques se referment avec un délai).
+De \ref{hhinfty}, on peut tirer le fait que n et m sont croissants par rapport au potentiel, tandis que h est décroissant par rapport au potentiel. Ainsi, les canaux potassiques vont avoir une probabilité de laisser passer les ions (qui est, rappelons-le, exprimée par $n^4$) de plus en plus grande plus le potentiel augmente, tandis que pour les canaux sodiques, leur probabilité de laisser passer les ions (qui est $m^3h$) va d'abord augmenter quand le potentiel augmente (dû au fait que m est croissante par rapport au potentiel), puis, à partir d'un certain seuil, diminuer quand le potentiel augmente (dû au fait que h est décroissante par rapport au potentiel).\\
+Les constantes de temps, qui gouvernent le temps que met le système à atteindre les valeurs à l'équilibre, sont également intéressantes à étudier pour comprendre les dynamiques à l'œuvre. On peut voir dans \ref{hhtime}, que m (ouverture des canaux sodiques), atteint très rapidement sont état d'équilibre, tandis que n (ouverture des canaux potassiques) et h (activation des canaux sodiques) l'atteignent plus lentement.\\
+Ainsi, lorsque la membrane est dépolarisée, la variable m va augmenter (vers son état d'équilibre $m_\infty$) rapidement (les canaux sodiques vont s'ouvrir rapidement), ce qui va en retour augmenter la dépolarisation de la cellule (le potentiel de membrane va tendre vers $V_{Na}$), et m va de nouveau augmenter, etc. Avec un délai dû aux dynamiques (c'est-à-dire ici au temps d'atteinte de la valeur d'équilibre) plus lentes de h et n, on va observer que h va diminuer (tendre vers sa valeur d’équilibre $h_\infty$) (les canaux sodiques vont être désactivés), et de plus, n va augmenter (tendre vers sa valeur d'équilibre $n_\infty$) (les canaux potassiques vont s'ouvrir), ce qui aura pour effet de repolarisée la cellule (le potentiel de membrane va tendre vers $V_{K}$). La période réfractaire, c'est-à-dire l'hyperpolarisation de la membrane peut s'expliquer par le délai dans le retour à un état d'équilibre de la variable n (les canaux potassiques se referment avec un délai).
 
 
 \section{Raffiner Hodgkin-Huxley}
 \subsection{Les deux approches possibles face à Hodgkin-Huxley}
-	Les travaux de Hodgkin et Huxley abordé en \ref{hh} ont véritablement révolutionné le domaine de la modélisation de neurones, et depuis, une grande partie des travaux en modélisation de neurones s'appuien sur ceux de Hodgkin et Huxley. Les scientifiques s'interessant  à la modélisation de neurones ont pu avoir deux grandes approches (ces deux grandes approches pouvant s'étendre à tous les travaux en modélisation de neurones, et pas seulement à ceux se basant sur le modèle de Hodgkin et Huxley) : 
-		\begin{enumerate} \item \textbf{Complexifier Hodgkin-Huxley : Reproduire le plus fidélement possible un neurone ou un réseau de neurone sans se soucier de la complexité du modèle}, ce qui donne un modèle plus précis, plus proche de la réalité, mais difficilement manipulable et compréhensible, et dont la simulation est couteuse (en temps). On retrouve dans cette catégorie la plupart des modèles dit "physiologiques", c'est-à-dire les modèles qui s'inspirent du fonctionnement biologique du système nerveux et tentent de le formaliser.  
-		\item \textbf{Simplifier Hodgkin-Huxley : Faire un compromis entre le réalisme du modèle et sa complexité}, ce qui donne des modèles moins précis et moins proche de la réalité, mais plus facilement manipulable, compréhensible et dont la simulation est rapide. On retrouve dans cette catégorie la plupart des modèles dit "phénoménologiques", c'est-à-dire les modèles qui, sans la contrainte de s'inspirer du biologique, tentent de reproduire le fonctionnement du système nerveux en terme de données quantitatives "de plus haut niveau", comme par exemple le potentiel de membrane d'un neurone. \end{enumerate}
-Un modèle de neurone théorique parfait devrai posséder les qualités des deux approches sans posséder leur défauts ... mais cela semble pour l'instant impossible. Le réalisme passe par la complexité du modèle, et la complexité du modèle entraine que la simulation informatique et que l'explication mathématique seront couteuses. Ainsi, lorsque l'on doit choisir un modèle de neurone, on doit le faire dans objectif précis, et il est important de bien comprendre quelles sont les caractéristiques du modèle importantes pour réaliser notre objectif. Dans le cas de ce travail, nous allons par la suite vouloir réaliser des simulations de réseaux de grandes tailles de manière rapide, répétable. C'est ainsi, et c'est un choix de notre part, que nous allons ici plutot nous interesser aux modèles simples, venant de l'approche 2., pour leur simplicité et rapidité de simulation. 
+Les travaux de Hodgkin et Huxley abordé en \ref{hh} ont véritablement révolutionné le domaine de la modélisation de neurones, et depuis, une grande partie des travaux en modélisation de neurones s'appuient sur ceux de Hodgkin et Huxley. Les scientifiques s'intéressant à la modélisation de neurones ont pu avoir deux grandes approches (ces deux grandes approches pouvant s'étendre à tous les travaux en modélisation de neurones, et pas seulement à ceux se basant sur le modèle de Hodgkin et Huxley) : 
+\begin{enumerate} \item \textbf{Complexifier Hodgkin-Huxley : Reproduire le plus fidèlement possible un neurone ou un réseau de neurone sans se soucier de la complexité du modèle}, ce qui donne un modèle plus précis, plus proche de la réalité, mais difficilement manipulable et compréhensible, et dont la simulation est couteuse (en temps). On retrouve dans cette catégorie la plupart des modèles dit "physiologiques", c'est-à-dire les modèles qui s'inspirent du fonctionnement biologique du système nerveux et tentent de le formaliser. 
+\item \textbf{Simplifier Hodgkin-Huxley : Faire un compromis entre le réalisme du modèle et sa complexité}, ce qui donne des modèles moins précis et moins proche de la réalité, mais plus facilement manipulable, compréhensible et dont la simulation est rapide. On retrouve dans cette catégorie la plupart des modèles dit "phénoménologiques", c'est-à-dire les modèles qui, sans la contrainte de s'inspirer du biologique, tentent de reproduire le fonctionnement du système nerveux en termes de données quantitatives "de plus haut niveau", comme par exemple le potentiel de membrane d'un neurone. \end{enumerate}
+Un modèle de neurone théorique parfait devrait posséder les qualités des deux approches sans posséder leurs défauts ... mais cela semble pour l'instant impossible. Le réalisme passe par la complexité du modèle, et la complexité du modèle entraine que la simulation informatique et que l'explication mathématique seront couteuses. Ainsi, lorsque l'on doit choisir un modèle de neurone, on doit le faire dans objectif précis, et il est important de bien comprendre quelles sont les caractéristiques du modèle importantes pour réaliser notre objectif. Dans le cas de ce travail, nous allons par la suite vouloir réaliser des simulations de réseaux de grandes tailles de manière rapide, répétable. C'est ainsi, et c'est un choix de notre part, que nous allons ici plutôt nous intéresser aux modèles simples, venant de l'approche 2., pour leur simplicité et rapidité de simulation. 
+
 
 \subsection{De Hodgkin-Huxley à Fitzhugh-Nagumo}
+Nous allons maintenant nous intéresser à l'approche de Fitzhugh et Nagumo dans la réduction de la complexité du modèle de Hodgkin-Huxley. Cette approche de Fitzhugh-Nagumo est basée sur deux approximations du modèle de Hodgkin-Huxley : 
+\begin{itemize}
+\item $m_{\infty}(V) \simeq m(t)$, c'est-à-dire que $m$ peut être en tout temps approximé par sa valeur à l'équilibre. Cette approximation est justifiée par le fait que les variations de $m$ sont très rapides, en tout cas, comparées à celle de $h$ et $n$ (cela peut se voir sur la figure \ref{hhtime} des constantes de temps). Ainsi, $\frac{\dd m}{\dd t} = 0$, et l'équation décrivant l'évolution de m dans le temps dans le modèle de Hodgkin-Huxley n'a plus de raison d'être.
+\item $h_\infty + n_\infty \simeq 0.85$, c'est-à-dire que la somme des valeurs à l'équilibre de $h$ et $n$ est constante (voir figure \ref{hhnplush}). Fitzhugh et Nagumo ont ensuite élargie cette approximation à $n(t)$ et $h(t)$, c'est-à-dire que $\exists a,b \in \mathbb{R} \text{ tq }, h(t) + an(t) = b$. On peut ainsi définir $w = b-h(t) = an(t)$, et on a $w$ qui décrit ainsi en même temps l'évolution des variables $h$ et $n$, et on a $\displaystyle \frac{\dd w}{\dd t} = a\frac{\dd n}{\dd t} = \frac{an_\infty -an}{\tau_n} = \frac{w_\infty-w}{\tau_w} \text{ avec } w_\infty=an_\infty, \tau_w = \tau_n$. Cette nouvelle variable w représente le rétablissement de la membrane. \end{itemize}
+
+\begin{lstlisting}[caption = {Hodgkin-Huxley : Somme de n et h}]
+from snn.single.usual_models import HH_model as hh
+import matplotlib.pyplot as plt
+
+plt.figure()
+for I in [0, 5, 10]:
+hh['Iapp'] = I
+history, _ = hh.simulation(100, 0.1)
+plt.plot(history['t'], history['n'] + history['h'], 
+label='n+h in HH-model with current %s' % I)
+plt.legend()
+plt.show()
+\end{lstlisting}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.5]{imgs/hhnplush.png}
+\caption{Somme de n et h dans le modèle de Hodgkin-Huxley}
+\label{hhnplush}
+\end{figure}
+
+On peut alors réécrire le modèle de Hodgkin-Huxley avec ces approximations :
+\setcounter{equation}{0}\begin{empheq}[left=\empheqlbrace]{gather} \displaystyle C\frac{\dd V}{\dd t} = -\overline{g}_K(\frac{w}{a})^4(V-V_K)- \overline{g}_{Na}m_\infty^3(b-w)(V-V_{Na})-\overline{g}_L(V-V_L)+I\nonumber \\ \displaystyle \frac{\dd w}{\dd t} = \frac{w_\infty-w}{\tau_w} \nonumber \end{empheq}
+En traçant les isoclines de ce modèle, on se rend compte qu'elles semblent être approximables, pour la V-isocline, par une fonction polynomiale de degré 3, et pour la W-isocline, par une droite.\\
+On peut donc approximer ce modèle par :
+\setcounter{equation}{0}\begin{empheq}[left=\empheqlbrace]{gather} \displaystyle C \frac{\dd V}{\dd t} = \alpha V^3 +\beta V^2 + \gamma V + \delta - w + I \nonumber\\ \displaystyle \tau\frac{\dd w}{\dd t} = V+a-bw \nonumber \end{empheq}
+Et en cherchant à faire coïncider les comportements de ce modèle avec ceux des neurones biologiques (ou ceux du modèle de Hodgkin-Huxley), on trouve les valeurs de $\alpha, \beta, \gamma, \delta, a, b, C$ et $\tau$, et on peut ainsi écrire le modèle de Fitzhugh-Nagumo dans sa forme la plus courante :
+\setcounter{equation}{0}\begin{empheq}[left=\empheqlbrace]{gather} \displaystyle \frac{\dd V}{\dd t} = V - \frac{V^3}{3} - w + I \\ \displaystyle \frac{\dd w}{\dd t} = 0.08(V+0.7-0.8w) \end{empheq}
+On a ainsi un système de dimension 2 qui conserve les propriétés fondamentales en termes de dynamiques du système de dimension 4 de Hodgkin-Huxley. Un des avantages que cela comporte est que les dynamiques du système sont entièrement explicables par l'analyse du plan de phase du modèle (voir figure \ref{FNPDP}). J'encourage vivement, pour ceux que cela intéresse, à utiliser la fonction "plan de phase interactif" de la bibliothèque SNN pour mieux comprendre les dynamiques à l'œuvre. Une très bonne analyse du plan de phase de ce modèle a également été faite dans un article accessible sur ScholarPedia à l'adresse \url{http://www.scholarpedia.org/article/FitzHugh-Nagumo_model}.
+
+\begin{lstlisting}[caption = {Fitzhugh-Nagumo : Définition du modèle}]
+from .core import Variable, Model
+from .tools import Function as F
+v = Variable(name='v', ddt='v-(1/3)*v**3-w+I', init_value=0)
+w = Variable(name='w', ddt='(1/tau)*(v+a-b*w)', init_value=0)
+FHN_model = Model(v, w, a=0.7, b=0.8, tau=12.5, I=0.5)
+\end{lstlisting}
+\begin{lstlisting}[caption = {Fitzhugh-Nagumo : Plan de phase}]
+from snn.single.usual_models import FHN_model as fhn
+import matplotlib.pyplot as plt
+fhn.plan_phase(('v', -2.5, 2, 0.3), ('w', -1, 1, 0.2))
+plt.show()
+\end{lstlisting}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.7]{imgs/FNPDP.png}
+\caption{Fitzhugh-Nagumo : Plan de phase}
+\label{FNPDP}
+\end{figure}
+
+\clearpage
+\begin{lstlisting}[caption = {Comparaison des comportements des modèles de Fitzhugh-Nagumo et Hodgkin-Huxley}]
+from snn.single.usual_models import FHN_model as fhn, HH_model as hh
+import matplotlib.pyplot as plt
+
+fhn['tau'] = 5
+for hh_I, fhn_I in zip([0, 5, 10], [-0.25, 0.25, 0.5]):
+plt.figure()
+hh['Iapp'] = hh_I ; fhn['I'] = fhn_I
+fhn_history, _ = fhn.simulation(100, 0.1)
+hh_history, _ = hh.simulation(100, 0.1)
+plt.subplot('121') ; plt.ylim(-2, 2) 
+plt.title('Fitzhugh-Nagumo model')
+plt.plot(fhn_history['t'], fhn_history['v'], '-r')
+plt.subplot('122') ; plt.ylim(-80, 40) 
+plt.title('Hodgkin-Huxley model')
+plt.plot(hh_history['t'], hh_history['V'], '-b') 
+plt.show()
+\end{lstlisting}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.5]{imgs/hhfhnfaible.png}
+\caption{Modèles de Hodgkin-Huxley et Fitzhugh-Nagumo pour des courants faibles}
+\label{hhfhnfaible}
+\end{figure}
+
+\clearpage
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.5]{imgs/hhfhnmoyen.png}
+\caption{Modèles de Hodgkin-Huxley et Fitzhugh-Nagumo pour des courants moyens}
+\label{hhfhnmoyen}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.5]{imgs/hhfhnfort.png}
+\caption{Modèles de Hodgkin-Huxley et Fitzhugh-Nagumo pour des courants forts}
+\label{hhfhnfort}
+\end{figure}
 
 \subsection{De Fitzhugh-Nagumo à Izhikievich, et démonstration de la puissance du modèle de Izhikievich}
 
 \begin{figure}[!h]
 \centering
 \includegraphics[scale=0.5]{imgs/fhntoiz.png}
-\caption{Plan de phase du modèle de Fitzhugh-Nagumo}
+\caption{Remarque sur le plan de phase de Fitzhugh-Nagumo}
 \label{fhntoiz}
 \end{figure}
 
-	A partir d'une analyse du plan de phase du modèle de Fitzhugh-Nagumo, on peut remarquer que, dans la région du plan de phase responsable de la génération des potentiels d'actions, la V-isocline peut s'approximer par une parabolle, c'est-à-dire la courbe d'une fonction polynomiale de degré 2 (partie entourée sur \ref{fhntoiz}). On peut donc construire un nouveau modèle à partir de celui de Fitzhugh-Nagumo et de cette remarque, en remplaçant la V-isocline dans le modèle de Fitzhugh-Nagumopar une fonction polynomiale de degré 2 :
+A partir d'une analyse du plan de phase du modèle de Fitzhugh-Nagumo, on peut remarquer que, dans la région du plan de phase responsable de la génération des potentiels d'actions, la V-isocline peut s'approximer par une parabole, c'est-à-dire la courbe d'une fonction polynomiale de degré 2 (partie entourée sur \ref{fhntoiz}). On peut donc construire un nouveau modèle à partir de celui de Fitzhugh-Nagumo et de cette remarque, en remplaçant la V-isocline dans le modèle de Fitzhugh-Nagumo par une fonction polynomiale de degré 2 :
 \setcounter{equation}{0}
 \begin{empheq}[left=\empheqlbrace]{gather}
-     \frac{\mathrm{d}v}{\mathrm{d}t} = \alpha v^2 + \beta v + \gamma -u + I \nonumber  \\
-     \frac{\mathrm{d}u}{\mathrm{d}t} = a(bv-u)  \nonumber
-   \end{empheq}
+\frac{\mathrm{d}v}{\mathrm{d}t} = \alpha v^2 + \beta v + \gamma -u + I \nonumber \\
+\frac{\mathrm{d}u}{\mathrm{d}t} = a(bv-u) \nonumber
+\end{empheq}
 
-En esayant de faire coïncider les comportements du modèle avec ceux des neurones biologiques, on trouve les valeurs de $\alpha = 0.04, ~\beta = 5,~ \gamma = 140$. On peut donc réecrire le modèle : \begin{empheq}[left=\empheqlbrace]{gather}
-     \frac{\mathrm{d}v}{\mathrm{d}t} = 0.04v^2 + 5v + 140 -u + I  \\
-     \frac{\mathrm{d}u}{\mathrm{d}t} = a(bv-u) 
-   \end{empheq}
+En essayant de faire coïncider les comportements du modèle avec ceux des neurones biologiques, on trouve les valeurs de $\alpha = 0.04, ~\beta = 5,~ \gamma = 140$. On peut donc réecrire le modèle : \begin{empheq}[left=\empheqlbrace]{gather}
+\frac{\mathrm{d}v}{\mathrm{d}t} = 0.04v^2 + 5v + 140 -u + I \\
+\frac{\mathrm{d}u}{\mathrm{d}t} = a(bv-u) 
+\end{empheq}
 
-Avec ce modèle, il devient necessaire d'introduire une règle spéciale pour les neurones qui viennent de produire un potentiel d'action. 
+Avec ce modèle, il devient nécessaire d'introduire une règle spéciale pour les neurones qui viennent de produire un potentiel d'action. 
 \begin{center} Si $ v \ge 30 mV$, alors : \end{center}
-   \begin{empheq}[left=\empheqlbrace]{equation}
-	\begin{split}
-v \leftarrow c  \\
-     u \leftarrow u + d
+\begin{empheq}[left=\empheqlbrace]{equation}
+\begin{split}
+v \leftarrow c \\
+u \leftarrow u + d
 \end{split}
-   \end{empheq}
+\end{empheq}
 
-Comme dans le modèle de Fitzhugh-Nagumo, la variable $v$ symbolise le potentiel de membrane, et $u$ est une variable symbolisant le retablissement de la membrane.\\
+Comme dans le modèle de Fitzhugh-Nagumo, la variable $v$ symbolise le potentiel de membrane, et $u$ est une variable symbolisant le rétablissement de la membrane.\\
 Les paramètres du modèle sont :
 \begin{itemize}
-\item $a$, qui controle le temps de rétablissement de la membrane
-\item $b$, qui controle la sensibilité de la variable $u$ par rapport à la variable $v$
+\item $a$, qui contrôle le temps de rétablissement de la membrane
+\item $b$, qui contrôle la sensibilité de la variable $u$ par rapport à la variable $v$
 \item $c$, la valeur de réinitialisation de $v$ après un potentiel d'action
-\item $d$, la valeur d'incrémenation de $u$ après un potentiel d'action
+\item $d$, la valeur d'incrémentation de $u$ après un potentiel d'action
 \end{itemize}
 ~~\\
-Le but de la création de ce modèle est bien evidemment de réduire la complexité de simulation par rapport au modèle de Fitzhugh-Nagumo en passant d'un calcul à chaque étape d'une fonction polynomiale de degré 3 à un fonction polynomiale de degré 2. \\
+Le but de la création de ce modèle est bien évidemment de réduire la complexité de simulation par rapport au modèle de Fitzhugh-Nagumo en passant d'un calcul à chaque étape d'une fonction polynomiale de degré 3 à une fonction polynomiale de degré 2. \\
 Mais malgré cette apparente simplicité, ce modèle est capable de simuler un grand nombre de comportements parmi ceux que peuvent avoir les neurones biologiques, comme on peut le voir sur la série des figures \ref{izRS}, \ref{izIB}, \ref{izC}, \ref{izFS}, \ref{izLTS}, \ref{izRES}, \ref{izTC1} et \ref{izTC2}.
 
 \begin{figure}[!h]
 \centering
 \includegraphics[scale=0.8]{imgs/izPDP.png}
-\caption{Plan de phase du modèle de Izhikievich}
+\caption{ Izhikievich : Plan de phase}
 \label{izPDP}
 \end{figure}
 \clearpage
-\begin{lstlisting}[caption = {Définition du modèle de Izhikievich}]
+\begin{lstlisting}[caption = {Izhikievich : Définition du modèle}]
 from .core import Variable, Model
 from .tools import Function as F
 
 v = Variable(name='v', ddt='0.04*v**2+5*v+140-u+I', init_value=-65, 
-			 reset_value='c', unit='mV')
+reset_value='c', unit='mV')
 u = Variable(name='u', ddt='a*(b*v-u)', init_value=-15,
-			 reset_value='u+d')
+reset_value='u+d')
 izhi_model = Model(v, u, spike_when='v>=30', max_spike_value=30, 
-			 a=0.02, b=0.2, c=-65, d=8, I=0) 
+a=0.02, b=0.2, c=-65, d=8, I=0) 
 \end{lstlisting}
 
-\begin{lstlisting}[caption = {Plan de phase du modèle de Izhikievich pour  b=0.2,  I=0}]
+\begin{lstlisting}[caption = {Izhikievich : Plan de phase}]
 from snn.single.usual_models import izhi_model as iz
 import matplotlib.pyplot as plt
 
-fig3 = iz.plan_phase(('v', -80, -30, 5), ('u', -30, 20, 5), 
-                       rescale=True) #interactive=True
+iz.plan_phase(('v', -80, -30, 5), ('u', -30, 20, 5), 
+rescale=True) #interactive=True
 plt.show()
 \end{lstlisting}
 
-\begin{lstlisting}[caption = {Représentation de l'évolution du potentiel de membrane en fonction du temps pour plusieurs ensembles de paramètres}]
+\begin{lstlisting}[caption = {Izhikievich : Evolution du potentiel de membrane en fonction du temps pour plusieurs ensembles de paramètres}]
 from snn.single.usual_models import izhi_model as iz
 import matplotlib.pyplot as plt
 
-A = [0.02, 0.02, 0.02, 0.1, 0.02, 0.02, 0.02, 0.1,     0.1]
-B = [0.2,  0.2,  0.2,  0.2, 0.25, 0.25, 0.25, 0.26,    0.26]
-C = [-65,  -55,  -50,  -65, -65,  -65,  -65,  -65,     -65]
-D = [8,    4,    2,    2,   2,    0.05, 0.05, 8,       8]
-I = [15,   10,   10,   10,  15,   1,    1,    -0.0488, -0.04]
-V = [-65,  -65,  -65,  -65, -65,  -65,  -90,  -65,     -65]
+A = [0.02, 0.02, 0.02, 0.1, 0.02, 0.02, 0.02, 0.1, 0.1]
+B = [0.2, 0.2, 0.2, 0.2, 0.25, 0.25, 0.25, 0.26, 0.26]
+C = [-65, -55, -50, -65, -65, -65, -65, -65, -65]
+D = [8, 4, 2, 2, 2, 0.05, 0.05, 8, 8]
+I = [15, 10, 10, 10, 15, 1, 1, -0.0488, -0.04]
+V = [-65, -65, -65, -65, -65, -65, -90, -65, -65]
 
 for a, b, c, d, i, vstart in zip(A, B, C, D, I, V):
-	iz['a'] = a ; iz['b'] = b ; iz['c'] = c ; iz['d'] = d ; iz['I'] = i
-	iz['v'] = vstart ; iz['u'] = b * vstart
-	iz.plot(100, 0.01, keep='v')
-	plt.gca().set_ylim(-80, 40)
+iz['a'] = a ; iz['b'] = b ; iz['c'] = c ; iz['d'] = d ; iz['I'] = i
+iz['v'] = vstart ; iz['u'] = b * vstart
+iz.plot(100, 0.01, keep='v')
+plt.gca().set_ylim(-80, 40)
 plt.show()
 \end{lstlisting}
 
@@ -540,68 +650,110 @@ plt.show()
 \begin{minipage}[l]{.48\linewidth}
 \centering
 \includegraphics[scale=0.5]{imgs/izRS.png}
-\caption{Regular Spiking (a=0.02, b=0.2, c=-65, d=8, I=15, $v_{start}$ = -65)}
+\caption{Izhikievich : Regular Spiking (a=0.02, b=0.2, c=-65, d=8, I=15, $v_{start}$ = -65)}
 \label{izRS}
-    \end{minipage}\hfill
+\end{minipage}\hfill
 \begin{minipage}[l]{.48\linewidth}
 \centering
 \includegraphics[scale=0.5]{imgs/izIB.png}
-\caption{Intrinsically Bursting (a=0.02, b=0.2, c=-55, d=4, I=10, $v_{start}$ = -65)}
+\caption{Izhikievich : Intrinsically Bursting (a=0.02, b=0.2, c=-55, d=4, I=10, $v_{start}$ = -65)}
 \label{izIB}
-    \end{minipage}\hfill
+\end{minipage}\hfill
 \end{figure}
 
 \begin{figure}[!h]
 \begin{minipage}[l]{.48\linewidth}
 \centering
 \includegraphics[scale=0.5]{imgs/izC.png}
-\caption{Chattering (a=0.02, b=0.2, c=-50, d=2, I=10, $v_{start}$ = -65)}
+\caption{Izhikievich : Chattering (a=0.02, b=0.2, c=-50, d=2, I=10, $v_{start}$ = -65)}
 \label{izC}
-    \end{minipage}\hfill
+\end{minipage}\hfill
 \begin{minipage}[l]{.48\linewidth}
 \centering
 \includegraphics[scale=0.5]{imgs/izFS.png}
-\caption{Fast Spiking (a=0.1, b=0.2, c=-65, d=2, I=10, $v_{start}$ = -65)}
+\caption{Izhikievich : Fast Spiking (a=0.1, b=0.2, c=-65, d=2, I=10, $v_{start}$ = -65)}
 \label{izFS}
-    \end{minipage}\hfill
+\end{minipage}\hfill
 \end{figure}
 
 \begin{figure}[!h]
 \begin{minipage}[l]{.48\linewidth}
 \centering
 \includegraphics[scale=0.5]{imgs/izLTS.png}
-\caption{Low-Threshold Spiking (a=0.02, b=0.25, c=-65, d=2, I=15, $v_{start}$ = -65)}
+\caption{Izhikievich : Low-Threshold Spiking (a=0.02, b=0.25, c=-65, d=2, I=15, $v_{start}$ = -65)}
 \label{izLTS}
-    \end{minipage}\hfill
+\end{minipage}\hfill
 \begin{minipage}[l]{.48\linewidth}
 \centering
 \includegraphics[scale=0.5]{imgs/izRES1.png}
-\caption{Resonnator (a=0.1, b=0.26, c=-65, d=8, I=-0.0488, $v_{start}$ = -65)}
+\caption{Izhikievich : Resonnator (a=0.1, b=0.26, c=-65, d=8, I=-0.0488, $v_{start}$ = -65)}
 \label{izRES}
-    \end{minipage}\hfill
+\end{minipage}\hfill
 \end{figure}
 
 \begin{figure}[!h]
 \begin{minipage}[l]{.48\linewidth}
 \centering
 \includegraphics[scale=0.5]{imgs/izTC1.png}
-\caption{Thalamo-Cortical 1 (a=0.02, b=0.25, c=-65, d=0.05, I=1, $v_{start}$ = -65)}
+\caption{Izhikievich : Thalamo-Cortical 1 (a=0.02, b=0.25, c=-65, d=0.05, I=1, $v_{start}$ = -65)}
 \label{izTC1}
-    \end{minipage}\hfill
+\end{minipage}\hfill
 \begin{minipage}[l]{.48\linewidth}
 \centering
 \includegraphics[scale=0.5]{imgs/izTC2.png}
-\caption{Thalamo-Cortical 2 (a=0.02, b=0.25, c=-65, d=0.05, I=1, $v_{start}$ = -90)}
+\caption{Izhikievich : Thalamo-Cortical 2 (a=0.02, b=0.25, c=-65, d=0.05, I=1, $v_{start}$ = -90)}
 \label{izTC2}
-    \end{minipage}\hfill
+\end{minipage}\hfill
 \end{figure}
 
 \clearpage
 
 \section{Modèle leaky-integrate and fire}
-	Encore plus simple : le modèle leaky-integrate and fire, présentation du modèle, explications, simulations.
+Ce modèle "intègre-et-tire" peut être décrit par un circuit constitué d'un ccondensateur et d'une résistance montés en parallèle. Pour déterminer l'équation caractérisant les variations du potentiel de membrane, on peut appliquer les mêmes étapes que pour le modèle de Hodgkin-Huxley en \ref{HHEQPOT}.\\
 
+On peut donc appliquer la loi de Kirchhoff :
+\setcounter{equation}{0}\begin{equation}I_C + I_R - I = 0 \label{liafeq1}\end{equation} 
+avec $I$ le courant appliqué sur le neurone, $I_R$ l'intensité du courant à travers la résistance et $I_C$ l'intensité du courant au niveau du condensateur.\\
 
+La loi d'Ohm nous donne \begin{equation}I_R = \frac{u}{R} \label{liafeq2} \end{equation}  où $u$ est la tension aux bornes de la résistance.\\
+
+Et de la définition d'un condensateur, on a 
+\begin{equation} C = \frac{Q}{u} \Rightarrow I_C = C\frac{\dd u}{\dd t}  \label{liafeq3}\end{equation} où C est la capacité du condensateur et Q la charge du condensateur.\\
+
+Et en introduisant \ref{liafeq2} et \ref{liafeq3} dans \ref{liafeq1}, on a \begin{equation}C\frac{\dd u}{\dd t} = -\frac{u(t)}{R} + I(t) \nonumber \end{equation}
+Que l'on peut écrire : \begin{equation}\tau_m\frac{\dd u}{\dd t} = -u(t) + RI(t) \label{LIAFEQ}\end{equation} avec $\tau_m = RC$ la constante de temps associée à la membrane.\\
+
+Dans ce modèle, il est nécessaire d'introduire une règle pour savoir lorsque le système à produit un potentiel d'action, et une règle de réinitialisation du potentiel du membrane après un potentiel d'action.\\
+On dit que le système a produit un potentiel d'action au temps $t_{PA}$ si $u(t_{PA}) \geq \eta$.\\
+Et la règle de réinitialisation du potentiel de membrane après un potentiel d'action est : 
+\begin{empheq}{align}\begin{split}\text{Si }  u \ge \eta , \text{ al}&\text{ors : } \\ u \leftarrow u_r \end{split}\end{empheq}
+
+Il est également courant d'introduire dans ce modèle une variation de la règle de réinitialisation du potentiel de membrane ayant pour but de modéliser la période réfractaire absolue. On introduit alors le paramètre $\Delta^{abs}$ exprimé en millisecondes, et la règle de réinitialisation devient 
+\begin{empheq}{align}\begin{split}\text{Si }  u \ge \eta , \text{ al}&\text{ors : } \\ &u \leftarrow u_r \\ &\frac{\dd u}{\dd t} = 0 \text{ pendant } \Delta^{abs} \text{ ms}, \\ &\text{Puis après } \Delta^{abs} \text{ ms on reprend } \frac{\dd u}{\dd t} \text{ comme définie par l'équation \ref{LIAFEQ}} \end{split}\end{empheq}
+
+Des valeurs courantes pour les paramètres sont : $\tau_m = 10 ms, R=1, u_r=0, I=1.5, \eta=1$.\\
+
+Ce modèle très simple est capable de simuler la base des comportements des neurones, comme on peut le voir sur la figure \ref{liaf}. Sa simplicité le rend très rapide à simuler ce qui en fait un modèle populaire dans les projets impliquant de simuler un grand nombre de neurones. Cependant, c'est un modèle purement phénoménologique, sans réelles justifications physiologiques ; et la variété des comportements que ce modèle est capable de simuler est assez faible.
+
+\begin{lstlisting}[caption = {Leaky Integrate-and-fire : Définition du modèle}]
+u = Variable(name='u', init_value=0,
+	ddt = '(1/tau_m)*(-u+R*I)', reset_value='ur', unit='mV')
+LEAKY_INTEGRATE_AND_FIRE_model = Model(u, spike_when='u>=1',
+	max_spike_value=1, tau_m=10, R=1, ur=0, I=1.5)
+\end{lstlisting}
+\begin{lstlisting}[caption = {Leaky Integrate-and-fire : Evolution du potentiel de membrane en fonction du temps}]
+from snn.single.usual_models import LEAKY_INTEGRATE_AND_FIRE_model as leaky
+import matplotlib.pyplot as plt
+leaky.plot(100, 1, keep='u')
+plt.show()
+\end{lstlisting}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.5]{imgs/liaf.png}
+\caption{Leaky Integrate-and-fire : Evolution du potentiel de membrane au cours du temps pour $I = 1.5$}
+\label{liaf}
+\end{figure}
 
 \pagebreak
 
@@ -613,7 +765,8 @@ plt.show()
 \url{https://github.com/ArnoGranier/SNN}
 
 Quelques justifications informatiques :
-\begin{itemize} \item Cette partie informatique de création d'outils de simulation ayant une grande par didactique pour moi, j'ai souhaité dans la partie de modélisation d'un seul neurone, ne pas utiliser certains outils "déjà tout pret" et plutot coder moi-même un maximum de chose. C'est la raison pour laquel je n'utilise numpy que pour retourner des types array et que je n'utilise pas les méthodes linspace ou meshgrid (par exemple) de cette bibliothèque. J'ai également souhaté ne pas utiliser d'ODE-solver djà implémenté comme on peut trouver dans scipy.integrate par exemple. \end{itemize}
+\begin{itemize} \item Cette partie informatique de création d'outils de simulation ayant une grande par didactique pour moi, j'ai souhaité dans la partie de modélisation d'un seul neurone, ne pas utiliser certains outils "déjà tout prêt" et plutôt coder moi-même un maximum de chose. C'est la raison pour laquelle je n'utilise numpy que pour retourner des types array et que je n'utilise pas les méthodes linspace ou meshgrid (par exemple) de cette bibliothèque. J'ai également souhaité ne pas utiliser d'ODE-solver déjà implémenté comme on peut trouver dans scipy.integrate par exemple. \end{itemize}
+
 
 \nocite{*}
 
@@ -625,3 +778,4 @@ Quelques justifications informatiques :
 
 \end{document}
 
+}
