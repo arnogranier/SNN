@@ -23,15 +23,13 @@ class Variable:
         self.value = init_value
 
     def __str__(self): return self.__name__ + str(self.value)
-
     def __repr__(self): return str(self)
 
     @property
     def value(self): return self._value 
 
     @value.setter
-    def value(self, val):
-        self._value = val 
+    def value(self, val): self._value = val 
         
     @property
     def unit(self): return self._unit
@@ -50,8 +48,7 @@ class Variable:
             self._ddt = foo
 
     @property
-    def reset_value(self):
-        return self._reset_value
+    def reset_value(self): return self._reset_value
 
     @reset_value.setter
     def reset_value(self, foo):
@@ -78,7 +75,7 @@ class Model:
 
     def __setitem__(self, name, val): 
         if name in self.parameters :
-        	self.parameters[name] = val
+            self.parameters[name] = val
         else:
         	for var in self.variables:
         		if var.__name__ == name : var.value = val
@@ -97,7 +94,8 @@ class Model:
             if callable(value):
                 args = [0, ] if 't' in value.arguments else list() 
                 for var in self.variables:
-                    if var.__name__ in value.arguments: args.append(var.value)
+                    if var.__name__ in value.arguments:
+                        args.append(var.value)
                 start_var_and_params[name] = value(*args)
             else:
                 start_var_and_params[name] = value
@@ -113,7 +111,8 @@ class Model:
         history = {name: [value, ]
                     for (name, value) in start_var_and_params.items()
                     if name in keep or keep == 'all'}
-        if keep == 'all' or 't' in keep : history['t'] = [0, ]
+        if keep == 'all' or 't' in keep:
+            history['t'] = [0, ]
         M = int(T / dt)
         count_spike = 0
         for p in range(M):
@@ -128,8 +127,8 @@ class Model:
             else:
                 for var in self.variables:
                     if self.method == 'explicit_euler':
-                        var.value = min(var.value + dt * var.ddt(t, *var_values),
-                                    self.max_spike_value)
+                        var.value = min(var.value+dt*var.ddt(t,*var_values),
+                                        self.max_spike_value)
                     # mettre ddt sous la forme lambda :
                     elif self.method == 'rk4':
                         k1 = var.ddt(t, *var_values)
@@ -144,12 +143,15 @@ class Model:
                 if callable(val):
                     args = [t, ] if 't' in val.arguments else list() 
                     for var in self.variables:
-                        if var.__name__ in val.arguments: args.append(var.value)
+                        if var.__name__ in val.arguments:
+                            args.append(var.value)
                     history[name].append(val(*args))
                 else:
                     history[name].append(val)
-            if keep=='all' or 't' in keep : history['t'].append(t)
-        return {name:np.array(vals) for name, vals in history.items()}, count_spike
+            if keep=='all' or 't' in keep:
+                history['t'].append(t)
+        return ({name:np.array(vals) for name, vals in history.items()}, 
+                count_spike)
 
     def get_unit_from_name(self, name):
         for var in self.variables:
