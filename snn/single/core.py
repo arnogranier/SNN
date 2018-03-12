@@ -6,6 +6,7 @@ from .tools import create_equation, linspace, meshgrid, array_abs, Function
 import numpy as np
 
 class Variable:
+    """Represents a variable"""
     def __init__(self, name=None, ddt='0', init_value=-65,
                  reset_value=None, unit=None):
         if isinstance(name, str):
@@ -57,6 +58,7 @@ class Variable:
 
 
 class Model:
+    """Represents a model""" 
     def __init__(self, *variables, max_spike_value=math.inf,
                  spike_when='False', simul_method='rk4', **parameters):
         self.init_spike_when = spike_when
@@ -73,7 +75,8 @@ class Model:
             var.ddt = create_equation(variables, parameters, var.temp_ddt)
         self.method = simul_method
 
-    def __setitem__(self, name, val): 
+    def __setitem__(self, name, val):
+		"""Set parameters to be equal to val"""
         if name in self.parameters :
             self.parameters[name] = val
         else:
@@ -84,6 +87,9 @@ class Model:
                       **self.parameters)
 
     def simulation(self, T, dt, keep='all', start=dict()):
+		"""Simulate the model, return the historic of variables and parameters in keep, 
+			explicit_euler and runge-kutta 4 methods are avalaible"""
+		
         for var in self.variables:
             if var.__name__ in start:
                 var.value = start[var.__name__]
@@ -154,17 +160,21 @@ class Model:
                 count_spike)
 
     def get_unit_from_name(self, name):
+		"""Get variable's unit from it's name"""
         for var in self.variables:
             if var.__name__ == name:
                 return var.unit
 
     def get_ddt_from_name(self, name):
+		"""Get variable's ddt from it's name"""
         for var in self.variables:
             if var.__name__ == name:
                 return var.ddt
 
     def plot(self, T, dt, history=None, keep='all',
              subplotform=None, **kwargs):
+		"""Plot variaton of variables and parameters in keep though time, 
+			return a matplotlib figure"""
         x = linspace(0, T, T / dt + 1)
         if history is None:
             history, _ = self.simulation(T, dt, keep=keep)
@@ -194,6 +204,7 @@ class Model:
     def plan_phase(self, xdata, ydata, other_variables=None,
                    rescale=False, no_dynamics=False, interactive=False, T=1000,
                    dt=1, quiver_args=dict(), contour_args=dict()):
+		"""Return phase plan with xdata as x-axis var, ydata as y-axis var"""
         x_nb_point = (1 + xdata[2] - xdata[1]) / (xdata[3])
         y_nb_point = (1 + ydata[2] - ydata[1]) / (ydata[3])
         xvarddt = self.get_ddt_from_name(xdata[0])
@@ -240,6 +251,7 @@ class Model:
 
     def cascade(self, event, line, point, start_point, T, dt, xvarname,
                 yvarname, other_variables=None):
+		"""Evenement when user click on interactive phase plan"""
         if event.inaxes != line.axes:
             return
         x, y = event.xdata, event.ydata
