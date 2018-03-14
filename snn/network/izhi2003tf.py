@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 T, dt = 1000, 0.5
-n = 10 ** 4
+n = 10 ** 3
 exi_inhi_rate = 8 / 10
 v_init = -65
 
