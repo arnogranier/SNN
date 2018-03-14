@@ -65,7 +65,6 @@ class Model:
                 var.value = start[name]
 
         history = {name:[val, ] for name, val in self.var_and_par.items() if name in keep or keep=='all'}
-        if keep == 'all' or 't' in keep : history['t'] = [self.var_and_par['t'], ]
         
         M = int(T / dt)
         count_spike = 0
