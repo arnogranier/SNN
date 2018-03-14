@@ -1,5 +1,4 @@
 from .core import Variable, Model
-from .tools import Function as F
 
 v = Variable(name='v', ddt='-u+0.04*v**2+5*v+140+I', init_value=-65, 
 			 reset_value='c', unit='mV')
