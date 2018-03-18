@@ -87,7 +87,7 @@ Mais qu'est-ce que ça veut dire \textit{fonctionner comme} le système nerveux 
 
 Si l'on reste dans l'approche physicaliste-fonctionnaliste, il semble donc naturel de vouloir tenter de "reproduire" le fonctionnement du système nerveux humain dans \textit{autre chose que l'humain}, et le meilleur candidat actuellement en notre possession pour cet \text{autre chose} semble être l'ordinateur. Il est ici important d'être lucide sur le sens du mot "reproduire" dans cette phrase : d'une part, comme nous l'avons dit, nous sommes loin d'avoir une connaissance exhaustive des propriétés des neurones et des synapses, et de plus le système nerveux ne se résume pas en réalité qu'aux neurones et synapses (il faudrait prendre en compte les cellules gliales, l'impact des hormones, reproduire le fonctionnement de toutes les afférences aux systèmes nerveux comme les récepteurs cutanés, etc.) ; et d'autre part, en supposant une connaissance exhaustive du système nerveux, la reproduction exacte de son fonctionnement \textit{in silico} ne serait peut-être pas si aisée, notamment car le substrat biologique permet peut-être des fonctions difficilement reproductibles dans un substrat électronique. C'est pour cela que plutôt que de parler de "reproduction" du fonctionnement du système nerveux, on parlera plutôt de modélisation du système nerveux, de modélisation de neurones et de synapses, dans le sens où on sélectionne les propriétés du système nerveux qui nous semblent les plus importantes dans son fonctionnement et où on essaye de les rendre intelligibles, pour la machine grâce à une formalisation mathématique et à des programmes permettant de simuler le comportement des modèles de neurone et de réseaux de neurones ; et pour l'homme à l'aide de graphiques, de données bien choisies et d'analyse mathématique des modèles (lorsque cela est possible).\\
 
-Il est assez ironique de voir que c'est l'ordinateur avec une architecture de type Von Neumann, qui traite l'information de manière sérielle, qui est aujourd'hui l'outil le plus utilisé pour simuler le système nerveux, qui est un système profondément parallèle. La puissance de calcul des ordinateurs d'aujourd'hui permet de simuler ce parallèlisme, mais de manière peu optimisée. Cette prédominance des ordinateurs  comme \textit{hardware} pour simuler le système nerveux est quelque chose qui est, je pense, amené à changer dans les prochaines années, au moins dans les laboratoires de recherche. En effet, l'informatique et l'éléctronique neuromorphiques sont des disciplines qui progressent très rapidement, avec notamment le developpement de composants éléctroniques à architecture massivement parallèle. Ces nouveaux types de \textit{hardware} semblent bien plus adaptés à la simulation du système nerveux, et il me semble que cela sera un element essentiel dans le futur de ce domaine.\\
+Il peut être assez ironique de voir que c'est l'ordinateur avec une architecture de type Von Neumann, qui traite l'information de manière sérielle, qui est aujourd'hui l'outil le plus utilisé pour simuler le système nerveux, qui est un système profondément parallèle. La puissance de calcul des ordinateurs d'aujourd'hui permet de simuler ce parallèlisme, mais de manière peu optimisée. Cette prédominance des ordinateurs  comme \textit{hardware} pour simuler le système nerveux est quelque chose qui est, je pense, amené à changer dans les prochaines années, au moins dans les laboratoires de recherche. En effet, l'informatique et l'éléctronique neuromorphiques sont des disciplines qui progressent très rapidement, avec notamment le developpement de composants éléctroniques à architecture massivement parallèle. Ces nouveaux types de \textit{hardware} semblent bien plus adaptés à la simulation du système nerveux, et il me semble que cela sera un element essentiel dans le futur de ce domaine.\\
 
 J'aimerai maintenant dégager deux grands axes dans l'activité de la modélisation mathématique et informatique du système nerveux :
 \begin{enumerate} \item Reproduire les propriétés physiques et biologiques du système nerveux (c’est-à-dire ici des neurones et réseaux de neurones) 
@@ -117,28 +117,21 @@ Maintenant, tout en gardant en tête ces idées, il est temps pour moi de défin
 Dans une première partie, je m'intéresserai aux différents modèles de neurones existants et je créerai mon propre outil de définition et de simulation de ces modèles en Python 3+. Dans une deuxième partie, je me tournerai vers les modèles de synapses et je m'intéresserai aux manières de créer et simuler des réseaux de neurones \textit{in silico}, tout en créant mon propre outil de définition et de simulation de réseaux de spiking neurons en Python3+/Tensorflow. Il me semble que, pour pouvoir envisager de faire emerger des propriétés cognitives de modèles du système nerveux, il est important d'avoir des outils optimisés et faciles d'utilisation qui permettent de modéliser ses propriétés physiques et biologiques. Dans une troisième partie, et à l'aide de l'outil créé dans la deuxième partie, je tenterai de reproduire les résultats de (Héricé et al., 2016), c'est-à-dire construire un modèle des ganglions de la base capable de prendre des décisions sous forme de réseaux de spiking neurons.
 \pagebreak
 
-\textbf{Cognitivisme et Connexionnisme} 
+\textbf{Cognitivisme, Connexionnisme et énaction} 
 
-Parmi les grands paradigmes qui ont été explorés dans l'étude de l'esprit humain en science encore en vigeur, on trouve principalement le cognitivisme et le connexionnisme. Le cognitivisme, paradigme fondateur des sciences cognitives, considère que le système cognitif humain peut (et doit) être étudié comme un système de traitement de l'information créant et manipulant des représentations symboliques du monde, ces représentations possédant des propriétés syntaxiques et sémantiques. Dans ce système cognitiviste, la pensée est comparée à une série d'application systématique de règles (ou dit plus simplement, un calcul, l'application d'un algorithme) sur les représentations. Cette approche algorithmique de la pensée pose de sérieux problèmes, dont notamment les deux principaux sont : l'impossibilité du traitement parallèle et la localisation du traitement symbolique (c'est-à-dire que la perte d'une partie des symboles ou des règles empêche complétement le système de fonctionner correctement). 
+Parmi les grands paradigmes qui ont été explorés dans l'étude de l'esprit humain en science encore en vigeur, on trouve principalement le cognitivisme et le connexionnisme. Le cognitivisme, paradigme fondateur des sciences cognitives, considère que le système cognitif humain peut (et doit) être étudié comme un système de traitement de l'information créant et manipulant des représentations symboliques du monde. Ces représentations possédent des propriétés syntaxiques et sémantiques, et le système cognitif fonctionne correctement lorsque ces propriétés permettent de représenter adéquatement l'environnement et que le traitement de ces représentations permet au système de résoudre efficacement un problème dans cet environnement. Dans ce système cognitiviste, la pensée est comparée à une série d'application systématique de règles (ou dit plus simplement, un calcul, l'application d'un algorithme) sur les représentations. Cette approche algorithmique de la pensée pose de sérieux problèmes, dont notamment les deux principaux sont : l'impossibilité du traitement parallèle et la localisation du traitement symbolique (c'est-à-dire que la perte d'une partie des symboles ou des règles empêche complétement le système de fonctionner correctement). 
 
-Pour pallier à ces deux failles, le connexionnisme modélise les phénomènes mentaux comme des processus émergents de réseaux d'unités simples interconnectées. Les différences entre le cognitivisme et le connexionnisme se situent au niveau de la localisation des propriétés syntaxiques et sémantiques et dans la forme des règles de manipulation. Dans le cognitivisme, les propriétés syntaxiques et sémantiques sont attribuées aux représentations et les règles de manipulation sont algorithmiques et linéaires tandis que dans le paradigme connexionniste, les propriétés syntaxiques et les règles de calculs sont représentées par un réseau d'unités de bases interconnectées et dépendent entièrement du fonctionnement de ces unités et de l'architecture du réseaux, et les règles de calculs peuvent être massivement parallèles ; tandis que les propriétés sémantiques sont attribuées au réseau en lui-même (en entier).
+Pour pallier à ces deux failles, le connexionnisme modélise les phénomènes mentaux comme des processus émergents de réseaux d'unités simples interconnectées. Les différences entre le cognitivisme et le connexionnisme se situent au niveau de la localisation des propriétés syntaxiques et sémantiques et dans la forme des règles de manipulation. Dans le cognitivisme, les propriétés syntaxiques et sémantiques sont attribuées aux représentations et les règles de manipulation sont algorithmiques et linéaires tandis que dans le paradigme connexionniste, les propriétés syntaxiques et les règles de calculs sont représentées par un réseau d'unités de bases interconnectées et dépendent entièrement du fonctionnement de ces unités et de l'architecture du réseaux, et les règles de calculs peuvent être massivement parallèles ; tandis que les propriétés sémantiques sont attribuées au réseau en lui-même (en entier). Un modèle connexionniste est considéré comme valable lorsque les propriétés emergentes du système sont assimilables à des propriétés cognitives.\\
 
-\begin{figure}[!h]
-\centering
-\includegraphics[scale=0.35]{imgs/1.JPG}
-\caption{Illustration schématique du système cognitif humain dans certaines approches d'étude de la cognition humaine}
-\end{figure}
+Un troisième paradigme d'étude de la cognition, plus jeune et donc moins ancré dans la litterature et la tradition de la recherche, est aujourd'hui exploré. On peut appeller ce troisième paradigme le paradigme de l'enaction (traduction de l'anglais "enactivism"). Ce paradigme remet en question une des idées sous-jacentes des deux paradigmes précedents, qui est celle que notre environnement nous préexiste et que la cognition est \textit{à propos} de représentations de cet environnement. En effet dans le paradigme de l'enaction, l'environnement et la cognition, en constante intéraction, se définissent l'un l'autre de manière inséparable. La cognition est alors définie, non plus seule, mais comme l'historique d'intéractions constantes entre l'environnement et un système doté de faculté qui fait émerger un monde. Cette vision est parfaitement compatible avec l'incarnation d'un système cognitif dans un réseau de neurones adapatif : en effet, le réseau s'adapte à l'environnement, au cours de la vie, ou de l'évolution, et l'environnement est à son tour défini par le réseau. Cette idée que l'environnement soit défini par le réseau est contre-intuitive pour beaucoup, de part notre tradition répresentationnaliste, mais elle est loin d'être sans fondemments. Mais il ne convient pas ici de discuter plus longuement de ce paradigme de l'énaction, et on renvoit, pour une introduction très abordalbe, à \cite{Varelacarto}, et pour une analyse plus approfondie, à \cite{treeofknowledge}
 
-\pagebreak
+Etant donné que la perspective de modéliser des réseaux de neurones peut également interesser le connexionnisme et l'énaction, il ne convient pas ici d'assimiler ce travail à un de ces deux courants, mais plutot aux deux en même temps. 
 
-\textbf{Aparté : Motivations personnelles}
-
-C'est donc avec ces idées (celles énoncées dans l'introduction pour ceux qui lisent dans le désordre) que j'aborde ce Travail Encadré de Recherche dans le cadre de ma troisième année de licence de Mathématiques et Informatique appliquées aux sciences humaines et sociales - Parcours Sciences Cognitives à l'université de Bordeaux. Ce TER a, je dois bien l'avouer, surtout une portée d'apprentissage pour moi, puisque j'espère qu'il me permettra d'acquérir les connaissances nécessaires sur la modélisation du système nerveux pour ensuite poursuivre les buts énoncés dans l'introduction dans la suite de mes études, puis en recherche. Pour justifier la création de mes propres outils de définition et de simulation des modèles, je dirais que cela me permettra une compréhension profonde de la manière dont fonctionnent ces outils, notamment des méthodes de simulation numérique. De plus, il y a un manque d'outil de création de réseaux de spiking neurons en Python, et je pense que l'utilisation de tensorflow (bibliothèque de computation parallèle et optimisée) se révèlera pertinente, et j'espère ainsi, au cours de ce travail et après, créer une bibliothèque de création de modèles de réseaux de neurones biologiques facile d'utilisation et optimisée en termes de computation, du moins autant que cela est possible. Enfin l'étude et la reproduction des travaux de (Héricé et al., 2016) permettront, en plus de m'apporter de la connaissance et de la pratique sur la base d'une partie de la littérature récente sur le sujet, d'apporter une justification de l'utilité de mon outil de simulation de réseaux de neurones.
 
 \pagebreak
 
 \part{Modélisation d'un neurone}
-\section{Quelques rappels de neurobiologie} \label{rappelneuro1}
+\section{Quelques elements de neurobiologie} \label{rappelneuro1}
 Cette partie sera concise et aura pour but de rappeler quelques notions de neurobiologie nécessaires à la compréhension de la suite, sans en faire trop. On suppose que le lecteur est déjà familier avec les notions fondamentales de la neurobiologie, si ce n'est pas le cas, on renvoie à \cite{kandel2000principles}. 
 Le neurone est une cellule capable de recevoir et transmettre de l'information sous forme électrochimique. On peut décomposer schématiquement les différentes étapes de la réception et transmission de l'information \textit{in vivo} dans un neurone par :
 \begin{enumerate}
@@ -242,26 +235,24 @@ $ C_M = 1,~ \overline{g_K} = 36,~ \overline{g_{Na}} = 120,~ \overline{g_L} = 0.3
 
 \begin{lstlisting}[caption = {Hodgkin-Huxley : Définition du modèle}]
 from .core import Variable, Model
-from .tools import Function as F
-
-V = Variable(name='V', init_value=-65,
-ddt='(1/Cm)*(-gk*n**4*(V-Vk)-gna*m**3*h*(V-Vna)-gl*(V-Vl)+Iapp)')
+V = Variable(name='V', init_value=-60, unit='mV',
+		ddt='(1/Cm)*(-gk*n**4*(V-Vk)-gna*m**3*h*(V-Vna)-gl*(V-Vl)+Iapp)')
 n = Variable(name='n', ddt='alpha_n*(1-n)-beta_n*n', init_value=1/3)
 m = Variable(name='m', ddt='alpha_m*(1-m)-beta_m*m', init_value=0)
 h = Variable(name='h', ddt='alpha_h*(1-h)-beta_h*h', init_value=2/3)
-HH_model = Model(V, n, m, h, Cm=1, gk=36, gna=120, 
-	gl=0.3, Vk=-77, Vna=50, Vl=-54.4, 
-	alpha_n=F('V', lambda V: 0.01*(-V-55)/(e**((-V-55)/10) -1)), 
-	beta_n=F('V', lambda V: 0.125*e**((-V-65)/80)),
-	alpha_m=F('V', lambda V: 0.1*(-V-40)/(e**((-V-40)/10) -1) ),
-	beta_m=F('V', lambda V: 4*e**((-V-65)/18)),
-	alpha_h=F('V', lambda V: 0.07*e**((-V-65)/20)),
-	beta_h=F('V', lambda V: 1/(1+e**((-V-35)/10))), 
-	Iapp=0)
+HH = Model(V, n, m, h, Cm=1, gk=36, gna=120, 
+				 gl=0.3, Vk=-77, Vna=50, Vl=-54.4, 
+				 alpha_n='0.01*(-V-55)/(exp((-V-55)/10) -1)', 
+				 beta_n='0.125*exp((-V-65)/80)',
+				 alpha_m='0.1*(-V-40)/(exp((-V-40)/10) -1)', 
+				 beta_m='4*exp((-V-65)/18)',
+				 alpha_h='0.07*exp((-V-65)/20)',
+				 beta_h='1/(1+exp((-V-36)/10))', 
+				 Iapp=0)
 \end{lstlisting}
 
 \begin{lstlisting}[caption = {Hodgkin-Huxley : Simulation du modèle pour $I_{app} = 5$}]
-from snn.single.usual_models import HH_model as hh
+from snn.single.usual_models import HH as hh
 import matplotlib.pyplot as plt
 
 # Define Input current
@@ -279,9 +270,9 @@ history, _ = hh.simulation(T, dt)
 hh.plot(T, dt, keep=['V', 'Iapp'], history=history)
 
 # Print m, n, h evolution when the membrane potentiel changes
-for var in ['n', 'm', 'h']:
-	plt.figure() ; plt.ylabel(var), plt.xlabel('V')
-	plt.plot(history['V'], history[var])
+hh.phase_portrait(T, dt, 'V', 'm', history=history)
+hh.phase_portrait(T, dt, 'V', 'n', history=history)
+hh.phase_portrait(T, dt, 'V', 'h', history=history)
 
 plt.show()
 \end{lstlisting}
@@ -346,9 +337,7 @@ T, dt = 100, 0.01
 Dans \ref{hh11}, on peut voir que le modèle est bien capable de produire un potentiel d'action, en tout cas le comportement de la variable V représentant le potentiel de membrane a un comportement similaire aux potentiel de membrane \textit{in vivo}. Le courant appliqué, qui est constant égal à 5, est suffisant pour provoquer un potentiel d'action mais insuffisant pour en provoquer un deuxième. Au contraire, dans \ref{hh21}, le courant constant égal à 10 est suffisant pour provoquer un train de potentiel d'action, à partir du deuxième potentiel d'action, on a un comportement périodique du système, qui va continuer de générer des potentiels d'action si le courant appliqué reste constant. Cela peut également se voir sur les représentations de m, n et h en fonction de V. Lorsqu'il n'y a qu'un seul potentiel d'action puis une convergence vers un état stable, on peut voir dans \ref{hh1234} la présence d'un équilibre attracteur pour m, n et h, ce qui signifie que l'état du système va se stabiliser. Au contraire, lorsqu'on a une génération périodique de potentiel d'action comme dans \ref{hh2234}, on voit bien que le comportement de m, n et h est cyclique et qu'il n'y a pas d'équilibre attracteur.
 
 \begin{lstlisting}[caption = {Hodgkin-Huxley : Simulation du modèle pour $I_{app}$ définie par morceau}]
-from snn.single.tools import Function as F
-hh['Iapp'] = F('t', 
-lambda t : 5 if 200<t<400 else 10 if 600<t<800 else 0)
+hh['Iapp'] = '5 if 200<t<400 else 10 if 600<t<800 else 0'
 T, dt = 1000, 0.01
 \end{lstlisting}
 
@@ -361,10 +350,7 @@ T, dt = 1000, 0.01
 
 \clearpage
 \begin{lstlisting}[caption = {Hodgkin-Huxley : Simulation du modèle pour $I_{app} = 5\cos(\frac{t}{10})+\epsilon(\frac12)$}]
-import math
-import random as rd 
-from snn.single.tools import Function as F
-hh['Iapp'] = F('t', lambda t : 5*math.cos(t/10) + rd.expovariate(0.5))
+hh['Iapp'] = '5*math.cos(t/10) + rd.expovariate(0.5)'
 T, dt = 100, 0.01
 \end{lstlisting}
 
@@ -465,15 +451,15 @@ Nous allons maintenant nous intéresser à l'approche de Fitzhugh et Nagumo dans
 \item $h_\infty + n_\infty \simeq 0.85$, c'est-à-dire que la somme des valeurs à l'équilibre de $h$ et $n$ est constante (voir figure \ref{hhnplush}). Fitzhugh et Nagumo ont ensuite élargie cette approximation à $n(t)$ et $h(t)$, c'est-à-dire que $\exists a,b \in \mathbb{R} \text{ tq }, h(t) + an(t) = b$. On peut ainsi définir $w = b-h(t) = an(t)$, et on a $w$ qui décrit ainsi en même temps l'évolution des variables $h$ et $n$, et on a $\displaystyle \frac{\dd w}{\dd t} = a\frac{\dd n}{\dd t} = \frac{an_\infty -an}{\tau_n} = \frac{w_\infty-w}{\tau_w} \text{ avec } w_\infty=an_\infty, \tau_w = \tau_n$. Cette nouvelle variable w représente le rétablissement de la membrane. \end{itemize}
 
 \begin{lstlisting}[caption = {Hodgkin-Huxley : Somme de n et h}]
-from snn.single.usual_models import HH_model as hh
+from snn.single.usual_models import HH as hh
 import matplotlib.pyplot as plt
 
-plt.figure()
+plt.figure() ; plt.xlabel('time') ; plt.ylabel('n+h')
 for I in [0, 5, 10]:
-hh['Iapp'] = I
-history, _ = hh.simulation(100, 0.1)
-plt.plot(history['t'], history['n'] + history['h'], 
-label='n+h in HH-model with current %s' % I)
+    hh['Iapp'] = I
+    history, _ = hh.simulation(100, 0.1)
+    plt.plot(history['t'], history['n'] + history['h'], 
+             label='n+h in HH-model with current %s' % I)
 plt.legend()
 plt.show()
 \end{lstlisting}
@@ -496,15 +482,14 @@ On a ainsi un système de dimension 2 qui conserve les propriétés fondamentale
 
 \begin{lstlisting}[caption = {Fitzhugh-Nagumo : Définition du modèle}]
 from .core import Variable, Model
-from .tools import Function as F
 v = Variable(name='v', ddt='v-(1/3)*v**3-w+I', init_value=0)
 w = Variable(name='w', ddt='(1/tau)*(v+a-b*w)', init_value=0)
-FHN_model = Model(v, w, a=0.7, b=0.8, tau=12.5, I=0.5)
+FHN = Model(v, w, a=0.7, b=0.8, tau=12.5, I=0.5)
 \end{lstlisting}
 \begin{lstlisting}[caption = {Fitzhugh-Nagumo : Plan de phase}]
-from snn.single.usual_models import FHN_model as fhn
+from snn.single.usual_models import FHN as fhn
 import matplotlib.pyplot as plt
-fhn.plan_phase(('v', -2.5, 2, 0.3), ('w', -1, 1, 0.2))
+fhn.phase_plan(('v', -2.5, 2), ('w', -1, 1))
 plt.show()
 \end{lstlisting}
 
@@ -517,21 +502,21 @@ plt.show()
 
 \clearpage
 \begin{lstlisting}[caption = {Comparaison des comportements des modèles de Fitzhugh-Nagumo et Hodgkin-Huxley}]
-from snn.single.usual_models import FHN_model as fhn, HH_model as hh
+from snn.single.usual_models import FHN as fhn, HH as hh
 import matplotlib.pyplot as plt
 
 fhn['tau'] = 5
 for hh_I, fhn_I in zip([0, 5, 10], [-0.25, 0.25, 0.5]):
-plt.figure()
-hh['Iapp'] = hh_I ; fhn['I'] = fhn_I
-fhn_history, _ = fhn.simulation(100, 0.1)
-hh_history, _ = hh.simulation(100, 0.1)
-plt.subplot('121') ; plt.ylim(-2, 2) 
-plt.title('Fitzhugh-Nagumo model')
-plt.plot(fhn_history['t'], fhn_history['v'], '-r')
-plt.subplot('122') ; plt.ylim(-80, 40) 
-plt.title('Hodgkin-Huxley model')
-plt.plot(hh_history['t'], hh_history['V'], '-b') 
+    plt.figure()
+    hh['Iapp'] = hh_I ; fhn['I'] = fhn_I
+    fhn_history, _ = fhn.simulation(100, 0.1)
+    hh_history, _ = hh.simulation(100, 0.1)
+    plt.subplot('121') ; plt.ylim(-2, 2) 
+    plt.title('Fitzhugh-Nagumo model')
+    plt.plot(fhn_history['t'], fhn_history['v'], '-r')
+    plt.subplot('122') ; plt.ylim(-80, 40) 
+    plt.title('Hodgkin-Huxley model')
+    plt.plot(hh_history['t'], hh_history['V'], '-b') 
 plt.show()
 \end{lstlisting}
 
@@ -608,22 +593,19 @@ Mais malgré cette apparente simplicité, ce modèle est capable de simuler un g
 \clearpage
 \begin{lstlisting}[caption = {Izhikievich : Définition du modèle}]
 from .core import Variable, Model
-from .tools import Function as F
-
 v = Variable(name='v', ddt='0.04*v**2+5*v+140-u+I', init_value=-65, 
-reset_value='c', unit='mV')
+     reset_value='c', unit='mV')
 u = Variable(name='u', ddt='a*(b*v-u)', init_value=-15,
-reset_value='u+d')
-izhi_model = Model(v, u, spike_when='v>=30', max_spike_value=30, 
-a=0.02, b=0.2, c=-65, d=8, I=0) 
+     reset_value='u+d')
+IZHIKIEVICH = Model(v, u, spike_when='v>=30', max_spike_value=30, 
+     a=0.02, b=0.2, c=-65, d=8, I=0) 
 \end{lstlisting}
 
 \begin{lstlisting}[caption = {Izhikievich : Plan de phase}]
-from snn.single.usual_models import izhi_model as iz
+from snn.single.usual_models import IZHIKIEVICH as iz
 import matplotlib.pyplot as plt
-
-iz.plan_phase(('v', -80, -30, 5), ('u', -30, 20, 5), 
-rescale=True) #interactive=True
+iz.phase_plan(('v', -80, -30), ('u', -30, 20), 
+    rescale=True) #interactive=True
 plt.show()
 \end{lstlisting}
 
@@ -639,10 +621,10 @@ I = [15, 10, 10, 10, 15, 1, 1, -0.0488, -0.04]
 V = [-65, -65, -65, -65, -65, -65, -90, -65, -65]
 
 for a, b, c, d, i, vstart in zip(A, B, C, D, I, V):
-iz['a'] = a ; iz['b'] = b ; iz['c'] = c ; iz['d'] = d ; iz['I'] = i
-iz['v'] = vstart ; iz['u'] = b * vstart
-iz.plot(100, 0.01, keep='v')
-plt.gca().set_ylim(-80, 40)
+    iz['a'] = a ; iz['b'] = b ; iz['c'] = c ; iz['d'] = d
+    iz['I'] = i ; iz['v'] = vstart ; iz['u'] = b * vstart
+    iz.plot(100, 0.01, keep='v')
+    plt.gca().set_ylim(-80, 40)
 plt.show()
 \end{lstlisting}
 
@@ -738,13 +720,13 @@ Ce modèle très simple est capable de simuler la base des comportements des neu
 \begin{lstlisting}[caption = {Leaky Integrate-and-fire : Définition du modèle}]
 u = Variable(name='u', init_value=0,
 	ddt = '(1/tau_m)*(-u+R*I)', reset_value='ur', unit='mV')
-LEAKY_INTEGRATE_AND_FIRE_model = Model(u, spike_when='u>=1',
+LEAKY_INTEGRATE_AND_FIRE = Model(u, spike_when='u>=1',
 	max_spike_value=1, tau_m=10, R=1, ur=0, I=1.5)
 \end{lstlisting}
 \begin{lstlisting}[caption = {Leaky Integrate-and-fire : Evolution du potentiel de membrane en fonction du temps}]
-from snn.single.usual_models import LEAKY_INTEGRATE_AND_FIRE_model as leaky
+from snn.single.usual_models import LEAKY_INTEGRATE_AND_FIRE as liaf
 import matplotlib.pyplot as plt
-leaky.plot(100, 1, keep='u')
+liaf.plot(100, 1, keep='u')
 plt.show()
 \end{lstlisting}
 
@@ -759,14 +741,14 @@ plt.show()
 
 \part{Réseau de neurones}
 
+\section{Modèles de synapses}
+\subsection{Quelques élements de neurobiologie}
+\section{Apprentissage}
+\subsection{Quelques élements de neurobiologie}
 \part{Etude de (Héricé et al., 2016) }
 
 \part{Code}
 \url{https://github.com/ArnoGranier/SNN}
-
-Quelques justifications informatiques :
-\begin{itemize} \item Cette partie informatique de création d'outils de simulation ayant une grande par didactique pour moi, j'ai souhaité dans la partie de modélisation d'un seul neurone, ne pas utiliser certains outils "déjà tout prêt" et plutôt coder moi-même un maximum de chose. C'est la raison pour laquelle je n'utilise numpy que pour retourner des types array et que je n'utilise pas les méthodes linspace ou meshgrid (par exemple) de cette bibliothèque. J'ai également souhaité ne pas utiliser d'ODE-solver déjà implémenté comme on peut trouver dans scipy.integrate par exemple. \end{itemize}
-
 
 \nocite{*}
 

@@ -1,7 +1,7 @@
 \select@language {french}
 \contentsline {part}{\numberline {I}Introduction}{3}{part.1}
 \contentsline {part}{\numberline {II}Mod\IeC {\'e}lisation d'un neurone}{10}{part.2}
-\contentsline {section}{\numberline {1}Quelques rappels de neurobiologie}{10}{section.2.1}
+\contentsline {section}{\numberline {1}Quelques elements de neurobiologie}{10}{section.2.1}
 \contentsline {section}{\numberline {2}Mod\IeC {\`e}le de Hodgkin Huxley}{11}{section.2.2}
 \contentsline {subsection}{\numberline {2.1}La mod\IeC {\'e}lisation des canaux ioniques}{12}{subsection.2.2.1}
 \contentsline {subsection}{\numberline {2.2}L'\IeC {\'e}quation du potentiel de membrane}{14}{subsection.2.2.2}
@@ -12,6 +12,10 @@
 \contentsline {subsection}{\numberline {3.3}De Fitzhugh-Nagumo \IeC {\`a} Izhikievich, et d\IeC {\'e}monstration de la puissance du mod\IeC {\`e}le de Izhikievich}{31}{subsection.2.3.3}
 \contentsline {section}{\numberline {4}Mod\IeC {\`e}le leaky-integrate and fire}{37}{section.2.4}
 \contentsline {part}{\numberline {III}R\IeC {\'e}seau de neurones}{39}{part.3}
+\contentsline {section}{\numberline {1}Mod\IeC {\`e}les de synapses}{39}{section.3.1}
+\contentsline {subsection}{\numberline {1.1}Quelques \IeC {\'e}lements de neurobiologie}{39}{subsection.3.1.1}
+\contentsline {section}{\numberline {2}Apprentissage}{39}{section.3.2}
+\contentsline {subsection}{\numberline {2.1}Quelques \IeC {\'e}lements de neurobiologie}{39}{subsection.3.2.1}
 \contentsline {part}{\numberline {IV}Etude de (H\IeC {\'e}ric\IeC {\'e} et al., 2016)}{39}{part.4}
 \contentsline {part}{\numberline {V}Code}{39}{part.5}
-\contentsline {section}{R\'ef\'erences}{40}{section*.33}
+\contentsline {section}{R\'ef\'erences}{40}{section*.32}

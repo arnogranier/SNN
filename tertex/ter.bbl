@@ -320,6 +320,33 @@ MacLeod, M.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Maturana%
+\ \BBA {} Varela%
+}{%
+Maturana%
+\ \BBA {} Varela%
+}{%
+{\protect \APACyear {1987}}%
+}]{%
+treeofknowledge}
+\APACinsertmetastar {%
+treeofknowledge}%
+\begin{APACrefauthors}%
+Maturana, H\BPBI R.%
+\BCBT {}\ \BBA {} Varela, F\BPBI J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{1987}.
+\newblock
+\APACrefbtitle {The tree of knowledge: The biological roots of human
+  understanding.} {The tree of knowledge: The biological roots of human
+  understanding.}
+\newblock
+\APACaddressPublisher{}{New Science Library/Shambhala Publications}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 McCulloch%
 \ \BBA {} Pitts%
 }{%
@@ -422,6 +449,32 @@ Sen, S.%
   through spike-timing-dependent synaptic plasticity}.{\BBCQ}
 \newblock
 \APACjournalVolNumPages{Nature neuroscience}{3}{9}{919}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Varela%
+}{%
+Varela%
+}{%
+{\protect \APACyear {1992}}%
+}]{%
+Varelacarto}
+\APACinsertmetastar {%
+Varelacarto}%
+\begin{APACrefauthors}%
+Varela, F\BPBI J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1992}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Whence perceptual meaning? A cartography of current
+  ideas} {Whence perceptual meaning? a cartography of current ideas}.{\BBCQ}
+\newblock
+\BIn{} \APACrefbtitle {Understanding origins} {Understanding origins}\ (\BPGS\
+  235--263).
+\newblock
+\APACaddressPublisher{}{Springer}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%

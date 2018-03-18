@@ -1,6 +1,6 @@
 \BOOKMARK [0][-]{part.1}{Introduction}{}% 1
 \BOOKMARK [0][-]{part.2}{Mod\351lisation d'un neurone}{}% 2
-\BOOKMARK [1][-]{section.2.1}{Quelques rappels de neurobiologie}{part.2}% 3
+\BOOKMARK [1][-]{section.2.1}{Quelques elements de neurobiologie}{part.2}% 3
 \BOOKMARK [1][-]{section.2.2}{Mod\350le de Hodgkin Huxley}{part.2}% 4
 \BOOKMARK [2][-]{subsection.2.2.1}{La mod\351lisation des canaux ioniques}{section.2.2}% 5
 \BOOKMARK [2][-]{subsection.2.2.2}{L'\351quation du potentiel de membrane}{section.2.2}% 6
@@ -11,6 +11,10 @@
 \BOOKMARK [2][-]{subsection.2.3.3}{De Fitzhugh-Nagumo \340 Izhikievich, et d\351monstration de la puissance du mod\350le de Izhikievich}{section.2.3}% 11
 \BOOKMARK [1][-]{section.2.4}{Mod\350le leaky-integrate and fire}{part.2}% 12
 \BOOKMARK [0][-]{part.3}{R\351seau de neurones}{}% 13
-\BOOKMARK [0][-]{part.4}{Etude de \(H\351ric\351 et al., 2016\)}{}% 14
-\BOOKMARK [0][-]{part.5}{Code}{}% 15
-\BOOKMARK [1][-]{section*.33}{R\351f\351rences}{part.5}% 16
+\BOOKMARK [1][-]{section.3.1}{Mod\350les de synapses}{part.3}% 14
+\BOOKMARK [2][-]{subsection.3.1.1}{Quelques \351lements de neurobiologie}{section.3.1}% 15
+\BOOKMARK [1][-]{section.3.2}{Apprentissage}{part.3}% 16
+\BOOKMARK [2][-]{subsection.3.2.1}{Quelques \351lements de neurobiologie}{section.3.2}% 17
+\BOOKMARK [0][-]{part.4}{Etude de \(H\351ric\351 et al., 2016\)}{}% 18
+\BOOKMARK [0][-]{part.5}{Code}{}% 19
+\BOOKMARK [1][-]{section*.32}{R\351f\351rences}{part.5}% 20
