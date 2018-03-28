@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.3.27)  21 MAR 2018 22:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.3.27)  28 MAR 2018 19:12
 entering extended mode
 **"C:/Users/Utilisateur/Desktop/TER - Copie/tertex/ter.tex"
 ("C:/Users/Utilisateur/Desktop/TER - Copie/tertex/ter.tex"
@@ -828,29 +828,32 @@ Package: empheq 2014/07/16 v2.14 Emphasizing equations
 \EQ_mathdisplay_box=\box40
 \EQ_tag_box=\box41
 \g_EQ_temprow_int=\count152
-) (ter.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 70.
+) (ter.aux
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\lm\t1lmr.fd"
+LaTeX Warning: Label `synapse' multiply defined.
+
+)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 73.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\t1lmr.fd"
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Info: Redefining \degres on input line 70.
-LaTeX Info: Redefining \dots on input line 70.
-LaTeX Info: Redefining \up on input line 70.
+LaTeX Info: Redefining \degres on input line 73.
+LaTeX Info: Redefining \dots on input line 73.
+LaTeX Info: Redefining \up on input line 73.
 
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -871,7 +874,7 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box43
-Package hyperref Info: Link coloring OFF on input line 70.
+Package hyperref Info: Link coloring OFF on input line 73.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -880,9 +883,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count159
 )
-LaTeX Info: Redefining \ref on input line 70.
-LaTeX Info: Redefining \pageref on input line 70.
-LaTeX Info: Redefining \nameref on input line 70.
+LaTeX Info: Redefining \ref on input line 73.
+LaTeX Info: Redefining \pageref on input line 73.
+LaTeX Info: Redefining \nameref on input line 73.
 
 (ter.out) (ter.out)
 \@outlinefile=\write3
@@ -893,44 +896,44 @@ LaTeX Info: Redefining \BPBI on input line 130.
 LaTeX Info: Redefining \BHBI on input line 131.
 )
 \c@lstlisting=\count161
-LaTeX Font Info:    Try loading font information for T1+lmss on input line 73.
+LaTeX Font Info:    Try loading font information for T1+lmss on input line 76.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\t1lmss.fd"
 File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 73.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 76.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 73.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 76.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\omllmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 73.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 76.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\omslmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 73.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 76.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\omxlmex.fd"
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <17.28> on input line 73.
+(Font)              <17.28> on input line 76.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 73.
+(Font)              <12> on input line 76.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 73.
-LaTeX Font Info:    Try loading font information for U+msa on input line 73.
+(Font)              <10> on input line 76.
+LaTeX Font Info:    Try loading font information for U+msa on input line 76.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 73.
+LaTeX Font Info:    Try loading font information for U+msb on input line 76.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -945,95 +948,104 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}])
 \tf@toc=\write4
  [2]
-Underfull \hbox (badness 10000) in paragraph at lines 82--83
+Underfull \hbox (badness 10000) in paragraph at lines 85--86
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 84--85
+Underfull \hbox (badness 10000) in paragraph at lines 87--88
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 86--87
+Underfull \hbox (badness 10000) in paragraph at lines 89--90
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 88--89
+Underfull \hbox (badness 10000) in paragraph at lines 91--92
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 90--91
+Underfull \hbox (badness 10000) in paragraph at lines 93--94
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 95--96
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 98--99
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--100
+Underfull \hbox (badness 10000) in paragraph at lines 101--102
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--103
 []|\T1/lmr/m/n/12 connexions simple avec
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--100
+Underfull \hbox (badness 10000) in paragraph at lines 103--103
 []|\T1/lmr/m/n/12 Méthode d'ap-pren-tis-sage
  []
 
 
-Underfull \hbox (badness 3713) in paragraph at lines 100--100
+Underfull \hbox (badness 3713) in paragraph at lines 103--103
 []|\T1/lmr/m/n/12 surtout ap-pren-tis-sage su-
  []
 
 
-Overfull \hbox (17.17967pt too wide) in paragraph at lines 100--101
+Overfull \hbox (17.17967pt too wide) in paragraph at lines 103--104
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--101
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
 
  []
 
 [5]
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 105.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 108.
 
  ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\t1lmtt.fd"
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-Underfull \hbox (badness 10000) in paragraph at lines 113--114
+Underfull \hbox (badness 10000) in paragraph at lines 116--117
 
  []
 
-[6] [7] [8] [9] [10] <imgs/2.JPG, id=177, 500.62032pt x 298.11375pt>
-File: imgs/2.JPG Graphic file (type jpg)
+[6] [7]
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
 
-<use imgs/2.JPG>
-Package pdftex.def Info: imgs/2.JPG used on input line 162.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 131--132
+
+ []
+
+[8] [9] [10] <imgs/2.JPG, id=183, 500.62032pt x 298.11375pt>
+File: imgs/2.JPG Graphic file (type jpg)
+ <use imgs/2.JPG>
+Package pdftex.def Info: imgs/2.JPG used on input line 165.
 (pdftex.def)             Requested size: 500.6191pt x 298.11302pt.
 
-Overfull \hbox (52.48814pt too wide) in paragraph at lines 162--163
+Overfull \hbox (52.48814pt too wide) in paragraph at lines 165--166
  [][] 
  []
 
 [11 <./imgs/2.JPG>] [12] [13]
-Underfull \hbox (badness 10000) in paragraph at lines 193--194
+Underfull \hbox (badness 10000) in paragraph at lines 196--197
 
  []
 
-[14] <imgs/3.png, id=210, 722.7pt x 542.025pt>
+[14] <imgs/3.png, id=217, 722.7pt x 542.025pt>
 File: imgs/3.png Graphic file (type png)
  <use imgs/3.png>
-Package pdftex.def Info: imgs/3.png used on input line 204.
+Package pdftex.def Info: imgs/3.png used on input line 207.
 (pdftex.def)             Requested size: 361.3491pt x 271.01183pt.
  [15
 
@@ -1042,32 +1054,32 @@ pdfTeX warning (ext4): destination with the same identifier (name{equation.2.2.
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.217 ...g_{L}}(V-V_{L}) \label{Leq}\end{equation}
+l.220 ...g_{L}}(V-V_{L}) \label{Leq}\end{equation}
                                                    <./imgs/3.png>]pdfTeX warnin
 g (ext4): destination with the same identifier (name{equation.2.2.1}) has been 
 already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.221 ...lpha_h(V)(1-h) - \beta_h(V) h\end{empheq}
+l.224 ...lpha_h(V)(1-h) - \beta_h(V) h\end{empheq}
                                                   pdfTeX warning (ext4): destin
 ation with the same identifier (name{equation.2.2.2}) has been already used, du
 plicate ignored
 <to be read again> 
                    \relax 
-l.221 ...lpha_h(V)(1-h) - \beta_h(V) h\end{empheq}
+l.224 ...lpha_h(V)(1-h) - \beta_h(V) h\end{empheq}
                                                   pdfTeX warning (ext4): destin
 ation with the same identifier (name{equation.2.2.3}) has been already used, du
 plicate ignored
 <to be read again> 
                    \relax 
-l.221 ...lpha_h(V)(1-h) - \beta_h(V) h\end{empheq}
+l.224 ...lpha_h(V)(1-h) - \beta_h(V) h\end{empheq}
                                                   
-Underfull \hbox (badness 10000) in paragraph at lines 220--221
+Underfull \hbox (badness 10000) in paragraph at lines 223--224
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 230--236
+Underfull \hbox (badness 10000) in paragraph at lines 233--239
 
  []
 
@@ -1076,91 +1088,91 @@ Underfull \hbox (badness 10000) in paragraph at lines 230--236
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.236 \clearpage
+l.239 \clearpage
                 ]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 238.
+nput line 241.
 
-Overfull \hbox (63.16562pt too wide) in paragraph at lines 241--242
+Overfull \hbox (33.52524pt too wide) in paragraph at lines 244--245
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
-[][][][][][][][][][][][][][][][][][][][][] 
+[][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (55.75552pt too wide) in paragraph at lines 242--243
+Overfull \hbox (55.75552pt too wide) in paragraph at lines 245--246
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (40.93533pt too wide) in paragraph at lines 243--244
+Overfull \hbox (40.93533pt too wide) in paragraph at lines 246--247
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (55.75552pt too wide) in paragraph at lines 244--245
+Overfull \hbox (55.75552pt too wide) in paragraph at lines 247--248
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (55.75552pt too wide) in paragraph at lines 265--266
+Overfull \hbox (55.75552pt too wide) in paragraph at lines 268--269
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
 [][] 
  []
 
 
-Overfull \hbox (48.34543pt too wide) in paragraph at lines 266--267
+Overfull \hbox (48.34543pt too wide) in paragraph at lines 269--270
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
 [][][][][][][][] 
  []
 
 
-Overfull \hbox (3.88486pt too wide) in paragraph at lines 274--275
+Overfull \hbox (3.88486pt too wide) in paragraph at lines 277--278
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-<imgs/hh11.png, id=236, 462.528pt x 346.896pt>
+<imgs/hh11.png, id=242, 462.528pt x 346.896pt>
 File: imgs/hh11.png Graphic file (type png)
  <use imgs/hh11.png>
-Package pdftex.def Info: imgs/hh11.png used on input line 286.
+Package pdftex.def Info: imgs/hh11.png used on input line 289.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/hh12.png, id=238, 462.528pt x 346.896pt>
+<imgs/hh12.png, id=244, 462.528pt x 346.896pt>
 File: imgs/hh12.png Graphic file (type png)
  <use imgs/hh12.png>
-Package pdftex.def Info: imgs/hh12.png used on input line 294.
+Package pdftex.def Info: imgs/hh12.png used on input line 297.
 (pdftex.def)             Requested size: 161.88722pt x 121.4154pt.
 
-Overfull \hbox (27.44658pt too wide) in paragraph at lines 294--295
+Overfull \hbox (27.44658pt too wide) in paragraph at lines 297--298
  [][] 
  []
 
-<imgs/hh13.png, id=239, 462.528pt x 346.896pt>
+<imgs/hh13.png, id=245, 462.528pt x 346.896pt>
 File: imgs/hh13.png Graphic file (type png)
  <use imgs/hh13.png>
-Package pdftex.def Info: imgs/hh13.png used on input line 298.
+Package pdftex.def Info: imgs/hh13.png used on input line 301.
 (pdftex.def)             Requested size: 161.88722pt x 121.4154pt.
 
-Overfull \hbox (27.44658pt too wide) in paragraph at lines 298--299
+Overfull \hbox (27.44658pt too wide) in paragraph at lines 301--302
  [][] 
  []
 
-<imgs/hh14.png, id=240, 462.528pt x 346.896pt>
+<imgs/hh14.png, id=246, 462.528pt x 346.896pt>
 File: imgs/hh14.png Graphic file (type png)
  <use imgs/hh14.png>
-Package pdftex.def Info: imgs/hh14.png used on input line 302.
+Package pdftex.def Info: imgs/hh14.png used on input line 305.
 (pdftex.def)             Requested size: 161.88722pt x 121.4154pt.
 
-Overfull \hbox (27.44658pt too wide) in paragraph at lines 302--303
+Overfull \hbox (27.44658pt too wide) in paragraph at lines 305--306
  [][] 
  []
 
@@ -1170,103 +1182,103 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [17
 
 ] [18 <./imgs/hh11.png> <./imgs/hh12.png> <./imgs/hh13.png> <./imgs/hh14.png>] 
-<imgs/hh21.png, id=296, 462.528pt x 346.896pt>
+<imgs/hh21.png, id=302, 462.528pt x 346.896pt>
 File: imgs/hh21.png Graphic file (type png)
  <use imgs/hh21.png>
-Package pdftex.def Info: imgs/hh21.png used on input line 317.
+Package pdftex.def Info: imgs/hh21.png used on input line 320.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
 
-<imgs/hh22.png, id=297, 462.528pt x 346.896pt>
+<imgs/hh22.png, id=303, 462.528pt x 346.896pt>
 File: imgs/hh22.png Graphic file (type png)
  <use imgs/hh22.png>
-Package pdftex.def Info: imgs/hh22.png used on input line 325.
+Package pdftex.def Info: imgs/hh22.png used on input line 328.
 (pdftex.def)             Requested size: 161.88722pt x 121.4154pt.
 
-Overfull \hbox (27.44658pt too wide) in paragraph at lines 325--326
+Overfull \hbox (27.44658pt too wide) in paragraph at lines 328--329
  [][] 
  []
 
-<imgs/hh23.png, id=298, 462.528pt x 346.896pt>
+<imgs/hh23.png, id=304, 462.528pt x 346.896pt>
 File: imgs/hh23.png Graphic file (type png)
  <use imgs/hh23.png>
-Package pdftex.def Info: imgs/hh23.png used on input line 329.
+Package pdftex.def Info: imgs/hh23.png used on input line 332.
 (pdftex.def)             Requested size: 161.88722pt x 121.4154pt.
 
-Overfull \hbox (27.44658pt too wide) in paragraph at lines 329--330
+Overfull \hbox (27.44658pt too wide) in paragraph at lines 332--333
  [][] 
  []
 
-<imgs/hh24.png, id=299, 462.528pt x 346.896pt>
+<imgs/hh24.png, id=305, 462.528pt x 346.896pt>
 File: imgs/hh24.png Graphic file (type png)
  <use imgs/hh24.png>
-Package pdftex.def Info: imgs/hh24.png used on input line 333.
+Package pdftex.def Info: imgs/hh24.png used on input line 336.
 (pdftex.def)             Requested size: 161.88722pt x 121.4154pt.
 
-Overfull \hbox (27.44658pt too wide) in paragraph at lines 333--334
+Overfull \hbox (27.44658pt too wide) in paragraph at lines 336--337
  [][] 
  []
 
 [19
 
  <./imgs/hh21.png> <./imgs/hh22.png> <./imgs/hh23.png> <./imgs/hh24.png>]
-<imgs/hh31.png, id=318, 462.528pt x 346.896pt>
+<imgs/hh31.png, id=324, 462.528pt x 346.896pt>
 File: imgs/hh31.png Graphic file (type png)
  <use imgs/hh31.png>
-Package pdftex.def Info: imgs/hh31.png used on input line 348.
+Package pdftex.def Info: imgs/hh31.png used on input line 351.
 (pdftex.def)             Requested size: 370.02289pt x 277.51717pt.
- [20 <./imgs/hh31.png>] <imgs/hh41.png, id=328, 462.528pt x 346.896pt>
+ [20 <./imgs/hh31.png>] <imgs/hh41.png, id=334, 462.528pt x 346.896pt>
 File: imgs/hh41.png Graphic file (type png)
  <use imgs/hh41.png>
-Package pdftex.def Info: imgs/hh41.png used on input line 361.
+Package pdftex.def Info: imgs/hh41.png used on input line 364.
 (pdftex.def)             Requested size: 370.02289pt x 277.51717pt.
 
 [21
 
- <./imgs/hh41.png>] <imgs/hh51.png, id=338, 462.528pt x 346.896pt>
+ <./imgs/hh41.png>] <imgs/hh51.png, id=344, 462.528pt x 346.896pt>
 File: imgs/hh51.png Graphic file (type png)
 
 <use imgs/hh51.png>
-Package pdftex.def Info: imgs/hh51.png used on input line 376.
+Package pdftex.def Info: imgs/hh51.png used on input line 379.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
- <imgs/hh52.png, id=339, 462.528pt x 346.896pt>
+ <imgs/hh52.png, id=345, 462.528pt x 346.896pt>
 File: imgs/hh52.png Graphic file (type png)
 
 <use imgs/hh52.png>
-Package pdftex.def Info: imgs/hh52.png used on input line 383.
+Package pdftex.def Info: imgs/hh52.png used on input line 386.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
  [22
 
  <./imgs/hh51.png> <./imgs/hh52.png>]
-Overfull \hbox (26.11514pt too wide) in paragraph at lines 396--397
+Overfull \hbox (26.11514pt too wide) in paragraph at lines 399--400
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][] 
  []
 
 
-Overfull \hbox (26.11514pt too wide) in paragraph at lines 398--399
+Overfull \hbox (26.11514pt too wide) in paragraph at lines 401--402
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][] 
  []
 
 
-Overfull \hbox (26.11514pt too wide) in paragraph at lines 400--401
+Overfull \hbox (26.11514pt too wide) in paragraph at lines 403--404
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][] 
  []
 
-<imgs/hhinfty.png, id=353, 462.528pt x 346.896pt>
+<imgs/hhinfty.png, id=359, 462.528pt x 346.896pt>
 File: imgs/hhinfty.png Graphic file (type png)
  <use imgs/hhinfty.png>
-Package pdftex.def Info: imgs/hhinfty.png used on input line 422.
+Package pdftex.def Info: imgs/hhinfty.png used on input line 425.
 (pdftex.def)             Requested size: 300.63962pt x 225.47972pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/hhtime.png, id=354, 462.528pt x 346.896pt>
+<imgs/hhtime.png, id=360, 462.528pt x 346.896pt>
 File: imgs/hhtime.png Graphic file (type png)
  <use imgs/hhtime.png>
-Package pdftex.def Info: imgs/hhtime.png used on input line 429.
+Package pdftex.def Info: imgs/hhtime.png used on input line 432.
 (pdftex.def)             Requested size: 300.63962pt x 225.47972pt.
 
 
@@ -1277,57 +1289,57 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 ] [24 <./imgs/hhinfty.png> <./imgs/hhtime.png>] [25
 
 ]
-LaTeX Font Info:    Try loading font information for U+bbold on input line 453.
+LaTeX Font Info:    Try loading font information for U+bbold on input line 456.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\bbold\ubbold.fd") [26]
-<imgs/hhnplush.png, id=417, 462.528pt x 346.896pt>
+<imgs/hhnplush.png, id=423, 462.528pt x 346.896pt>
 File: imgs/hhnplush.png Graphic file (type png)
  <use imgs/hhnplush.png>
-Package pdftex.def Info: imgs/hhnplush.png used on input line 471.
+Package pdftex.def Info: imgs/hhnplush.png used on input line 474.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
 [27 <./imgs/hhnplush.png>]
-Overfull \hbox (3.88486pt too wide) in paragraph at lines 488--489
+Overfull \hbox (3.88486pt too wide) in paragraph at lines 491--492
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-<imgs/FNPDP.png, id=433, 462.528pt x 346.896pt>
+<imgs/FNPDP.png, id=439, 462.528pt x 346.896pt>
 File: imgs/FNPDP.png Graphic file (type png)
  <use imgs/FNPDP.png>
-Package pdftex.def Info: imgs/FNPDP.png used on input line 500.
+Package pdftex.def Info: imgs/FNPDP.png used on input line 503.
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [28] [29 <./imgs/FNPDP.png>]
-<imgs/hhfhnfaible.png, id=457, 462.528pt x 346.896pt>
+<imgs/hhfhnfaible.png, id=463, 462.528pt x 346.896pt>
 File: imgs/hhfhnfaible.png Graphic file (type png)
 
 <use imgs/hhfhnfaible.png>
-Package pdftex.def Info: imgs/hhfhnfaible.png used on input line 527.
+Package pdftex.def Info: imgs/hhfhnfaible.png used on input line 530.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
  [30
 
  <./imgs/hhfhnfaible.png>]
-<imgs/hhfhnmoyen.png, id=481, 462.528pt x 346.896pt>
+<imgs/hhfhnmoyen.png, id=487, 462.528pt x 346.896pt>
 File: imgs/hhfhnmoyen.png Graphic file (type png)
  <use imgs/hhfhnmoyen.png>
-Package pdftex.def Info: imgs/hhfhnmoyen.png used on input line 535.
+Package pdftex.def Info: imgs/hhfhnmoyen.png used on input line 538.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<imgs/hhfhnfort.png, id=482, 462.528pt x 346.896pt>
+<imgs/hhfhnfort.png, id=488, 462.528pt x 346.896pt>
 File: imgs/hhfhnfort.png Graphic file (type png)
  <use imgs/hhfhnfort.png>
-Package pdftex.def Info: imgs/hhfhnfort.png used on input line 542.
+Package pdftex.def Info: imgs/hhfhnfort.png used on input line 545.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<imgs/fhntoiz.png, id=483, 462.528pt x 346.896pt>
+<imgs/fhntoiz.png, id=489, 462.528pt x 346.896pt>
 File: imgs/fhntoiz.png Graphic file (type png)
  <use imgs/fhntoiz.png>
-Package pdftex.def Info: imgs/fhntoiz.png used on input line 551.
+Package pdftex.def Info: imgs/fhntoiz.png used on input line 554.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
 
@@ -1340,170 +1352,170 @@ ion with the same identifier (name{equation.2.3.1}) has been already used, dupl
 icate ignored
 <to be read again> 
                    \relax 
-l.566 \end{empheq}
+l.569 \end{empheq}
                   pdfTeX warning (ext4): destination with the same identifier (
 name{equation.2.3.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.566 \end{empheq}
+l.569 \end{empheq}
                    [32 <./imgs/fhntoiz.png>]
-<imgs/izPDP.png, id=511, 462.528pt x 346.896pt>
+<imgs/izPDP.png, id=517, 462.528pt x 346.896pt>
 File: imgs/izPDP.png Graphic file (type png)
  <use imgs/izPDP.png>
-Package pdftex.def Info: imgs/izPDP.png used on input line 591.
+Package pdftex.def Info: imgs/izPDP.png used on input line 594.
 (pdftex.def)             Requested size: 370.02289pt x 277.51717pt.
  [33 <./imgs/izPDP.png>]
-Overfull \hbox (48.34543pt too wide) in paragraph at lines 598--599
+Overfull \hbox (48.34543pt too wide) in paragraph at lines 601--602
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (33.52524pt too wide) in paragraph at lines 602--603
+Overfull \hbox (33.52524pt too wide) in paragraph at lines 605--606
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-<imgs/izRS.png, id=522, 462.528pt x 346.896pt>
+<imgs/izRS.png, id=528, 462.528pt x 346.896pt>
 File: imgs/izRS.png Graphic file (type png)
  <use imgs/izRS.png>
-Package pdftex.def Info: imgs/izRS.png used on input line 636.
+Package pdftex.def Info: imgs/izRS.png used on input line 639.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-Overfull \hbox (16.16249pt too wide) in paragraph at lines 636--637
+Overfull \hbox (16.16249pt too wide) in paragraph at lines 639--640
  [][] 
  []
 
-<imgs/izIB.png, id=523, 462.528pt x 346.896pt>
+<imgs/izIB.png, id=529, 462.528pt x 346.896pt>
 File: imgs/izIB.png Graphic file (type png)
  <use imgs/izIB.png>
-Package pdftex.def Info: imgs/izIB.png used on input line 642.
+Package pdftex.def Info: imgs/izIB.png used on input line 645.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-Overfull \hbox (16.16249pt too wide) in paragraph at lines 642--643
+Overfull \hbox (16.16249pt too wide) in paragraph at lines 645--646
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 643--643
+Underfull \hbox (badness 10000) in paragraph at lines 646--646
 [][][]|\T1/lmr/m/n/12 Iz-hi-kie-vich : In-trin-si-cally
  []
 
 
-Underfull \hbox (badness 5345) in paragraph at lines 643--643
+Underfull \hbox (badness 5345) in paragraph at lines 646--646
 \T1/lmr/m/n/12 Burs-ting (a=0.02, b=0.2,
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/izC.png, id=524, 462.528pt x 346.896pt>
+<imgs/izC.png, id=530, 462.528pt x 346.896pt>
 File: imgs/izC.png Graphic file (type png)
  <use imgs/izC.png>
-Package pdftex.def Info: imgs/izC.png used on input line 651.
+Package pdftex.def Info: imgs/izC.png used on input line 654.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-Overfull \hbox (16.16249pt too wide) in paragraph at lines 651--652
+Overfull \hbox (16.16249pt too wide) in paragraph at lines 654--655
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 652--652
+Underfull \hbox (badness 10000) in paragraph at lines 655--655
 [][][]|\T1/lmr/m/n/12 Iz-hi-kie-vich : Chat-te-ring
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 652--652
+Underfull \hbox (badness 10000) in paragraph at lines 655--655
 \T1/lmr/m/n/12 (a=0.02, b=0.2, c=-50,
  []
 
-<imgs/izFS.png, id=525, 462.528pt x 346.896pt>
+<imgs/izFS.png, id=531, 462.528pt x 346.896pt>
 File: imgs/izFS.png Graphic file (type png)
  <use imgs/izFS.png>
-Package pdftex.def Info: imgs/izFS.png used on input line 657.
+Package pdftex.def Info: imgs/izFS.png used on input line 660.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-Overfull \hbox (16.16249pt too wide) in paragraph at lines 657--658
+Overfull \hbox (16.16249pt too wide) in paragraph at lines 660--661
  [][] 
  []
 
 
-Underfull \hbox (badness 1584) in paragraph at lines 658--658
+Underfull \hbox (badness 1584) in paragraph at lines 661--661
 [][][]|\T1/lmr/m/n/12 Iz-hi-kie-vich : Fast Spi-king
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/izLTS.png, id=526, 462.528pt x 346.896pt>
+<imgs/izLTS.png, id=532, 462.528pt x 346.896pt>
 File: imgs/izLTS.png Graphic file (type png)
  <use imgs/izLTS.png>
-Package pdftex.def Info: imgs/izLTS.png used on input line 666.
+Package pdftex.def Info: imgs/izLTS.png used on input line 669.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-Overfull \hbox (16.16249pt too wide) in paragraph at lines 666--667
+Overfull \hbox (16.16249pt too wide) in paragraph at lines 669--670
  [][] 
  []
 
 
-Underfull \hbox (badness 5592) in paragraph at lines 667--667
+Underfull \hbox (badness 5592) in paragraph at lines 670--670
 \T1/lmr/m/n/12 Spi-king (a=0.02, b=0.25,
  []
 
-<imgs/izRES1.png, id=527, 462.528pt x 346.896pt>
+<imgs/izRES1.png, id=533, 462.528pt x 346.896pt>
 File: imgs/izRES1.png Graphic file (type png)
  <use imgs/izRES1.png>
-Package pdftex.def Info: imgs/izRES1.png used on input line 672.
+Package pdftex.def Info: imgs/izRES1.png used on input line 675.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-Overfull \hbox (16.16249pt too wide) in paragraph at lines 672--673
+Overfull \hbox (16.16249pt too wide) in paragraph at lines 675--676
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 673--673
+Underfull \hbox (badness 10000) in paragraph at lines 676--676
 [][][]|\T1/lmr/m/n/12 Iz-hi-kie-vich : Re-son-na-tor
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 673--673
+Underfull \hbox (badness 10000) in paragraph at lines 676--676
 \T1/lmr/m/n/12 (a=0.1, b=0.26, c=-65,
  []
 
 
-Underfull \hbox (badness 4454) in paragraph at lines 673--673
+Underfull \hbox (badness 4454) in paragraph at lines 676--676
 \T1/lmr/m/n/12 d=8, I=-0.0488, $\OML/lmm/m/it/12 v[]$ \T1/lmr/m/n/12 =
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/izTC1.png, id=528, 462.528pt x 346.896pt>
+<imgs/izTC1.png, id=534, 462.528pt x 346.896pt>
 File: imgs/izTC1.png Graphic file (type png)
  <use imgs/izTC1.png>
-Package pdftex.def Info: imgs/izTC1.png used on input line 681.
+Package pdftex.def Info: imgs/izTC1.png used on input line 684.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-Overfull \hbox (16.16249pt too wide) in paragraph at lines 681--682
+Overfull \hbox (16.16249pt too wide) in paragraph at lines 684--685
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 682--682
+Underfull \hbox (badness 10000) in paragraph at lines 685--685
 [][][]|\T1/lmr/m/n/12 Iz-hi-kie-vich : Thalamo-
  []
 
-<imgs/izTC2.png, id=529, 462.528pt x 346.896pt>
+<imgs/izTC2.png, id=535, 462.528pt x 346.896pt>
 File: imgs/izTC2.png Graphic file (type png)
  <use imgs/izTC2.png>
-Package pdftex.def Info: imgs/izTC2.png used on input line 687.
+Package pdftex.def Info: imgs/izTC2.png used on input line 690.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-Overfull \hbox (16.16249pt too wide) in paragraph at lines 687--688
+Overfull \hbox (16.16249pt too wide) in paragraph at lines 690--691
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 688--688
+Underfull \hbox (badness 10000) in paragraph at lines 691--691
 [][][]|\T1/lmr/m/n/12 Iz-hi-kie-vich : Thalamo-
  []
 
@@ -1515,17 +1527,12 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 ] [35 <./imgs/izRS.png> <./imgs/izIB.png> <./imgs/izC.png> <./imgs/izFS.png>] [
 36 <./imgs/izLTS.png> <./imgs/izRES1.png> <./imgs/izTC1.png> <./imgs/izTC2.png>
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 696--697
+Underfull \hbox (badness 10000) in paragraph at lines 699--700
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 699--701
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 702--703
+Underfull \hbox (badness 10000) in paragraph at lines 702--704
 
  []
 
@@ -1539,6 +1546,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 708--709
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 711--712
+
+ []
+
 [37
 
 pdfTeX warning (ext4): destination with the same identifier (name{equation.2.4.
@@ -1546,48 +1558,302 @@ pdfTeX warning (ext4): destination with the same identifier (name{equation.2.4.
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.716 ...ion \ref{LIAFEQ}} \end{split}\end{empheq}
+l.719 ...ion \ref{LIAFEQ}} \end{split}\end{empheq}
                                                   ]
-Underfull \hbox (badness 10000) in paragraph at lines 718--719
+Underfull \hbox (badness 10000) in paragraph at lines 721--722
 
  []
 
 
-Overfull \hbox (55.75552pt too wide) in paragraph at lines 729--730
+Overfull \hbox (55.75552pt too wide) in paragraph at lines 732--733
 [][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-<imgs/liaf.png, id=613, 462.528pt x 346.896pt>
+<imgs/liaf.png, id=619, 462.528pt x 346.896pt>
 File: imgs/liaf.png Graphic file (type png)
  <use imgs/liaf.png>
-Package pdftex.def Info: imgs/liaf.png used on input line 737.
+Package pdftex.def Info: imgs/liaf.png used on input line 740.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[38] (ter.bbl [39 <./imgs/liaf.png>] [40])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 763.
- [41]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 763.
+[38]
+Underfull \hbox (badness 10000) in paragraph at lines 752--753
+
+ []
+
+
+Overfull \hbox (2.47635pt too wide) in paragraph at lines 756--757
+[]\T1/lmr/m/n/12 Arrivée du po-ten-tiel d'ac-tion dans le bou-ton sy-nap-tique 
+du neu-rone pré-synaptique; 
+ []
+
+[39 <./imgs/liaf.png>] <imgs/3.jpg, id=644, 388.0899pt x 225.4824pt>
+File: imgs/3.jpg Graphic file (type jpg)
+
+<use imgs/3.jpg>
+Package pdftex.def Info: imgs/3.jpg used on input line 770.
+(pdftex.def)             Requested size: 465.70554pt x 270.57751pt.
+
+Overfull \hbox (17.57458pt too wide) in paragraph at lines 770--771
+ [][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 780--781
+
+ []
+
+[40 <./imgs/3.jpg>]
+Underfull \hbox (badness 2828) in paragraph at lines 782--782
+[][][]\T1/lmr/m/n/10 .[][]\T1/lmr/m/it/10 Portions of this page are mo-di-fi-ca
+-tions ba-sed on work crea-ted and sha-red by Google
+ []
+
+
+Underfull \hbox (badness 1005) in paragraph at lines 782--782
+\T1/lmr/m/it/10 and used ac-cor-ding to terms des-cri-bed in the Crea-tive Com-
+mons 3.0 At-tri-bu-tion Li-cense. See
+ []
+
+
+Underfull \hbox (badness 1490) in paragraph at lines 782--782
+\T1/lmr/m/n/10 cette page est ba-sée sur des mo-di-fi-ca-tions d'un tra-vail cr
+éé et par-tagé par Google et uti-
+ []
+
+<imgs/4.jpg, id=654, 252.945pt x 449.68pt>
+File: imgs/4.jpg Graphic file (type jpg)
+ <use imgs/4.jpg>
+Package pdftex.def Info: imgs/4.jpg used on input line 789.
+(pdftex.def)             Requested size: 151.76816pt x 269.81007pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 790--790
+[][][]|\T1/lmr/m/n/12 Re-pré-sen-ta-tion gra-phique d'un dia-gramme de flux de 
+don-nées
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 794--796
+
+ []
+
+[41]
+Underfull \hbox (badness 10000) in paragraph at lines 814--815
+
+ []
+
+[42 <./imgs/4.jpg>] [43]
+Overfull \hbox (11.29495pt too wide) in paragraph at lines 829--831
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (40.93533pt too wide) in paragraph at lines 836--837
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (18.70505pt too wide) in paragraph at lines 851--852
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[44
+
+]
+Overfull \hbox (48.34543pt too wide) in paragraph at lines 869--870
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][] 
+ []
+
+
+Overfull \hbox (33.52524pt too wide) in paragraph at lines 870--871
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (33.52524pt too wide) in paragraph at lines 871--872
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (18.70505pt too wide) in paragraph at lines 901--903
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+
+ []
+
+
+Overfull \hbox (77.98581pt too wide) in paragraph at lines 909--910
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[45]
+Overfull \hbox (18.70505pt too wide) in paragraph at lines 919--921
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (40.93533pt too wide) in paragraph at lines 929--930
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (3.88486pt too wide) in paragraph at lines 932--933
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (18.70505pt too wide) in paragraph at lines 944--945
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[46]
+Overfull \hbox (11.29495pt too wide) in paragraph at lines 967--968
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (33.52524pt too wide) in paragraph at lines 987--990
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (11.29495pt too wide) in paragraph at lines 992--993
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (33.52524pt too wide) in paragraph at lines 994--996
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[47]
+Overfull \hbox (77.98581pt too wide) in paragraph at lines 1022--1023
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[48]
+Underfull \hbox (badness 10000) in paragraph at lines 1027--1028
+
+ []
+
+<imgs/neuronplotnp.png, id=895, 462.528pt x 346.896pt>
+File: imgs/neuronplotnp.png Graphic file (type png)
+
+<use imgs/neuronplotnp.png>
+Package pdftex.def Info: imgs/neuronplotnp.png used on input line 1032.
+(pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
+
+Overfull \hbox (16.16249pt too wide) in paragraph at lines 1032--1033
+ [][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1033--1033
+[][][]|\T1/lmr/m/n/12 Numpy vs Ten-sor-flow :
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1033--1033
+\T1/lmr/m/n/12 Single Neu-ron Plot for
+ []
+
+<imgs/neuronplottf.png, id=896, 462.528pt x 346.896pt>
+File: imgs/neuronplottf.png Graphic file (type png)
+
+<use imgs/neuronplottf.png>
+Package pdftex.def Info: imgs/neuronplottf.png used on input line 1038.
+(pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
+
+Overfull \hbox (16.16249pt too wide) in paragraph at lines 1038--1039
+ [][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1039--1039
+[][][]|\T1/lmr/m/n/12 Numpy vs Ten-sor-flow :
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1039--1039
+\T1/lmr/m/n/12 Single Neu-ron Plot for
+ []
+
+<imgs/rasternp.png, id=897, 462.528pt x 346.896pt>
+File: imgs/rasternp.png Graphic file (type png)
+ <use imgs/rasternp.png>
+Package pdftex.def Info: imgs/rasternp.png used on input line 1047.
+(pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
+
+Overfull \hbox (16.16249pt too wide) in paragraph at lines 1047--1048
+ [][] 
+ []
+
+<imgs/rastertf.png, id=898, 462.528pt x 346.896pt>
+File: imgs/rastertf.png Graphic file (type png)
+ <use imgs/rastertf.png>
+Package pdftex.def Info: imgs/rastertf.png used on input line 1053.
+(pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
+
+Overfull \hbox (16.16249pt too wide) in paragraph at lines 1053--1054
+ [][] 
+ []
+
+[49
+
+ <./imgs/neuronplotnp.png> <./imgs/neuronplottf.png> <./imgs/rasternp.png> <./i
+mgs/rastertf.png>] <imgs/timelogratio.png, id=910, 462.528pt x 346.896pt>
+File: imgs/timelogratio.png Graphic file (type png)
+
+<use imgs/timelogratio.png>
+Package pdftex.def Info: imgs/timelogratio.png used on input line 1064.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+
+Overfull \hbox (14.3959pt too wide) in paragraph at lines 1064--1065
+ [][] 
+ []
+
+(ter.bbl [50 <./imgs/timelogratio.png>] [51])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1081.
+ [52]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1081.
  (ter.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 763.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 763.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1081.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1081.
+
 Package rerunfilecheck Info: File `ter.out' has not changed.
-(rerunfilecheck)             Checksum: C0A685F406DC13915E949EE12A54E4D4;1585.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 763.
+(rerunfilecheck)             Checksum: 34DA625F95C5A9CB69C9A7198CF8B2DC;1742.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1081.
  ) 
 Here is how much of TeX's memory you used:
- 15037 strings out of 493698
- 221816 string characters out of 3144394
- 521609 words of memory out of 3000000
- 17765 multiletter control sequences out of 15000+200000
- 84890 words of font info for 83 fonts, out of 3000000 for 9000
+ 15371 strings out of 493698
+ 226522 string characters out of 3144394
+ 525609 words of memory out of 3000000
+ 17868 multiletter control sequences out of 15000+200000
+ 89153 words of font info for 84 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 45i,19n,46p,1894b,1895s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files/M
-iKTeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Program Files/MiKTeX 2.9/fonts/e
-nc/dvips/lm/lm-mathex.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec
+ 45i,19n,46p,1928b,1895s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program Files/M
+iKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/d
+vips/lm/lm-mathsy.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathex
 .enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathit.enc}<C:/Program 
 Files/MiKTeX 2.9/fonts/type1/public/bbold-type1/bbold10.pfb><C:/Program Files/M
 iKTeX 2.9/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
@@ -1599,14 +1865,15 @@ blic/lm/lmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmr12.pfb>
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Program Files/
 MiKTeX 2.9/fonts/type1/public/lm/lmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
 pe1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmri1
-2.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pfb><C:/Progr
-am Files/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files/MiKTeX 2
-.9/fonts/type1/public/lm/lmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
-lic/lm/lmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmtt12.pfb>
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/txfonts/t1xbtt.pfb>
-Output written on ter.pdf (41 pages, 1348191 bytes).
+0.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmri12.pfb><C:/Program
+ Files/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pfb><C:/Program Files/MiKTeX 2
+.9/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
+blic/lm/lmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb>
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmtt12.pfb><C:/Program Files
+/MiKTeX 2.9/fonts/type1/public/txfonts/t1xbtt.pfb>
+Output written on ter.pdf (52 pages, 1822760 bytes).
 PDF statistics:
- 798 PDF objects out of 1000 (max. 8388607)
- 306 named destinations out of 1000 (max. 500000)
- 321 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1127 PDF objects out of 1200 (max. 8388607)
+ 529 named destinations out of 1000 (max. 500000)
+ 364 words of extra memory for PDF output out of 10000 (max. 10000000)
 

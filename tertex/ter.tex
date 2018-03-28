@@ -52,14 +52,17 @@ tabsize=2
 }
 
 \newcommand\blfootnote[1]{%
-  \begingroup
-  \renewcommand\thefootnote{}\footnote{#1}%
-  \addtocounter{footnote}{-1}%
-  \endgroup
+\begingroup
+\renewcommand\thefootnote{}\footnote{#1}%
+\addtocounter{footnote}{-1}%
+\endgroup
 }
 
 \renewcommand{\lstlistingname}{Programme}% Listing -> Algorithm
 \renewcommand{\lstlistlistingname}{List of \lstlistingname s}% List of Listings -> List of Algorithms
+
+\renewcommand{\labelenumii}{\theenumii}
+\renewcommand{\theenumii}{\theenumi.\arabic{enumii}.}
 
 \usepackage{empheq}
 
@@ -87,7 +90,7 @@ Mais qu'est-ce que ça veut dire \textit{fonctionner comme} le système nerveux 
 
 Si l'on reste dans l'approche physicaliste-fonctionnaliste, il semble donc naturel de vouloir tenter de "reproduire" le fonctionnement du système nerveux humain dans \textit{autre chose que l'humain}, et le meilleur candidat actuellement en notre possession pour cet \text{autre chose} semble être l'ordinateur. Il est ici important d'être lucide sur le sens du mot "reproduire" dans cette phrase : d'une part, comme nous l'avons dit, nous sommes loin d'avoir une connaissance exhaustive des propriétés des neurones et des synapses, et de plus le système nerveux ne se résume pas en réalité qu'aux neurones et synapses (il faudrait prendre en compte les cellules gliales, l'impact des hormones, reproduire le fonctionnement de toutes les afférences aux systèmes nerveux comme les récepteurs cutanés, etc.) ; et d'autre part, en supposant une connaissance exhaustive du système nerveux, la reproduction exacte de son fonctionnement \textit{in silico} ne serait peut-être pas si aisée, notamment car le substrat biologique permet peut-être des fonctions difficilement reproductibles dans un substrat électronique. C'est pour cela que plutôt que de parler de "reproduction" du fonctionnement du système nerveux, on parlera plutôt de modélisation du système nerveux, de modélisation de neurones et de synapses, dans le sens où on sélectionne les propriétés du système nerveux qui nous semblent les plus importantes dans son fonctionnement et où on essaye de les rendre intelligibles, pour la machine grâce à une formalisation mathématique et à des programmes permettant de simuler le comportement des modèles de neurone et de réseaux de neurones ; et pour l'homme à l'aide de graphiques, de données bien choisies et d'analyse mathématique des modèles (lorsque cela est possible).\\
 
-Il peut être assez ironique de voir que c'est l'ordinateur avec une architecture de type Von Neumann, qui traite l'information de manière sérielle, qui est aujourd'hui l'outil le plus utilisé pour simuler le système nerveux, qui est un système profondément parallèle. La puissance de calcul des ordinateurs d'aujourd'hui permet de simuler ce parallèlisme, mais de manière peu optimisée. Cette prédominance des ordinateurs  comme \textit{hardware} pour simuler le système nerveux est quelque chose qui est, je pense, amené à changer dans les prochaines années, au moins dans les laboratoires de recherche. En effet, l'informatique et l'éléctronique neuromorphiques sont des disciplines qui progressent très rapidement, avec notamment le developpement de composants éléctroniques à architecture massivement parallèle. Ces nouveaux types de \textit{hardware} semblent bien plus adaptés à la simulation du système nerveux, et il me semble que cela sera un element essentiel dans le futur de ce domaine.\\
+Il peut être assez ironique de voir que c'est l'ordinateur avec une architecture de type Von Neumann, qui traite l'information de manière sérielle, qui est aujourd'hui l'outil le plus utilisé pour simuler le système nerveux, qui est un système profondément parallèle. La puissance de calcul des ordinateurs d'aujourd'hui permet de simuler ce parallélisme, mais de manière peu optimisée. Cette prédominance des ordinateurs comme \textit{hardware} pour simuler le système nerveux est quelque chose qui est, je pense, amené à changer dans les prochaines années, au moins dans les laboratoires de recherche. En effet, l'informatique et l'électronique neuromorphiques sont des disciplines qui progressent très rapidement, avec notamment le développement de composants électroniques à architecture massivement parallèle. Ces nouveaux types de \textit{hardware} semblent bien plus adaptés à la simulation du système nerveux, et il me semble que cela sera un élément essentiel dans le futur de ce domaine. L'importance des avancées technologiques en termes de puissance et de méthode de computation ne sont pas à sous-estimer : il s'agit là d'une des limites les plus restrictive quant aux tentatives de modéliser des système nerveux, particuliérement le système nerveux humain. \\
 
 J'aimerai maintenant dégager deux grands axes dans l'activité de la modélisation mathématique et informatique du système nerveux :
 \begin{enumerate} \item Reproduire les propriétés physiques et biologiques du système nerveux (c’est-à-dire ici des neurones et réseaux de neurones) 
@@ -99,41 +102,41 @@ De la deuxième proposition (2.) on peut dégager deux buts :
 
 \begin{tabular}{|p{4cm}|p{5cm}|p{5cm}|} \hline&IA-modèle-du-cerveau & Réseau de neurones formels \\\hline Le neurone & Modèle de neurone biologique & neurone formel \\\hline La connexion entre les neurones & modèle de synapses biologiques & connexions simple avec poids \\\hline La méthode d'apprentissage & Méthode d'apprentissage s'inspirant de ce qu'on sait de l'apprentissage dans le système nerveux & surtout apprentissage supervisé \\\hline Architecture & Inspirée de celle du cerveau & cherchant à maximiser l'efficacité du système, généralement choisie par un humain \\\hline \end{tabular} \\ 
 
-Il me semble ici important de préciser que les champs de l'intelligence artificielle et de la vie artificielle ne se limitent pas, et ne devraient pas se limiter à la reproduction de l'esprit humain, mais couvrent en fait un champ d'investigation beaucoup plus large qui est celui du spectre de l'intelligence en générale, qui n'est pas forcément l'intelligence humaine, ni même l'intelligence que l'on retrouve dans le monde vivant. Il est également à noté que les systèmes nerveux \textit{in vivo} sont le fruit d'un processus évolutif à l'échelle de l'histoire d'une espèce, et  c'est pourquoi, malgré le fait que les modèles du systèmes nerveux dont nous allons discuter ne possèdent pas de mécanismes évolutifs à l'échelle de l'espèce, l'approche de l'IA-modèle-du-cerveau reconnait l'importance des processus évolutifs à l'échelle de l'espèce. Simplement, plutôt que de s'interesser à la reproduction des mécanismes évolutifs en eux-même, l'IA-modèle-du-cerveau s'interesse à la reproduction d'un produit hautement avancé de ces mécanismes. \\Il aurait été très intéressant de débattre sur les questions : Est-ce que reproduire le fonctionnement du système nerveux humain est la meilleure voie pour atteindre une machine avec une intelligence proche de l'humain, ce qu'on appelle généralement une intelligence générale (ou généralisée) ? Est-ce la plus simple ? Et sur quels critères juger de la réussite d'une telle entreprise ? Pour un débat sur ces questions, on renvoie vers (METTRE DES REFS) 
-\item \textbf{Mieux comprendre la cognition humaine} : en effet posséder un modèle simulé par ordinateur du système nerveux ou d'une partie du système nerveux permettrait d'étudier l'impact de lésions dans un emplacement parfaitement contrôlés, d'avoir des données parfaitement "propres" et précises sur lesquelles travailler, de mettre en place beaucoup plus facilement des procédures d'analyse en se servant des outils mathématiques et informatiques, etc.
+Il me semble ici important de préciser que les champs de l'intelligence artificielle et de la vie artificielle ne se limitent pas, et ne devraient pas se limiter à la reproduction de l'esprit humain, mais couvrent en fait un champ d'investigation beaucoup plus large qui est celui du spectre de l'intelligence en générale, qui n'est pas forcément l'intelligence humaine, ni même l'intelligence que l'on retrouve dans le monde vivant. Il est également à noter que les systèmes nerveux \textit{in vivo} sont le fruit d'un processus évolutif à l'échelle de l'histoire d'une espèce, et c'est pourquoi, malgré le fait que les modèles du systèmes nerveux dont nous allons discuter ne possèdent pas de mécanismes évolutifs à l'échelle de l'espèce, l'approche de l'IA-modèle-du-cerveau reconnait l'importance des processus évolutifs à l'échelle de l'espèce. Simplement, plutôt que de s'intéresser à la reproduction des mécanismes évolutifs en eux-mêmes, l'IA-modèle-du-cerveau s'intéresse à la reproduction d'un produit hautement avancé de ces mécanismes. \\Il aurait été très intéressant de débattre sur les questions : Est-ce que reproduire le fonctionnement du système nerveux humain est la meilleure voie pour atteindre une machine avec une intelligence proche de l'humain, ce qu'on appelle généralement une intelligence générale (ou généralisée) ? Est-ce la plus simple ? Et sur quels critères juger de la réussite d'une telle entreprise ? Pour un débat sur ces questions, on renvoie vers (METTRE DES REFS) 
+\item \textbf{Mieux comprendre la cognition} : en effet posséder un modèle simulé par ordinateur d'un système nerveux ou d'une partie d'un système nerveux permettrait d'étudier l'impact de lésions dans un emplacement parfaitement contrôlés, d'avoir des données parfaitement "propres" et précises sur lesquelles travailler, de mettre en place beaucoup plus facilement des procédures d'analyse en se servant des outils mathématiques et informatiques, etc.
 Par exemple, supposons que l'on dispose d'un modèle du système nerveux, que l'on subdivise ce modèle en plusieurs sous-parties, et que l'on souhaite savoir quel est l'ensemble minimal de sous-parties du modèle nécessaire pour que le modèle possède une certaine capacité C. Supposons de plus (et c'est une supposition assez lourde) que l'on possède une mesure M capable de déterminer si un système possède la capacité C (M(C) vraie si le système possède C, fausse sinon). Alors on peut envisager de mettre en place un algorithme du type : 
 \begin{verbatim}
 Pour toutes les sous-parties du système 
-        Tenter d'enlever la sous-partie courante 
-        Si M(C) reste vraie : 
-                On enlève définitivement la sous-partie 
-        Sinon : 
-                On réintègre la sous-partie dans le système
+Tenter d'enlever la sous-partie courante 
+Si M(C) reste vraie : 
+On enlève définitivement la sous-partie 
+Sinon : 
+On réintègre la sous-partie dans le système
 \end{verbatim}
 Si les sous-parties en lesquelles on a subdivisé le système sont des zones spatiales, c'est-à-dire des ensembles de neurones (voire un neurone), alors cet algorithme revient, dans une approche plus classique, à faire des lésions successives de zones du cerveau. Si les sous-parties sont des propriétés des neurones ou des synapses, cela revient dans une approche classique, à bloquer successivement, à l'aide de composantes chimiques par exemple, certaines propriétés des neurones ou des synapses. 
 Un modèle informatique du système nerveux permettrait de répondre à ce genre de question de manière certaine (à l'intérieur du modèle) et rapide. Il est également important d'insister sur la facilité d'acquisition de données aussi précises que l'on veut (dans la limite de la précision de l'ordinateur). Enfin, l'activité de modélisation invite souvent à se poser "les bonnes questions" pour comprendre profondément le système que l'on cherche à modéliser. \\ \end{enumerate}
 
 Maintenant, tout en gardant en tête ces idées, il est temps pour moi de définir plus précisément l'objet de ce travail, qui va se tourner vers les sciences formelles et naturelles. Ce travail a pour but d'appréhender et de rassembler les connaissances et les outils nécessaires aux prétentions énoncées dans cette introduction, et non pas de répondre à ces prétentions. 
-Dans une première partie, je m'intéresserai aux différents modèles de neurones existants et je créerai mon propre outil de définition et de simulation de ces modèles en Python 3+. Dans une deuxième partie, je me tournerai vers les modèles de synapses et je m'intéresserai aux manières de créer et simuler des réseaux de neurones \textit{in silico}, tout en créant mon propre outil de définition et de simulation de réseaux de spiking neurons en Python3+/Tensorflow. Il me semble que, pour pouvoir envisager de faire emerger des propriétés cognitives de modèles du système nerveux, il est important d'avoir des outils optimisés et faciles d'utilisation qui permettent de modéliser ses propriétés physiques et biologiques. Dans une troisième partie, et à l'aide de l'outil créé dans la deuxième partie, je tenterai de reproduire les résultats de (Héricé et al., 2016), c'est-à-dire construire un modèle des ganglions de la base capable de prendre des décisions sous forme de réseaux de spiking neurons.
+Dans une première partie, je m'intéresserai aux différents modèles de neurones existants et je créerai mon propre outil de définition et de simulation de ces modèles en Python 3+. Dans une deuxième partie, je me tournerai vers les modèles de synapses et je m'intéresserai aux manières de créer et simuler des réseaux de neurones \textit{in silico}, tout en créant mon propre outil de définition et de simulation de réseaux de spiking neurons en Python3+/Tensorflow. Il me semble que, pour pouvoir envisager de faire émerger des propriétés cognitives de modèles du système nerveux, il est important d'avoir des outils optimisés et faciles d'utilisation qui permettent de modéliser ses propriétés physiques et biologiques. Dans une troisième partie, et à l'aide de l'outil créé dans la deuxième partie, je tenterai de reproduire les résultats de (Héricé et al., 2016), c'est-à-dire construire un modèle des ganglions de la base capable de prendre des décisions sous forme de réseaux de spiking neurons.
 \pagebreak
 
 \textbf{Cognitivisme, Connexionnisme et énaction} 
 
-Parmi les grands paradigmes qui ont été explorés dans l'étude de l'esprit humain en science encore en vigeur, on trouve principalement le cognitivisme et le connexionnisme. Le cognitivisme, paradigme fondateur des sciences cognitives, considère que le système cognitif humain peut (et doit) être étudié comme un système de traitement de l'information créant et manipulant des représentations symboliques du monde. Ces représentations possédent des propriétés syntaxiques et sémantiques, et le système cognitif fonctionne correctement lorsque ces propriétés permettent de représenter adéquatement l'environnement et que le traitement de ces représentations permet au système de résoudre efficacement un problème dans cet environnement. Dans ce système cognitiviste, la pensée est comparée à une série d'application systématique de règles (ou dit plus simplement, un calcul, l'application d'un algorithme) sur les représentations. Cette approche algorithmique de la pensée pose de sérieux problèmes, dont notamment les deux principaux sont : l'impossibilité du traitement parallèle et la localisation du traitement symbolique (c'est-à-dire que la perte d'une partie des symboles ou des règles empêche complétement le système de fonctionner correctement). 
+Parmi les grands paradigmes qui ont été explorés dans l'étude de l'esprit humain en science encore en vigueur, on trouve principalement le cognitivisme et le connexionnisme. Le cognitivisme, paradigme fondateur des sciences cognitives, considère que le système cognitif humain peut (et doit) être étudié comme un système de traitement de l'information créant et manipulant des représentations symboliques du monde. Ces représentations possèdent des propriétés syntaxiques et sémantiques, et le système cognitif fonctionne correctement lorsque ces propriétés permettent de représenter adéquatement l'environnement et que le traitement de ces représentations permet au système de résoudre efficacement un problème dans cet environnement. Dans ce système cognitiviste, la pensée est comparée à une série d'application systématique de règles (ou dit plus simplement, un calcul, l'application d'un algorithme) sur les représentations. Cette approche algorithmique de la pensée pose de sérieux problèmes, dont notamment les deux principaux sont : l'impossibilité du traitement parallèle et la localisation du traitement symbolique (c'est-à-dire que la perte d'une partie des symboles ou des règles empêche complétement le système de fonctionner correctement). 
 
-Pour pallier à ces deux failles, le connexionnisme modélise les phénomènes mentaux comme des processus émergents de réseaux d'unités simples interconnectées. Les différences entre le cognitivisme et le connexionnisme se situent au niveau de la localisation des propriétés syntaxiques et sémantiques et dans la forme des règles de manipulation. Dans le cognitivisme, les propriétés syntaxiques et sémantiques sont attribuées aux représentations et les règles de manipulation sont algorithmiques et linéaires tandis que dans le paradigme connexionniste, les propriétés syntaxiques et les règles de calculs sont représentées par un réseau d'unités de bases interconnectées et dépendent entièrement du fonctionnement de ces unités et de l'architecture du réseaux, et les règles de calculs peuvent être massivement parallèles ; tandis que les propriétés sémantiques sont attribuées au réseau en lui-même (en entier). Un modèle connexionniste est considéré comme valable lorsque les propriétés emergentes du système sont assimilables à des propriétés cognitives.
+Pour pallier à ces deux failles, le connexionnisme modélise les phénomènes mentaux comme des processus émergents de réseaux d'unités simples interconnectées. Les différences entre le cognitivisme et le connexionnisme se situent au niveau de la localisation des propriétés syntaxiques et sémantiques et dans la forme des règles de manipulation. Dans le cognitivisme, les propriétés syntaxiques et sémantiques sont attribuées aux représentations et les règles de manipulation sont algorithmiques et linéaires tandis que dans le paradigme connexionniste, les propriétés syntaxiques et les règles de calculs sont représentées par un réseau d'unités de bases interconnectées et dépendent entièrement du fonctionnement de ces unités et de l'architecture du réseaux, et les règles de calculs peuvent être massivement parallèles ; tandis que les propriétés sémantiques sont attribuées au réseau en lui-même (en entier). Un modèle connexionniste est considéré comme valable lorsque les propriétés émergentes du système sont assimilables à des propriétés cognitives.
 
-Ces différences entre cognitivisme et connexionnisme impliquent que les objets et théories qui sont explorées à partir de ces paradigmes sont très différents : le cognitivisme s'interesse plutot aux procédures formaliées et au lien entre syntaxe et logique, tandis que le connexionnisme porte son interet sur la reconnaissance et l'analys de pattern, l'auto-organisation et l'étude des propriétés emrgentes.//
+Ces différences entre cognitivisme et connexionnisme impliquent que les objets et théories qui sont explorées à partir de ces paradigmes sont très différents : le cognitivisme s'intéresse plutôt aux procédures formalisées et au lien entre syntaxe et logique, tandis que le connexionnisme porte son intérêt sur la reconnaissance et l'analyse de pattern, l'auto-organisation et l'étude des propriétés émergentes.\\
 
-Un troisième paradigme d'étude de la cognition, plus jeune et donc moins ancré dans la litterature et la tradition de la recherche, est aujourd'hui exploré. On peut appeller ce troisième paradigme le paradigme de l'enaction (traduction de l'anglais "enactivism"). Ce paradigme remet en question une des idées sous-jacentes des deux paradigmes précedents, qui est celle que notre environnement nous préexiste et que la cognition est \textit{à propos} de représentations de cet environnement. En effet dans le paradigme de l'enaction, l'environnement et la cognition, en constante intéraction, se définissent l'un l'autre de manière inséparable. La cognition est alors définie, non plus seule, mais comme l'historique d'intéractions constantes entre l'environnement et un système doté de faculté qui fait émerger un monde. Cette vision est parfaitement compatible avec l'incarnation d'un système cognitif dans un réseau de neurones adapatif : en effet, le réseau s'adapte à l'environnement, au cours de la vie, ou de l'évolution, et l'environnement est à son tour défini par le réseau. Cette idée que l'environnement soit défini par le réseau est contre-intuitive pour beaucoup, de part notre tradition répresentationnaliste, mais elle est loin d'être sans fondemments. Mais il ne convient pas ici de discuter plus longuement de ce paradigme de l'énaction, et on renvoit, pour une introduction très abordalbe, à \cite{Varelacarto}, et pour une analyse plus approfondie, à \cite{treeofknowledge}
+Un troisième paradigme d'étude de la cognition, plus jeune et donc moins ancré dans la littérature et la tradition de la recherche, est aujourd'hui exploré : celui de l'énaction (traduction de l'anglais "enactivism"). Ce paradigme remet en question une des idées sous-jacentes des deux paradigmes précédents, qui est celle que notre environnement nous préexiste et que la cognition est \textit{à propos} de représentations de cet environnement. En effet dans le paradigme de l'énaction, l'environnement et la cognition, en constante interaction, se définissent l'un l'autre de manière inséparable. La cognition est alors définie, non plus seule, mais comme l'historique d'interactions constantes entre l'environnement et un système doté de faculté qui fait émerger un monde. Sur le plan de l'intelligence artificielle, la part belle est alors donnée aux approches évolutionnaires, qui sont les plus à mesure de rendre compte de cette construction de la cognition à partir d'interactions constantes avec l'environnement, et remet la temporalité de la vie, au niveau de l'individu et au niveau de l'espèce, au centre de la question. Cette vision est parfaitement compatible avec l'incarnation d'un système cognitif dans un réseau de neurones adaptatif : en effet, le réseau s'adapte à l'environnement, au cours de la vie, ou de l'évolution, et l'environnement est à son tour défini par le réseau. Cette idée que l'environnement soit défini par le réseau est contre-intuitive pour beaucoup, de par notre tradition représentationaliste, mais elle est loin d'être sans fondements. Mais il ne convient pas ici de discuter plus longuement de ce paradigme de l'énaction, et on renvoit, pour une introduction très abordable, à \cite{Varelacarto}, et pour une analyse plus approfondie, à \cite{treeofknowledge}.\\
 
-Etant donné que la perspective de modéliser des réseaux de neurones peut également interesser le connexionnisme et l'énaction, il ne convient pas ici d'assimiler ce travail à un de ces deux courants, mais plutot aux deux en même temps. 
+Etant donné que la perspective de modéliser des réseaux de neurones peut également intéresser la perspective connexionnisme et celle de l'énaction, il ne convient pas ici d'assimiler ce travail à un de ces deux courants, mais plutôt aux deux en même temps. 
 
 
 \pagebreak
 
 \part{Modélisation d'un neurone}
-\section{Quelques elements de neurobiologie} \label{rappelneuro1}
+\section{Quelques éléments de neurobiologie} \label{rappelneuro1}
 Cette partie sera concise et aura pour but de rappeler quelques notions de neurobiologie nécessaires à la compréhension de la suite, sans en faire trop. On suppose que le lecteur est déjà familier avec les notions fondamentales de la neurobiologie, si ce n'est pas le cas, on renvoie à \cite{kandel2000principles}. 
 Le neurone est une cellule capable de recevoir et transmettre de l'information sous forme électrochimique. On peut décomposer schématiquement les différentes étapes de la réception et transmission de l'information \textit{in vivo} dans un neurone par :
 \begin{enumerate}
@@ -160,7 +163,7 @@ Le concept fondamental de neurobiologie en lien avec cette partie est celui de l
 \begin{figure}[!h]
 \centering
 \includegraphics{imgs/2.JPG}
-\caption{Potentiel de la membrane en fonction du temps lors de la production d'un potentiel d'action dans un neurone biologique}
+\caption{Potentiel de la membrane en fonction du temps lors de la production d'un potentiel d'action dans un neurone biologique \scriptsize{(http://www.cours-pharmacie.com/images/potentiel\_action.jpg)}}
 \end{figure}
 
 \section{Modèle de Hodgkin Huxley}\label{hh}
@@ -238,19 +241,19 @@ $ C_M = 1,~ \overline{g_K} = 36,~ \overline{g_{Na}} = 120,~ \overline{g_L} = 0.3
 \begin{lstlisting}[caption = {Hodgkin-Huxley : Définition du modèle}]
 from .core import Variable, Model
 V = Variable(name='V', init_value=-60, unit='mV',
-		ddt='(1/Cm)*(-gk*n**4*(V-Vk)-gna*m**3*h*(V-Vna)-gl*(V-Vl)+Iapp)')
+ddt='(1/Cm)*(-gk*n**4*(V-Vk)-gna*m**3*h*(V-Vna)-gl*(V-Vl)+Iapp)')
 n = Variable(name='n', ddt='alpha_n*(1-n)-beta_n*n', init_value=1/3)
 m = Variable(name='m', ddt='alpha_m*(1-m)-beta_m*m', init_value=0)
 h = Variable(name='h', ddt='alpha_h*(1-h)-beta_h*h', init_value=2/3)
 HH = Model(V, n, m, h, Cm=1, gk=36, gna=120, 
-				 gl=0.3, Vk=-77, Vna=50, Vl=-54.4, 
-				 alpha_n='0.01*(-V-55)/(exp((-V-55)/10) -1)', 
-				 beta_n='0.125*exp((-V-65)/80)',
-				 alpha_m='0.1*(-V-40)/(exp((-V-40)/10) -1)', 
-				 beta_m='4*exp((-V-65)/18)',
-				 alpha_h='0.07*exp((-V-65)/20)',
-				 beta_h='1/(1+exp((-V-36)/10))', 
-				 Iapp=0)
+gl=0.3, Vk=-77, Vna=50, Vl=-54.4, 
+alpha_n='0.01*(-V-55)/(exp((-V-55)/10) -1)', 
+beta_n='0.125*exp((-V-65)/80)',
+alpha_m='0.1*(-V-40)/(exp((-V-40)/10) -1)', 
+beta_m='4*exp((-V-65)/18)',
+alpha_h='0.07*exp((-V-65)/20)',
+beta_h='1/(1+exp((-V-36)/10))', 
+Iapp=0)
 \end{lstlisting}
 
 \begin{lstlisting}[caption = {Hodgkin-Huxley : Simulation du modèle pour $I_{app} = 5$}]
@@ -458,10 +461,10 @@ import matplotlib.pyplot as plt
 
 plt.figure() ; plt.xlabel('time') ; plt.ylabel('n+h')
 for I in [0, 5, 10]:
-    hh['Iapp'] = I
-    history, _ = hh.simulation(100, 0.1)
-    plt.plot(history['t'], history['n'] + history['h'], 
-             label='n+h in HH-model with current %s' % I)
+hh['Iapp'] = I
+history, _ = hh.simulation(100, 0.1)
+plt.plot(history['t'], history['n'] + history['h'], 
+label='n+h in HH-model with current %s' % I)
 plt.legend()
 plt.show()
 \end{lstlisting}
@@ -509,16 +512,16 @@ import matplotlib.pyplot as plt
 
 fhn['tau'] = 5
 for hh_I, fhn_I in zip([0, 5, 10], [-0.25, 0.25, 0.5]):
-    plt.figure()
-    hh['Iapp'] = hh_I ; fhn['I'] = fhn_I
-    fhn_history, _ = fhn.simulation(100, 0.1)
-    hh_history, _ = hh.simulation(100, 0.1)
-    plt.subplot('121') ; plt.ylim(-2, 2) 
-    plt.title('Fitzhugh-Nagumo model')
-    plt.plot(fhn_history['t'], fhn_history['v'], '-r')
-    plt.subplot('122') ; plt.ylim(-80, 40) 
-    plt.title('Hodgkin-Huxley model')
-    plt.plot(hh_history['t'], hh_history['V'], '-b') 
+plt.figure()
+hh['Iapp'] = hh_I ; fhn['I'] = fhn_I
+fhn_history, _ = fhn.simulation(100, 0.1)
+hh_history, _ = hh.simulation(100, 0.1)
+plt.subplot('121') ; plt.ylim(-2, 2) 
+plt.title('Fitzhugh-Nagumo model')
+plt.plot(fhn_history['t'], fhn_history['v'], '-r')
+plt.subplot('122') ; plt.ylim(-80, 40) 
+plt.title('Hodgkin-Huxley model')
+plt.plot(hh_history['t'], hh_history['V'], '-b') 
 plt.show()
 \end{lstlisting}
 
@@ -596,18 +599,18 @@ Mais malgré cette apparente simplicité, ce modèle est capable de simuler un g
 \begin{lstlisting}[caption = {Izhikievich : Définition du modèle}]
 from .core import Variable, Model
 v = Variable(name='v', ddt='0.04*v**2+5*v+140-u+I', init_value=-65, 
-     reset_value='c', unit='mV')
+reset_value='c', unit='mV')
 u = Variable(name='u', ddt='a*(b*v-u)', init_value=-15,
-     reset_value='u+d')
+reset_value='u+d')
 IZHIKIEVICH = Model(v, u, spike_when='v>=30', max_spike_value=30, 
-     a=0.02, b=0.2, c=-65, d=8, I=0) 
+a=0.02, b=0.2, c=-65, d=8, I=0) 
 \end{lstlisting}
 
 \begin{lstlisting}[caption = {Izhikievich : Plan de phase}]
 from snn.single.usual_models import IZHIKIEVICH as iz
 import matplotlib.pyplot as plt
 iz.phase_plan(('v', -80, -30), ('u', -30, 20), 
-    rescale=True) #interactive=True
+rescale=True) #interactive=True
 plt.show()
 \end{lstlisting}
 
@@ -623,10 +626,10 @@ I = [15, 10, 10, 10, 15, 1, 1, -0.0488, -0.04]
 V = [-65, -65, -65, -65, -65, -65, -90, -65, -65]
 
 for a, b, c, d, i, vstart in zip(A, B, C, D, I, V):
-    iz['a'] = a ; iz['b'] = b ; iz['c'] = c ; iz['d'] = d
-    iz['I'] = i ; iz['v'] = vstart ; iz['u'] = b * vstart
-    iz.plot(100, 0.01, keep='v')
-    plt.gca().set_ylim(-80, 40)
+iz['a'] = a ; iz['b'] = b ; iz['c'] = c ; iz['d'] = d
+iz['I'] = i ; iz['v'] = vstart ; iz['u'] = b * vstart
+iz.plot(100, 0.01, keep='v')
+plt.gca().set_ylim(-80, 40)
 plt.show()
 \end{lstlisting}
 
@@ -699,10 +702,10 @@ On peut donc appliquer la loi de Kirchhoff :
 \setcounter{equation}{0}\begin{equation}I_C + I_R - I = 0 \label{liafeq1}\end{equation} 
 avec $I$ le courant appliqué sur le neurone, $I_R$ l'intensité du courant à travers la résistance et $I_C$ l'intensité du courant au niveau du condensateur.\\
 
-La loi d'Ohm nous donne \begin{equation}I_R = \frac{u}{R} \label{liafeq2} \end{equation}  où $u$ est la tension aux bornes de la résistance.\\
+La loi d'Ohm nous donne \begin{equation}I_R = \frac{u}{R} \label{liafeq2} \end{equation} où $u$ est la tension aux bornes de la résistance.\\
 
 Et de la définition d'un condensateur, on a 
-\begin{equation} C = \frac{Q}{u} \Rightarrow I_C = C\frac{\dd u}{\dd t}  \label{liafeq3}\end{equation} où C est la capacité du condensateur et Q la charge du condensateur.\\
+\begin{equation} C = \frac{Q}{u} \Rightarrow I_C = C\frac{\dd u}{\dd t} \label{liafeq3}\end{equation} où C est la capacité du condensateur et Q la charge du condensateur.\\
 
 Et en introduisant \ref{liafeq2} et \ref{liafeq3} dans \ref{liafeq1}, on a \begin{equation}C\frac{\dd u}{\dd t} = -\frac{u(t)}{R} + I(t) \nonumber \end{equation}
 Que l'on peut écrire : \begin{equation}\tau_m\frac{\dd u}{\dd t} = -u(t) + RI(t) \label{LIAFEQ}\end{equation} avec $\tau_m = RC$ la constante de temps associée à la membrane.\\
@@ -710,10 +713,10 @@ Que l'on peut écrire : \begin{equation}\tau_m\frac{\dd u}{\dd t} = -u(t) + RI(t
 Dans ce modèle, il est nécessaire d'introduire une règle pour savoir lorsque le système à produit un potentiel d'action, et une règle de réinitialisation du potentiel du membrane après un potentiel d'action.\\
 On dit que le système a produit un potentiel d'action au temps $t_{PA}$ si $u(t_{PA}) \geq \eta$.\\
 Et la règle de réinitialisation du potentiel de membrane après un potentiel d'action est : 
-\begin{empheq}{align}\begin{split}\text{Si }  u \ge \eta , \text{ al}&\text{ors : } \\ u \leftarrow u_r \end{split}\end{empheq}
+\begin{empheq}{align}\begin{split}\text{Si } u \ge \eta , \text{ al}&\text{ors : } \\ u \leftarrow u_r \end{split}\end{empheq}
 
 Il est également courant d'introduire dans ce modèle une variation de la règle de réinitialisation du potentiel de membrane ayant pour but de modéliser la période réfractaire absolue. On introduit alors le paramètre $\Delta^{abs}$ exprimé en millisecondes, et la règle de réinitialisation devient 
-\begin{empheq}{align}\begin{split}\text{Si }  u \ge \eta , \text{ al}&\text{ors : } \\ &u \leftarrow u_r \\ &\frac{\dd u}{\dd t} = 0 \text{ pendant } \Delta^{abs} \text{ ms}, \\ &\text{Puis après } \Delta^{abs} \text{ ms on reprend } \frac{\dd u}{\dd t} \text{ comme définie par l'équation \ref{LIAFEQ}} \end{split}\end{empheq}
+\begin{empheq}{align}\begin{split}\text{Si } u \ge \eta , \text{ al}&\text{ors : } \\ &u \leftarrow u_r \\ &\frac{\dd u}{\dd t} = 0 \text{ pendant } \Delta^{abs} \text{ ms}, \\ &\text{Puis après } \Delta^{abs} \text{ ms on reprend } \frac{\dd u}{\dd t} \text{ comme définie par l'équation \ref{LIAFEQ}} \end{split}\end{empheq}
 
 Des valeurs courantes pour les paramètres sont : $\tau_m = 10 ms, R=1, u_r=0, I=1.5, \eta=1$.\\
 
@@ -721,9 +724,9 @@ Ce modèle très simple est capable de simuler la base des comportements des neu
 
 \begin{lstlisting}[caption = {Leaky Integrate-and-fire : Définition du modèle}]
 u = Variable(name='u', init_value=0,
-	ddt = '(1/tau_m)*(-u+R*I)', reset_value='ur', unit='mV')
+ddt = '(1/tau_m)*(-u+R*I)', reset_value='ur', unit='mV')
 LEAKY_INTEGRATE_AND_FIRE = Model(u, spike_when='u>=1',
-	max_spike_value=1, tau_m=10, R=1, ur=0, I=1.5)
+max_spike_value=1, tau_m=10, R=1, ur=0, I=1.5)
 \end{lstlisting}
 \begin{lstlisting}[caption = {Leaky Integrate-and-fire : Evolution du potentiel de membrane en fonction du temps}]
 from snn.single.usual_models import LEAKY_INTEGRATE_AND_FIRE as liaf
@@ -744,9 +747,325 @@ plt.show()
 \part{Réseau de neurones}
 
 \section{Modèles de synapses}
+
 \subsection{Quelques élements de neurobiologie}
+Dans cette parie nous allons rappeler schématiquement la manière dont les neurones biologiques sont connectés entre eux pour former des réseaux. Une connexion entre deux neurones est appelée une synapse. Dans le système nerveux humain, il existe deux types de synapses : les synapses électriques et les synapses chimiques. Les synapses électriques permettent la transmission directe de l'influx nerveux à travers ce qu'on appelle des jonctions communicantes, tandis que les synapses chimiques ont un fonctionnement beaucoup plus complexe et permettent la modulation du potentiel de membrane du neurone post-synaptiques à partir de celui du neurone pré-synaptique par l'intermédiaire d'une communication chimique entre les deux neurones basées sur des agents que l'on appelle des neurotransmetteurs. Dans cette partie nous allons surtout nous intéresser principalement au fonctionnement des synapses chimiques : il s'agit du type de synapses dominant dans le cerveau, leur fonctionnement est complexe et elles sont supposé entre à la base des mécanismes de plasticité cérébrale et d'apprentissage.\\
+
+On peut décomposer schématiquement les mécanismes à l'œuvre dans la transmission synaptique en 5 étapes :
+\begin{enumerate}
+\item Arrivée du potentiel d'action dans le bouton synaptique du neurone pré-synaptique;
+\item Ouverture de canaux calciques potentiel-dépendants dans le bouton synaptique, entrée d'ions calciques dans le bouton synaptique ;
+\item Migration et fusion des vésicules synaptiques contenues dans le bouton synaptique du neurone pré-synaptique et contenant les neurotransmetteurs avec la membrane, exocytose des neurotransmetteurs dans la fente synaptique;
+\item Fixation de certains neurotransmetteurs sur les récepteurs associés sur les épines dendritiques du neurone post-synaptique;
+\item Ouverture de canaux ioniques au niveau des dendrites du neurone post-synaptique
+\begin{enumerate}
+\item [5.1] Dans le cas d'une synapse excitatrice, on peut par exemple avoir l'ouverture de canaux sodiques, et l'entrée d'ions sodiques dans la cellule provoque une dépolarisation locale dans le neurone post-synaptique, que l'on appelle potentiel post-synaptique excitateur, pouvant aboutir à la création d'un potentiel d'action dans le neurone post-synaptique si la dépolarisation locale dépasse un certain seuil;
+\item [5.2] Dans le cas d'une synapse inhibitrice, on peut par exemple avoir l'ouverture de canaux potassiques, et la sortie d'ions potassiques dans la cellule provoque une hyperpolarisation locale dans le neurone post-synaptique, que l'on appelle potentiel post-synaptique inhibiteur, rendant la création d'un potentiel d'action dans le neurone post-synaptique plus difficile.
+\end{enumerate}
+\end{enumerate}
+
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=1.2]{imgs/3.jpg}
+\caption{Une synapse \scriptsize{(https://bio.m2osw.com/gcartable/systeme\%20nerveux/synapses.htm)}}
+\label{synapse}
+\end{figure}
+
+
 \section{Apprentissage}
 \subsection{Quelques élements de neurobiologie}
+
+\section{Justification de l'utilisation de la bibliothèque tensorflow comme base pour l'implémentation de SNN}
+Tensorflow (https://www.tensorflow.org/) est une bibliothèque de computation optimisée et parallèle, écrite en C++ avec une interface de developpement python. Cette bibliothèque est particulièrement utilisée pour des applications en apprentissage machine, surtout en deep learning, et elle a souvent la réputation d'être spécifiquement dédiée ces champs d'applications, mais elle peut vraiment être utilisée pour n'importe quel projet où il est nécessaire d'avoir un grand nombre d'opérations élémentaires, et où le parallèlisme semble pertient. De plus tensorflow permet l'utilisation de plusieurs CPU ou de plusieurs GPU pour accélerer les calculs, ce qui est un élement non-négligeable, notamment, les GPU sont particulièrement efficaces pour effectuer des calculs matriciels, de par leur grande capacité de calcul parallèle.\\
+
+Tensorflow utilise un principe appellé diagramme de flux de données (de l'anglais dataflow graph) dont le fonctionnement et les avantages sont certainemet le mieux décrits par les créateurs de tensorflow (traduction libre) : \footnote{\textit{Portions of this page are modifications based on work created and shared by Google and used according to terms described in the Creative Commons 3.0 Attribution License. See https://www.tensorflow.org/programmers\_guide/graphs for the original content} Une portion de cette page est basée sur des modifications d'un travail créé et partagé par Google et utilisé en accord avec les termes décrits dans la Creative Commons 3.0 Attribution License. Voir https://www.tensorflow.org/programmers\_guide/graphs pour le contenu originel }
+
+\textit{
+}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.6]{imgs/4.jpg}
+\caption{Représentation graphique d'un diagramme de flux de données \scriptsize{(https://www.tensorflow.org/programmers\_guide/graphs)}}
+\label{synapse}
+\end{figure}
+
+Pour justifier l'utilisation de tensorflow, il peut être utile de comparé ses performances à celles d'une des bibliothèques de calcul scientifique les plus populaires pour python : numpy.\\
+Afin d'estimer cette différence de performances entre ces deux bibliothèques dans la tâche de simuler des réseaux de spiking-neurons, j'ai créé deux implémentation du même réseau simple, une basée sur numpy, l'autre sur tensorflow. \\
+
+Les caractéristiques du réseau sont les suivantes :
+\begin{itemize}
+\item On utilise le modèle de Izhiekievich pour modéliser les neurones, avec une création des paramètres du modèle orientée dans l'idée d'avoir une grande diversité de comportements neuronaux;
+\item L'architecture du réseau est de type entiremment interconnectée, c'est-à-dire que chaque neurone est connecté avec tout les autres;
+\item Les synapses sont des synapses à poids simples sans délai, c'est-à-dire que l'entrée interne de chaque neurone est égal à la somme des poids afférents des neurones ayant déchargés à l'étape précédente.
+\end{itemize}
+
+Les deux implémentations sont voulues équivalentes en termes de comportements et utilisant au mieux l'arsenal fournit par les deux bibliothèques. Notamment, sur la manière de calculer la communication interne entre les neurones du réseau, 
+la méthode de traitement optimale diffère entre numpy et tensorflow. Dans les deux cas, on souhaite récupérer le vecteur $I_{interne} = (I_j)_{1\leq j \leq n}$ qui définie la part propre au réseau de l'input de chaque neurones.\\
+On a alors deux manières de calculer $I_{interne}$:\\
+Soit $W=(w_{ij})_{ij}$ la matrice donnant les poids des connexions, avec $w_{ij}$ le poids de la connexion entre le neurone $i$ et le neurone $j$.
+\begin{enumerate}
+\item Soit $F$ l'ensemble des indices des neurons qui ont produit un potentiel d'action à l'étape $n-1$, alors \begin{center} $I_j = \displaystyle \sum_{i\in F} w_{ij}$ \end{center}
+Ou, dit autrement, on somme les lignes de W correspondant aux neurones qui ont déchargé, colonnes par colonnes.
+\item Soit $f=(f_i)_i$ le vecteur défini par $f_i = \left\{\begin{array}{l} 1 \text{ si le neurone i à déchargé } \\ 0 \text{ sinon } \end{array}\right.$, alors \begin{center} $I_{interne} = \displaystyle W^T\dot f$ \end{center}
+\end{enumerate}
+
+L'approche 1., basé sur l'indiçage, s'est révélé la plus efficace pour numpy, tandis que l'approche 2., basé sur la multiplication de matrice, s'est révélée plus efficace pour tensorflow.\\
+
+Les codes des deux implémentations sont présentés ci-dessous. La version basée sur tensorflow n'utilise pas l'outil construit dans ce travail, pour rester complètement transparent sur l'équivalence des deux codes. \\Ces codes ont été exécutés sur le \textit{hardware} suivant :
+\begin{itemize}
+\item Processeur (CPU) : Intel(R) Core(TM) i7-4700HQ CPU \@ 2.40GHz 2.40GHz
+\item Carte graphique (GPU) : NVIDIA GeForce GTX 850M
+\end{itemize}
+Le \textit{hardware} sur lequel est executé ces codes est déterminant dans les résultats sur la différence des temps de computation : en effet, numpy n'utilise que le CPU pour faire ses calculs tandis que tensorflow utilise également la GPU.
+
+\clearpage
+\begin{lstlisting}[caption = {Numpy vs Tensorflow : Implémentation Numpy}]
+import numpy as np
+
+
+def build(n, exi_inhi_rate, Iext, seed=123):
+"""Build parameters, weight matrix and variable init states"""
+
+np.random.seed(seed)
+
+nb_ex = round(n * exi_inhi_rate)
+nb_in = round(n * (1 - exi_inhi_rate))
+
+# Parameters generation as in (Izhikievich, 2003) in order to have
+# a variety of neural behavior
+re = np.array(np.random.rand(nb_ex, 1), dtype=np.float32)
+ri = np.array(np.random.rand(nb_in, 1), dtype=np.float32)
+a = np.array(np.concatenate((0.02 * np.ones((nb_ex, 1)),
+0.02 + 0.08 * ri)), dtype=np.float32)
+b = np.array(np.concatenate((0.2 * np.ones((nb_ex, 1)),
+0.25 - 0.05 * ri)), dtype=np.float32)
+c = np.array(np.concatenate((- 65 + 15 * re ** 2,
+- 65 * np.ones((nb_in, 1)))),
+dtype=np.float32)
+d = np.array(np.concatenate((8 - 6 * re ** 2,
+2 * np.ones((nb_in, 1)))),
+dtype=np.float32)
+
+# Weight matrix generation W =(wij) wich give the weight of the
+# connexion  between the neuron i and the neuron j
+# Excitator neurons have positive weights between 0 and 0.5
+# Inhibitor neurons have negative weights between -1 and 0
+W = np.random.rand(n, n)
+W[:nb_ex, :] *= 0.5
+W[nb_ex:, :] *= -1
+W = np.array(W, dtype=np.float32)
+
+# Initialisation state of the variables
+v = - 65 * np.ones((n, 1), dtype=np.float32)
+u = np.multiply(b, v)
+fired = np.zeros(n, dtype=np.bool)
+I = Iext(0)
+
+return a, b, c, d, W, v, u, I, fired
+
+
+def simulate(T, dt, a, b, c, d, W, v, u, I, fired, Iext, seed=123):
+"""Simulate the numpy model for T seconds with dt time step using 
+parmeters from build and where Iext is the function of time which 
+give the external current injected for each time 0<=t<T"""
+
+np.random.seed(seed)
+
+M = int(T / dt)
+
+# Initialization of the matrixes containg the states
+vs, us, Is, fireds = v.T, u.T, I.T, {0: fired}
+
+for m in range(M - 1):
+
+# Reset rule
+u[fired] = u[fired] + d[fired]
+v[fired] = c[fired]
+
+# The dynamical system
+u = u + dt * (a * (b * v - u))
+v = v + dt * (((0.04 * v) + 5) * v + 140 - u + I)
+
+# Get indexes of neurons that fired
+fired = np.where(v >= 30)[0]
+
+# Keep all neurons that fired at 30mV
+v[fired] = 30
+
+# Update the input, according to external input and to
+# internal influence of neurons that fired, 
+# wich is computed by summing by columns all raw of W
+# with indexes corresponding to those of neurons that fired
+I = Iext(m * dt) + np.sum(W[fired, :], axis=0, keepdims=True).T
+
+# Storing states
+Is = np.vstack((Is, I.T))
+vs = np.vstack((vs, v.T))
+us = np.vstack((us, u.T))
+fireds[m * dt] = fired.copy()
+
+return (np.array(vs, dtype=np.float32), np.array(us, dtype=np.float32),
+np.array(Is, dtype=np.float32), fireds)
+\end{lstlisting}
+
+\begin{lstlisting}[caption = {Numpy vs Tensorflow : Implémentation Tensorflow}]
+import tensorflow as tf
+import numpy as np
+
+
+def build(n, exi_inhi_rate, dt, Iext, seed=123):
+"""Crating tf graph for simple network used in test np vs tf"""
+
+np.random.seed(seed)
+
+n_exi = round(n * exi_inhi_rate)
+n_inhi = round(n * (1 - exi_inhi_rate))
+
+graph = tf.Graph()
+with graph.as_default():
+
+# Parameters generation as in (Izhikievich, 2003) in order to have
+# a variety of neural behavior
+re = tf.Variable(np.random.rand(n_exi, 1), dtype=tf.float32)
+ri = tf.Variable(np.random.rand(n_inhi, 1), dtype=tf.float32)
+a = tf.Variable(tf.concat([0.02 * tf.ones((n_exi, 1)),
+0.02 + 0.08 * ri], 0), dtype=tf.float32)
+b = tf.Variable(tf.concat([0.2 * tf.ones((n_exi, 1)),
+0.25 - 0.05 * ri], 0), dtype=tf.float32)
+c = tf.Variable(tf.concat([-65 + 15 * re ** 2,
+-65 * tf.ones((n_inhi, 1))], 0),
+dtype=tf.float32)
+d = tf.Variable(tf.concat([8 - 6 * re ** 2,
+2 * tf.ones((n_inhi, 1))], 0),
+dtype=tf.float32)
+
+# Weight matrix generation W =(wij) wich give the weight of the 
+# connexion between the neuron j and the neuron i
+# Excitator neurons have positive weights between 0 and 0.5
+# Inhibitor neurons have negative weights between -1 and 0
+W = np.random.rand(n, n)
+W[:n_exi, :] *= 0.5
+W[n_exi:, :] *= -1
+W = tf.Variable(W.T, dtype=tf.float32)
+
+# Initialisation state of the variables
+v = tf.Variable(-65 * tf.ones((n, 1)), dtype=tf.float32)
+u = tf.Variable(tf.multiply(b, v), dtype=tf.float32)
+fired = tf.Variable(tf.zeros((n, 1), dtype=tf.bool))
+I = tf.Variable(Iext(0), dtype=tf.float32)
+
+# Reset rule
+new_v = tf.where(fired, c, v)
+new_u = tf.where(fired, tf.add(u, d), u)
+
+# The dynamical system
+dv = tf.add(tf.subtract(tf.add(tf.multiply(tf.add(
+tf.multiply(0.04, new_v), 5.0), new_v), 140), new_u), I)
+new_v = np.add(new_v, np.multiply(dv, dt))
+du = tf.multiply(a, tf.subtract(tf.multiply(b, new_v), new_u))
+new_u = np.add(new_u, np.multiply(du, dt))
+
+# Get a boolean vector of neurons that fired
+v30 = tf.Variable(30 * tf.ones((n, 1)), dtype=tf.float32)
+fired_op = fired.assign(tf.greater_equal(new_v, v30))
+
+# Keep all neurons that fired at 30mV
+v_reseted = tf.where(fired_op, v30, new_v)
+v_op = v.assign(v_reseted)
+u_op = u.assign(new_u)
+
+# Update the input, according to external input and to
+# internal influence of neurons that fired, 
+# wich is computed by doing W.f with f=(fi) the n-tuple
+# with fi = 1 if neuron i fired else fi = 0
+external_input = tf.placeholder(tf.float32, shape=(n, 1))
+I_op = I.assign(tf.add(external_input,
+tf.matmul(W, tf.cast(fired, tf.float32))))
+
+return graph, v, u, I, v_op, u_op, fired_op, I_op, external_input
+
+
+def simulate(T, dt, graph, v, u, I, external_input, Iext,
+v_op, u_op, fired_op, I_op, seed=123):
+"""Simulate the tf model for T seconds with dt time step using 
+parmeters from build and where Iext is the function of time 
+which give the  external current injected for each time 0<=t<T"""
+
+np.random.seed(seed)
+
+with tf.Session(graph=graph) as sess:
+M = int(T / dt)
+sess.run(tf.global_variables_initializer())
+
+# Getting initialization values
+v, u, I = sess.run([v, u, I])
+
+# Initialization of the matrixes containg the states
+vs, us, fireds, Is = [v, ], [u, ], {0: np.array([])}, [I, ]
+
+for m in range(M - 1):
+
+# Running the simulation, inputing the external current
+# and getting current stat for the variables and neurons
+# that fired
+v, u, fire, I = sess.run([v_op, u_op, fired_op, I_op],
+feed_dict={external_input: Iext(m * dt)})
+
+# Storing states
+Is.append(I)
+vs.append(v)
+us.append(u)
+fireds[m * dt] = np.where(fire)[0]
+
+return (np.array(vs, dtype=np.float32), np.array(us, dtype=np.float32),
+np.array(Is, dtype=np.float32), fireds)
+\end{lstlisting}
+
+\clearpage
+Nous avons ensuite comparé les comportements de ces deux implémentations avec les paramètres (T=200, dt=0.2, exi\_inhi\_rate=0.6, n=100, Iext=$t\mapsto 5$), afin de vérifier que les deux implémentations étaient bien équivalentes, ce qui, aux méthodes d'arrondis propres aux bibliothèques prêt, c'est révélé être le cas, comme nous pouvons le voir sur les figures \ref{neuronplotnp}, \ref{neuronplottf}, \ref{rasternp} et \ref{rastertf}.\\
+
+\begin{figure}[!h]
+\begin{minipage}[l]{.48\linewidth}
+\centering
+\includegraphics[scale=0.5]{imgs/neuronplotnp.png}
+\caption{Numpy vs Tensorflow : Single Neuron Plot for numpy}
+\label{neuronplotnp}
+\end{minipage}\hfill
+\begin{minipage}[l]{.48\linewidth}
+\centering
+\includegraphics[scale=0.5]{imgs/neuronplottf.png}
+\caption{Numpy vs Tensorflow : Single Neuron Plot for tensorflow}
+\label{neuronplottf}
+\end{minipage}\hfill
+\end{figure}
+
+\begin{figure}[!h]
+\begin{minipage}[l]{.48\linewidth}
+\centering
+\includegraphics[scale=0.5]{imgs/rasternp.png}
+\caption{Numpy vs Tensorflow : Raster Plot for numpy}
+\label{rasternp}
+\end{minipage}\hfill
+\begin{minipage}[l]{.48\linewidth}
+\centering
+\includegraphics[scale=0.5]{imgs/rastertf.png}
+\caption{Numpy vs Tensorflow : Raster Plot for tensorflow}
+\label{rastertf}
+\end{minipage}\hfill
+\end{figure}
+
+
+Enfin nous avons comparé le temps de computation de ces deux implémentations en faisant varier la taille du réseau (c'est-à-dire le nombre de synapses). Les résultats semblent montrer que pour un petit ($< \raisebox{-0ex}{\textasciitilde}10^4$) nombre de synapses, numpy est plus efficace que tensorflow, tandis que pour un grand ($>\raisebox{-0ex}{\textasciitilde}10^6$) nombre de synapses, tensorflow est plus efficace que numpy, jusqu'à être environ huit fois plus efficace pour un réseau de $\raisebox{-0ex}{\textasciitilde}10^7$ synapses.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=1]{imgs/timelogratio.png}
+\caption{Numpy vs Tensorflow : Ratio  $\frac{\text{Temps de computation pour numpy}}{\text{Temps de computation pour tensorflow}}$  en fonction du nombre de synapses du réseau}
+\label{timelogratio}
+\end{figure}
+
 \part{Etude de (Héricé et al., 2016) }
 
 \part{Code}
@@ -759,7 +1078,4 @@ plt.show()
 
 
 
-
 \end{document}
-
-}
