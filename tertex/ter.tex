@@ -779,10 +779,17 @@ On peut décomposer schématiquement les mécanismes à l'œuvre dans la transmi
 \section{Justification de l'utilisation de la bibliothèque tensorflow comme base pour l'implémentation de SNN}
 Tensorflow (https://www.tensorflow.org/) est une bibliothèque de computation optimisée et parallèle, écrite en C++ avec une interface de developpement python. Cette bibliothèque est particulièrement utilisée pour des applications en apprentissage machine, surtout en deep learning, et elle a souvent la réputation d'être spécifiquement dédiée ces champs d'applications, mais elle peut vraiment être utilisée pour n'importe quel projet où il est nécessaire d'avoir un grand nombre d'opérations élémentaires, et où le parallèlisme semble pertient. De plus tensorflow permet l'utilisation de plusieurs CPU ou de plusieurs GPU pour accélerer les calculs, ce qui est un élement non-négligeable, notamment, les GPU sont particulièrement efficaces pour effectuer des calculs matriciels, de par leur grande capacité de calcul parallèle.\\
 
+
 Tensorflow utilise un principe appellé diagramme de flux de données (de l'anglais dataflow graph) dont le fonctionnement et les avantages sont certainemet le mieux décrits par les créateurs de tensorflow (traduction libre) : \footnote{\textit{Portions of this page are modifications based on work created and shared by Google and used according to terms described in the Creative Commons 3.0 Attribution License. See https://www.tensorflow.org/programmers\_guide/graphs for the original content} Une portion de cette page est basée sur des modifications d'un travail créé et partagé par Google et utilisé en accord avec les termes décrits dans la Creative Commons 3.0 Attribution License. Voir https://www.tensorflow.org/programmers\_guide/graphs pour le contenu originel }
 
-\textit{
-}
+\textit{Les diagrammes de flux de données sont des modèles couramment utilisés dans le calcul numérique parallèles. Dans un diagramme de flux de données, les noeuds représentent des opérations, et les flèches représentent des données utilisées ou produites par une opération. Par exemple, l'opération de multiplication correspondrait à un noeuds avec des flèches afférentes (les elements à multiplier) et une flèche efferentes (le résultat de la multiplication).
+Les diagrammes de flux de données ont plusieurs avantages que tensorflow utilises lors de l'execution d'un programme :
+\begin{itemize}
+\item \textbf{Le parallèlisme.} En utilisant les flèches pour réprésenter la dépendance entre les opérations, il est facile pour le système d'identifier les opérations qui peuvent être effectuées en parallèle
+\item\textbf{L'execution distribuée.} En utilisant les flèches pour représenter les valeur qui circulent entre les opérations, il est possible pour tensorflow de partitionner le programme entre plusieurs hardware (CPUs, GPUs et TPUs) sur différentes machines. Tensorflow gère la communication et la coordination necessaire entre les composants.
+\item\textbf{Compilation.}  Tensorflow utilise un compilateur XLA (Accelerated Linear Algebra) qui peut utiliser les informations dans le diagramme de flux de données pour générer un code plus rapide, par exemple, en fusionnant les opérations adjacentes dans le diagramme.
+\item\textbf{Portabilté. } Un diagramme de flux de données est une représentation du code du modèle indépendante du language de programmation. Ainsi, on peut construire un diagramme de flux de données en Pyton, le sauvegarder, puis le restaurer dans un code en C++ pour améliorer les performances
+\end{itemize}}
 
 \begin{figure}[!h]
 \centering
@@ -826,88 +833,90 @@ import numpy as np
 
 
 def build(n, exi_inhi_rate, Iext, seed=123):
-"""Build parameters, weight matrix and variable init states"""
+    """Build parameters, weight matrix and variable init states"""
 
-np.random.seed(seed)
+    np.random.seed(seed)
 
-nb_ex = round(n * exi_inhi_rate)
-nb_in = round(n * (1 - exi_inhi_rate))
+    nb_ex = round(n * exi_inhi_rate)
+    nb_in = round(n * (1 - exi_inhi_rate))
 
-# Parameters generation as in (Izhikievich, 2003) in order to have
-# a variety of neural behavior
-re = np.array(np.random.rand(nb_ex, 1), dtype=np.float32)
-ri = np.array(np.random.rand(nb_in, 1), dtype=np.float32)
-a = np.array(np.concatenate((0.02 * np.ones((nb_ex, 1)),
-0.02 + 0.08 * ri)), dtype=np.float32)
-b = np.array(np.concatenate((0.2 * np.ones((nb_ex, 1)),
-0.25 - 0.05 * ri)), dtype=np.float32)
-c = np.array(np.concatenate((- 65 + 15 * re ** 2,
-- 65 * np.ones((nb_in, 1)))),
-dtype=np.float32)
-d = np.array(np.concatenate((8 - 6 * re ** 2,
-2 * np.ones((nb_in, 1)))),
-dtype=np.float32)
+    # Parameters generation as in (Izhikievich, 2003) in order to have
+    # a variety of neural behavior
+    re = np.array(np.random.rand(nb_ex, 1), dtype=np.float32)
+    ri = np.array(np.random.rand(nb_in, 1), dtype=np.float32)
+    a = np.array(np.concatenate((0.02 * np.ones((nb_ex, 1)),
+                                 0.02 + 0.08 * ri)), dtype=np.float32)
+    b = np.array(np.concatenate((0.2 * np.ones((nb_ex, 1)),
+                                 0.25 - 0.05 * ri)), dtype=np.float32)
+    c = np.array(np.concatenate((- 65 + 15 * re ** 2,
+                                 - 65 * np.ones((nb_in, 1)))),
+                 dtype=np.float32)
+    d = np.array(np.concatenate((8 - 6 * re ** 2,
+                                 2 * np.ones((nb_in, 1)))),
+                 dtype=np.float32)
 
-# Weight matrix generation W =(wij) wich give the weight of the
-# connexion  between the neuron i and the neuron j
-# Excitator neurons have positive weights between 0 and 0.5
-# Inhibitor neurons have negative weights between -1 and 0
-W = np.random.rand(n, n)
-W[:nb_ex, :] *= 0.5
-W[nb_ex:, :] *= -1
-W = np.array(W, dtype=np.float32)
+    # Weight matrix generation W =(wij) wich give the weight 
+    # of the connexion between the neuron i and the neuron j
+    # Excitator neurons have positive weights between 0 and 0.5
+    # Inhibitor neurons have negative weights between -1 and 0
+    W = np.random.rand(n, n)
+    W[:nb_ex, :] *= 0.5
+    W[nb_ex:, :] *= -1
+    W = np.array(W, dtype=np.float32)
 
-# Initialisation state of the variables
-v = - 65 * np.ones((n, 1), dtype=np.float32)
-u = np.multiply(b, v)
-fired = np.zeros(n, dtype=np.bool)
-I = Iext(0)
+    # Initialisation state of the variables
+    v = - 65 * np.ones((n, 1), dtype=np.float32)
+    u = np.multiply(b, v)
+    fired = np.zeros(n, dtype=np.bool)
+    I = Iext(0)
 
-return a, b, c, d, W, v, u, I, fired
+    return a, b, c, d, W, v, u, I, fired
 
 
 def simulate(T, dt, a, b, c, d, W, v, u, I, fired, Iext, seed=123):
-"""Simulate the numpy model for T seconds with dt time step using 
-parmeters from build and where Iext is the function of time which 
-give the external current injected for each time 0<=t<T"""
+    """Simulate the numpy model for T seconds with dt time step using 
+       parmeters from build and where Iext is the function of time 
+       which give the external current injected for each time 0<=t<T"""
 
-np.random.seed(seed)
+    np.random.seed(seed)
 
-M = int(T / dt)
+    M = int(T / dt)
 
-# Initialization of the matrixes containg the states
-vs, us, Is, fireds = v.T, u.T, I.T, {0: fired}
+    # Initialization of the matrixes containg the states
+    vs, us, Is, fireds = v.T, u.T, I.T, {0: fired}
 
-for m in range(M - 1):
+    for m in range(M - 1):
 
-# Reset rule
-u[fired] = u[fired] + d[fired]
-v[fired] = c[fired]
+        # Reset rule
+        u[fired] = u[fired] + d[fired]
+        v[fired] = c[fired]
 
-# The dynamical system
-u = u + dt * (a * (b * v - u))
-v = v + dt * (((0.04 * v) + 5) * v + 140 - u + I)
+        # The dynamical system
+        u = u + dt * (a * (b * v - u))
+        v = v + dt * (((0.04 * v) + 5) * v + 140 - u + I)
 
-# Get indexes of neurons that fired
-fired = np.where(v >= 30)[0]
+        # Get indexes of neurons that fired
+        fired = np.where(v >= 30)[0]
 
-# Keep all neurons that fired at 30mV
-v[fired] = 30
+        # Keep all neurons that fired at 30mV
+        v[fired] = 30
 
-# Update the input, according to external input and to
-# internal influence of neurons that fired, 
-# wich is computed by summing by columns all raw of W
-# with indexes corresponding to those of neurons that fired
-I = Iext(m * dt) + np.sum(W[fired, :], axis=0, keepdims=True).T
+        # Update the input, according to external input and to
+        # internal influence of neurons that fired, 
+        # wich is computed by summing by columns all raw of W
+        # with indexes corresponding to those of neurons that fired
+        I = Iext(m * dt)+np.sum(W[fired, :], axis=0, keepdims=True).T
 
-# Storing states
-Is = np.vstack((Is, I.T))
-vs = np.vstack((vs, v.T))
-us = np.vstack((us, u.T))
-fireds[m * dt] = fired.copy()
+        # Storing states
+        Is = np.vstack((Is, I.T))
+        vs = np.vstack((vs, v.T))
+        us = np.vstack((us, u.T))
+        fireds[m * dt] = fired.copy()
 
-return (np.array(vs, dtype=np.float32), np.array(us, dtype=np.float32),
-np.array(Is, dtype=np.float32), fireds)
+    return (np.array(vs, dtype=np.float32),
+            np.array(us, dtype=np.float32),
+            np.array(Is, dtype=np.float32), fireds)
+
 \end{lstlisting}
 
 \begin{lstlisting}[caption = {Numpy vs Tensorflow : Implémentation Tensorflow}]
@@ -916,111 +925,113 @@ import numpy as np
 
 
 def build(n, exi_inhi_rate, dt, Iext, seed=123):
-"""Crating tf graph for simple network used in test np vs tf"""
+    """Crating tf graph for simple network used in test np vs tf"""
 
-np.random.seed(seed)
+    np.random.seed(seed)
 
-n_exi = round(n * exi_inhi_rate)
-n_inhi = round(n * (1 - exi_inhi_rate))
+    n_exi = round(n * exi_inhi_rate)
+    n_inhi = round(n * (1 - exi_inhi_rate))
 
-graph = tf.Graph()
-with graph.as_default():
+    graph = tf.Graph()
+    with graph.as_default():
 
-# Parameters generation as in (Izhikievich, 2003) in order to have
-# a variety of neural behavior
-re = tf.Variable(np.random.rand(n_exi, 1), dtype=tf.float32)
-ri = tf.Variable(np.random.rand(n_inhi, 1), dtype=tf.float32)
-a = tf.Variable(tf.concat([0.02 * tf.ones((n_exi, 1)),
-0.02 + 0.08 * ri], 0), dtype=tf.float32)
-b = tf.Variable(tf.concat([0.2 * tf.ones((n_exi, 1)),
-0.25 - 0.05 * ri], 0), dtype=tf.float32)
-c = tf.Variable(tf.concat([-65 + 15 * re ** 2,
--65 * tf.ones((n_inhi, 1))], 0),
-dtype=tf.float32)
-d = tf.Variable(tf.concat([8 - 6 * re ** 2,
-2 * tf.ones((n_inhi, 1))], 0),
-dtype=tf.float32)
+        # Parameters generation as in (Izhikievich, 2003) in order to 
+        # have a variety of neural behavior
+        re = tf.Variable(np.random.rand(n_exi, 1), dtype=tf.float32)
+        ri = tf.Variable(np.random.rand(n_inhi, 1), dtype=tf.float32)
+        a = tf.Variable(tf.concat([0.02 * tf.ones((n_exi, 1)),
+                                0.02 + 0.08 * ri], 0),dtype=tf.float32)
+        b = tf.Variable(tf.concat([0.2 * tf.ones((n_exi, 1)),
+                                0.25 - 0.05 * ri], 0),dtype=tf.float32)
+        c = tf.Variable(tf.concat([-65 + 15 * re ** 2,
+                                -65 * tf.ones((n_inhi, 1))], 0),
+                        dtype=tf.float32)
+        d = tf.Variable(tf.concat([8 - 6 * re ** 2,
+                                2 * tf.ones((n_inhi, 1))], 0),
+                        dtype=tf.float32)
 
-# Weight matrix generation W =(wij) wich give the weight of the 
-# connexion between the neuron j and the neuron i
-# Excitator neurons have positive weights between 0 and 0.5
-# Inhibitor neurons have negative weights between -1 and 0
-W = np.random.rand(n, n)
-W[:n_exi, :] *= 0.5
-W[n_exi:, :] *= -1
-W = tf.Variable(W.T, dtype=tf.float32)
+        # Weight matrix generation W =(wij) wich give the weight of the 
+        # connexion between the neuron j and the neuron i
+        # Excitator neurons have positive weights between 0 and 0.5
+        # Inhibitor neurons have negative weights between -1 and 0
+        W = np.random.rand(n, n)
+        W[:n_exi, :] *= 0.5
+        W[n_exi:, :] *= -1
+        W = tf.Variable(W.T, dtype=tf.float32)
 
-# Initialisation state of the variables
-v = tf.Variable(-65 * tf.ones((n, 1)), dtype=tf.float32)
-u = tf.Variable(tf.multiply(b, v), dtype=tf.float32)
-fired = tf.Variable(tf.zeros((n, 1), dtype=tf.bool))
-I = tf.Variable(Iext(0), dtype=tf.float32)
+        # Initialisation state of the variables
+        v = tf.Variable(-65 * tf.ones((n, 1)), dtype=tf.float32)
+        u = tf.Variable(tf.multiply(b, v), dtype=tf.float32)
+        fired = tf.Variable(tf.zeros((n, 1), dtype=tf.bool))
+        I = tf.Variable(Iext(0), dtype=tf.float32)
 
-# Reset rule
-new_v = tf.where(fired, c, v)
-new_u = tf.where(fired, tf.add(u, d), u)
+        # Reset rule
+        new_v = tf.where(fired, c, v)
+        new_u = tf.where(fired, tf.add(u, d), u)
 
-# The dynamical system
-dv = tf.add(tf.subtract(tf.add(tf.multiply(tf.add(
-tf.multiply(0.04, new_v), 5.0), new_v), 140), new_u), I)
-new_v = np.add(new_v, np.multiply(dv, dt))
-du = tf.multiply(a, tf.subtract(tf.multiply(b, new_v), new_u))
-new_u = np.add(new_u, np.multiply(du, dt))
+        # The dynamical system
+        dv = tf.add(tf.subtract(tf.add(tf.multiply(tf.add(
+                tf.multiply(0.04, new_v), 5.0), new_v), 140),new_u),I)
+        new_v = np.add(new_v, np.multiply(dv, dt))
+        du = tf.multiply(a, tf.subtract(tf.multiply(b, new_v), new_u))
+        new_u = np.add(new_u, np.multiply(du, dt))
 
-# Get a boolean vector of neurons that fired
-v30 = tf.Variable(30 * tf.ones((n, 1)), dtype=tf.float32)
-fired_op = fired.assign(tf.greater_equal(new_v, v30))
+        # Get a boolean vector of neurons that fired
+        v30 = tf.Variable(30 * tf.ones((n, 1)), dtype=tf.float32)
+        fired_op = fired.assign(tf.greater_equal(new_v, v30))
 
-# Keep all neurons that fired at 30mV
-v_reseted = tf.where(fired_op, v30, new_v)
-v_op = v.assign(v_reseted)
-u_op = u.assign(new_u)
+        # Keep all neurons that fired at 30mV
+        v_reseted = tf.where(fired_op, v30, new_v)
+        v_op = v.assign(v_reseted)
+        u_op = u.assign(new_u)
 
-# Update the input, according to external input and to
-# internal influence of neurons that fired, 
-# wich is computed by doing W.f with f=(fi) the n-tuple
-# with fi = 1 if neuron i fired else fi = 0
-external_input = tf.placeholder(tf.float32, shape=(n, 1))
-I_op = I.assign(tf.add(external_input,
-tf.matmul(W, tf.cast(fired, tf.float32))))
+        # Update the input, according to external input and to
+        # internal influence of neurons that fired, 
+        # wich is computed by doing W.f with f=(fi) the n-tuple
+        # with fi = 1 if neuron i fired else fi = 0
+        external_input = tf.placeholder(tf.float32, shape=(n, 1))
+        I_op = I.assign(tf.add(external_input,
+                               tf.matmul(W, tf.cast(fired, tf.float32))))
 
-return graph, v, u, I, v_op, u_op, fired_op, I_op, external_input
+        return graph,v,u,I,v_op,u_op,fired_op,I_op,external_input
 
 
 def simulate(T, dt, graph, v, u, I, external_input, Iext,
-v_op, u_op, fired_op, I_op, seed=123):
-"""Simulate the tf model for T seconds with dt time step using 
-parmeters from build and where Iext is the function of time 
-which give the  external current injected for each time 0<=t<T"""
+             v_op, u_op, fired_op, I_op, seed=123):
+    """Simulate the tf model for T seconds with dt time step 
+       using parmeters from build and where Iext is the function
+       of time which give the external current injected for each 
+       time 0<=t<T"""
 
-np.random.seed(seed)
+    np.random.seed(seed)
 
-with tf.Session(graph=graph) as sess:
-M = int(T / dt)
-sess.run(tf.global_variables_initializer())
+    with tf.Session(graph=graph) as sess:
+        M = int(T / dt)
+        sess.run(tf.global_variables_initializer())
 
-# Getting initialization values
-v, u, I = sess.run([v, u, I])
+        # Getting initialization values
+        v, u, I = sess.run([v, u, I])
 
-# Initialization of the matrixes containg the states
-vs, us, fireds, Is = [v, ], [u, ], {0: np.array([])}, [I, ]
+        # Initialization of the matrixes containg the states
+        vs, us, fireds, Is = [v, ], [u, ], {0: np.array([])}, [I, ]
 
-for m in range(M - 1):
+        for m in range(M - 1):
 
-# Running the simulation, inputing the external current
-# and getting current stat for the variables and neurons
-# that fired
-v, u, fire, I = sess.run([v_op, u_op, fired_op, I_op],
-feed_dict={external_input: Iext(m * dt)})
+            # Running the simulation, inputing the external current
+            # and getting current stat for the variables and neurons
+            # that fired
+            v, u, fire, I = sess.run([v_op, u_op, fired_op, I_op],
+                            feed_dict={external_input: Iext(m * dt)})
 
-# Storing states
-Is.append(I)
-vs.append(v)
-us.append(u)
-fireds[m * dt] = np.where(fire)[0]
+            # Storing states
+            Is.append(I)
+            vs.append(v)
+            us.append(u)
+            fireds[m * dt] = np.where(fire)[0]
 
-return (np.array(vs, dtype=np.float32), np.array(us, dtype=np.float32),
-np.array(Is, dtype=np.float32), fireds)
+    return (np.array(vs, dtype=np.float32), 
+            np.array(us, dtype=np.float32),
+            np.array(Is, dtype=np.float32), fireds)
 \end{lstlisting}
 
 \clearpage
