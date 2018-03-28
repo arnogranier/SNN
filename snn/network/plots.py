@@ -19,7 +19,8 @@ def plot_neuron_by_idx(T, dt, v, idxs, label=None, **kwargs):
     except:idxs = [idxs, ]
     fig = plt.figure()
     for idx in idxs:
-        plt.plot(np.linspace(0, T, T/dt), v[:, idx], label=str(idx), **kwargs)
+        plt.plot(np.linspace(0, T, T/dt), v[:, idx], 
+                 label='Neuron %s' % idx, **kwargs)
     plt.legend()
     if label is None : plt.title('Individual neurons plot')
     else: plt.title('Individual neurons plot %s' % label)
