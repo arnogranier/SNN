@@ -29,6 +29,3 @@ def plot_neuron_by_idx(T, dt, nucleus, idxs, label=None, **kwargs):
     
 def show():
     plt.show()
-
-def savefig(path):
-    plt.savefig(path)
