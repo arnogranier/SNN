@@ -1,33 +1,22 @@
-import matplotlib.pyplot as plt
-from snn.single.usual_models import HH_model as hh
+from snn.network import *
+import numpy as np
+import tensorflow as tf
 
-# Define Input current
-hh['Iapp'] = 5
-# Runge-Kutta method for numerical simulation
-hh.method = 'rk4'
-
-# Since we are plotting multiple things, it's better to simulate the
-# model only one time, and then feed the results to the plot method
-T, dt = 100, 0.01
-history, _ = hh.simulation(T, dt)
-
-# Plot the input current and the membrane 
-# potential evolution throught time
-hh.plot(T, dt, keep=['V', 'Iapp'], history=history)
-
-# Print m, n, h evolution when the membrane potentiel changes
-for var in ['n', 'm', 'h']:
-	plt.figure() ; plt.ylabel(var) ; plt.xlabel('V')
-	plt.plot(history['V'], history[var])
-
-plt.show()
-
-
-
-
-
-
-
+np.random.seed(123)
+tf.set_random_seed(123)
+T, dt = 100, 0.3
+graph = tf.Graph()
+with graph.as_default():
+    N1 = Izhi_Nucleus(2, a=0.03, b=0.2, c=-65, d=4, 
+    				  Iext=10, W=0.7-np.random.rand(2, 2))
+    N2 = Izhi_Nucleus(10, a=0.03, b=0.2, c=-65, d=4, 
+    				  Iext=0, W=0.7-np.random.rand(10, 10))
+    connect(N1, N2, 100 * np.random.rand(10, 2))
+    nuclei = [N1, N2]
+    data = build_izhi(dt, nuclei)
+vss, uss, Iss, firedss = simulate(T, dt, graph, nuclei, data)
+raster_plot(N2)
+show()
 
 
 
