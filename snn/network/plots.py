@@ -1,9 +1,10 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-def raster_plot(fireds, label=None, **kwargs):
+def raster_plot(nucleus, label=None, **kwargs):
     fig = plt.figure()
     xdata, ydata = [], []
+    fireds = nucleus.historique['fired']
     for x, fires in fireds.items():
         for y in fires:
             xdata.append(x)
@@ -26,3 +27,8 @@ def plot_neuron_by_idx(T, dt, v, idxs, label=None, **kwargs):
     else: plt.title('Individual neurons plot %s' % label)
     return fig
     
+def show():
+    plt.show()
+
+def savefig(path):
+    plt.savefig(path)
