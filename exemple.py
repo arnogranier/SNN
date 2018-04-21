@@ -16,6 +16,7 @@ with graph.as_default():
     data = build_izhi(dt, nuclei)
 vss, uss, Iss, firedss = simulate(T, dt, graph, nuclei, data)
 raster_plot(N2)
+plot_neuron_by_idx(T, dt, N2, [5, 9])
 show()
 
 

@@ -15,12 +15,12 @@ def raster_plot(nucleus, label=None, **kwargs):
     else: plt.title('Raster plot %s' % label)
     return fig
 
-def plot_neuron_by_idx(T, dt, v, idxs, label=None, **kwargs):
+def plot_neuron_by_idx(T, dt, nucleus, idxs, label=None, **kwargs):
     try:iter(idxs)
     except:idxs = [idxs, ]
     fig = plt.figure()
     for idx in idxs:
-        plt.plot(np.linspace(0, T, T/dt), v[:, idx], 
+        plt.plot(np.linspace(0, T, T/dt), nucleus.historique['v'][:, idx], 
                  label='Neuron %s' % idx, **kwargs)
     plt.legend()
     if label is None : plt.title('Individual neurons plot')
