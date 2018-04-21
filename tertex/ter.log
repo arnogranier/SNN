@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.3.27)  28 MAR 2018 20:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.3.27)  18 APR 2018 17:28
 entering extended mode
-**"C:/Users/Utilisateur/Desktop/TER - Copie/tertex/ter.tex"
-("C:/Users/Utilisateur/Desktop/TER - Copie/tertex/ter.tex"
+**C:/Users/Utilisateur/Desktop/TER/tertex/ter.tex
+(C:/Users/Utilisateur/Desktop/TER/tertex/ter.tex
 LaTeX2e <2014/05/01>
 Babel <3.9l> and hyphenation patterns for 68 languages loaded.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\koma-script\scrartcl.cls"
@@ -2006,12 +2006,12 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1092.
  ) 
 Here is how much of TeX's memory you used:
  15376 strings out of 493698
- 226594 string characters out of 3144394
+ 226568 string characters out of 3144394
  525609 words of memory out of 3000000
  17869 multiletter control sequences out of 15000+200000
  93424 words of font info for 85 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 45i,19n,46p,1928b,1895s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 45i,19n,46p,1918b,1895s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program Files/M
 iKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/d
 vips/lm/lm-mathsy.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathex
@@ -2033,7 +2033,7 @@ ublic/lm/lmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmsy6.pf
 b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/lm/lmtt12.pfb><C:/Program Files/MiKTeX 2.9/font
 s/type1/public/txfonts/t1xbtt.pfb>
-Output written on ter.pdf (52 pages, 1845261 bytes).
+Output written on ter.pdf (52 pages, 1843087 bytes).
 PDF statistics:
  1134 PDF objects out of 1200 (max. 8388607)
  532 named destinations out of 1000 (max. 500000)
