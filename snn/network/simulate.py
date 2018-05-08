@@ -38,7 +38,7 @@ def simulate(T, dt, graph, nuclei, data):
             for i, I in enumerate(Is):
                 Iss[i].append(I)
             for i, fired in enumerate(fireds):
-                firedss[i][m * dt] = np.where(fired)[0]
+                firedss[i][m * dt] = np.where(fired[-1,:])[0]
 
     # Stocking data in nuclei historic
     for i, nucleus in enumerate(nuclei):

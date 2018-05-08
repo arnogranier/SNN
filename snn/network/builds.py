@@ -13,6 +13,9 @@ def build_izhi(dt, nuclei):
         u <- u + d
     """
 
+    # Compute the needed length of stored fireds
+    fmax = max([delay for N in nuclei for (_, _, delay) in N.afference]) + 1
+
     # Initialize the list of vectors representing the v variables
     vs = [tf.Variable(-65 * tf.ones((N.n, 1)), dtype=tf.float32)
           for N in nuclei]
@@ -22,7 +25,8 @@ def build_izhi(dt, nuclei):
           for (N, v) in zip(nuclei, vs)]
 
     # Initialize the list of boolean vectors representing when neurons fired
-    fireds = [tf.Variable(tf.zeros((N.n, 1), dtype=tf.bool)) for N in nuclei]
+    fireds = [tf.Variable(tf.cast(tf.zeros((fmax, N.n)), tf.bool))
+              for N in nuclei]
 
     # Initialize the list of vectors representing the input I
     Is = [tf.Variable(tf.zeros((N.n, 1)), dtype=tf.float32) for N in nuclei]
@@ -32,9 +36,9 @@ def build_izhi(dt, nuclei):
                        for N in nuclei]
 
     # Reset rules
-    new_vs = [tf.where(fired, N.c, v)
+    new_vs = [tf.where(tf.gather(fired, fmax - 1), N.c, v)
               for (v, fired, N) in zip(vs, fireds, nuclei)]
-    new_us = [tf.where(fired, tf.add(u, N.d), u)
+    new_us = [tf.where(tf.gather(fired, fmax - 1), tf.add(u, N.d), u)
               for (u, fired, N) in zip(us, fireds, nuclei)]
 
     # Dynamical system
@@ -51,32 +55,35 @@ def build_izhi(dt, nuclei):
     # Check neurons that fired and update fired
     v30s = [tf.Variable(30 * tf.ones((N.n, 1)), dtype=tf.float32)
             for N in nuclei]
-    fireds_op = [fired.assign(tf.greater_equal(new_v, v30))
+    fireds_op = [fired.assign(tf.concat([tf.gather(fired, tf.range(1, fmax)),
+                        tf.transpose(tf.greater_equal(new_v, v30))], 0))
                  for (fired, new_v, v30) in zip(fireds, new_vs, v30s)]
 
     # keep v of neurons that fired at 30mV
-    vs_reseted = [tf.where(fired_op, v30, new_v)
+    vs_reseted = [tf.where(tf.gather(fired_op, fmax - 1), v30, new_v)
                   for (fired_op, v30, new_v) in zip(fireds_op, v30s, new_vs)]
-
-    # afference from other nuclei
-    afference_idxs = [[(nuclei.index(M), P) for (M, P) in N.afference]
-                      for N in nuclei]
-    from_other_nuclei = [tf.add_n([tf.zeros(vs[ni].shape)] +
-                                  [tf.matmul(P, tf.cast(fireds[idx],
-                                                        tf.float32))
-                                   for (idx, P) in data])
-                         for ni, data in enumerate(afference_idxs)]
-
-    # Compute input (external, internal and from other nuclei) and update I
-    Is_op = [I.assign(tf.add_n([external_input,
-                                tf.matmul(N.W, tf.cast(fired, tf.float32)),
-                                from_other]))
-             for (N, external_input, fired, from_other, I)
-             in zip(nuclei, external_inputs, fireds, from_other_nuclei, Is)]
 
     # Update v and u
     vs_op = [v.assign(v_reseted) for (v, v_reseted) in zip(vs, vs_reseted)]
     us_op = [u.assign(new_u) for (u, new_u) in zip(us, new_us)]
+
+    # afference from other nuclei
+    from_other_nuclei = [tf.add_n(
+       [tf.zeros(vs[ni].shape)] +
+       [tf.matmul(P, tf.cast(tf.expand_dims(tf.gather(fireds[nuclei.index(M)],
+                                                       fmax - 1 - delay), 1),
+                              tf.float32))
+        for (M, P, delay) in N.afference])
+                         for ni, N in enumerate(nuclei)]
+
+    # Compute input (external, internal and from other nuclei) and update I
+    Is_op = [I.assign(tf.add_n(
+       [external_input, 
+        tf.matmul(N.W, tf.cast(tf.expand_dims(tf.gather(fired, fmax - 1), 1),
+                               tf.float32)),
+        from_other]))
+        for (N, external_input, fired, from_other, I)
+        in zip(nuclei, external_inputs, fireds, from_other_nuclei, Is)]
 
     return [vs, us, fireds, Is, vs_op, us_op,
             Is_op, fireds_op, external_inputs]
