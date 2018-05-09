@@ -5,6 +5,7 @@ def simulate(T, dt, graph, nuclei, data):
 
     """Simulate the model in graph for T ms with a time step dt"""
 
+    writer = tf.summary.FileWriter('./graph', graph)
     # Unpack data
     vs, us, fireds, Is, vs_op, us_op, Is_op, fireds_op, external_inputs = data
 

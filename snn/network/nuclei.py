@@ -19,13 +19,13 @@ class Izhi_Nucleus:
         self.n = n
 
         # Stock parameters
-        self.a = treat_parameter(a, n)
-        self.b = treat_parameter(b, n)
-        self.c = treat_parameter(c, n)
-        self.d = treat_parameter(d, n)
+        self.a = treat_parameter(a, n, label='a')
+        self.b = treat_parameter(b, n, label='b')
+        self.c = treat_parameter(c, n, label='c')
+        self.d = treat_parameter(d, n, label='d')
 
         # Stock internal connection matrix
-        self.W = treat_parameter(W, type_='connect_matrix', n1=n, n2=n)
+        self.W = treat_parameter(W, type_='connect_matrix', n1=n, n2=n, label='W')
 
         # Stock external input
         self.Iext = treat_callable(Iext, n)
