@@ -40,6 +40,7 @@ class Izhi_Nucleus:
                            'fired': {}, 
                            't': 0}
 
+    # return the firing rate in Hz
     @property
     def firing_rate(self):
         fired, t = self.historique['fired'], self.historique['t']
