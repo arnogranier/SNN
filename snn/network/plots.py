@@ -29,12 +29,13 @@ def raster_plot(nucleus, label=None, **kwargs):
     return fig
 
 
-def plot_neuron_by_idx(T, dt, nucleus, idxs, names=None,
+def plot_neuron_by_idx(T, dt, dico_nucleus_idxs, names=None,
                        variables=['v', ], **kwargs):
     """Plot the activity of the neuron at indexs idxs of nucleus"""
 
-    if not is_iterable(idxs):
-        idxs = [idxs, ]
+    for (nucleus, idxs) in dico_nucleus_idxs.items():
+        if not is_iterable(idxs):
+            dico_nucleus_idxs[nucleus] = [idxs, ]
 
     # There is as much figure as variables to plot
     figs = []
@@ -42,10 +43,11 @@ def plot_neuron_by_idx(T, dt, nucleus, idxs, names=None,
         fig = plt.figure()
 
         # Plot data
-        for idx in idxs:
-            plt.plot(np.linspace(0, T, T/dt),
-                     nucleus.historique[varname][:, idx],
-                     label='Neuron %s' % idx, **kwargs)
+        for (nucleus, idxs) in dico_nucleus_idxs.items():
+            for idx in idxs:
+                plt.plot(np.linspace(0, T, T/dt),
+                         nucleus.historique[varname][:, idx],
+                         label='Neuron %s - %s' % (nucleus.label, idx), **kwargs)
 
         # Handle names
         if names is None:

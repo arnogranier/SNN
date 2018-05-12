@@ -1,7 +1,7 @@
 from .tools import *
 
 
-def build_izhi(dt, nuclei):
+def build_izhi(dt, nuclei, synapse_type='simple'):
 
     """build a izhi model with a list of nucleus
 
@@ -13,9 +13,12 @@ def build_izhi(dt, nuclei):
         u <- u + d
     """
 
+    maxsyn = int((1 / dt) * max([howfar for N in nuclei 
+                               for (_, _, _, _, howfar) in N.afference]))
+    maxdelay = int((1 / dt) * max([delay for N in nuclei 
+                               for (_, _, delay, _, _) in N.afference]))
     # Compute the needed length of stored fireds
-    fmax = int((1 / dt) * max([delay for N in nuclei 
-    						   for (_, _, delay) in N.afference]) + 1)
+    fmax = maxdelay + maxsyn + 1
 
     # Initialize the list of vectors representing the v variables
     with tf.name_scope('v'):
@@ -35,14 +38,14 @@ def build_izhi(dt, nuclei):
     # Initialize the list of vectors representing the input I
     with tf.name_scope('I'):    
         Is = [tf.Variable(tf.zeros((N.n, 1)), dtype=tf.float32) 
-        	  for N in nuclei]
+              for N in nuclei]
 
     # Initialize the list of vectors to stock I
     # It's necessary to stock I when we compute dvs, because we update I 
     # in parallel of computing dvs, and I is in dvs equation.
     with tf.name_scope('I_stock'):
         I_stock = [tf.Variable(tf.zeros((N.n, 1)), dtype=tf.float32) 
-        		   for N in nuclei]
+                   for N in nuclei]
         I_stock_op = [tf.assign(stock, I) for (stock, I) in zip(I_stock, Is)]
 
     # Initialize the list of placeholders for external input
@@ -101,25 +104,36 @@ def build_izhi(dt, nuclei):
         us_op = [u.assign(new_u) for (u, new_u) in zip(us, new_us)]
 
     # afference from other nuclei
-    with tf.name_scope('from_other_nuclei'):
-        from_other_nuclei = [tf.add_n(
-       [tf.zeros(vs[ni].shape)] +
-       [tf.matmul(P, 
-       			  tf.cast(tf.expand_dims(tf.gather(fireds[nuclei.index(M)],
-                                         fmax - 1 - int((1 / dt) * delay)), 1),
-                              tf.float32))
-        for (M, P, delay) in N.afference])
-                         for ni, N in enumerate(nuclei)]
+    with tf.name_scope('internal_inputs'):
+        if synapse_type == 'simple':
+            decays = [[tf.constant(np.expand_dims(decay(np.linspace(int((1/dt)*howfar)-1, 0, int((1/dt)*howfar))), 1), 
+                                   dtype=tf.float32) 
+                        for (M, P, delay, decay, howfar) in N.afference]
+                       for ni, N in enumerate(nuclei)]
+            internal_inputs = [tf.add_n(
+           [tf.zeros(vs[ni].shape)] +
+           [tf.matmul(tf.matmul(P, 
+                      tf.transpose(tf.cast(tf.gather(fireds[nuclei.index(M)],
+                          tf.range(fmax-int((1/dt) * delay) \
+                                   - int((1/dt)*howfar), fmax - int((1 / dt) * delay))),
+                                  tf.float32))), decay)
+            for (M, P, delay, _, howfar), decay in zip(N.afference, decays[ni])])
+                                 for ni, N in enumerate(nuclei)]
+        elif synapse_type == 'voltage_jump':
+            internal_inputs = [tf.add_n(
+           [tf.zeros(vs[ni].shape)] +
+           [tf.matmul(P, 
+                      tf.cast(tf.expand_dims(tf.gather(fireds[nuclei.index(M)],
+                                             fmax - 1 - int((1 / dt) * delay)), 1),
+                                  tf.float32))
+            for (M, P, delay, decay, howfar) in N.afference])
+                             for ni, N in enumerate(nuclei)]
 
     # Compute input (external, internal and from other nuclei) and update I
     with tf.name_scope('I_op'):
-        Is_op = [I.assign(tf.add_n(
-       [external_input, 
-        tf.matmul(N.W, tf.cast(tf.expand_dims(tf.gather(fired, fmax - 1), 1),
-                               tf.float32)),
-        from_other]))
-        for (N, external_input, fired, from_other, I)
-        in zip(nuclei, external_inputs, fireds, from_other_nuclei, Is)]
+        Is_op = [I.assign(tf.add_n([external_input, internal_input]))
+        for (external_input, internal_input, I)
+        in zip(external_inputs, internal_inputs, Is)]
 
     return [vs, us, fireds, Is, vs_op, us_op,
             Is_op, fireds_op, external_inputs]

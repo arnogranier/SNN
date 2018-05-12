@@ -47,5 +47,6 @@ def simulate(T, dt, graph, nuclei, data):
         nucleus.historique['u'] = np.array(uss[i])
         nucleus.historique['I'] = np.array(Iss[i])
         nucleus.historique['fired'] = firedss[i]
+        nucleus.historique['t'] = T
 
     return vss, uss, Iss, firedss

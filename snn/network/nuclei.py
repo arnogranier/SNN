@@ -24,9 +24,6 @@ class Izhi_Nucleus:
         self.c = treat_parameter(c, n, label='c')
         self.d = treat_parameter(d, n, label='d')
 
-        # Stock internal connection matrix
-        self.W = treat_parameter(W, type_='connect_matrix', n1=n, n2=n, label='W')
-
         # Stock external input
         self.Iext = treat_callable(Iext, n)
 
@@ -40,4 +37,12 @@ class Izhi_Nucleus:
         self.historique = {'v': np.array([]),
                            'u': np.array([]),
                            'I': np.array([]),
-                           'fired': {}}
+                           'fired': {}, 
+                           't': 0}
+
+    @property
+    def firing_rate(self):
+        fired, t = self.historique['fired'], self.historique['t']
+        return (1000 / (t * self.n)) * sum([len(list_of_idx) 
+                                          for list_of_idx in fired.values()])
+    
