@@ -14,7 +14,8 @@ def build_izhi(dt, nuclei):
     """
 
     # Compute the needed length of stored fireds
-    fmax = int(max([delay for N in nuclei for (_, _, delay) in N.afference]) + 1)
+    fmax = int((1 / dt) * max([delay for N in nuclei 
+    						   for (_, _, delay) in N.afference]) + 1)
 
     # Initialize the list of vectors representing the v variables
     with tf.name_scope('v'):
@@ -33,13 +34,15 @@ def build_izhi(dt, nuclei):
 
     # Initialize the list of vectors representing the input I
     with tf.name_scope('I'):    
-        Is = [tf.Variable(tf.zeros((N.n, 1)), dtype=tf.float32) for N in nuclei]
+        Is = [tf.Variable(tf.zeros((N.n, 1)), dtype=tf.float32) 
+        	  for N in nuclei]
 
     # Initialize the list of vectors to stock I
-    # It's necessary to stock I when we compute dvs, because we update I in parallel
-    # of computing dvs, and I is in dvs equation.
+    # It's necessary to stock I when we compute dvs, because we update I 
+    # in parallel of computing dvs, and I is in dvs equation.
     with tf.name_scope('I_stock'):
-        I_stock = [tf.Variable(tf.zeros((N.n, 1)), dtype=tf.float32) for N in nuclei]
+        I_stock = [tf.Variable(tf.zeros((N.n, 1)), dtype=tf.float32) 
+        		   for N in nuclei]
         I_stock_op = [tf.assign(stock, I) for (stock, I) in zip(I_stock, Is)]
 
     # Initialize the list of placeholders for external input
@@ -101,8 +104,9 @@ def build_izhi(dt, nuclei):
     with tf.name_scope('from_other_nuclei'):
         from_other_nuclei = [tf.add_n(
        [tf.zeros(vs[ni].shape)] +
-       [tf.matmul(P, tf.cast(tf.expand_dims(tf.gather(fireds[nuclei.index(M)],
-                                                       fmax - 1 - delay), 1),
+       [tf.matmul(P, 
+       			  tf.cast(tf.expand_dims(tf.gather(fireds[nuclei.index(M)],
+                                         fmax - 1 - int((1 / dt) * delay)), 1),
                               tf.float32))
         for (M, P, delay) in N.afference])
                          for ni, N in enumerate(nuclei)]
