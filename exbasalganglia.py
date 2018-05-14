@@ -35,8 +35,6 @@ connexion_matrix = [#CTX D1  D2  Gpi TA  TI  STN
                     [0,  0,  0,  20, 20, 20,  0]  #STN
                    ] 
 
-connexion_matrix[0][1] = 30
-
 # delay matrix
 delay_matrix =     [#CTX  D1    D2   Gpi   TA    TI    STN
                     [0,   10,   10,    0,    0,    0,  2.5], #CTX
@@ -94,27 +92,3 @@ for nucleus in nuclei:
     raster_plot(nucleus, label=nucleus.label)
 plot_neuron_by_idx(T, dt, {nuclei[-2] : [0, ]})
 show()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
