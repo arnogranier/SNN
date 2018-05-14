@@ -7,7 +7,7 @@ ___We know for sure (or at least with a high level of certainty) only one physic
 
 <object data="https://github.com/ArnoGranier/SNN/files/2000196/ter.pdf" type="application/pdf" width="700px" height="700px">
     <embed src="https://github.com/ArnoGranier/SNN/files/2000196/ter.pdf">
-        Download PDF : <a href="https://github.com/ArnoGranier/SNN/files/2000196/ter.pdf">Download PDF</a> or go to tertex/ter.pdf to view it.</p>
+        Download PDF : <a href="https://github.com/ArnoGranier/SNN/files/2000196/ter.pdf">Download PDF</a> or go to ter.pdf to view it.</p>
     </embed>
 </object>
 
