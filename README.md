@@ -10,3 +10,5 @@ ___We know for sure (or at least with a high level of certainty) only one physic
         Download PDF : <a href="https://github.com/ArnoGranier/SNN/files/2000196/ter.pdf">Download PDF</a> or go to tertex/ter.pdf to view it.</p>
     </embed>
 </object>
+
+__COMING SOON : Example of usage, doc__
