@@ -120,7 +120,7 @@ snn.show()
 ```
 
 ### A more complex example :
-_We provide an example of the implementation of a more complex ad-hoc model of the basal ganglia (see ter.pdf (in french) or 
+_We provide an example of the implementation of a more complex ad-hoc model of the basal ganglia_ (see ter.pdf (in french) or 
 
 __(__-Bahuguna, J., Tetzlaff, T., Kumar, A., Hellgren Kotaleski, J., & Morrison, A. (2017). Homologous Basal Ganglia Network Models in Physiological and Parkinsonian Conditions. Frontiers in computational neuroscience, 11, 79.__)__, 
 
@@ -128,7 +128,7 @@ __(__ Humphries, M. D., Stewart, R. D., & Gurney, K. N. (2006). A physiologicall
 
 __(__ Héricé, C., Khalil, R., Moftah, M., Boraud, T., Guthrie, M., & Garenne, A. (2016). Decision making under uncertainty in a spiking neural network model of the basal ganglia. Journal of integrative neuroscience, 15 (04), 515–538. __)__ 
 
-from wich general architecture and parameters (weights and delays) are _
+from wich general architecture and parameters (weights and delays) are extracted.
 
 To implement such model with snn.network, one could do as follow :
 
