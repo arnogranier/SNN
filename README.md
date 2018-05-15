@@ -14,6 +14,22 @@ ___We know for sure (or at least with a high level of certainty) only one physic
 __COMING SOON ON THIS README : Example of usage (already some in pdf), doc__
 
 __Simple example :__
-```import numpy as np
-from snn.network import * ```
-First we need to import snn.network
+_Suppose we want to simulate a network of 1000 neurons with each neurons fully-interconnected_
+
+First we need to import snn.network : 
+```
+import numpy as np
+from snn.network import *
+```
+
+Then we need to specify some parameters :
+
+The time step :
+```
+dt = 0.1
+```
+
+The size of the population : 
+```
+size = 1000
+```
