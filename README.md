@@ -11,8 +11,6 @@ ___We know for sure (or at least with a high level of certainty) only one physic
     </embed>
 </object>
 
-__COMING SOON ON THIS README : Example of usage (already some in pdf), doc (WIP)__
-
 ### Simple example :
 _Suppose we want to simulate a fully-interconnected network of 1000 izhikievich-neurons_
 
