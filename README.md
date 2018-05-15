@@ -11,7 +11,7 @@ ___We know for sure (or at least with a high level of certainty) only one physic
     </embed>
 </object>
 
-__COMING SOON ON THIS README : Example of usage (already some in pdf), doc__
+__COMING SOON ON THIS README : Example of usage (already some in pdf), doc (WIP)__
 
 __Simple example :__
 _Suppose we want to simulate a network of 1000 neurons with each neurons fully-interconnected_
@@ -33,3 +33,15 @@ The size of the population :
 ```
 size = 1000
 ```
+
+The decay function and the time window of the synapse model (see ter.pdf :
+```
+decay = lambda t: np.exp( - (t / 20)) ; howfar = 50
+```
+
+The external input (which could also be defined as a function of time):
+```
+external_input = 5
+```
+
+The parameters of the Izhikievich model, here they are set to modelize Regular Spiking neurons
