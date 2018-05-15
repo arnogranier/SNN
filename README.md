@@ -82,7 +82,7 @@ snn.raster_plot(N)
 snn.show()
 ```
 
-img
+![alt tag](https://user-images.githubusercontent.com/27825602/40060165-469fbb02-5856-11e8-9d02-c55ed2a1e847.png)
 
 And we can plot the variables v and I for the first neuron of the nucleus
 We can plot a raster plot of our nucleus by doing
@@ -91,8 +91,8 @@ snn.plot_neuron_by_idx(T, dt, {N:0}, variables=['v', 'I'])
 snn.show()
 ```
 
-img
-img
+![alt tag](https://user-images.githubusercontent.com/27825602/40060165-469fbb02-5856-11e8-9d02-c55ed2a1e847.png)
+![alt tag](https://user-images.githubusercontent.com/27825602/40059845-75dfc2dc-5855-11e8-9172-e7d9bbe2d7fb.png)
 
 The complete code :
 ```
@@ -129,6 +129,8 @@ __(__ Humphries, M. D., Stewart, R. D., & Gurney, K. N. (2006). A physiologicall
 __(__ Héricé, C., Khalil, R., Moftah, M., Boraud, T., Guthrie, M., & Garenne, A. (2016). Decision making under uncertainty in a spiking neural network model of the basal ganglia. Journal of integrative neuroscience, 15 (04), 515–538. __)__ 
 
 from wich general architecture and parameters (weights and delays) are extracted.
+
+![alt tag](https://user-images.githubusercontent.com/27825602/40059873-8429a3d0-5855-11e8-8c47-4e565d9b4b87.JPG)
 
 To implement such model with snn.network, one could do as follow :
 
