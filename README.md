@@ -56,7 +56,7 @@ W = np.random.normal(0, 1, size=(size, size))
 ```
 
 We can then build the tensorflow graph for our model using snn.network. We first build a empty tensorflow graph, then we create an Izhi_Nucleus (which is a python object that stock some data in convenient way), then we connect this Izhi_Nucleus with itself using weight matrix W and the function, delay and time window specified earlier (this just update the list of afference list of the Izhi_Nucleus), and finaly we fill the tensorflow graph with the necessary operations to simulate our model.
-```{r, engine='bash', count_lines}
+```{r, engine='python', count_lines}
 graph = tf.Graph()
 with graph.as_default():
     N = snn.Izhi_Nucleus(size, label='N', **parameters, Iext=external_input)
