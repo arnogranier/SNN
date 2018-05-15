@@ -35,6 +35,8 @@ connexion_matrix = [#CTX D1  D2  Gpi TA  TI  STN
                     [0,  0,  0,  20, 20, 20,  0]  #STN
                    ] 
 
+connexion_matrix[0][1] = 30
+
 # delay matrix
 delay_matrix =     [#CTX  D1    D2   Gpi   TA    TI    STN
                     [0,   10,   10,    0,    0,    0,  2.5], #CTX
@@ -52,7 +54,7 @@ decay_p = lambda t: np.exp(-t / 20) ; howfar_p = 20
 # Decay of inhibitory syanapses
 decay_n = lambda t: (t / 50) * np.exp(1 - (t / 50)) ; howfar_n = 100
 
-# Input to cortical neurons
+# Input to population 1 : 5 pour t < 15 0 sinon
 input_to_cortex = lambda t : 7*np.random.normal(1, 3, size=(sizes[0],1))
 
 # Weight randomization w <- (1 + nu)*w with nu gaussian process of mean 0
@@ -92,3 +94,27 @@ for nucleus in nuclei:
     raster_plot(nucleus, label=nucleus.label)
 plot_neuron_by_idx(T, dt, {nuclei[-2] : [0, ]})
 show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
