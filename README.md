@@ -91,7 +91,7 @@ snn.plot_neuron_by_idx(T, dt, {N:0}, variables=['v', 'I'])
 snn.show()
 ```
 
-![alt tag](https://user-images.githubusercontent.com/27825602/40060165-469fbb02-5856-11e8-9d02-c55ed2a1e847.png)
+![alt tag](https://user-images.githubusercontent.com/27825602/40059853-7b51dc6e-5855-11e8-9c4d-c08fd0addf3c.png)
 ![alt tag](https://user-images.githubusercontent.com/27825602/40059845-75dfc2dc-5855-11e8-9172-e7d9bbe2d7fb.png)
 
 The complete code :
