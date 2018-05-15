@@ -12,3 +12,8 @@ ___We know for sure (or at least with a high level of certainty) only one physic
 </object>
 
 __COMING SOON ON THIS README : Example of usage (already some in pdf), doc__
+
+__Simple example :__
+```import numpy as np
+from snn.network import *```
+First we need to import snn.network
