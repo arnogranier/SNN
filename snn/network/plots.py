@@ -21,10 +21,14 @@ def raster_plot(nucleus, label=None, **kwargs):
     plt.plot(xdata, ydata, '|', **kwargs)
     plt.ylabel('Neuron indexes')
     plt.xlabel('time')
-    if label is None:
+    if label is None and nucleus.label is None:
         plt.title('Raster plot')
+    elif label is not None and nucleus.label is None:
+        plt.title('Raster plot (%s)' % label)
+    elif label is None and nucleus.label is not None:
+        plt.title('Raster plot of %s' % nucleus.label)
     else:
-        plt.title('Raster plot %s' % label)
+        plt.title('Raster plot of %s (%s)' % (nucleus.label, label))
 
     return fig
 
