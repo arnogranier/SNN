@@ -130,6 +130,8 @@ from wich general architecture and parameters (weights and delays) are extracted
 
 ![alt tag](https://user-images.githubusercontent.com/27825602/40059873-8429a3d0-5855-11e8-8c47-4e565d9b4b87.JPG)
 
+__THE GOAL IS TO DEMONSTRATE THE UTILITY OF SNN.NETWORK, NOT TO PRODUCE A COMPLETE AND PROOF-TESTED MODEL OF THE BASAL GANGLIA !__ 
+
 To implement such model with snn.network, one could do as follow :
 
 ```
