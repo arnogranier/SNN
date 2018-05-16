@@ -122,11 +122,11 @@ _We provide an example of the implementation of a more complex ad-hoc model of t
 
 __(__-Bahuguna, J., Tetzlaff, T., Kumar, A., Hellgren Kotaleski, J., & Morrison, A. (2017). Homologous Basal Ganglia Network Models in Physiological and Parkinsonian Conditions. Frontiers in computational neuroscience, 11, 79.__)__, 
 
-__(__ Humphries, M. D., Stewart, R. D., & Gurney, K. N. (2006). A physiologically plausible model of action selection and oscillatory activity in the basal ganglia. Journal of Neuroscience, 26 (50), 12921–12942. __)__, 
+__(__ Humphries, M. D., Stewart, R. D., & Gurney, K. N. (2006). A physiologically plausible model of action selection and oscillatory activity in the basal ganglia. Journal of Neuroscience, 26 (50), 12921–12942. __)__ and
 
 __(__ Héricé, C., Khalil, R., Moftah, M., Boraud, T., Guthrie, M., & Garenne, A. (2016). Decision making under uncertainty in a spiking neural network model of the basal ganglia. Journal of integrative neuroscience, 15 (04), 515–538. __)__ 
 
-from wich general architecture and parameters (weights and delays) are extracted.
+from wich general architecture and parameters (weights and delays) are extracted.)
 
 ![alt tag](https://user-images.githubusercontent.com/27825602/40059873-8429a3d0-5855-11e8-8c47-4e565d9b4b87.JPG)
 
