@@ -171,9 +171,7 @@ connexion_matrix = [#CTX D1  D2  Gpi TA  TI  STN
                     [0, -2, -2,  -2, -2, -2, -4], #TI
                     [0,  0,  0,  20, 20, 20,  0]  #STN
                    ] 
-
-connexion_matrix[0][1] = 30
-
+                   
 # delay matrix
 delay_matrix =     [#CTX  D1    D2   Gpi   TA    TI    STN
                     [0,   10,   10,    0,    0,    0,  2.5], #CTX
