@@ -189,7 +189,7 @@ decay_p = lambda t: np.exp(-t / 20) ; howfar_p = 20
 # Decay of inhibitory syanapses
 decay_n = lambda t: (t / 50) * np.exp(1 - (t / 50)) ; howfar_n = 100
 
-# Input to population 1 : 5 pour t < 15 0 sinon
+# Input to cortex
 input_to_cortex = lambda t : 7*np.random.normal(1, 3, size=(sizes[0],1))
 
 # Weight randomization w <- (1 + nu)*w with nu gaussian process of mean 0
