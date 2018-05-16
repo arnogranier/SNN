@@ -91,7 +91,7 @@ with graph.as_default():
 vss, uss, Iss, firedss = simulate(T, dt, graph, nuclei, data)
 # Plot 1 neuron of each population
 for nucleus in nuclei:
-    raster_plot(nucleus, label=nucleus.label)
+    raster_plot(nucleus)
 plot_neuron_by_idx(T, dt, {nuclei[-2] : [0, ]})
 show()
 
