@@ -196,7 +196,7 @@ input_to_cortex = lambda t : 7*np.random.normal(1, 3, size=(sizes[0],1))
 def randomized_w(weight):
     sign_w = np.sign(weight)
     sigma_w = np.random.normal(0, 1, size=(N.n, M.n))
-    w = abs(weight) + sigma_w*abs(weight)
+    w = abs(weight) + sigma_w * abs(weight)
     w[w < 0] = 0
     return sign_w * w
 
