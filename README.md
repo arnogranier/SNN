@@ -193,9 +193,9 @@ decay_n = lambda t: (t / 50) * np.exp(1 - (t / 50)) ; howfar_n = 100
 input_to_cortex = lambda t : 7*np.random.normal(1, 3, size=(sizes[0],1))
 
 # Weight randomization w <- (1 + nu)*w with nu gaussian process of mean 0
-def randomized_w(weight):
+def randomized_w(weight, size):
     sign_w = np.sign(weight)
-    sigma_w = np.random.normal(0, 1, size=(N.n, M.n))
+    sigma_w = np.random.normal(0, 1, size=size)
     w = abs(weight) + sigma_w * abs(weight)
     w[w < 0] = 0
     return sign_w * w
@@ -215,7 +215,7 @@ with graph.as_default():
             weight = connexion_matrix[i][j]/N.n
             delay = delay_matrix[i][j]
             if weight != 0:
-                connect(N, M, randomized_w(weight), delay=delay,
+                connect(N, M, randomized_w(weight, (M.n, N.n)), delay=delay,
                         decay=decay_p if weight > 0 else decay_n,
                         howfar=howfar_p if weight > 0 else howfar_n)
     
