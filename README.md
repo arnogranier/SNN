@@ -229,7 +229,7 @@ vss, uss, Iss, firedss = simulate(T, dt, graph, nuclei, data)
 
 # Raster plot of all the nuclei
 for nucleus in nuclei:
-    raster_plot(nucleus, label=nucleus.label)
+    raster_plot(nucleus)
 
 # Plot the activity of 1 neuron of TI
 plot_neuron_by_idx(T, dt, {nuclei[-2] : [0, ]})
