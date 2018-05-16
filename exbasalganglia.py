@@ -94,27 +94,3 @@ for nucleus in nuclei:
     raster_plot(nucleus)
 plot_neuron_by_idx(T, dt, {nuclei[-2] : [0, ]})
 show()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
