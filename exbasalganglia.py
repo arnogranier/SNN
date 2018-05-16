@@ -34,9 +34,7 @@ connexion_matrix = [#CTX D1  D2  Gpi TA  TI  STN
                     [0, -2, -2,  -2, -2, -2, -4], #TI
                     [0,  0,  0,  20, 20, 20,  0]  #STN
                    ] 
-
-connexion_matrix[0][1] = 30
-
+                   
 # delay matrix
 delay_matrix =     [#CTX  D1    D2   Gpi   TA    TI    STN
                     [0,   10,   10,    0,    0,    0,  2.5], #CTX
@@ -54,14 +52,14 @@ decay_p = lambda t: np.exp(-t / 20) ; howfar_p = 20
 # Decay of inhibitory syanapses
 decay_n = lambda t: (t / 50) * np.exp(1 - (t / 50)) ; howfar_n = 100
 
-# Input to population 1 : 5 pour t < 15 0 sinon
+# Input to cortex
 input_to_cortex = lambda t : 7*np.random.normal(1, 3, size=(sizes[0],1))
 
 # Weight randomization w <- (1 + nu)*w with nu gaussian process of mean 0
-def randomized_w(weight):
+def randomized_w(weight, size):
     sign_w = np.sign(weight)
-    sigma_w = np.random.normal(0, 1, size=(N.n, M.n))
-    w = abs(weight) + sigma_w*abs(weight)
+    sigma_w = np.random.normal(0, 1, size=size)
+    w = abs(weight) + sigma_w * abs(weight)
     w[w < 0] = 0
     return sign_w * w
 
@@ -80,7 +78,7 @@ with graph.as_default():
             weight = connexion_matrix[i][j]/N.n
             delay = delay_matrix[i][j]
             if weight != 0:
-                connect(N, M, randomized_w(weight), delay=delay,
+                connect(N, M, randomized_w(weight, (M.n, N.n)), delay=delay,
                         decay=decay_p if weight > 0 else decay_n,
                         howfar=howfar_p if weight > 0 else howfar_n)
     
@@ -89,8 +87,11 @@ with graph.as_default():
 
 # Simulate the model
 vss, uss, Iss, firedss = simulate(T, dt, graph, nuclei, data)
-# Plot 1 neuron of each population
+
+# Raster plot of all the nuclei
 for nucleus in nuclei:
     raster_plot(nucleus)
+
+# Plot the activity of 1 neuron of TI
 plot_neuron_by_idx(T, dt, {nuclei[-2] : [0, ]})
 show()
