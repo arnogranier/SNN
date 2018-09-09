@@ -7,9 +7,16 @@ ___We know for sure (or at least with a high level of certainty) only one physic
 
 <object data="https://github.com/ArnoGranier/SNN/files/2010589/ter.pdf" type="application/pdf" width="700px" height="700px">
     <embed src="https://github.com/ArnoGranier/SNN/files/2010589/ter.pdf">
-        Download PDF : <a href="https://github.com/ArnoGranier/SNN/files/2010589/ter.pdf">Download PDF</a> or go to ter.pdf to view it (IN FRENCH).</p>
+        Download main PDF : <a href="https://github.com/ArnoGranier/SNN/files/2010589/ter.pdf">Download PDF</a> or go to ter.pdf to view it (IN FRENCH).</p>
     </embed>
 </object>
+
+<object data="https://github.com/ArnoGranier/SNN/files/2364372/epistemo.1.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src="https://github.com/ArnoGranier/SNN/files/2364372/epistemo.1.pdf">
+        Download my thoughts on related epistemological considerations : <a href="https://github.com/ArnoGranier/SNN/files/2364372/epistemo.1.pdf">Download PDF</a> or go to espistemo.pdf to view it (IN FRENCH).</p>
+    </embed>
+</object>
+
 
 Contact : arno.granier@etu.u-bordeaux.fr
 
