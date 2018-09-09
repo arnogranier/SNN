@@ -1,5 +1,5 @@
 # SNN
-## [TER-MIASHS][Python 3.6-Tensorflow] Spiking Neural Network Lib
+## [Python 3.6, Tensorflow] Spiking Neural Network Lib
 
 ### _With an idea of reconciliation between mathematical and computational modelling of the nervous system and artificial intelligence_
 
