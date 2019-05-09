@@ -18,7 +18,7 @@ ___We know for sure (or at least with a high level of certainty) only one physic
 </object>
 
 
-Contact : arno.granier@etu.u-bordeaux.fr
+Contact : arno.granier@u-psud.fr
 
 ### Simple example :
 _Suppose we want to simulate a fully-interconnected network of 1000 izhikievich-neurons_
