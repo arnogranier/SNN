@@ -13,12 +13,6 @@ Work in progess : learning methods not yet implemented
     </embed>
 </object>
 
-<object data="https://github.com/ArnoGranier/SNN/files/2364372/epistemo.1.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="https://github.com/ArnoGranier/SNN/files/2364372/epistemo.1.pdf">
-        Download my thoughts on related epistemological considerations : <a href="https://github.com/ArnoGranier/SNN/files/2364372/epistemo.1.pdf">Download PDF</a> or go to espistemo.pdf to view it (IN FRENCH).</p>
-    </embed>
-</object>
-
 
 Contact : arno.granier@u-psud.fr
 
