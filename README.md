@@ -14,7 +14,7 @@ Work in progess : learning methods not yet implemented
 </object>
 
 
-Contact : arno.granier@u-psud.fr
+Contact : arno@ini.uzh.ch
 
 ### Simple example :
 _Suppose we want to simulate a fully-interconnected network of 1000 izhikievich-neurons_
