@@ -84,7 +84,7 @@ snn.show()
 And we can plot the variables v and I for the first neuron of the nucleus
 We can plot a raster plot of our nucleus by doing
 ```
-snn.plot_neuron_by_idx(T, dt, {N:0}, variables=['v', 'I'])
+snn.plot_neuron_by_idx(T, dt, {N:0}, variables=['v',])
 snn.show()
 ```
 
