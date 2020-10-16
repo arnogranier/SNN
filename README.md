@@ -89,7 +89,6 @@ snn.show()
 ```
 
 ![alt tag](https://user-images.githubusercontent.com/27825602/40059853-7b51dc6e-5855-11e8-9c4d-c08fd0addf3c.png)
-![alt tag](https://user-images.githubusercontent.com/27825602/40059845-75dfc2dc-5855-11e8-9172-e7d9bbe2d7fb.png)
 
 The complete code :
 ```
