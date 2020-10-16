@@ -111,7 +111,7 @@ with graph.as_default():
 T = 300
 snn.simulate(T, dt, graph, [N, ], data)
 snn.raster_plot(N)
-snn.plot_neuron_by_idx(T, dt, {N:0}, variables=['v', 'I'])
+snn.plot_neuron_by_idx(T, dt, {N:0}, variables=['v',])
 snn.show()
 ```
 
