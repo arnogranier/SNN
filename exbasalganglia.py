@@ -1,10 +1,12 @@
 from snn.network import *
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+
 np.random.seed(123)
 tf.set_random_seed(123)
 
-T, dt = 1000, 0.2
+T, dt = 100, 0.2
 
 # Size of populations
 names = ['CTX','D1','D2','Gpi','TA','TI','STN']
@@ -33,8 +35,8 @@ connexion_matrix = [#CTX D1  D2  Gpi TA  TI  STN
                     [0, -2, -2,   0, -2, -2, -2], #TA
                     [0, -2, -2,  -2, -2, -2, -4], #TI
                     [0,  0,  0,  20, 20, 20,  0]  #STN
-                   ] 
-                   
+                   ]
+
 # delay matrix
 delay_matrix =     [#CTX  D1    D2   Gpi   TA    TI    STN
                     [0,   10,   10,    0,    0,    0,  2.5], #CTX
@@ -44,7 +46,7 @@ delay_matrix =     [#CTX  D1    D2   Gpi   TA    TI    STN
                     [0,    6,    6,    0,    1,    1,    4], #TA
                     [0,    6,    6,    3,    1,    1,    4], #TI
                     [0,    0,    0,  1.5,    2,    2,    0]  #STN
-                   ] 
+                   ]
 
 # Decay of excitatory syanapses
 decay_p = lambda t: np.exp(-t / 20) ; howfar_p = 20
@@ -66,7 +68,7 @@ def randomized_w(weight, size):
 
 graph = tf.Graph()
 with graph.as_default():
-    
+
     # Populations
     nuclei = [Izhi_Nucleus(size, label=name, **parameters,
                            Iext=0 if name != 'CTX' else input_to_cortex)
@@ -81,7 +83,7 @@ with graph.as_default():
                 connect(N, M, randomized_w(weight, (M.n, N.n)), delay=delay,
                         decay=decay_p if weight > 0 else decay_n,
                         howfar=howfar_p if weight > 0 else howfar_n)
-    
+
     # Building tensorflow graph for this model
     data = build_izhi(dt, nuclei)
 

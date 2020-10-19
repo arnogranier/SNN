@@ -2,10 +2,30 @@ from .tools import *
 
 
 def simulate(T, dt, graph, nuclei, data):
+    """
+    Simulate the model in graph for T ms with a time step dt.
 
-    """Simulate the model in graph for T ms with a time step dt"""
+    Parameters
+    ----------
+    T : float
+        Simulation time
+    dt : float
+        Time step
+    graph : tensorflow.Graph
+        The tensorflow graph to simulate the model, built with build_izhi
+    nuclei : list of Izhi_Nucleus
+        The list of Izhi_Nucleus to simulate
+    data : list of tensorflow operations
+        Tensorflow operations to loop through
 
-    writer = tf.summary.FileWriter('./graph', graph)
+    Returns
+    -------
+    Four lists containing the historic of variables and action potentials
+    events.
+
+    """
+
+    writer = tf.compat.v1.summary.FileWriter('./graph', graph)
     # Unpack data
     vs, us, fireds, Is, vs_op, us_op, Is_op, fireds_op, external_inputs = data
 

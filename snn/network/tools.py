@@ -1,4 +1,6 @@
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+
 import os ; os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import numpy as np
 

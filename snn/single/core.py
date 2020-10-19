@@ -5,8 +5,21 @@ import numpy as np
 
 
 class Variable:
+    """Represents a variable in the model.
 
-    """Represents a variable in the model"""
+    Parameters
+    ----------
+    name : str
+    ddt : str
+        derivation of the variable wrt to time
+    init_value : float
+        Initial value of membrane potential
+    reset_value : float
+        Reset value of membrane potential
+    unit : str
+        Unit of the variable
+
+    """
 
     def __init__(self, name=None, ddt=None, init_value=-65,
                  reset_value=None, unit=None):
@@ -21,26 +34,87 @@ class Variable:
         self.temp_reset_value = reset_value
         self.init_value = init_value
 
-    def __str__(self): return self.__name__ + str(self.value)
+    def __str__(self):
+        return self.__name__ + str(self.value)
 
-    def __repr__(self): return str(self)
+    def __repr__(self):
+        return str(self)
 
-    def __call__(self, *args, **kwargs): return self.value
+    def __call__(self, *args, **kwargs):
+        return self.value
 
 
 class Parameter:
+    """Represents a parameter in the model.
 
-    """Represents a parameter in the model"""
+    Parameters
+    ----------
+    name : str
+    eq : str, float
+        float or function of variables where the name of the variable in str
+        form where the name of the variable can be stated in the str i.e.
+        '0.07*exp((-V-65)/20)'
+    expected_params : list
+        List of expected variables in the parameter's equations
+    unit : str
+
+    Attributes
+    ----------
+    func : function
+        Lambda expression created from the str form of equation
+
+    """
 
     def __init__(self, name=None, eq=None, expected_params=[], unit=None):
         self.__name__ = name
         self.func = create_equation(expected_params, eq)
         self.unit = unit
 
-    def __call__(self, *args, **kwargs): return self.value
+    def __call__(self, *args, **kwargs):
+        return self.value
 
 
 class Model:
+    """Short summary.
+
+    Parameters
+    ----------
+    variables : list of Variable
+        The list of variables in the model
+    max_spike_value : float
+        Maximum authorized value for the membrane potential. If higher the
+        value is reseted to max_spike_value
+    time_unit : str
+    spike_when : str
+        Description of parameter `spike_when`.
+    simul_method : type
+        Description of parameter `simul_method`.
+    **parameters : type
+        Description of parameter `**parameters`.
+
+    Attributes
+    ----------
+    expected_params : type
+        Description of attribute `expected_params`.
+    variables : type
+        Description of attribute `variables`.
+    variables_with_reset : type
+        Description of attribute `variables_with_reset`.
+    parameters : type
+        Description of attribute `parameters`.
+    _var_and_par : type
+        Description of attribute `_var_and_par`.
+    reset : type
+        Description of attribute `reset`.
+    method : type
+        Description of attribute `method`.
+    step_method : type
+        Description of attribute `step_method`.
+    spike_when
+    max_spike_value
+    time_unit
+
+    """
     def __init__(self, *variables, max_spike_value=np.inf, time_unit='ms',
                  spike_when='False', simul_method='rk4', **parameters):
 
@@ -70,8 +144,7 @@ class Model:
                            for name, val in parameters.items()}
 
         # Store variables and parameters together in a dict
-        self._var_and_par = {'t': None, **self.variables,
-                             **self.parameters}
+        self._var_and_par = {'t': None, **self.variables, **self.parameters}
 
         # Initialize variables, parameters and time
         self.reset()
@@ -243,13 +316,13 @@ class Model:
 
         return fig
 
-    def phase_plan(self, xdata, ydata, others=dict(), nb_of_vector_by_axis=25,
+    def phase_plane(self, xdata, ydata, others=dict(), nb_of_vector_by_axis=25,
                    rescale=False, no_dynamics=False, interactive=False, T=1000,
                    dt=0.2, quiver_args=dict(), contour_args=dict()):
         """Create a phase plan of two variables, with an automatic generation
            of the vector fields, and an interactive functionality
            xvardata and yvardata are feed as a 3-length tuple :
-           (name, axis_min_value, axis_max_value)"""
+           (name, axis_min_Modelvalue, axis_max_value)"""
 
         # Set value of other variables and parameters if needed
         for name, val in others.items():
@@ -319,7 +392,7 @@ class Model:
         self.label(xdata[0], axis='x')
         self.label(ydata[0], axis='y')
 
-        # If the phase_plan is meant to be interactive, then ..
+        # If the phase_plane is meant to be interactive, then ..
         if interactive:
 
             # Attach let click mouse button to the cascade method
@@ -337,11 +410,11 @@ class Model:
 
     def cascade(self, event, line, point, start_point, T, dt, xvarname,
                 yvarname):
-        """When left mouse button pressed on interactive phase_plan,
+        """When left mouse button pressed on interactive phase_plane,
            start plotting the dynamic (ie the evolution through time
            of the variables) """
 
-        # Check that the click was really on the phase_plan
+        # Check that the click was really on the phase_plane
         if event.inaxes != line.axes:
             return
 

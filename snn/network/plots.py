@@ -4,7 +4,20 @@ from .tools import is_iterable
 
 
 def raster_plot(nucleus, label=None, **kwargs):
-    """Raster plot fireds data of nucleus, return the matplotlib figure"""
+    """Raster plot fireds data of nucleus, return the matplotlib figure.
+
+    Parameters
+    ----------
+    nucleus : Izhi_Nucleus
+        Nucleus containing the data that we want
+    label : str
+        Label
+
+    Returns
+    -------
+    matplotlib.pyplot.figure
+
+    """
 
     # Get fireds data
     fireds = nucleus.historique['fired']
@@ -16,10 +29,10 @@ def raster_plot(nucleus, label=None, **kwargs):
             xdata.append(x)
             ydata.append(y)
 
-    # Matplotlib
+    # Matplotlib stuff
     fig = plt.figure()
     plt.plot(xdata, ydata, '|', **kwargs)
-    plt.ylabel('Neuron indexes')
+    plt.ylabel('Neuron indices')
     plt.xlabel('time')
     if label is None and nucleus.label is None:
         plt.title('Raster plot')
@@ -33,23 +46,43 @@ def raster_plot(nucleus, label=None, **kwargs):
     return fig
 
 
-def plot_neuron_by_idx(T, dt, dico_nucleus_idxs, names=None,
+def plot_neuron_by_idx(T, dt, dict_nucleus_idxs, names=None,
                        variables=['v', ], **kwargs):
-    """Plot the activity of the neuron at indexs idxs of nucleus"""
+    """Plot the activity of the neuron at indices idxs of nucleus.
 
-    for (nucleus, idxs) in dico_nucleus_idxs.items():
+    Parameters
+    ----------
+    T : float
+        Elapsed time
+    dt : float
+        Time step
+    dict_nucleus_idxs : dict
+        Dict of the form {Izhi_Nucleus: list of idxs} representing the neurons
+        from which want to plot
+    names : list of str
+        List of names for the different neurons in dict_nucleus_idxs
+    variables : list of str
+        Names of the variables to plot
+
+    Returns
+    -------
+    matplotlib.pyplot.figure
+
+    """
+
+    for (nucleus, idxs) in dict_nucleus_idxs.items():
         if not is_iterable(idxs):
-            dico_nucleus_idxs[nucleus] = [idxs, ]
+            dict_nucleus_idxs[nucleus] = [idxs, ]
 
-    # There is as much figure as variables to plot
+    # We build one figure for each variable to plot
     figs = []
     for figidx, varname in enumerate(variables):
         fig = plt.figure()
 
         # Plot data
-        for (nucleus, idxs) in dico_nucleus_idxs.items():
+        for (nucleus, idxs) in dict_nucleus_idxs.items():
             for idx in idxs:
-                plt.plot(np.linspace(0, T, T/dt),
+                plt.plot(np.linspace(0, T, int(T/dt)),
                          nucleus.historique[varname][:, idx],
                          label='Neuron %s - %s' % (nucleus.label, idx), **kwargs)
 
