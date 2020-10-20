@@ -257,7 +257,7 @@ It is then easy to simulate the model
 
 ```
 
-![alt tag](https://user-images.githubusercontent.com/27825602/40059873-8429a3d0-5855-11e8-8c47-4e565d9b4b87.JPG)
+![alt tag](https://user-images.githubusercontent.com/27825602/96613725-96268780-12ff-11eb-8b54-984ae72783f1.png)
 
 And we can also plot the phase portrait of the model to perform geometrical analysis of the dynamics
 
