@@ -94,22 +94,21 @@ class Model:
 
     Attributes
     ----------
-    expected_params : type
-        Description of attribute `expected_params`.
-    variables : type
-        Description of attribute `variables`.
-    variables_with_reset : type
-        Description of attribute `variables_with_reset`.
-    parameters : type
-        Description of attribute `parameters`.
-    _var_and_par : type
-        Description of attribute `_var_and_par`.
-    reset : type
-        Description of attribute `reset`.
-    method : type
-        Description of attribute `method`.
+    expected_params : list of str
+        List of the names of the expected parameters for variable and
+        parameters update
+    variables : dict of Variable
+        Dict containing all the model's variables indexed by names
+    variables_with_reset : list of Variable
+        A list of variables with reset mechanisms
+    parameters : dict of Parameters
+        Dict containing all the model's parameters indexed by names
+    _var_and_par : dict of Variable and Parameter
+        Dict containing all variables AND paramteres indexed by names
+    method : function
+        Name of the simulation method (e.g explicit euler, rk4)
     step_method : type
-        Description of attribute `step_method`.
+        Simulation method step as defined in numerical_methods.py or custom
     """
     def __init__(self, *variables, max_spike_value=np.inf, time_unit='ms',
                  spike_when='False', simul_method='rk4', **parameters):
