@@ -133,7 +133,6 @@ class Model:
                                      if var.reset_value is not None]
 
         # Parameters
-        print(parameters)
         self.parameters = {name: Parameter(name=name, eq=str(val),
                                           expected_params=self.expected_params)
                            if not isinstance(val, Parameter) else val
