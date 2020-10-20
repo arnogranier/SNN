@@ -14,12 +14,13 @@ HH = Model(V, n, m, h, Cm=1, gk=36, gna=120, spike_when='V>=30',
            beta_m='4*exp((-V-65)/18)',
            alpha_h='0.07*exp((-V-65)/20)',
            beta_h='1/(1+exp((-V-36)/10))',
-           Iapp=0)
+           Iapp=0,
+           simul_method='rk4')
 
 # FitzHugh-Nagumo Model
 v = Variable(name='v', ddt='-w+v-(1/3)*v**3+I', init_value=-1.25, unit='mV')
 w = Variable(name='w', ddt='(1/tau)*(v+a-b*w)', init_value=-1)
-FHN = Model(v, w, spike_when='v>=0' ,a=0.7, b=1.2, tau=12.5, I=0)
+FHN = Model(v, w, spike_when='v>=0', a=0.7, b=1.2, tau=12.5, I=0)
 
 # Izhikievich Model
 v = Variable(name='v', ddt='+0.04*v**2+5*v+140-u+I', init_value=-65,

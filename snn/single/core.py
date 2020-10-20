@@ -86,11 +86,11 @@ class Model:
         value is reseted to max_spike_value
     time_unit : str
     spike_when : str
-        Description of parameter `spike_when`.
-    simul_method : type
-        Description of parameter `simul_method`.
-    **parameters : type
-        Description of parameter `**parameters`.
+        boolean equation describing the spiking event
+    simul_method : str
+        Name of the simulation method, either explicit_euler or rk4
+    **parameters : dict
+        Dict of parameters
 
     Attributes
     ----------
@@ -110,10 +110,6 @@ class Model:
         Description of attribute `method`.
     step_method : type
         Description of attribute `step_method`.
-    spike_when
-    max_spike_value
-    time_unit
-
     """
     def __init__(self, *variables, max_spike_value=np.inf, time_unit='ms',
                  spike_when='False', simul_method='rk4', **parameters):
@@ -138,6 +134,7 @@ class Model:
                                      if var.reset_value is not None]
 
         # Parameters
+        print(parameters)
         self.parameters = {name: Parameter(name=name, eq=str(val),
                                           expected_params=self.expected_params)
                            if not isinstance(val, Parameter) else val
@@ -382,11 +379,9 @@ class Model:
 
         # Label the nullclines
         plt.clabel(cx, fontsize=10, inline=1, inline_spacing=1,
-                   fmt={0: '%s-nullcline' % x_name},
-                   ticker=plt.LinearLocator())
+                   fmt={0: '%s-nullcline' % x_name})
         plt.clabel(cy, fontsize=10, inline=1, inline_spacing=1,
-                   fmt={0: '%s-nullcline' % y_name},
-                   ticker=plt.LinearLocator())
+                   fmt={0: '%s-nullcline' % y_name})
 
         # Label the axis
         self.label(xdata[0], axis='x')
