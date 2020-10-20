@@ -236,6 +236,34 @@ show()
 
 ### snn.single phase portrait and phase plan quick example
 
-Model definition fhn
-alternartively, from usual models import
-plot phase_portrait
+If we want to define a new model we can use snn.single.core.Variable and snn.single.core.Model for that
+
+```
+
+
+```
+
+Alternatively, it is possible to import common models from snn.single.usual_models
+
+```
+
+
+```
+
+It is then easy to simulate the model
+
+```
+
+
+```
+
+![alt tag](https://user-images.githubusercontent.com/27825602/40059873-8429a3d0-5855-11e8-8c47-4e565d9b4b87.JPG)
+
+And we can also plot the phase portrait of the model to perform geometrical analysis of the dynamics
+
+```
+
+
+```
+
+![alt tag](https://user-images.githubusercontent.com/27825602/40059873-8429a3d0-5855-11e8-8c47-4e565d9b4b87.JPG)
