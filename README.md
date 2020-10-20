@@ -236,25 +236,32 @@ show()
 
 ### snn.single phase portrait and phase plan quick example
 
-If we want to define a new model we can use snn.single.core.Variable and snn.single.core.Model for that
+If we want to define a new model we can use snn.single.core.Variable and snn.single.core.Model for that, for example here a definition of the FitzHugh-Nagumo model
 
 ```
-
-
+from snn.single.core import Variable, Model
+v = Variable (name='v', ddt='v -(1/3)* v **3 - w + I', init_value=0)
+w = Variable (name='w', ddt='(1/ tau )*( v +a - b * w )', init_value=0)
+FHN = Model (v, w, a=0.7, b=0.8, tau=12.5, I=0.5)
 ```
 
 Alternatively, it is possible to import common models from snn.single.usual_models
 
 ```
-
-
+from snn.single.usual_models import FHN as fhn
 ```
 
 It is then easy to simulate the model
 
 ```
+fhn['I'] = '.5 if t <500 else 0'
+fhn_history, _ = fhn.simulation(1000, 0.1)
 
-
+import matplotlib.pyplot as plt
+plt.plot(fhn_history['t'], fhn_history['v'], '-r', label='v')
+plt.plot(fhn_history['t'], fhn_history['I'], '-b', label='I')
+plt.legend()
+plt.show()
 ```
 
 ![alt tag](https://user-images.githubusercontent.com/27825602/96613725-96268780-12ff-11eb-8b54-984ae72783f1.png)
@@ -262,8 +269,8 @@ It is then easy to simulate the model
 And we can also plot the phase portrait of the model to perform geometrical analysis of the dynamics
 
 ```
-
-
+fhn.phase_plane(('v', -2.5, 2), ('w', -1, 1))
+plt.show()
 ```
 
-![alt tag](https://user-images.githubusercontent.com/27825602/40059873-8429a3d0-5855-11e8-8c47-4e565d9b4b87.JPG)
+![alt tag](https://user-images.githubusercontent.com/27825602/96613731-97f04b00-12ff-11eb-8745-2e2bdde03034.png
