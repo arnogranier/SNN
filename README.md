@@ -273,4 +273,4 @@ fhn.phase_plane(('v', -2.5, 2), ('w', -1, 1))
 plt.show()
 ```
 
-![alt tag](https://user-images.githubusercontent.com/27825602/96613731-97f04b00-12ff-11eb-8745-2e2bdde03034.png
+![alt tag](https://user-images.githubusercontent.com/27825602/96613731-97f04b00-12ff-11eb-8745-2e2bdde03034.png)
